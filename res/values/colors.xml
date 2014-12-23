@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primary_color">#3F51B5</color>
+    <color name="primary_darker_color">#303F9F</color>
+    <color name="accent">#C5CAE9</color>
+    
+    <color name="actionbar_text">#FFFFFF</color>
+    
+    <color name="control_highlight_color">#FF0000</color>
+    <color name="switch_thumbnormal_color">#00FF00</color>
+
+</resources>
