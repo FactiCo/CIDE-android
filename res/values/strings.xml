@@ -16,4 +16,21 @@
     <string name="alert_dialog_failed">Failed with error.</string>
     <string name="save_button">Save</string>
 
+    <!-- Add Testimonio -->
+    <string name="addtestimonio_name">Nombre</string>
+    <string name="addtestimonio_email">Correo electrónico</string>
+    <string name="addtestimonio_category">Categoria</string>
+    <string name="addtestimonio_description">Descripción</string>
+    <string name="addtestimonio_city">Ciudad</string>
+    <string name="addtestimonio_age">Edad</string>
+    <string name="addtestimonio_gender">Género</string>
+    <string name="addtestimonio_scholarity">Escolaridad</string>
+    
+    <string name="addtestimonio_gender_male">Masculino</string>
+    <string name="addtestimonio_gender_female">Femenino</string>
+    
+    <string name="addtestimonio_senddata">Enviar información</string>
+    
+    <string name="addtestimonio_senddata_loading">Enviando información.</string>
+    
 </resources>

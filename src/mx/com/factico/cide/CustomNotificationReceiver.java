@@ -1,5 +1,7 @@
 package mx.com.factico.cide;
 
+import mx.com.factico.cide.dialogues.Dialogues;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -11,15 +13,18 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 /**
 {
 "action":"mx.com.factico.cide.CUSTOM_NOTIFICATION",
-"title": "My notification title",
-"message": "My notification message"
+"title": "My notification title Factico",
+"alert": "My notification message Factico"
 }
 **/
 public class CustomNotificationReceiver extends BroadcastReceiver {
+	private final static String TAG_CLASS = CustomNotificationReceiver.class.getName();
+	
 	private NotificationCompat.Builder mBuilder;
 	private Intent resultIntent;
 	private int mNotificationId = 001;
@@ -34,6 +39,8 @@ public class CustomNotificationReceiver extends BroadcastReceiver {
 			
 			String title = json.getString("title").toString(); // Getting custom title to show in custom notification
 			String message = json.getString("message").toString();  // Getting custom message to show in custom notification
+			
+			Dialogues.Log(TAG_CLASS, "Title: " + title + ", Message" + message, Log.INFO);
 			
 			generateNotification(context, title, message);
 		} catch (JSONException e) {}

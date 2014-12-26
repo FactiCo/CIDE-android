@@ -1,5 +1,6 @@
 package mx.com.factico.cide;
 
+import mx.com.factico.cide.dialogues.Dialogues;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -22,6 +23,8 @@ import com.parse.RefreshCallback;
 import com.parse.SaveCallback;
 
 public class MainActivity extends ActionBarActivity {
+	private static final String TAG_CLASS = MainActivity.class.getName();
+
 	private RadioButton genderFemaleButton;
 	private RadioButton genderMaleButton;
 	private EditText ageEditText;
@@ -30,15 +33,15 @@ public class MainActivity extends ActionBarActivity {
 
 	public static final String GENDER_MALE = "male";
 	public static final String GENDER_FEMALE = "female";
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		// Track app opens.
 		ParseAnalytics.trackAppOpened(getIntent());
-		
+
 		// Set up our UI member properties.
 		this.genderFemaleButton = (RadioButton) findViewById(R.id.gender_female_button);
 		this.genderMaleButton = (RadioButton) findViewById(R.id.gender_male_button);
@@ -50,19 +53,20 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	public void onStart() {
 		super.onStart();
-		
-		// Display the current values for this user, such as their age and gender.
+
+		// Display the current values for this user, such as their age and
+		// gender.
 		displayUserProfile();
 		refreshUserProfile();
 	}
-	
+
 	public void saveUserProfile(View view) {
 		String ageTextString = ageEditText.getText().toString();
 
 		if (ageTextString.length() > 0) {
 			ParseInstallation.getCurrentInstallation().put("age", Integer.valueOf(ageTextString));
 		}
-		
+
 		if (genderRadioGroup.getCheckedRadioButtonId() == genderFemaleButton.getId()) {
 			ParseInstallation.getCurrentInstallation().put("gender", GENDER_FEMALE);
 		} else if (genderRadioGroup.getCheckedRadioButtonId() == genderMaleButton.getId()) {
@@ -71,9 +75,9 @@ public class MainActivity extends ActionBarActivity {
 			ParseInstallation.getCurrentInstallation().remove("gender");
 		}
 
-		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(ageEditText.getWindowToken(), 0);
-		
+
 		ParseInstallation.getCurrentInstallation().saveInBackground(new SaveCallback() {
 			@Override
 			public void done(ParseException e) {
@@ -89,7 +93,7 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 	}
-	
+
 	// Refresh the UI with the data obtained from the current ParseInstallation
 	// object.
 	private void displayUserProfile() {
@@ -98,29 +102,20 @@ public class MainActivity extends ActionBarActivity {
 
 		String message = ParseInstallation.getCurrentInstallation().getString("message");
 		messageTextView.setText(message);
-		Log.d("TAG", "Message: " + message);
-		
+		Dialogues.Log(TAG_CLASS, "Message: " + message, Log.INFO);
+
 		Bundle bundle = getIntent().getExtras();
-		if(bundle != null) {
+		if (bundle != null) {
 			String json = bundle.getString("com.parse.Data", "No data from json parse");
 			messageTextView.setText(json);
-			Log.d("TAG", "JSON: " + json);
+			Dialogues.Log(TAG_CLASS, "JSON: " + json, Log.INFO);
 		}
-		
+
 		ParseObject jsonObject = ParseInstallation.getCurrentInstallation().getParseObject("factico");
-		//messageTextView.setText(message);
-		if(jsonObject != null)
-			Log.d("TAG", "JSON: " + jsonObject.toString());
-		/*
-		 * 
-		 * {
-			"factico": {
-				"id":1,
-				"news":"qwerty"
-				}
-			}
-		 */
-		
+		// messageTextView.setText(message);
+		if (jsonObject != null)
+			Dialogues.Log(TAG_CLASS, "JSON: " + jsonObject.toString(), Log.INFO);
+
 		if (gender != null) {
 			genderMaleButton.setChecked(gender.equalsIgnoreCase(GENDER_MALE));
 			genderFemaleButton.setChecked(gender.equalsIgnoreCase(GENDER_FEMALE));
@@ -146,7 +141,7 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
