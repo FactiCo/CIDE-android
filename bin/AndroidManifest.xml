@@ -44,6 +44,14 @@
 			</intent-filter>
 		</receiver>
 		
+		<receiver
+		    android:name="mx.com.factico.cide.CustomNotificationReceiver"
+		    android:exported="false" >
+		    <intent-filter>
+		        <action android:name="mx.com.factico.cide.CUSTOM_NOTIFICATION" />
+		    </intent-filter>
+		</receiver>
+		
 		<receiver android:name="com.parse.GcmBroadcastReceiver"
 			android:permission="com.google.android.c2dm.permission.SEND">
 			<intent-filter>
@@ -56,22 +64,6 @@
 		
 		<!-- replace @drawable/push_icon with your push icon identifier -->
 		<meta-data android:name="com.parse.push.notification_icon" android:resource="@drawable/ic_launcher"/>
-		
-		<!-- <meta-data android:name="com.parse.push.nonotification_title" android:resource="@string/app_name"/>
-		<meta-data android:name="com.parse.push.nonotification_message" android:resource="@string/app_name"/>
-		
-		<receiver
-		    android:name="mx.com.factico.cide.MyGcmBroadcastReceiver"
-		    android:permission="com.google.android.c2dm.permission.SEND" >
-		    <intent-filter>
-		        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-		        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-		        <action android:name="com.sbu.sathyabama" />
-		        
-		        <category android:name="mx.com.factico.cide" />
-		    </intent-filter>
-		</receiver>
-		-->
  		
     </application>
 
