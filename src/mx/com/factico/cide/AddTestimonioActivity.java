@@ -3,6 +3,7 @@ package mx.com.factico.cide;
 import mx.com.factico.cide.beans.Testimonio;
 import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.httpconnection.HttpConnection;
+import mx.com.factico.cide.parser.GsonParser;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -41,6 +42,9 @@ public class AddTestimonioActivity extends ActionBarActivity implements OnClickL
 		setContentView(R.layout.activity_addtestimonio);
 
 		initUI();
+		
+		
+		GsonParser.parseJSON(GsonParser.json);
 	}
 
 	public void initUI() {
@@ -51,7 +55,7 @@ public class AddTestimonioActivity extends ActionBarActivity implements OnClickL
 		loadDataFromResources(spCategory); // Load data to spinner from resources
 		
 		etDescription = (EditText) findViewById(R.id.addtestimonio_et_description); // Description
-
+		
 		spCity = (Spinner) findViewById(R.id.addtestimonio_sp_city); // City
 		loadDataFromResources(spCity); // Load data to spinner from resources
 		spAge = (Spinner) findViewById(R.id.addtestimonio_sp_age); // Age
@@ -146,6 +150,7 @@ public class AddTestimonioActivity extends ActionBarActivity implements OnClickL
 		RadioButton radioButton = (RadioButton) rgGender.findViewById(radioButtonID);
 		testimonio.setGender(radioButton.getText().toString()); // Getting and setting Gender
 		
+		testimonio.setScholarity(spScholarity.getSelectedItem().toString()); // Getting and setting Scholarity
 		testimonio.setScholarity(spScholarity.getSelectedItem().toString()); // Getting and setting Scholarity
 		
 		SendDataAsyncTask sendDataTask = new SendDataAsyncTask(testimonio); // Starting sending data task

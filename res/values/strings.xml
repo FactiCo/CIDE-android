@@ -28,6 +28,7 @@
     
     <string name="addtestimonio_gender_male">Masculino</string>
     <string name="addtestimonio_gender_female">Femenino</string>
+    <string name="addtestimonio_gender_none">Sin especificar</string>
     
     <string name="addtestimonio_senddata">Enviar información</string>
     

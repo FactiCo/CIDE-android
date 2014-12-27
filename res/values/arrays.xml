@@ -45,21 +45,29 @@
     </string-array>
     
     <string-array name="addtestimonio_ages">
-        <item>10 - 20</item>
-        <item>20 - 30</item>
-        <item>30 - 40</item>
-        <item>50 - 60</item>
-        <item>60 - 70</item>
+        <item>Menos de 18 años</item>
+        <item>18 - 25 años</item>
+        <item>26 - 30 años</item>
+        <item>31 - 35 años</item>
+        <item>36 - 40 años</item>
+        <item>41 - 45 años</item>
+        <item>46 - 50 años</item>
+        <item>51 - 55 años</item>
+        <item>56 - 60 años</item>
+        <item>61 - 65 años</item>
+        <item>66 - 70 años</item>
+        <item>Más de 70 años</item>
     </string-array>
     
     <string-array name="addtestimonio_scholarities">
+        <item>Sin estudios</item>
         <item>Primaria</item>
         <item>Secundaria</item>
         <item>Técnico</item>
-        <item>Medio superior</item>
+        <item>Media Superior</item>
         <item>Superior</item>
-        <item>Maestría</item>
-        <item>Doctorado</item>
+        <item>Posgrado</item>
+        <item>Sin especificiar</item>
     </string-array>
 
 </resources>

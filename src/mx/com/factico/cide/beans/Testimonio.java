@@ -1,6 +1,7 @@
 package mx.com.factico.cide.beans;
 
 public class Testimonio {
+	private long id;
 	private String name;
 	private String email;
 	private String category;
@@ -11,6 +12,14 @@ public class Testimonio {
 	private String scholarity;
 	private String timestamp;
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	public String getName() {
 		return name;
 	}

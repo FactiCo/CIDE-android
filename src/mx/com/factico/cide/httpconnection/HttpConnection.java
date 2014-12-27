@@ -60,6 +60,7 @@ public class HttpConnection {
 		nameValuePair.add(new BasicNameValuePair("genero", data.getGender()));
 		nameValuePair.add(new BasicNameValuePair("escolaridad", data.getScholarity()));
 		nameValuePair.add(new BasicNameValuePair("fecha_add", data.getTimestamp()));
+		nameValuePair.add(new BasicNameValuePair("dispositivo", "Android"));
 		
 		String result = null;
 		

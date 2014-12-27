@@ -11,11 +11,37 @@ import android.util.Log;
 public class JsonParser {
 	private static final String TAG_CLASS = JsonParser.class.getName();
 	
-	// JSON TAG 
-    private static final String TAG_ROOT = "root";
+	// JSON TAG PROPUESTAS
+    private static final String TAG_PROPUESTAS = "propuestas";
     
-    // JSON TAG LINEA
-    private static final String TAG_NEXT = "next";
+    private static final String TAG_PROPUESTAS_ID = "id";
+    private static final String TAG_PROPUESTAS_CATEGORIA = "categoria";
+    private static final String TAG_PROPUESTAS_TITULO = "titulo";
+    private static final String TAG_PROPUESTAS_DESCRIPCION = "descripcion";
+    private static final String TAG_PROPUESTAS_TIMESTAMP = "fecha_propuesta";
+    
+    // JSON TAG PROPUESTAS AUTOR
+    private static final String TAG_PROPUESTAS_AUTOR = "autor";
+    
+    private static final String TAG_PROPUESTAS_AUTOR_ID = "id_FB";
+    private static final String TAG_PROPUESTAS_AUTOR_NOMBRE = "nombre";
+    private static final String TAG_PROPUESTAS_AUTOR_MAIL = "mail";
+    
+    // JSON TAG PROPUESTAS VOTOS
+    private static final String TAG_PROPUESTAS_VOTOS = "mail";
+    
+    private static final String TAG_PROPUESTAS_VOTOS_FAVOR = "favor";
+    private static final String TAG_PROPUESTAS_VOTOS_CONTRA = "contra";
+    private static final String TAG_PROPUESTAS_VOTOS_ABSTENCION = "abstencion";
+    
+    private static final String TAG_PROPUESTAS_VOTOS_LINK = "link";
+    
+    // JSON TAG PROPUESTAS VOTOS
+    private static final String TAG_PROPUESTAS_VOTOS_PARTICIPANTES = "participantes";
+    
+    private static final String TAG_PROPUESTAS_VOTOS_PARTICIPANTES_ID = "id";
+    private static final String TAG_PROPUESTAS_VOTOS_PARTICIPANTES_NAME = "name";
+    
     
 	public void parseJson(String json) {
 		if (json != null) {
@@ -26,7 +52,7 @@ public class JsonParser {
 					Dialogues.Log(TAG_CLASS, "/******* root", Log.INFO);
 					
 					// 
-					JSONArray stc_metro = root.optJSONArray(TAG_ROOT);
+					JSONArray stc_metro = root.optJSONArray(TAG_PROPUESTAS);
 					
 					if (stc_metro != null) {
 						Dialogues.Log(TAG_CLASS, "/******* root", Log.INFO);
@@ -38,7 +64,7 @@ public class JsonParser {
 								Dialogues.Log(TAG_CLASS, "/******* next", Log.INFO);
 								
 								// LINEAS
-								JSONArray lineas = metro.optJSONArray(TAG_NEXT);
+								JSONArray lineas = metro.optJSONArray(TAG_PROPUESTAS_AUTOR);
 								
 								if (lineas != null) {
 									for (int j = 0; j < lineas.length(); j++) {
