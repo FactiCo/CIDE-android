@@ -21,7 +21,7 @@
     <string name="addtestimonio_email">Correo electrónico</string>
     <string name="addtestimonio_category">Categoria</string>
     <string name="addtestimonio_description">Descripción</string>
-    <string name="addtestimonio_city">Ciudad</string>
+    <string name="addtestimonio_city">Inicial de la ciudad</string>
     <string name="addtestimonio_age">Edad</string>
     <string name="addtestimonio_gender">Género</string>
     <string name="addtestimonio_scholarity">Escolaridad</string>

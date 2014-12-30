@@ -3,7 +3,6 @@ package mx.com.factico.cide;
 import mx.com.factico.cide.beans.Testimonio;
 import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.httpconnection.HttpConnection;
-import mx.com.factico.cide.parser.GsonParser;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -42,9 +41,6 @@ public class AddTestimonioActivity extends ActionBarActivity implements OnClickL
 		setContentView(R.layout.activity_addtestimonio);
 
 		initUI();
-		
-		
-		GsonParser.parseJSON(GsonParser.json);
 	}
 
 	public void initUI() {

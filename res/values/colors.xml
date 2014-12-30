@@ -11,6 +11,8 @@
     <color name="control_highlight_color">#FF0000</color>
     <color name="switch_thumbnormal_color">#00FF00</color>
     
-    <color name="background_hololigth">#E0E0E0</color>
+    <color name="hololigth">#E0E0E0</color>
+    
+    <color name="white">#FFFFFF</color>
 
 </resources>

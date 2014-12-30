@@ -28,7 +28,7 @@ public class JsonParser {
     private static final String TAG_PROPUESTAS_AUTOR_MAIL = "mail";
     
     // JSON TAG PROPUESTAS VOTOS
-    private static final String TAG_PROPUESTAS_VOTOS = "mail";
+    private static final String TAG_PROPUESTAS_VOTOS = "votos";
     
     private static final String TAG_PROPUESTAS_VOTOS_FAVOR = "favor";
     private static final String TAG_PROPUESTAS_VOTOS_CONTRA = "contra";

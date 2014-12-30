@@ -19,7 +19,8 @@ import android.util.Log;
 {
 "action":"mx.com.factico.cide.CUSTOM_NOTIFICATION",
 "title": "My notification title Factico",
-"alert": "My notification message Factico"
+"alert": "My notification message Factico",
+"data": {"autor":{"mail":"carlos@factico.com.mx","nombre":"Carlos","id_FB":987654321},"categoria":"Justicia","descripcion":"Lorem Ipsum","titulo":"Titulo de la propuesta","id":1234567890}
 }
 **/
 public class CustomNotificationReceiver extends BroadcastReceiver {
@@ -38,15 +39,16 @@ public class CustomNotificationReceiver extends BroadcastReceiver {
 			JSONObject json = new JSONObject(intent.getExtras().getString("com.parse.Data"));
 			
 			String title = json.getString("title").toString(); // Getting custom title to show in custom notification
-			String message = json.getString("message").toString();  // Getting custom message to show in custom notification
+			String message = json.getString("alert").toString();  // Getting custom message to show in custom notification
+			String data = json.getString("data").toString();  // Getting custom data to send to Activity
 			
 			Dialogues.Log(TAG_CLASS, "Title: " + title + ", Message" + message, Log.INFO);
 			
-			generateNotification(context, title, message);
+			generateNotification(context, title, message, data);
 		} catch (JSONException e) {}
 	}
 	
-	protected void generateNotification(Context context, String title, String message) {
+	protected void generateNotification(Context context, String title, String message, String data) {
 		// Custom sound to show in custom notification
 		notifySound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 				
@@ -56,9 +58,10 @@ public class CustomNotificationReceiver extends BroadcastReceiver {
 		mBuilder.setContentText(message); // Setting custom message to show in custom notification
 		mBuilder.setSound(notifySound); // Setting custom sound to show in custom notification
 		mBuilder.setAutoCancel(true);
-
+		
 		// Setting custom activity to show in custom notification
-		resultIntent = new Intent(context, MainActivity.class);
+		resultIntent = new Intent(context, PropuestaActivity.class);
+		resultIntent.putExtra("data", data);
 
 		PendingIntent resultPendingIntent = PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		mBuilder.setContentIntent(resultPendingIntent);
