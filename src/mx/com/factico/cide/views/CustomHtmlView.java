@@ -1,8 +1,6 @@
 package mx.com.factico.cide.views;
 
-import mx.com.factico.cide.R;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.AttributeSet;

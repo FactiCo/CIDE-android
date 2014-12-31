@@ -6,12 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import com.google.gson.Gson;
-
 import mx.com.factico.cide.R;
-import mx.com.factico.cide.beans.Propuesta;
-import mx.com.factico.cide.beans.Testimonio;
-import mx.com.factico.cide.parser.GsonParser;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -63,7 +58,7 @@ public class CitiesDialog extends Activity {
 	private List<String> listCities;
 	private EditText etSearch;
 	private void initUI() {
-		String[] arrayCities = getResources().getStringArray(R.array.addtestimonio_cities);
+		String[] arrayCities = getResources().getStringArray(R.array.testimonios_add_cities);
 		listCities = new ArrayList<String>(Arrays.asList(arrayCities));
 		
 		sortCitiesByAbc(listCities);

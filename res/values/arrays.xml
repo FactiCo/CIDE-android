@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="addtestimonio_categories">
+    <string-array name="testimonios_add_categories">
         <item>Justicia en el trabajo</item>
         <item>Justicia en la familia</item>
         <item>Justicia vecinal y comunitaria</item>
@@ -9,7 +9,7 @@
         <item>Justicia para emprendedores</item>
     </string-array>
     
-    <string-array name="addtestimonio_cities">
+    <string-array name="testimonios_add_cities">
         <item>Aguascalientes</item>
         <item>Baja California</item>
         <item>Baja California Sur</item>
@@ -44,22 +44,22 @@
         <item>Zacatecas</item>
     </string-array>
     
-    <string-array name="addtestimonio_ages">
+    <string-array name="testimonios_add_ages">
         <item>Menos de 18 años</item>
-        <item>18 - 25 años</item>
-        <item>26 - 30 años</item>
-        <item>31 - 35 años</item>
-        <item>36 - 40 años</item>
-        <item>41 - 45 años</item>
-        <item>46 - 50 años</item>
-        <item>51 - 55 años</item>
-        <item>56 - 60 años</item>
-        <item>61 - 65 años</item>
-        <item>66 - 70 años</item>
+        <item>18 &#8211; 25 años</item>
+        <item>26 &#8211; 30 años</item>
+        <item>31 &#8211; 35 años</item>
+        <item>36 &#8211; 40 años</item>
+        <item>41 &#8211; 45 años</item>
+        <item>46 &#8211; 50 años</item>
+        <item>51 &#8211; 55 años</item>
+        <item>56 &#8211; 60 años</item>
+        <item>61 &#8211; 65 años</item>
+        <item>66 &#8211; 70 años</item>
         <item>Más de 70 años</item>
     </string-array>
     
-    <string-array name="addtestimonio_scholarities">
+    <string-array name="testimonios_add_scholarities">
         <item>Sin estudios</item>
         <item>Primaria</item>
         <item>Secundaria</item>

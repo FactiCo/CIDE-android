@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/addtestimonio_city"
+        android:hint="@string/testimonios_add_city"
         android:padding="10dp"
         android:text="" >
 

@@ -2,7 +2,10 @@
 <resources>
 
     <string name="app_name">CIDE</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="about_name">¿Qué es justicia cotidiana?</string>
+    <string name="testimonio_name">Testimonio</string>
+    <string name="propuesta_name">Propuesta</string>
+    
     <string name="action_settings">Settings</string>
     
     <!-- Parse Framework -->
@@ -16,22 +19,35 @@
     <string name="alert_dialog_failed">Failed with error.</string>
     <string name="save_button">Save</string>
 
+    <!-- Main -->
+    <string name="main_menu_option1">¿Qué es justicia cotidiana?</string>
+    <string name="main_menu_option2">Testimonios</string>
+    <string name="main_menu_option3">Propuestas</string>
+    
+    <!-- Types of justice -->
+    <string name="justice_1">Justicia en el trabajo</string>
+    <string name="justice_2">Justicia en la familia</string>
+    <string name="justice_3">Justicia vecinal y comunitaria</string>
+    <string name="justice_4">Justicia para funcionarios</string>
+    <string name="justice_5">Justicia para emprendedores</string>
+    <string name="justice_6">Justicia </string>
+    
     <!-- Add Testimonio -->
-    <string name="addtestimonio_name">Nombre</string>
-    <string name="addtestimonio_email">Correo electrónico</string>
-    <string name="addtestimonio_category">Categoria</string>
-    <string name="addtestimonio_description">Descripción</string>
-    <string name="addtestimonio_city">Inicial de la ciudad</string>
-    <string name="addtestimonio_age">Edad</string>
-    <string name="addtestimonio_gender">Género</string>
-    <string name="addtestimonio_scholarity">Escolaridad</string>
+    <string name="testimonios_add_name">Nombre</string>
+    <string name="testimonios_add_email">Correo electrónico</string>
+    <string name="testimonios_add_category">Categoria</string>
+    <string name="testimonios_add_description">Descripción</string>
+    <string name="testimonios_add_city">Inicial de la ciudad</string>
+    <string name="testimonios_add_age">Edad</string>
+    <string name="testimonios_add_gender">Género</string>
+    <string name="testimonios_add_scholarity">Escolaridad</string>
     
-    <string name="addtestimonio_gender_male">Masculino</string>
-    <string name="addtestimonio_gender_female">Femenino</string>
-    <string name="addtestimonio_gender_none">Sin especificar</string>
+    <string name="testimonios_add_gender_male">Masculino</string>
+    <string name="testimonios_add_gender_female">Femenino</string>
+    <string name="testimonios_add_gender_none">Sin especificar</string>
     
-    <string name="addtestimonio_senddata">Enviar información</string>
+    <string name="testimonios_add_btn_senddata">Enviar información</string>
     
-    <string name="addtestimonio_senddata_loading">Enviando información.</string>
+    <string name="testimonios_add_senddata_loading">Enviando información.</string>
     
 </resources>

@@ -1,147 +1,69 @@
 package mx.com.factico.cide;
 
-import mx.com.factico.cide.dialogues.Dialogues;
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.View.OnClickListener;
 
-import com.parse.ParseAnalytics;
-import com.parse.ParseException;
-import com.parse.ParseInstallation;
-import com.parse.ParseObject;
-import com.parse.RefreshCallback;
-import com.parse.SaveCallback;
-
-public class MainActivity extends ActionBarActivity {
-	private static final String TAG_CLASS = MainActivity.class.getName();
-
-	private RadioButton genderFemaleButton;
-	private RadioButton genderMaleButton;
-	private EditText ageEditText;
-	private RadioGroup genderRadioGroup;
-	private TextView messageTextView;
-
-	public static final String GENDER_MALE = "male";
-	public static final String GENDER_FEMALE = "female";
-
+public class MainActivity extends ActionBarActivity implements OnClickListener {
+	private int OPTION1 = 1;
+	private int OPTION2 = 2;
+	private int OPTION3 = 3;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		// Track app opens.
-		ParseAnalytics.trackAppOpened(getIntent());
-
-		// Set up our UI member properties.
-		this.genderFemaleButton = (RadioButton) findViewById(R.id.gender_female_button);
-		this.genderMaleButton = (RadioButton) findViewById(R.id.gender_male_button);
-		this.ageEditText = (EditText) findViewById(R.id.age_edit_text);
-		this.genderRadioGroup = (RadioGroup) findViewById(R.id.gender_radio_group);
-		this.messageTextView = (TextView) findViewById(R.id.main_tv_message);
+		
+		initUI();
+	}
+	
+	public void initUI() {
+		findViewById(R.id.main_btn_option1).setOnClickListener(this);
+		findViewById(R.id.main_btn_option2).setOnClickListener(this);
+		findViewById(R.id.main_btn_option3).setOnClickListener(this);
 	}
 
 	@Override
-	public void onStart() {
-		super.onStart();
-
-		// Display the current values for this user, such as their age and
-		// gender.
-		displayUserProfile();
-		refreshUserProfile();
-	}
-
-	public void saveUserProfile(View view) {
-		String ageTextString = ageEditText.getText().toString();
-
-		if (ageTextString.length() > 0) {
-			ParseInstallation.getCurrentInstallation().put("age", Integer.valueOf(ageTextString));
-		}
-
-		if (genderRadioGroup.getCheckedRadioButtonId() == genderFemaleButton.getId()) {
-			ParseInstallation.getCurrentInstallation().put("gender", GENDER_FEMALE);
-		} else if (genderRadioGroup.getCheckedRadioButtonId() == genderMaleButton.getId()) {
-			ParseInstallation.getCurrentInstallation().put("gender", GENDER_MALE);
-		} else {
-			ParseInstallation.getCurrentInstallation().remove("gender");
-		}
-
-		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-		imm.hideSoftInputFromWindow(ageEditText.getWindowToken(), 0);
-
-		ParseInstallation.getCurrentInstallation().saveInBackground(new SaveCallback() {
-			@Override
-			public void done(ParseException e) {
-				if (e == null) {
-					Toast toast = Toast.makeText(getApplicationContext(), R.string.alert_dialog_success, Toast.LENGTH_SHORT);
-					toast.show();
-				} else {
-					e.printStackTrace();
-
-					Toast toast = Toast.makeText(getApplicationContext(), R.string.alert_dialog_failed, Toast.LENGTH_SHORT);
-					toast.show();
-				}
-			}
-		});
-	}
-
-	// Refresh the UI with the data obtained from the current ParseInstallation
-	// object.
-	private void displayUserProfile() {
-		String gender = ParseInstallation.getCurrentInstallation().getString("gender");
-		int age = ParseInstallation.getCurrentInstallation().getInt("age");
-
-		String message = ParseInstallation.getCurrentInstallation().getString("message");
-		messageTextView.setText(message);
-		Dialogues.Log(TAG_CLASS, "Message: " + message, Log.INFO);
-
-		Bundle bundle = getIntent().getExtras();
-		if (bundle != null) {
-			String json = bundle.getString("com.parse.Data", "No data from json parse");
-			messageTextView.setText(json);
-			Dialogues.Log(TAG_CLASS, "JSON: " + json, Log.INFO);
-		}
-
-		ParseObject jsonObject = ParseInstallation.getCurrentInstallation().getParseObject("factico");
-		// messageTextView.setText(message);
-		if (jsonObject != null)
-			Dialogues.Log(TAG_CLASS, "JSON: " + jsonObject.toString(), Log.INFO);
-
-		if (gender != null) {
-			genderMaleButton.setChecked(gender.equalsIgnoreCase(GENDER_MALE));
-			genderFemaleButton.setChecked(gender.equalsIgnoreCase(GENDER_FEMALE));
-		} else {
-			genderMaleButton.setChecked(false);
-			genderFemaleButton.setChecked(false);
-		}
-
-		if (age > 0) {
-			ageEditText.setText(Integer.valueOf(age).toString());
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.main_btn_option1:
+			openIntent(OPTION1);
+			break;
+		case R.id.main_btn_option2:
+			openIntent(OPTION2);
+			break;
+		case R.id.main_btn_option3:
+			openIntent(OPTION3);
+			break;
+		default:
+			break;
 		}
 	}
-
-	// Get the latest values from the ParseInstallation object.
-	private void refreshUserProfile() {
-		ParseInstallation.getCurrentInstallation().refreshInBackground(new RefreshCallback() {
-
-			@Override
-			public void done(ParseObject object, ParseException e) {
-				if (e == null) {
-					displayUserProfile();
-				}
-			}
-		});
+	
+	/**
+	 * Open an activity
+	 * 
+	 * @param type (int) 
+	 */
+	private void openIntent(int type) {
+		if (type == OPTION1) {
+			Intent intent = new Intent(this, AboutActivity.class);
+			startActivity(intent);
+			
+		} else if (type == OPTION2) {
+			Intent intent = new Intent(this, TestimoniosMenuActivity.class);
+			startActivity(intent);
+			
+		} else if (type == OPTION3) {
+			Intent intent = new Intent(this, PropuestasActivity.class);
+			startActivity(intent);
+		}
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -155,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_main_settings) {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
