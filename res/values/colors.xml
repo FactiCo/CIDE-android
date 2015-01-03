@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="primary_color">#009688</color>
+    <color name="primary_color">#245549</color>
     <color name="primary_darker_color">#303F9F</color>
     <color name="accent">#4DB6AC</color>
     <color name="accent_ligth">#B2DFDB</color>
@@ -14,5 +14,11 @@
     <color name="hololigth">#E0E0E0</color>
     
     <color name="white">#FFFFFF</color>
+    
+    <color name="title_color">#565656</color>
+    <color name="default_background_color">#F2F2F2</color>
+    <color name="default_text_color">#666666</color>
+    
+    <color name="divider_color">#6CDA84</color>
 
 </resources>

@@ -1,8 +1,12 @@
 package mx.com.factico.cide.parser;
 
+import java.lang.reflect.Type;
+import java.util.List;
+
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import mx.com.factico.cide.beans.Propuesta;
 import mx.com.factico.cide.beans.Testimonio;
@@ -49,14 +53,22 @@ public class GsonParser {
 		+ "}";
 			
 	
-	public static Testimonio getTestimonioFromJSON(String json) {
+	public static Testimonio getTestimonioFromJSON(String json) throws Exception {
 		Gson gson = new Gson();
 		Testimonio testimonio = gson.fromJson(json, Testimonio.class);
 		
-		Dialogues.Log(TAG_CLASS, "Testimonio: " + testimonio.getName(), Log.INFO);
-		Dialogues.Log(TAG_CLASS, "Id: " + testimonio.getAge(), Log.INFO);
-		
 		return testimonio;
+	}
+	
+	public static List<Testimonio> getListTestimoniosFromJSON(String json) {
+		Gson gson = new Gson();
+		
+		Type listType = new TypeToken<List<Testimonio>>(){}.getType();
+		List<Testimonio> listTestimonios = (List<Testimonio>) gson.fromJson(json, listType);
+		
+		Dialogues.Log(TAG_CLASS, "List Testimonios: " + listTestimonios.size(), Log.INFO);
+		
+		return listTestimonios;
 	}
 	
 	public static Propuesta getPropuestaFromJSON(String json) {

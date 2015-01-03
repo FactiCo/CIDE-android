@@ -59,6 +59,7 @@
             android:name="mx.com.factico.cide.TestimoniosActivity"
             android:label="@string/testimonio_name"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:parentActivityName="mx.com.factico.cide.TestimoniosMenuActivity" />
         
         <activity

@@ -1,94 +1,119 @@
 package mx.com.factico.cide.beans;
 
+import java.util.List;
+
+import com.google.gson.annotations.Expose;
+
 public class Testimonio {
-	private long id;
-	private String name;
-	private String email;
-	private String category;
-	private String description;
-	private String city;
-	private String age;
-	private String gender;
-	private String scholarity;
-	private String timestamp;
+	private long count;
+	private List<Items> items;
 
-	public long getId() {
-		return id;
+	public long getCount() {
+		return count;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-	
-	public String getName() {
-		return name;
+	public void setCount(long count) {
+		this.count = count;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public List<Items> getItems() {
+		return items;
 	}
 
-	public String getEmail() {
-		return email;
+	public void setItems(List<Items> items) {
+		this.items = items;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	public class Items {
+		private String _id = "";
+		@Expose private String name = "";
+		@Expose private String email = "";
+		@Expose private String category = "";
+		@Expose private String explanation = "";
+		@Expose private String entidadFederativa = "";
+		@Expose private String age = "";
+		@Expose private String gender = "";
+		@Expose private String grade = "";
+		private String created = "";
 
-	public String getCategory() {
-		return category;
-	}
+		public String getId() {
+			return _id;
+		}
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+		public void setId(String id) {
+			this._id = id;
+		}
 
-	public String getDescription() {
-		return description;
-	}
+		public String getName() {
+			return name;
+		}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+		public void setName(String name) {
+			this.name = name;
+		}
 
-	public String getCity() {
-		return city;
-	}
+		public String getEmail() {
+			return email;
+		}
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+		public void setEmail(String email) {
+			this.email = email;
+		}
 
-	public String getAge() {
-		return age;
-	}
+		public String getCategory() {
+			return category;
+		}
 
-	public void setAge(String age) {
-		this.age = age;
-	}
+		public void setCategory(String category) {
+			this.category = category;
+		}
 
-	public String getGender() {
-		return gender;
-	}
+		public String getExplanation() {
+			return explanation;
+		}
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+		public void setExplanation(String explanation) {
+			this.explanation = explanation;
+		}
 
-	public String getScholarity() {
-		return scholarity;
-	}
+		public String getEntidadFederativa() {
+			return entidadFederativa;
+		}
 
-	public void setScholarity(String scholarity) {
-		this.scholarity = scholarity;
-	}
+		public void setEntidadFederativa(String entidadFederativa) {
+			this.entidadFederativa = entidadFederativa;
+		}
 
-	public String getTimestamp() {
-		return timestamp;
-	}
+		public String getAge() {
+			return age;
+		}
 
-	public void setTimestamp(String timestamp) {
-		this.timestamp = timestamp;
+		public void setAge(String age) {
+			this.age = age;
+		}
+
+		public String getGender() {
+			return gender;
+		}
+
+		public void setGender(String gender) {
+			this.gender = gender;
+		}
+
+		public String getGrade() {
+			return grade;
+		}
+
+		public void setGrade(String grade) {
+			this.grade = grade;
+		}
+
+		public String getCreated() {
+			return created;
+		}
+
+		public void setCreated(String created) {
+			this.created = created;
+		}
 	}
 }

@@ -8,6 +8,11 @@
     
     <string name="action_settings">Settings</string>
     
+    <string name="lorem_ipsum_title">Justicia en el trabajo</string>
+    <string name="lorem_ipsum_description">cbsabcjksakcbjsab jcbjlwqbljwlqljbwjl bdjqwbjcbjwqjlcbwqbjdbzjw bqwjbdzjbqwj qjwbdzjlqw bdzjqbwljd dzjqdljqw dljqwbdlzj qwjlqwbdz qwljbqwdz qwljbdl	kndlm dnwqld qw dm qwldnlkwqd zqwd ljqwdmqw dlnwqdl wqdlnqwljd ljwqkzdwq ldnzlwd zljqwndl wqldnqwld lwqk dkñwqdl wqlkdbnwqjl</string>
+    
+    <string name="error">Algo salió mal. Inténtalo más tarde.</string>
+    
     <!-- Parse Framework -->
     <string name="hello_message">Welcome! Tell us a bit more about yourself.</string>
     <string name="age_text_view">Age</string>
@@ -42,12 +47,13 @@
     <string name="testimonios_add_gender">Género</string>
     <string name="testimonios_add_scholarity">Escolaridad</string>
     
-    <string name="testimonios_add_gender_male">Masculino</string>
-    <string name="testimonios_add_gender_female">Femenino</string>
+    <string name="testimonios_add_gender_male">Hombre</string>
+    <string name="testimonios_add_gender_female">Mujer</string>
     <string name="testimonios_add_gender_none">Sin especificar</string>
     
     <string name="testimonios_add_btn_senddata">Enviar información</string>
     
-    <string name="testimonios_add_senddata_loading">Enviando información.</string>
+    <string name="postdata_loading">Enviando información.</string>
+    <string name="getdata_loading">Obteniendo información.</string>
     
 </resources>

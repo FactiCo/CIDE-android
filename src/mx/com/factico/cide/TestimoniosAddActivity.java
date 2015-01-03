@@ -31,10 +31,10 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	private RadioGroup rgGender;
 	private RadioButton rbGenderMale;
 	private RadioButton rbGenderFemale;
-	private Spinner spScholarity;
+	private Spinner spGrade;
 	
 	private Button btnSendData;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -61,8 +61,8 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		rbGenderMale = (RadioButton) findViewById(R.id.testimonios_add_rb_gender_male); // Gender Male
 		rbGenderFemale = (RadioButton) findViewById(R.id.testimonios_add_rb_gender_female); // Gender Female
 
-		spScholarity = (Spinner) findViewById(R.id.testimonios_add_sp_scholarity); // Scholarity
-		loadDataFromResources(spScholarity); // Load data to spinner from resources
+		spGrade = (Spinner) findViewById(R.id.testimonios_add_sp_grade); // Scholarity
+		loadDataFromResources(spGrade); // Load data to spinner from resources
 		
 		btnSendData = (Button) findViewById(R.id.testimonios_add_btn_senddata);
 		btnSendData.setOnClickListener(this);
@@ -87,7 +87,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 				loadDataArrayAdapter(spinner, listData);
 				break;
 	
-			case R.id.testimonios_add_sp_scholarity:
+			case R.id.testimonios_add_sp_grade:
 				listData = getResources().getStringArray(R.array.testimonios_add_scholarities);
 				loadDataArrayAdapter(spinner, listData);
 				break;
@@ -103,12 +103,14 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(dataAdapter);
 		
-		//spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+		spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 	}
 
 	private class CustomOnItemSelectedListener implements android.widget.AdapterView.OnItemSelectedListener {
 		@Override
-		public void onItemSelected(AdapterView<?> perent, View view, int position, long id) {}
+		public void onItemSelected(AdapterView<?> perent, View view, int position, long id) {
+			
+		}
 
 		@Override
 		public void onNothingSelected(AdapterView<?> parent) {}
@@ -135,19 +137,21 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	}
 	
 	public void sendData() {
-		Testimonio testimonio = new Testimonio();
+		Testimonio.Items testimonio = new Testimonio().new Items();
+		
 		testimonio.setName(etName.getText().toString()); // Getting and setting Name
 		testimonio.setEmail(etEmail.getText().toString()); // Getting and setting Email
 		testimonio.setCategory(spCategory.getSelectedItem().toString()); // Getting and setting Category
-		testimonio.setDescription(etDescription.getText().toString()); // Getting and setting Description
-		testimonio.setCity(spCity.getSelectedItem().toString()); // Getting and setting City
+		testimonio.setExplanation(etDescription.getText().toString()); // Getting and setting Description
+		testimonio.setEntidadFederativa(String.valueOf(spCity.getSelectedItemPosition())); // Getting and setting City
+		testimonio.setAge(spAge.getSelectedItem().toString()); // Getting and setting Age
 		
 		int radioButtonID = rgGender.getCheckedRadioButtonId();
 		RadioButton radioButton = (RadioButton) rgGender.findViewById(radioButtonID);
 		testimonio.setGender(radioButton.getText().toString()); // Getting and setting Gender
 		
-		testimonio.setScholarity(spScholarity.getSelectedItem().toString()); // Getting and setting Scholarity
-		testimonio.setScholarity(spScholarity.getSelectedItem().toString()); // Getting and setting Scholarity
+		testimonio.setGrade(spGrade.getSelectedItem().toString()); // Getting and setting Grade
+		testimonio.setGrade(spGrade.getSelectedItem().toString()); // Getting and setting Grade
 		
 		SendDataAsyncTask sendDataTask = new SendDataAsyncTask(testimonio); // Starting sending data task
 		sendDataTask.execute();
@@ -155,16 +159,16 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	
 	private class SendDataAsyncTask extends AsyncTask<String, String, String> {
 		private ProgressDialog dialog;
-		private Testimonio testimonio;
+		private Testimonio.Items testimonio;
 		
-		public SendDataAsyncTask(Testimonio testimonio) {
+		public SendDataAsyncTask(Testimonio.Items testimonio) {
 			this.testimonio = testimonio;
 		}
 		
 		@Override
 		protected void onPreExecute() {
 			dialog = new ProgressDialog(TestimoniosAddActivity.this);
-			dialog.setMessage(getResources().getString(R.string.testimonios_add_senddata_loading));
+			dialog.setMessage(getResources().getString(R.string.postdata_loading));
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.setCancelable(false);
 			dialog.show();
@@ -172,7 +176,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		
 		@Override
 		protected String doInBackground(String... params) {
-			String result = HttpConnection.POST(HttpConnection.URL + HttpConnection.ADD, testimonio);
+			String result = HttpConnection.POST(HttpConnection.URL_TESTIMONIOS, testimonio);
 			return result;
 		}
 

@@ -152,7 +152,7 @@
                 android:textStyle="bold" />
             
             <Spinner
-                android:id="@+id/testimonios_add_sp_scholarity"
+                android:id="@+id/testimonios_add_sp_grade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
