@@ -29,8 +29,8 @@
             android:id="@+id/item_testimonios_tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lorem_ipsum_title"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/title_color"
             android:textStyle="bold" />
 
@@ -39,8 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="4"
-            android:text="@string/lorem_ipsum_description"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/default_text_color" />
     </LinearLayout>
 

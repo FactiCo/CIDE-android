@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="testimonios_add_categories">
+    <string-array name="testimonios_categories_titles">
         <item>Justicia en el trabajo</item>
         <item>Justicia en la familia</item>
         <item>Justicia vecinal y comunitaria</item>
@@ -9,13 +9,20 @@
         <item>Justicia para emprendedores</item>
     </string-array>
     
+    <string-array name="testimonios_categories_descriptions">
+        <item>Justicia en el trabajo Lorem Ipsum jlbljbjl bjdbasljdbjlsabdls lkanDKLNAKLDBLASBDLAS </item>
+        <item>Justicia en la familia Lorem Ipsum jlbljbjl bjdbasljdbjlsabdls lkanDKLNAKLDBLASBDLAS </item>
+        <item>Justicia vecinal y comunitaria Lorem Ipsum jlbljbjl bjdbasljdbjlsabdls lkanDKLNAKLDBLASBDLAS </item>
+        <item>Justicia para funcionarios Lorem Ipsum jlbljbjl bjdbasljdbjlsabdls lkanDKLNAKLDBLASBDLAS </item>
+        <item>Justicia para emprendedores Lorem Ipsum jlbljbjl bjdbasljdbjlsabdls lkanDKLNAKLDBLASBDLAS </item>
+    </string-array>
+    
     <string-array name="testimonios_add_cities">
-        <item value="0">Todo México</item>
         <item value="1">Aguascalientes</item>
         <item value="2">Baja California</item>
         <item value="3">Baja California Sur</item>
         <item value="4">Campeche</item>
-        <item value="5">Coahuila de Zaragoza</item>
+        <item value="5">Coahuila</item>
         <item value="6">Colima</item>
         <item value="7">Chiapas</item>
         <item value="8">Chihuahua</item>
@@ -26,7 +33,7 @@
         <item value="13">Hidalgo</item>
         <item value="14">Jalisco</item>
         <item value="15">México</item>
-        <item value="16">Michoacán de Ocampo</item>
+        <item value="16">Michoacán</item>
         <item value="17">Morelos</item>
         <item value="18">Nayarit</item>
         <item value="19">Nuevo León</item>
@@ -40,7 +47,7 @@
         <item value="27">Tabasco</item>
         <item value="28">Tamaulipas</item>
         <item value="29">Tlaxcala</item>
-        <item value="30">Veracruz de Ignacio de la Llave</item>
+        <item value="30">Veracruz</item>
         <item value="31">Yucatán</item>
         <item value="32">Zacatecas</item>
     </string-array>

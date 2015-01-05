@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/actionbar" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,7 +11,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="wrap_content" >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,7 +23,7 @@
                     android:id="@+id/testimonios_iv_logo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/drawable_background_gradient"
+                    android:background="@drawable/drawable_bgr_gradient"
                     android:contentDescription="@string/testimonio_name"
                     android:paddingBottom="@dimen/activity_vertical_margin"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -49,23 +44,26 @@
                     android:showDividers="middle" >
 
                     <TextView
-                        android:id="@+id/testimonios_title"
+                        android:id="@+id/testimonios_tv_title"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="@string/lorem_ipsum_title"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:paddingTop="@dimen/activity_vertical_margin"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/title_color"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/testimonios_desciption"
+                        android:id="@+id/testimonios_tv_desciption"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="2"
+                        android:paddingTop="@dimen/activity_vertical_margin"
                         android:maxLines="4"
-                        android:text="@string/lorem_ipsum_description"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/default_text_color" />
                 </LinearLayout>
 
@@ -74,25 +72,47 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:background="@color/accent"
-                    android:divider="@drawable/divider_horizontal"
-                    android:dividerPadding="12dip"
+                    android:background="@color/btn_ligth_green_color"
+                    android:divider="@drawable/divider_horizontal_white"
                     android:orientation="vertical"
                     android:paddingBottom="@dimen/activity_vertical_margin"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
                     android:paddingTop="@dimen/activity_vertical_margin"
-                    android:showDividers="middle" />
+                    android:showDividers="middle" >
+                    
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/activity_vertical_margin"
+                        android:paddingBottom="@dimen/activity_vertical_margin"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:paddingRight="@dimen/activity_horizontal_margin"
+                        android:text="@string/testimonios_news"
+                        android:textStyle="bold|italic"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:background="@color/btn_dark_green_color"
+                        android:textColor="@color/white" />
+                </LinearLayout>
             </LinearLayout>
 
             <Button
                 android:id="@+id/testimonios_btn_addtestimonio"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="right"
-                android:text="+"
-                android:background="@drawable/selector_btn_circle" />
+                android:layout_gravity="end"
+                android:background="@drawable/selector_btn_circle"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:text="@string/testimonios_add_new"
+                android:textSize="15sp"
+                android:textStyle="bold" />
         </FrameLayout>
     </ScrollView>
 
-</LinearLayout>
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/actionbar" />
+
+</RelativeLayout>

@@ -13,12 +13,20 @@
     
     <color name="hololigth">#E0E0E0</color>
     
-    <color name="white">#FFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
     
     <color name="title_color">#565656</color>
     <color name="default_background_color">#F2F2F2</color>
     <color name="default_text_color">#666666</color>
     
     <color name="divider_color">#6CDA84</color>
+    
+    <color name="divider_white_color">#FFFFFF</color>
+    
+    <color name="btn_dark_green_color">#FF4A8293</color>
+    <color name="btn_dark_green_color_alpha">#AA4A8293</color>
+    <color name="btn_ligth_green_color">#FF58CA8F</color>
+    <color name="btn_ligth_green_color_alpha">#AA58CA8F</color>
 
 </resources>

@@ -10,7 +10,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,8 +28,6 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	private Spinner spCity;
 	private Spinner spAge;
 	private RadioGroup rgGender;
-	private RadioButton rbGenderMale;
-	private RadioButton rbGenderFemale;
 	private Spinner spGrade;
 	
 	private Button btnSendData;
@@ -58,10 +55,8 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		loadDataFromResources(spAge); // Load data to spinner from resources
 
 		rgGender = (RadioGroup) findViewById(R.id.testimonios_add_rg_gender); // Gender
-		rbGenderMale = (RadioButton) findViewById(R.id.testimonios_add_rb_gender_male); // Gender Male
-		rbGenderFemale = (RadioButton) findViewById(R.id.testimonios_add_rb_gender_female); // Gender Female
 
-		spGrade = (Spinner) findViewById(R.id.testimonios_add_sp_grade); // Scholarity
+		spGrade = (Spinner) findViewById(R.id.testimonios_add_sp_grade); // Grade
 		loadDataFromResources(spGrade); // Load data to spinner from resources
 		
 		btnSendData = (Button) findViewById(R.id.testimonios_add_btn_senddata);
@@ -73,7 +68,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		
 		switch (spinner.getId()) {
 			case R.id.testimonios_add_sp_category:
-				listData = getResources().getStringArray(R.array.testimonios_add_categories);
+				listData = getResources().getStringArray(R.array.testimonios_categories_titles);
 				loadDataArrayAdapter(spinner, listData);
 				break;
 	
@@ -100,28 +95,8 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	public void loadDataArrayAdapter(Spinner spinner, String[] listData) {
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listData);
 
-		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		dataAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 		spinner.setAdapter(dataAdapter);
-		
-		spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-	}
-
-	private class CustomOnItemSelectedListener implements android.widget.AdapterView.OnItemSelectedListener {
-		@Override
-		public void onItemSelected(AdapterView<?> perent, View view, int position, long id) {
-			
-		}
-
-		@Override
-		public void onNothingSelected(AdapterView<?> parent) {}
-	}
-	
-	private class CustomOnItemSelectedListenerMaterial implements android.support.v7.internal.widget.AdapterViewCompat.OnItemSelectedListener {
-		@Override
-		public void onItemSelected(android.support.v7.internal.widget.AdapterViewCompat<?> perent, View view, int position, long id) {}
-
-		@Override
-		public void onNothingSelected(android.support.v7.internal.widget.AdapterViewCompat<?> parent) {}
 	}
 
 	@Override
@@ -150,7 +125,6 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		RadioButton radioButton = (RadioButton) rgGender.findViewById(radioButtonID);
 		testimonio.setGender(radioButton.getText().toString()); // Getting and setting Gender
 		
-		testimonio.setGrade(spGrade.getSelectedItem().toString()); // Getting and setting Grade
 		testimonio.setGrade(spGrade.getSelectedItem().toString()); // Getting and setting Grade
 		
 		SendDataAsyncTask sendDataTask = new SendDataAsyncTask(testimonio); // Starting sending data task

@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CIDE</string>
+    <string name="app_name">Justicia Cotidiana</string>
     <string name="about_name">¿Qué es justicia cotidiana?</string>
     <string name="testimonio_name">Testimonio</string>
     <string name="propuesta_name">Propuesta</string>
     
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Preferencias</string>
+    <string name="action_close">Cerrar</string>
     
     <string name="lorem_ipsum_title">Justicia en el trabajo</string>
+    <string name="lorem_ipsum_que_es_justicia">Primer contacto ciudadanía - gobierno para resolver abusos cometidos a diario</string>
     <string name="lorem_ipsum_description">cbsabcjksakcbjsab jcbjlwqbljwlqljbwjl bdjqwbjcbjwqjlcbwqbjdbzjw bqwjbdzjbqwj qjwbdzjlqw bdzjqbwljd dzjqdljqw dljqwbdlzj qwjlqwbdz qwljbqwdz qwljbdl	kndlm dnwqld qw dm qwldnlkwqd zqwd ljqwdmqw dlnwqdl wqdlnqwljd ljwqkzdwq ldnzlwd zljqwndl wqldnqwld lwqk dkñwqdl wqlkdbnwqjl</string>
+    
     
     <string name="error">Algo salió mal. Inténtalo más tarde.</string>
     
@@ -25,9 +28,14 @@
     <string name="save_button">Save</string>
 
     <!-- Main -->
-    <string name="main_menu_option1">¿Qué es justicia cotidiana?</string>
+    <string name="main_menu_option1">¿Qué es la justicia cotidiana?</string>
     <string name="main_menu_option2">Testimonios</string>
     <string name="main_menu_option3">Propuestas</string>
+    
+    <string name="testimonios_btn_map">Mapa de testimonios</string>
+    
+    <string name="testimonios_news">Actividad reciente</string>
+    <string name="testimonios_add_new">+</string>
     
     <!-- Types of justice -->
     <string name="justice_1">Justicia en el trabajo</string>

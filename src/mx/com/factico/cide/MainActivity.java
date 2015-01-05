@@ -3,6 +3,7 @@ package mx.com.factico.cide;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +19,18 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		setSupportActionBar();
 		initUI();
+	}
+	
+	public void setSupportActionBar() {
+		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+		mToolbar.setTitle("");
+		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
+		mToolbar.getBackground().setAlpha(0);
+		mToolbar.inflateMenu(R.menu.main);
+		
+        setSupportActionBar(mToolbar);
 	}
 	
 	public void initUI() {
@@ -78,8 +90,15 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_main_settings) {
+			openIntent();
+			
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private void openIntent() {
+		Intent intent = new Intent(getBaseContext(), SettingsActivity.class);
+		startActivity(intent);
 	}
 }

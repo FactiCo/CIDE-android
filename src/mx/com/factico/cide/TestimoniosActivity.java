@@ -1,11 +1,12 @@
 package mx.com.factico.cide;
 
 import java.util.List;
-
 import mx.com.factico.cide.beans.Testimonio;
 import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.httpconnection.HttpConnection;
 import mx.com.factico.cide.parser.GsonParser;
+import mx.com.factico.cide.utils.ScreenUtils;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Point;
@@ -14,57 +15,73 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class TestimoniosActivity extends ActionBarActivity implements OnClickListener {
 	public static final String TAG_CLASS = TestimoniosActivity.class.getName();
-	
-	private Toolbar mToolbar;
 
+	public static final String TAG_CATEGORY_TYPE_INDEX = "categoyTypeIndex";
+	
+	private int categoyTypeIndex = -1;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_testimonios);
 		
+		setSupportActionBar();
 		initUI();
 	}
 	
-	public void initUI() {
-		mToolbar = (Toolbar) findViewById(R.id.toolbar);
+	public void setSupportActionBar() {
+		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
 		mToolbar.setTitle("");
-        //mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
-        //mToolbar.setNavigationIcon(R.drawable.ic_launcher);
+		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
+		mToolbar.getBackground().setAlpha(0);
         setSupportActionBar(mToolbar);
         
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        
-        Point point = getScreenSize();
-        int width = point.x;
-		int height = point.y;
-        
-		// Set dimensions depending on screen
-		findViewById(R.id.testimonios_iv_logo).setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 2));
-		findViewById(R.id.testimonios_vg_description).setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 3));
-		// findViewById(R.id.testimonios_vg_container).setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height / 10 * 3));
+	}
+	
+	public void initUI() {
+        Bundle bundle = getIntent().getExtras();
+		if(bundle != null) {
+			categoyTypeIndex = bundle.getInt(TAG_CATEGORY_TYPE_INDEX);
+		}
 		
-		FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width / 6, width / 6);
-		params.topMargin = (height / 10 * 2) - (width / 6 / 2);
-		params.gravity = Gravity.END;
-		Button btnAddTestimonio = (Button) findViewById(R.id.testimonios_btn_addtestimonio);
-		btnAddTestimonio.setLayoutParams(params);
-		btnAddTestimonio.setOnClickListener(this);
-		
-        loadDataTestimonios();
+		if (categoyTypeIndex != -1) {
+			String[] listCategories = getResources().getStringArray(R.array.testimonios_categories_titles);
+			String[] listDesciptions = getResources().getStringArray(R.array.testimonios_categories_descriptions);
+			
+			((TextView) findViewById(R.id.testimonios_tv_title)).setText(listCategories[categoyTypeIndex]);
+			((TextView) findViewById(R.id.testimonios_tv_desciption)).setText(listDesciptions[categoyTypeIndex]);
+			
+	        Point point = ScreenUtils.getScreenSize(this);
+	        int width = point.x;
+			int height = point.y;
+	        
+			// Set dimensions depending on screen
+			findViewById(R.id.testimonios_iv_logo).setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 3));
+			// findViewById(R.id.testimonios_vg_description).setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 3));
+			// findViewById(R.id.testimonios_vg_container).setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height / 10 * 3));
+			
+			FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width / 7, width / 7);
+			params.topMargin = (height / 10 * 3) - (width / 6 / 3);
+			params.rightMargin = width / 20;
+			params.gravity = Gravity.END;
+			Button btnAddTestimonio = (Button) findViewById(R.id.testimonios_btn_addtestimonio);
+			btnAddTestimonio.setLayoutParams(params);
+			btnAddTestimonio.setOnClickListener(this);
+			
+	        loadDataTestimonios();
+		}
         
         //toolbar.animate().translationY(-toolbar.getBottom()).setInterpolator(new AccelerateInterpolator()).start();
 	}
@@ -148,6 +165,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		}
 	}
 	
+	@SuppressLint("InflateParams")
 	private View createItemView(Testimonio.Items item) {
 		View view = getLayoutInflater().inflate(R.layout.item_testimonios, null, false);
 		
@@ -162,14 +180,6 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		tvDescription.setText(item.getExplanation());
 		
 		return view;
-	}
-	
-	private Point getScreenSize() {
-		Display display = getWindowManager().getDefaultDisplay();
-		Point size = new Point();
-		display.getSize(size);
-		
-		return size;
 	}
 
 	@Override
