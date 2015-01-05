@@ -2,11 +2,14 @@ package mx.com.factico.cide;
 
 import java.util.List;
 
+import mx.com.factico.cide.animations.AnimationsFactory;
 import mx.com.factico.cide.beans.Testimonio;
 import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.httpconnection.HttpConnection;
+import mx.com.factico.cide.interfaces.OnScrollViewListener;
 import mx.com.factico.cide.parser.GsonParser;
 import mx.com.factico.cide.utils.ScreenUtils;
+import mx.com.factico.cide.views.CustomScrollView;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -19,6 +22,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -32,6 +37,8 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 	public static final String TAG_CATEGORY_TYPE_INDEX = "categoyTypeIndex";
 	
 	private int categoyTypeIndex = -1;
+
+	private Toolbar mToolbar;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +50,10 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 	}
 	
 	public void setSupportActionBar() {
-		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+		mToolbar = (Toolbar) findViewById(R.id.toolbar);
 		mToolbar.setTitle("");
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
-		mToolbar.getBackground().setAlpha(0);
+		mToolbar.getBackground().setAlpha(255);
         setSupportActionBar(mToolbar);
         
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -59,6 +66,14 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		}
 		
 		if (categoyTypeIndex != -1) {
+			CustomScrollView svScroll = (CustomScrollView) findViewById(R.id.testimonios_sv_scroll);
+			svScroll.setOnScrollViewListener(new OnScrollViewListener() {
+				public void onScrollChanged(CustomScrollView v, int l, int t, int oldl, int oldt) {
+					// Dialogues.Log(TAG_CLASS, "t: " + t + ", oldt: " + oldt, Log.INFO);
+					setOnScrollChanged(v, l, t, oldl, oldt);
+				}
+			});
+
 			String[] listCategories = getResources().getStringArray(R.array.testimonios_categories_titles);
 			String[] listDesciptions = getResources().getStringArray(R.array.testimonios_categories_descriptions);
 			
@@ -84,11 +99,22 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			
 	        loadDataTestimonios();
 		}
-        
-        //toolbar.animate().translationY(-toolbar.getBottom()).setInterpolator(new AccelerateInterpolator()).start();
 	}
 	
-	
+	boolean isToolbarHide = false;
+	private void setOnScrollChanged(CustomScrollView v, int l, int t, int oldl, int oldt) {
+		//Dialogues.Log(TAG_CLASS, "t: " + t + ", oldt: " + oldt, Log.INFO);
+		
+		Dialogues.Log(TAG_CLASS, "Scroll: " + v.getScrollY(), Log.INFO);
+		if (v.getScrollY() >= android.R.attr.actionBarSize) {
+			Dialogues.Log(TAG_CLASS, "Hidding toolbar", Log.INFO);
+			
+			if (isToolbarHide) {
+				Animation animation = AnimationsFactory.translateY(500, 0, -1 * android.R.attr.actionBarSize);
+				mToolbar.startAnimation(animation);
+			}
+		}
+	}
 	
 	public void loadDataTestimonios() {
 		GetDataAsyncTask task = new GetDataAsyncTask();
