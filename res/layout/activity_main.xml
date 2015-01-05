@@ -52,10 +52,6 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingStart="@dimen/activity_horizontal_margin"
-        android:shadowColor="@color/primary_color"
-        android:shadowDx="3"
-        android:shadowDy="3"
-        android:shadowRadius="5"
         android:text="@string/main_menu_option1"
         android:textColor="@color/white"
         android:textSize="15sp" />
@@ -72,10 +68,6 @@
         android:paddingEnd="@dimen/activity_horizontal_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:shadowColor="@color/primary_color"
-        android:shadowDx="3"
-        android:shadowDy="3"
-        android:shadowRadius="5"
         android:text="@string/main_menu_option2"
         android:textColor="@color/white"
         android:textSize="15sp" />
