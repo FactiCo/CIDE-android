@@ -60,6 +60,7 @@ public class GsonParser {
 		return testimonio;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static List<Testimonio> getListTestimoniosFromJSON(String json) {
 		Gson gson = new Gson();
 		

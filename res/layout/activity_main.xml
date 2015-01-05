@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cide="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:divider="@drawable/divider_horizontal_white"
@@ -11,9 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:background="@drawable/drawable_bgr_gradient" >
+        android:background="@drawable/drawable_bgr_gradient_dark" >
 
-        <TextView
+        <mx.com.factico.cide.views.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/toolbar"
@@ -28,7 +29,8 @@
             android:text="@string/lorem_ipsum_que_es_justicia"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            cide:typefaceRoboto="regular" />
 
         <include
             android:id="@+id/toolbar"
@@ -37,7 +39,7 @@
             layout="@layout/actionbar" />
     </RelativeLayout>
 
-    <Button
+    <mx.com.factico.cide.views.CustomButton
         android:id="@+id/main_btn_option1"
         android:layout_width="match_parent"
         android:layout_height="0dp"

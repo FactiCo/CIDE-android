@@ -15,11 +15,13 @@ public final class R {
         public static final int abc_slide_in_top=0x7f040003;
         public static final int abc_slide_out_bottom=0x7f040004;
         public static final int abc_slide_out_top=0x7f040005;
+        public static final int cycle_7=0x7f040006;
+        public static final int shake=0x7f040007;
     }
     public static final class array {
         public static final int testimonios_add_ages=0x7f0c0003;
         public static final int testimonios_add_cities=0x7f0c0002;
-        public static final int testimonios_add_scholarities=0x7f0c0004;
+        public static final int testimonios_add_grades=0x7f0c0004;
         public static final int testimonios_categories_descriptions=0x7f0c0001;
         public static final int testimonios_categories_titles=0x7f0c0000;
     }
@@ -1263,6 +1265,21 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int track=0x7f0100a2;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>bold</code></td><td>0</td><td></td></tr>
+<tr><td><code>bold_italic</code></td><td>1</td><td></td></tr>
+<tr><td><code>italic</code></td><td>2</td><td></td></tr>
+<tr><td><code>light</code></td><td>3</td><td></td></tr>
+<tr><td><code>light_italic</code></td><td>4</td><td></td></tr>
+<tr><td><code>regular</code></td><td>5</td><td></td></tr>
+</table>
+         */
+        public static final int typefaceRoboto=0x7f0100a9;
         /**  Voice button icon 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -1384,19 +1401,19 @@ containing a value of this type.
         public static final int abc_config_showMenuShortcutsWhenKeyboardPresent=0x7f050003;
     }
     public static final class color {
-        public static final int abc_background_cache_hint_selector_material_dark=0x7f060044;
-        public static final int abc_background_cache_hint_selector_material_light=0x7f060045;
+        public static final int abc_background_cache_hint_selector_material_dark=0x7f060045;
+        public static final int abc_background_cache_hint_selector_material_light=0x7f060046;
         public static final int abc_input_method_navigation_guard=0x7f060003;
-        public static final int abc_primary_text_disable_only_material_dark=0x7f060046;
-        public static final int abc_primary_text_disable_only_material_light=0x7f060047;
-        public static final int abc_primary_text_material_dark=0x7f060048;
-        public static final int abc_primary_text_material_light=0x7f060049;
-        public static final int abc_search_url_text=0x7f06004a;
+        public static final int abc_primary_text_disable_only_material_dark=0x7f060047;
+        public static final int abc_primary_text_disable_only_material_light=0x7f060048;
+        public static final int abc_primary_text_material_dark=0x7f060049;
+        public static final int abc_primary_text_material_light=0x7f06004a;
+        public static final int abc_search_url_text=0x7f06004b;
         public static final int abc_search_url_text_normal=0x7f060000;
         public static final int abc_search_url_text_pressed=0x7f060002;
         public static final int abc_search_url_text_selected=0x7f060001;
-        public static final int abc_secondary_text_material_dark=0x7f06004b;
-        public static final int abc_secondary_text_material_light=0x7f06004c;
+        public static final int abc_secondary_text_material_dark=0x7f06004c;
+        public static final int abc_secondary_text_material_light=0x7f06004d;
         public static final int accent=0x7f060033;
         public static final int accent_ligth=0x7f060034;
         public static final int accent_material_dark=0x7f06000f;
@@ -1406,7 +1423,7 @@ containing a value of this type.
         public static final int background_floating_material_light=0x7f060007;
         public static final int background_material_dark=0x7f060004;
         public static final int background_material_light=0x7f060005;
-        public static final int black=0x7f06003a;
+        public static final int black=0x7f06003b;
         /**  White 50% 
          */
         public static final int bright_foreground_disabled_material_dark=0x7f060016;
@@ -1417,21 +1434,21 @@ containing a value of this type.
         public static final int bright_foreground_inverse_material_light=0x7f060019;
         public static final int bright_foreground_material_dark=0x7f060014;
         public static final int bright_foreground_material_light=0x7f060015;
-        public static final int btn_dark_green_color=0x7f060040;
-        public static final int btn_dark_green_color_alpha=0x7f060041;
-        public static final int btn_ligth_green_color=0x7f060042;
-        public static final int btn_ligth_green_color_alpha=0x7f060043;
+        public static final int btn_dark_green_color=0x7f060041;
+        public static final int btn_dark_green_color_alpha=0x7f060042;
+        public static final int btn_ligth_green_color=0x7f060043;
+        public static final int btn_ligth_green_color_alpha=0x7f060044;
         public static final int button_material_dark=0x7f060010;
         public static final int button_material_light=0x7f060011;
         public static final int control_highlight_color=0x7f060036;
-        public static final int default_background_color=0x7f06003c;
-        public static final int default_text_color=0x7f06003d;
+        public static final int default_background_color=0x7f06003d;
+        public static final int default_text_color=0x7f06003e;
         public static final int dim_foreground_disabled_material_dark=0x7f06001c;
         public static final int dim_foreground_disabled_material_light=0x7f06001d;
         public static final int dim_foreground_material_dark=0x7f06001a;
         public static final int dim_foreground_material_light=0x7f06001b;
-        public static final int divider_color=0x7f06003e;
-        public static final int divider_white_color=0x7f06003f;
+        public static final int divider_color=0x7f06003f;
+        public static final int divider_white_color=0x7f060040;
         /**  TODO: This is 40% alpha on the default accent color. 
          */
         public static final int highlighted_text_material_dark=0x7f060020;
@@ -1440,6 +1457,7 @@ containing a value of this type.
         public static final int highlighted_text_material_light=0x7f060021;
         public static final int hint_foreground_material_dark=0x7f06001e;
         public static final int hint_foreground_material_light=0x7f06001f;
+        public static final int holodark=0x7f060039;
         public static final int hololigth=0x7f060038;
         public static final int link_text_material_dark=0x7f060022;
         public static final int link_text_material_light=0x7f060023;
@@ -1471,8 +1489,8 @@ containing a value of this type.
         public static final int switch_thumb_normal_material_dark=0x7f060012;
         public static final int switch_thumb_normal_material_light=0x7f060013;
         public static final int switch_thumbnormal_color=0x7f060037;
-        public static final int title_color=0x7f06003b;
-        public static final int white=0x7f060039;
+        public static final int title_color=0x7f06003c;
+        public static final int white=0x7f06003a;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1663,138 +1681,146 @@ containing a value of this type.
         public static final int divider_horizontal_white=0x7f020034;
         public static final int divider_vertical=0x7f020035;
         public static final int divider_vertical_white=0x7f020036;
-        public static final int drawable_bgr_gradient=0x7f020037;
-        public static final int drawable_bgr_rounded=0x7f020038;
-        public static final int drawable_bgr_squared_default=0x7f020039;
-        public static final int drawable_bgr_squared_pressed=0x7f02003a;
-        public static final int drawable_circle_default=0x7f02003b;
-        public static final int drawable_circle_pressed=0x7f02003c;
-        public static final int ic_launcher=0x7f02003d;
-        public static final int ic_splash=0x7f02003e;
-        public static final int selector_btn_circle=0x7f02003f;
-        public static final int selector_btn_dark=0x7f020040;
-        public static final int selector_btn_ligth=0x7f020041;
-        public static final int selector_btn_squared=0x7f020042;
-        public static final int selector_btn_squared_border=0x7f020043;
+        public static final int drawable_bgr_gradient_dark=0x7f020037;
+        public static final int drawable_bgr_gradient_ligth=0x7f020038;
+        public static final int drawable_bgr_rounded=0x7f020039;
+        public static final int drawable_bgr_squared_default=0x7f02003a;
+        public static final int drawable_bgr_squared_pressed=0x7f02003b;
+        public static final int drawable_circle_default=0x7f02003c;
+        public static final int drawable_circle_pressed=0x7f02003d;
+        public static final int ic_action_close_green=0x7f02003e;
+        public static final int ic_action_close_white=0x7f02003f;
+        public static final int ic_action_settings=0x7f020040;
+        public static final int ic_launcher=0x7f020041;
+        public static final int ic_splash=0x7f020042;
+        public static final int selector_btn_circle=0x7f020043;
+        public static final int selector_btn_dark=0x7f020044;
+        public static final int selector_btn_ligth=0x7f020045;
+        public static final int selector_btn_squared=0x7f020046;
+        public static final int selector_btn_squared_border=0x7f020047;
     }
     public static final class id {
-        public static final int action_bar=0x7f090033;
+        public static final int action_bar=0x7f090039;
         public static final int action_bar_activity_content=0x7f090003;
-        public static final int action_bar_container=0x7f090032;
-        public static final int action_bar_root=0x7f09002e;
+        public static final int action_bar_container=0x7f090038;
+        public static final int action_bar_root=0x7f090034;
         public static final int action_bar_spinner=0x7f090002;
-        public static final int action_bar_subtitle=0x7f090021;
-        public static final int action_bar_title=0x7f090020;
-        public static final int action_context_bar=0x7f090034;
-        public static final int action_main_settings=0x7f090078;
+        public static final int action_bar_subtitle=0x7f090027;
+        public static final int action_bar_title=0x7f090026;
+        public static final int action_close=0x7f09007c;
+        public static final int action_context_bar=0x7f09003a;
+        public static final int action_main_settings=0x7f09007d;
         public static final int action_menu_divider=0x7f090005;
         public static final int action_menu_presenter=0x7f090006;
-        public static final int action_mode_bar=0x7f090030;
-        public static final int action_mode_bar_stub=0x7f09002f;
-        public static final int action_mode_close_button=0x7f090022;
-        public static final int action_settings_close=0x7f090079;
-        public static final int activity_chooser_view_content=0x7f090023;
-        public static final int age_edit_text=0x7f090044;
-        public static final int age_text_view=0x7f090043;
+        public static final int action_mode_bar=0x7f090036;
+        public static final int action_mode_bar_stub=0x7f090035;
+        public static final int action_mode_close_button=0x7f090028;
+        public static final int activity_chooser_view_content=0x7f090029;
+        public static final int age_edit_text=0x7f09004a;
+        public static final int age_text_view=0x7f090049;
         public static final int always=0x7f090014;
         public static final int beginning=0x7f09001b;
+        public static final int bold=0x7f090020;
+        public static final int bold_italic=0x7f090021;
         public static final int bottom=0x7f09001e;
-        public static final int checkbox=0x7f09002b;
+        public static final int checkbox=0x7f090031;
         public static final int collapseActionView=0x7f090015;
-        public static final int decor_content_parent=0x7f090031;
-        public static final int default_activity_button=0x7f090026;
+        public static final int decor_content_parent=0x7f090037;
+        public static final int default_activity_button=0x7f09002c;
         public static final int dialog=0x7f090019;
-        public static final int dialog_cities_et_search=0x7f090070;
-        public static final int dialog_cities_sv_container=0x7f090071;
-        public static final int dialog_cities_vg_container=0x7f090072;
+        public static final int dialog_cities_et_search=0x7f090073;
+        public static final int dialog_cities_sv_container=0x7f090074;
+        public static final int dialog_cities_vg_container=0x7f090075;
         public static final int disableHome=0x7f09000d;
         public static final int dropdown=0x7f09001a;
-        public static final int edit_query=0x7f090035;
+        public static final int edit_query=0x7f09003b;
         public static final int end=0x7f09001c;
-        public static final int expand_activities_button=0x7f090024;
-        public static final int expanded_menu=0x7f09002a;
-        public static final int gcmregister_tv_message=0x7f090042;
-        public static final int gender_female_button=0x7f090047;
-        public static final int gender_male_button=0x7f090048;
-        public static final int gender_radio_group=0x7f090046;
-        public static final int gender_text_view=0x7f090045;
+        public static final int expand_activities_button=0x7f09002a;
+        public static final int expanded_menu=0x7f090030;
+        public static final int gcmregister_tv_message=0x7f090048;
+        public static final int gender_female_button=0x7f09004d;
+        public static final int gender_male_button=0x7f09004e;
+        public static final int gender_radio_group=0x7f09004c;
+        public static final int gender_text_view=0x7f09004b;
         public static final int home=0x7f090000;
         public static final int homeAsUp=0x7f09000e;
-        public static final int icon=0x7f090028;
+        public static final int icon=0x7f09002e;
         public static final int ifRoom=0x7f090016;
-        public static final int image=0x7f090025;
-        public static final int item_testimonios_iv_icuser=0x7f090074;
-        public static final int item_testimonios_tv_description=0x7f090077;
-        public static final int item_testimonios_tv_title=0x7f090076;
-        public static final int item_testimonios_vg_container=0x7f090075;
-        public static final int item_testimonios_vg_root=0x7f090073;
+        public static final int image=0x7f09002b;
+        public static final int italic=0x7f090022;
+        public static final int item_spinner_tv_text=0x7f090076;
+        public static final int item_testimonios_iv_icuser=0x7f090078;
+        public static final int item_testimonios_tv_description=0x7f09007b;
+        public static final int item_testimonios_tv_title=0x7f09007a;
+        public static final int item_testimonios_vg_container=0x7f090079;
+        public static final int item_testimonios_vg_root=0x7f090077;
+        public static final int light=0x7f090023;
+        public static final int light_italic=0x7f090024;
         public static final int listMode=0x7f09000a;
-        public static final int list_item=0x7f090027;
-        public static final int main_btn_option1=0x7f09004a;
-        public static final int main_btn_option2=0x7f09004b;
-        public static final int main_btn_option3=0x7f09004c;
-        public static final int mexicomap_pb_loading=0x7f09004e;
-        public static final int mexicomap_wv_map=0x7f09004d;
+        public static final int list_item=0x7f09002d;
+        public static final int main_btn_option1=0x7f090050;
+        public static final int main_btn_option2=0x7f090051;
+        public static final int main_btn_option3=0x7f090052;
+        public static final int mexicomap_pb_loading=0x7f090054;
+        public static final int mexicomap_wv_map=0x7f090053;
         public static final int middle=0x7f09001d;
         public static final int never=0x7f090017;
         public static final int none=0x7f09000f;
         public static final int normal=0x7f09000b;
         public static final int progress_circular=0x7f090007;
         public static final int progress_horizontal=0x7f090008;
-        public static final int propuestas_tv_description=0x7f090050;
-        public static final int propuestas_tv_title=0x7f09004f;
-        public static final int propuestas_vg_container=0x7f090051;
-        public static final int propuestas_wv_d3=0x7f090052;
-        public static final int radio=0x7f09002d;
-        public static final int save_button=0x7f090049;
-        public static final int search_badge=0x7f090037;
-        public static final int search_bar=0x7f090036;
-        public static final int search_button=0x7f090038;
-        public static final int search_close_btn=0x7f09003d;
-        public static final int search_edit_frame=0x7f090039;
-        public static final int search_go_btn=0x7f09003f;
-        public static final int search_mag_icon=0x7f09003a;
-        public static final int search_plate=0x7f09003b;
-        public static final int search_src_text=0x7f09003c;
-        public static final int search_voice_btn=0x7f090040;
-        public static final int shortcut=0x7f09002c;
+        public static final int propuestas_tv_description=0x7f090056;
+        public static final int propuestas_tv_title=0x7f090055;
+        public static final int propuestas_vg_container=0x7f090057;
+        public static final int propuestas_wv_d3=0x7f090058;
+        public static final int radio=0x7f090033;
+        public static final int regular=0x7f090025;
+        public static final int save_button=0x7f09004f;
+        public static final int search_badge=0x7f09003d;
+        public static final int search_bar=0x7f09003c;
+        public static final int search_button=0x7f09003e;
+        public static final int search_close_btn=0x7f090043;
+        public static final int search_edit_frame=0x7f09003f;
+        public static final int search_go_btn=0x7f090045;
+        public static final int search_mag_icon=0x7f090040;
+        public static final int search_plate=0x7f090041;
+        public static final int search_src_text=0x7f090042;
+        public static final int search_voice_btn=0x7f090046;
+        public static final int shortcut=0x7f090032;
         public static final int showCustom=0x7f090010;
         public static final int showHome=0x7f090011;
         public static final int showTitle=0x7f090012;
         public static final int split_action_bar=0x7f090004;
-        public static final int submit_area=0x7f09003e;
+        public static final int submit_area=0x7f090044;
         public static final int tabMode=0x7f09000c;
-        public static final int testimonios_add_btn_senddata=0x7f090069;
-        public static final int testimonios_add_et_description=0x7f09005d;
-        public static final int testimonios_add_et_email=0x7f09005a;
-        public static final int testimonios_add_et_name=0x7f090059;
-        public static final int testimonios_add_rb_gender_female=0x7f090065;
-        public static final int testimonios_add_rb_gender_male=0x7f090064;
-        public static final int testimonios_add_rb_gender_none=0x7f090066;
-        public static final int testimonios_add_rg_gender=0x7f090063;
-        public static final int testimonios_add_sp_age=0x7f090061;
-        public static final int testimonios_add_sp_category=0x7f09005c;
-        public static final int testimonios_add_sp_city=0x7f09005f;
-        public static final int testimonios_add_sp_grade=0x7f090068;
-        public static final int testimonios_add_tv_age=0x7f090060;
-        public static final int testimonios_add_tv_category=0x7f09005b;
-        public static final int testimonios_add_tv_city=0x7f09005e;
-        public static final int testimonios_add_tv_gendre=0x7f090062;
-        public static final int testimonios_add_tv_scholarity=0x7f090067;
-        public static final int testimonios_btn_addtestimonio=0x7f090058;
-        public static final int testimonios_btn_map=0x7f09006f;
-        public static final int testimonios_iv_logo=0x7f090053;
-        public static final int testimonios_menu_btn_justice1=0x7f09006a;
-        public static final int testimonios_menu_btn_justice2=0x7f09006b;
-        public static final int testimonios_menu_btn_justice3=0x7f09006c;
-        public static final int testimonios_menu_btn_justice4=0x7f09006d;
-        public static final int testimonios_menu_btn_justice5=0x7f09006e;
-        public static final int testimonios_tv_desciption=0x7f090056;
-        public static final int testimonios_tv_title=0x7f090055;
-        public static final int testimonios_vg_container=0x7f090057;
-        public static final int testimonios_vg_description=0x7f090054;
-        public static final int title=0x7f090029;
-        public static final int toolbar=0x7f090041;
+        public static final int testimonios_add_btn_senddata=0x7f09006c;
+        public static final int testimonios_add_et_description=0x7f09006b;
+        public static final int testimonios_add_et_email=0x7f090061;
+        public static final int testimonios_add_et_name=0x7f090060;
+        public static final int testimonios_add_rb_gender_female=0x7f090068;
+        public static final int testimonios_add_rb_gender_male=0x7f090067;
+        public static final int testimonios_add_rb_gender_none=0x7f090069;
+        public static final int testimonios_add_rg_gender=0x7f090066;
+        public static final int testimonios_add_sp_age=0x7f090064;
+        public static final int testimonios_add_sp_category=0x7f090062;
+        public static final int testimonios_add_sp_city=0x7f090063;
+        public static final int testimonios_add_sp_grade=0x7f09006a;
+        public static final int testimonios_add_tv_gender=0x7f090065;
+        public static final int testimonios_btn_addtestimonio=0x7f09005f;
+        public static final int testimonios_btn_map=0x7f090072;
+        public static final int testimonios_iv_logo=0x7f090059;
+        public static final int testimonios_menu_btn_justice1=0x7f09006d;
+        public static final int testimonios_menu_btn_justice2=0x7f09006e;
+        public static final int testimonios_menu_btn_justice3=0x7f09006f;
+        public static final int testimonios_menu_btn_justice4=0x7f090070;
+        public static final int testimonios_menu_btn_justice5=0x7f090071;
+        public static final int testimonios_pb_loading=0x7f09005e;
+        public static final int testimonios_tv_desciption=0x7f09005c;
+        public static final int testimonios_tv_title=0x7f09005b;
+        public static final int testimonios_vg_container=0x7f09005d;
+        public static final int testimonios_vg_description=0x7f09005a;
+        public static final int title=0x7f09002f;
+        public static final int toolbar=0x7f090047;
         public static final int top=0x7f09001f;
         public static final int up=0x7f090001;
         public static final int useLogo=0x7f090013;
@@ -1863,12 +1889,13 @@ containing a value of this type.
         public static final int activity_testimonios_add=0x7f030021;
         public static final int activity_testimonios_menu=0x7f030022;
         public static final int dialog_cities=0x7f030023;
-        public static final int item_testimonios=0x7f030024;
-        public static final int support_simple_spinner_dropdown_item=0x7f030025;
+        public static final int item_spinner=0x7f030024;
+        public static final int item_testimonios=0x7f030025;
+        public static final int support_simple_spinner_dropdown_item=0x7f030026;
     }
     public static final class menu {
-        public static final int main=0x7f0d0000;
-        public static final int settings=0x7f0d0001;
+        public static final int close=0x7f0d0000;
+        public static final int main=0x7f0d0001;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1931,6 +1958,13 @@ containing a value of this type.
         public static final int alert_dialog_failed=0x7f0a001f;
         public static final int alert_dialog_success=0x7f0a001e;
         public static final int app_name=0x7f0a000f;
+        /**  Validations EditText 
+         */
+        public static final int edittext_emtpy=0x7f0a003b;
+        public static final int edittext_error_email=0x7f0a003f;
+        public static final int edittext_error_number=0x7f0a003e;
+        public static final int edittext_error_string=0x7f0a003d;
+        public static final int edittext_wrong_info=0x7f0a003c;
         public static final int error=0x7f0a0018;
         public static final int gender_female_button=0x7f0a001c;
         public static final int gender_male_button=0x7f0a001b;
@@ -1959,21 +1993,21 @@ containing a value of this type.
         public static final int propuesta_name=0x7f0a0012;
         public static final int save_button=0x7f0a0020;
         public static final int testimonio_name=0x7f0a0011;
-        public static final int testimonios_add_age=0x7f0a0032;
+        public static final int testimonios_add_age=0x7f0a0031;
         public static final int testimonios_add_btn_senddata=0x7f0a0038;
         public static final int testimonios_add_category=0x7f0a002f;
-        public static final int testimonios_add_city=0x7f0a0031;
-        public static final int testimonios_add_description=0x7f0a0030;
+        public static final int testimonios_add_city=0x7f0a0030;
+        public static final int testimonios_add_description=0x7f0a0037;
         public static final int testimonios_add_email=0x7f0a002e;
-        public static final int testimonios_add_gender=0x7f0a0033;
-        public static final int testimonios_add_gender_female=0x7f0a0036;
-        public static final int testimonios_add_gender_male=0x7f0a0035;
-        public static final int testimonios_add_gender_none=0x7f0a0037;
+        public static final int testimonios_add_gender=0x7f0a0032;
+        public static final int testimonios_add_gender_female=0x7f0a0035;
+        public static final int testimonios_add_gender_male=0x7f0a0034;
+        public static final int testimonios_add_gender_none=0x7f0a0036;
+        public static final int testimonios_add_grade=0x7f0a0033;
         /**  Add Testimonio 
          */
         public static final int testimonios_add_name=0x7f0a002d;
         public static final int testimonios_add_new=0x7f0a0026;
-        public static final int testimonios_add_scholarity=0x7f0a0034;
         public static final int testimonios_btn_map=0x7f0a0024;
         public static final int testimonios_news=0x7f0a0025;
     }
@@ -2147,6 +2181,7 @@ containing a value of this type.
     
          */
         public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation=0x7f0b0090;
+        public static final int EditTextStyle=0x7f0b00ed;
         public static final int Platform_AppCompat=0x7f0b00c9;
         public static final int Platform_AppCompat_Dialog=0x7f0b00cb;
         public static final int Platform_AppCompat_Light=0x7f0b00ca;
@@ -2163,6 +2198,7 @@ containing a value of this type.
         public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Query=0x7f0b00b0;
         public static final int RtlOverlay_Widget_AppCompat_Search_DropDown_Text=0x7f0b00b3;
         public static final int RtlOverlay_Widget_AppCompat_SearchView_MagIcon=0x7f0b00ae;
+        public static final int SpinnerStyle=0x7f0b00ee;
         /**  Text styles 
          */
         public static final int TextAppearance_AppCompat=0x7f0b0038;
@@ -3035,6 +3071,74 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name mx.com.factico.cide:textAllCaps
         */
         public static final int CompatTextView_textAllCaps = 0;
+        /** Attributes that can be used with a CustomEditText.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CustomEditText_typefaceRoboto mx.com.factico.cide:typefaceRoboto}</code></td><td></td></tr>
+           </table>
+           @see #CustomEditText_typefaceRoboto
+         */
+        public static final int[] CustomEditText = {
+            0x7f0100a9
+        };
+        /**
+          <p>This symbol is the offset where the {@link mx.com.factico.cide.R.attr#typefaceRoboto}
+          attribute's value can be found in the {@link #CustomEditText} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>bold</code></td><td>0</td><td></td></tr>
+<tr><td><code>bold_italic</code></td><td>1</td><td></td></tr>
+<tr><td><code>italic</code></td><td>2</td><td></td></tr>
+<tr><td><code>light</code></td><td>3</td><td></td></tr>
+<tr><td><code>light_italic</code></td><td>4</td><td></td></tr>
+<tr><td><code>regular</code></td><td>5</td><td></td></tr>
+</table>
+          @attr name mx.com.factico.cide:typefaceRoboto
+        */
+        public static final int CustomEditText_typefaceRoboto = 0;
+        /** Attributes that can be used with a CustomTextView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CustomTextView_typefaceRoboto mx.com.factico.cide:typefaceRoboto}</code></td><td></td></tr>
+           </table>
+           @see #CustomTextView_typefaceRoboto
+         */
+        public static final int[] CustomTextView = {
+            0x7f0100a9
+        };
+        /**
+          <p>This symbol is the offset where the {@link mx.com.factico.cide.R.attr#typefaceRoboto}
+          attribute's value can be found in the {@link #CustomTextView} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>bold</code></td><td>0</td><td></td></tr>
+<tr><td><code>bold_italic</code></td><td>1</td><td></td></tr>
+<tr><td><code>italic</code></td><td>2</td><td></td></tr>
+<tr><td><code>light</code></td><td>3</td><td></td></tr>
+<tr><td><code>light_italic</code></td><td>4</td><td></td></tr>
+<tr><td><code>regular</code></td><td>5</td><td></td></tr>
+</table>
+          @attr name mx.com.factico.cide:typefaceRoboto
+        */
+        public static final int CustomTextView_typefaceRoboto = 0;
         /** Attributes that can be used with a DrawerArrowToggle.
            <p>Includes the following attributes:</p>
            <table>

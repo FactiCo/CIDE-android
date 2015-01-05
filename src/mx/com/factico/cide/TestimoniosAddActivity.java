@@ -1,18 +1,25 @@
 package mx.com.factico.cide;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import mx.com.factico.cide.adapters.SpinnerAdapter;
 import mx.com.factico.cide.beans.Testimonio;
 import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.httpconnection.HttpConnection;
+import mx.com.factico.cide.regularexpressions.RegularExpressions;
+import mx.com.factico.cide.views.CustomEditText;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -21,10 +28,10 @@ import android.widget.Toast;
 public class TestimoniosAddActivity extends ActionBarActivity implements OnClickListener {
 	private static final String TAG_CLASS = TestimoniosAddActivity.class.getName();
 	
-	private EditText etName;
-	private EditText etEmail;
+	private CustomEditText etName;
+	private CustomEditText etEmail;
 	private Spinner spCategory;
-	private EditText etDescription;
+	private CustomEditText etDescription;
 	private Spinner spCity;
 	private Spinner spAge;
 	private RadioGroup rgGender;
@@ -37,17 +44,31 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_testimonios_add);
 
+		setSupportActionBar();
 		initUI();
 	}
 
+	public void setSupportActionBar() {
+		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+		mToolbar.setTitle("");
+		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
+		mToolbar.getBackground().setAlpha(0);
+		mToolbar.inflateMenu(R.menu.main);
+		
+        setSupportActionBar(mToolbar);
+	}
+	
 	public void initUI() {
-		etName = (EditText) findViewById(R.id.testimonios_add_et_name); // Name
-		etEmail = (EditText) findViewById(R.id.testimonios_add_et_email); // Email
+		etName = (CustomEditText) findViewById(R.id.testimonios_add_et_name); // Name
+		etEmail = (CustomEditText) findViewById(R.id.testimonios_add_et_email); // Email
 
+		etName.setRegexType(RegularExpressions.KEY_IS_STRING);
+		etEmail.setRegexType(RegularExpressions.KEY_IS_EMAIL);
+		
 		spCategory = (Spinner) findViewById(R.id.testimonios_add_sp_category); // Category
 		loadDataFromResources(spCategory); // Load data to spinner from resources
 		
-		etDescription = (EditText) findViewById(R.id.testimonios_add_et_description); // Description
+		etDescription = (CustomEditText) findViewById(R.id.testimonios_add_et_description); // Description
 		
 		spCity = (Spinner) findViewById(R.id.testimonios_add_sp_city); // City
 		loadDataFromResources(spCity); // Load data to spinner from resources
@@ -64,27 +85,27 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	}
 
 	public void loadDataFromResources(Spinner spinner) {
-		String[] listData = null;
+		String[] arayData = null;
 		
 		switch (spinner.getId()) {
 			case R.id.testimonios_add_sp_category:
-				listData = getResources().getStringArray(R.array.testimonios_categories_titles);
-				loadDataArrayAdapter(spinner, listData);
+				arayData = getResources().getStringArray(R.array.testimonios_categories_titles);
+				loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_category));
 				break;
 	
 			case R.id.testimonios_add_sp_city:
-				listData = getResources().getStringArray(R.array.testimonios_add_cities);
-				loadDataArrayAdapter(spinner, listData);
+				arayData = getResources().getStringArray(R.array.testimonios_add_cities);
+				loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_city));
 				break;
 	
 			case R.id.testimonios_add_sp_age:
-				listData = getResources().getStringArray(R.array.testimonios_add_ages);
-				loadDataArrayAdapter(spinner, listData);
+				arayData = getResources().getStringArray(R.array.testimonios_add_ages);
+				loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_age));
 				break;
 	
 			case R.id.testimonios_add_sp_grade:
-				listData = getResources().getStringArray(R.array.testimonios_add_scholarities);
-				loadDataArrayAdapter(spinner, listData);
+				arayData = getResources().getStringArray(R.array.testimonios_add_grades);
+				loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_grade));
 				break;
 	
 			default:
@@ -92,9 +113,12 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		}
 	}
 
-	public void loadDataArrayAdapter(Spinner spinner, String[] listData) {
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listData);
-
+	public void loadDataArrayAdapter(Spinner spinner, String[] arrayData, String prompt) {
+		ArrayList<String> listData = new ArrayList<String>();
+		listData.add(prompt);
+		listData.addAll(new ArrayList<String>(Arrays.asList(arrayData)));
+		
+		SpinnerAdapter dataAdapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, listData);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 		spinner.setAdapter(dataAdapter);
 	}
@@ -163,5 +187,26 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 			Dialogues.Toast(getApplicationContext(), "Result: " + result, Toast.LENGTH_LONG);
 			Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
 		}
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.close, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_close) {
+			finish();
+			
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

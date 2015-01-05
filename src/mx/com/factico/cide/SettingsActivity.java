@@ -32,7 +32,7 @@ public class SettingsActivity extends ActionBarActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.settings, menu);
+		getMenuInflater().inflate(R.menu.close, menu);
 		return true;
 	}
 
@@ -42,7 +42,7 @@ public class SettingsActivity extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings_close) {
+		if (id == R.id.action_close) {
 			finish();
 			
 			return true;

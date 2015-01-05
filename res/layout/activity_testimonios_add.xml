@@ -2,168 +2,175 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" >
+    android:background="@drawable/drawable_bgr_gradient_ligth"
+    android:orientation="vertical" >
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="true" >
+        android:fillViewport="true"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="?attr/actionBarSize" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <EditText
+            <mx.com.factico.cide.views.CustomEditText
                 android:id="@+id/testimonios_add_et_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="@string/testimonios_add_name"
-                android:inputType="textPersonName" >
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textColor="@color/default_text_color"
+                android:textColorHint="@color/hololigth"
+                android:textSize="15sp" />
 
-                <requestFocus />
-            </EditText>
-
-            <EditText
+            <mx.com.factico.cide.views.CustomEditText
                 android:id="@+id/testimonios_add_et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="@string/testimonios_add_email"
-                android:inputType="textEmailAddress" />
-
-            <TextView
-                android:id="@+id/testimonios_add_tv_category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
                 android:padding="10dp"
-                android:text="@string/testimonios_add_category"
-                android:textColor="@color/accent"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-            
+                android:textColor="@color/default_text_color"
+                android:textColorHint="@color/hololigth"
+                android:textSize="15sp" />
+
             <Spinner
                 android:id="@+id/testimonios_add_sp_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:prompt="@string/testimonios_add_category" />
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:spinnerMode="dialog" />
 
-            <EditText
-                android:id="@+id/testimonios_add_et_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:minLines="3"
-                android:maxLines="3"
-                android:ems="10"
-                android:hint="@string/testimonios_add_description"
-                android:background="@color/accent_ligth"
-                android:inputType="textMultiLine" />
-
-            <TextView
-                android:id="@+id/testimonios_add_tv_city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="@string/testimonios_add_city"
-                android:textColor="@color/accent"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-            
             <Spinner
                 android:id="@+id/testimonios_add_sp_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:prompt="@string/testimonios_add_city" />
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:spinnerMode="dialog" />
 
-            <TextView
-                android:id="@+id/testimonios_add_tv_age"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="@string/testimonios_add_age"
-                android:textColor="@color/accent"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-            
             <Spinner
                 android:id="@+id/testimonios_add_sp_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:prompt="@string/testimonios_add_age" />
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:spinnerMode="dialog" />
 
-            <TextView
-                android:id="@+id/testimonios_add_tv_gendre"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="@string/testimonios_add_gender"
-                android:textColor="@color/accent"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-            
-            <RadioGroup
-                android:id="@+id/testimonios_add_rg_gender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/accent_ligth"
-                android:padding="10dp"
-                android:orientation="vertical" >
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dp" >
 
-                <RadioButton
-                    android:id="@+id/testimonios_add_rb_gender_male"
+                <TextView
+                    android:id="@+id/testimonios_add_tv_gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:checked="true"
-                    android:text="@string/testimonios_add_gender_male" />
+                    android:padding="10dp"
+                    android:text="@string/testimonios_add_gender"
+                    android:textColor="@color/default_text_color"
+                    android:textSize="15sp" />
 
-                <RadioButton
-                    android:id="@+id/testimonios_add_rb_gender_female"
+                <RadioGroup
+                    android:id="@+id/testimonios_add_rg_gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/testimonios_add_gender_female" />
-                
-                <RadioButton
-                    android:id="@+id/testimonios_add_rb_gender_none"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/testimonios_add_gender_none" />
-            </RadioGroup>
+                    android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/testimonios_add_tv_scholarity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="@string/testimonios_add_scholarity"
-                android:textColor="@color/accent"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-            
+                    <RadioButton
+                        android:id="@+id/testimonios_add_rb_gender_male"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="@string/testimonios_add_gender_male"
+                        android:textColor="@color/default_text_color"
+                        android:textSize="15sp" />
+
+                    <RadioButton
+                        android:id="@+id/testimonios_add_rb_gender_female"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/testimonios_add_gender_female"
+                        android:textColor="@color/default_text_color"
+                        android:textSize="15sp" />
+
+                    <RadioButton
+                        android:id="@+id/testimonios_add_rb_gender_none"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/testimonios_add_gender_none"
+                        android:textColor="@color/default_text_color"
+                        android:textSize="15sp" />
+                </RadioGroup>
+            </LinearLayout>
+
             <Spinner
                 android:id="@+id/testimonios_add_sp_grade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:spinnerMode="dialog" />
+
+            <mx.com.factico.cide.views.CustomEditText
+                android:id="@+id/testimonios_add_et_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="@string/testimonios_add_description"
+                android:inputType="textMultiLine"
+                android:maxEms="2000"
+                android:maxLines="10"
+                android:minLines="3"
                 android:padding="10dp"
-                android:prompt="@string/testimonios_add_scholarity" />
+                android:textColor="@color/default_text_color"
+                android:textColorHint="@color/hololigth"
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/testimonios_add_btn_senddata"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/testimonios_add_btn_senddata" />
+                android:background="@drawable/selector_btn_dark"
+                android:text="@string/testimonios_add_btn_senddata"
+                android:textColor="@color/white" />
         </LinearLayout>
     </ScrollView>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/actionbar" />
 
 </RelativeLayout>

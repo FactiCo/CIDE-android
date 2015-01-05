@@ -50,6 +50,7 @@ public class MyGcmBroadcastReceiver extends BroadcastReceiver {
 		}
 	}
 
+	@SuppressWarnings("static-access")
 	private void generateNotification(Context context, String title, String message, JSONObject json) {
 		Intent intent = new Intent(context, GcmRegisterActivity.class);
 		PendingIntent contentIntent = PendingIntent.getActivity(context, 0, intent, 0);

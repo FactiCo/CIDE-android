@@ -7,9 +7,9 @@
         android:color="@color/white" />
 
     <gradient
-        android:angle="45"
-        android:endColor="@color/primary_color"
-        android:startColor="@color/accent" />
+        android:angle="270"
+        android:endColor="@color/white"
+        android:startColor="@color/btn_ligth_green_color" />
 
     <corners
         android:bottomLeftRadius="0dp"

@@ -60,7 +60,7 @@ public class CustomHtmlView extends LinearLayout {
 		}
 	};*/
 	
-	private boolean hasImage(String text) {
+	protected boolean hasImage(String text) {
 		if (text.contains(TAG_IMAGE))
 			return true;
 		else

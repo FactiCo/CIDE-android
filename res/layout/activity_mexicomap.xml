@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <mx.com.factico.cide.views.MexicoMapView
+        <mx.com.factico.cide.views.CustomMexicoMapView
             android:id="@+id/mexicomap_wv_map"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

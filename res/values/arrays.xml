@@ -67,7 +67,7 @@
         <item>Más de 70 años</item>
     </string-array>
     
-    <string-array name="testimonios_add_scholarities">
+    <string-array name="testimonios_add_grades">
         <item>Sin estudios</item>
         <item>Primaria</item>
         <item>Secundaria</item>
@@ -75,7 +75,7 @@
         <item>Media Superior</item>
         <item>Superior</item>
         <item>Posgrado</item>
-        <item>Sin especificiar</item>
+        <item>Sin especificar</item>
     </string-array>
 
 </resources>

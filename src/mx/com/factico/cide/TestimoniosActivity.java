@@ -1,6 +1,7 @@
 package mx.com.factico.cide;
 
 import java.util.List;
+
 import mx.com.factico.cide.beans.Testimonio;
 import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.httpconnection.HttpConnection;
@@ -21,6 +22,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -95,6 +97,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 	
 	private class GetDataAsyncTask extends AsyncTask<String, String, String> {
 		private ProgressDialog dialog;
+		private ProgressBar pbLoading;
 		
 		public GetDataAsyncTask() {}
 		
@@ -104,7 +107,9 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			dialog.setMessage(getResources().getString(R.string.getdata_loading));
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.setCancelable(false);
-			dialog.show();
+			//dialog.show();
+			
+			pbLoading = (ProgressBar) findViewById(R.id.testimonios_pb_loading);
 		}
 		
 		@Override
@@ -117,6 +122,10 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		protected void onPostExecute(String result) {
 			if (dialog != null && dialog.isShowing()) {
 				dialog.dismiss();
+			}
+			
+			if (pbLoading.getVisibility() == View.VISIBLE) {
+				pbLoading.setVisibility(View.GONE);
 			}
 			
 			// Dialogues.Toast(getApplicationContext(), "Result: " + result, Toast.LENGTH_LONG);

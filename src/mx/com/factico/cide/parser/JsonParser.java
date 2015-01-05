@@ -14,7 +14,7 @@ public class JsonParser {
 	// JSON TAG PROPUESTAS
     private static final String TAG_PROPUESTAS = "propuestas";
     
-    private static final String TAG_PROPUESTAS_ID = "id";
+    /*private static final String TAG_PROPUESTAS_ID = "id";
     private static final String TAG_PROPUESTAS_CATEGORIA = "categoria";
     private static final String TAG_PROPUESTAS_TITULO = "titulo";
     private static final String TAG_PROPUESTAS_DESCRIPCION = "descripcion";
@@ -40,7 +40,7 @@ public class JsonParser {
     private static final String TAG_PROPUESTAS_VOTOS_PARTICIPANTES = "participantes";
     
     private static final String TAG_PROPUESTAS_VOTOS_PARTICIPANTES_ID = "id";
-    private static final String TAG_PROPUESTAS_VOTOS_PARTICIPANTES_NAME = "name";
+    private static final String TAG_PROPUESTAS_VOTOS_PARTICIPANTES_NAME = "name";*/
     
     
 	public void parseJson(String json) {
@@ -64,7 +64,7 @@ public class JsonParser {
 								Dialogues.Log(TAG_CLASS, "/******* next", Log.INFO);
 								
 								// LINEAS
-								JSONArray lineas = metro.optJSONArray(TAG_PROPUESTAS_AUTOR);
+								JSONArray lineas = metro.optJSONArray(TAG_PROPUESTAS);
 								
 								if (lineas != null) {
 									for (int j = 0; j < lineas.length(); j++) {

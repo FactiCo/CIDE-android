@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:background="@drawable/drawable_bgr_gradient"
+        android:background="@drawable/drawable_bgr_gradient_dark"
         android:orientation="vertical" >
 
         <include

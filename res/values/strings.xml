@@ -10,7 +10,7 @@
     <string name="action_close">Cerrar</string>
     
     <string name="lorem_ipsum_title">Justicia en el trabajo</string>
-    <string name="lorem_ipsum_que_es_justicia">Primer contacto ciudadanía - gobierno para resolver abusos cometidos a diario</string>
+    <string name="lorem_ipsum_que_es_justicia">Primer contacto ciudadanía &#8211; gobierno para resolver abusos cometidos a diario</string>
     <string name="lorem_ipsum_description">cbsabcjksakcbjsab jcbjlwqbljwlqljbwjl bdjqwbjcbjwqjlcbwqbjdbzjw bqwjbdzjbqwj qjwbdzjlqw bdzjqbwljd dzjqdljqw dljqwbdlzj qwjlqwbdz qwljbqwdz qwljbdl	kndlm dnwqld qw dm qwldnlkwqd zqwd ljqwdmqw dlnwqdl wqdlnqwljd ljwqkzdwq ldnzlwd zljqwndl wqldnqwld lwqk dkñwqdl wqlkdbnwqjl</string>
     
     
@@ -48,20 +48,28 @@
     <!-- Add Testimonio -->
     <string name="testimonios_add_name">Nombre</string>
     <string name="testimonios_add_email">Correo electrónico</string>
-    <string name="testimonios_add_category">Categoria</string>
-    <string name="testimonios_add_description">Descripción</string>
-    <string name="testimonios_add_city">Inicial de la ciudad</string>
+    <string name="testimonios_add_category">Categoría</string>
+    <string name="testimonios_add_city">Entidad federativa donde ocurrió</string>
     <string name="testimonios_add_age">Edad</string>
     <string name="testimonios_add_gender">Género</string>
-    <string name="testimonios_add_scholarity">Escolaridad</string>
+    <string name="testimonios_add_grade">Escolaridad</string>
     
     <string name="testimonios_add_gender_male">Hombre</string>
     <string name="testimonios_add_gender_female">Mujer</string>
     <string name="testimonios_add_gender_none">Sin especificar</string>
     
+    <string name="testimonios_add_description">Explicación</string>
+    
     <string name="testimonios_add_btn_senddata">Enviar información</string>
     
     <string name="postdata_loading">Enviando información.</string>
     <string name="getdata_loading">Obteniendo información.</string>
+    
+    <!-- Validations EditText -->
+    <string name="edittext_emtpy">Llena todos los campos.</string>
+    <string name="edittext_wrong_info">Corrige los campos marcados.</string>
+    <string name="edittext_error_string">Escribe letras validas [a-z A-Z].</string>
+    <string name="edittext_error_number">Escribe números validos [0&#8211;9].</string>
+    <string name="edittext_error_email">Escribe una sintaxis de correo valido.</string>
     
 </resources>

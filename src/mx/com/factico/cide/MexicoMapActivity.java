@@ -1,6 +1,6 @@
 package mx.com.factico.cide;
 
-import mx.com.factico.cide.views.MexicoMapView;
+import mx.com.factico.cide.views.CustomMexicoMapView;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -40,13 +40,13 @@ public class MexicoMapActivity extends ActionBarActivity {
 	public void initUI() {
 		progres = (ProgressBar) findViewById(R.id.mexicomap_pb_loading);
 		
-		MexicoMapView wvMap = (MexicoMapView) findViewById(R.id.mexicomap_wv_map);
+		CustomMexicoMapView wvMap = (CustomMexicoMapView) findViewById(R.id.mexicomap_wv_map);
 
 		WebSettings webSettings = wvMap.getSettings();
 		webSettings.setJavaScriptEnabled(true);
 		wvMap.setWebChromeClient(new WebChromeClient());
 		wvMap.setWebViewClient(new MyWebViewClient());
-		wvMap.loadUrl(MexicoMapView.MEXICO_MAP);
+		wvMap.loadUrl(CustomMexicoMapView.MEXICO_MAP);
 	}
 
 	private class MyWebViewClient extends WebViewClient {

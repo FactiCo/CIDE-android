@@ -12,6 +12,7 @@
     <color name="switch_thumbnormal_color">#00FF00</color>
     
     <color name="hololigth">#E0E0E0</color>
+    <color name="holodark">#333333</color>
     
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
