@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cide="http://schemas.android.com/apk/res/mx.com.factico.cide"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
     android:background="@color/btn_ligth_green_color" >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
         android:background="@drawable/drawable_bgr_gradient_dark"
         android:orientation="vertical" >
 
-        <include
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            layout="@layout/actionbar" />
-
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/testimonio_name"
             android:padding="20dp"
-            android:src="@drawable/ic_launcher" />
-    </LinearLayout>
+            android:src="@drawable/ic_splash" />
+        
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/actionbar" />
+    </RelativeLayout>
 
     <TableLayout
         android:layout_width="match_parent"
@@ -38,7 +39,7 @@
             android:layout_height="0dp"
             android:layout_weight="1" >
 
-            <TextView
+            <mx.com.factico.cide.views.CustomTextView
                 android:id="@+id/testimonios_menu_btn_justice1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -54,9 +55,10 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:text="@string/justice_1"
                 android:textColor="@color/btn_ligth_green_color"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                cide:typefaceRoboto="regular" />
 
-            <TextView
+            <mx.com.factico.cide.views.CustomTextView
                 android:id="@+id/testimonios_menu_btn_justice2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -72,9 +74,10 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:text="@string/justice_2"
                 android:textColor="@color/btn_ligth_green_color"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                cide:typefaceRoboto="regular" />
 
-            <TextView
+            <mx.com.factico.cide.views.CustomTextView
                 android:id="@+id/testimonios_menu_btn_justice3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -90,7 +93,8 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:text="@string/justice_3"
                 android:textColor="@color/btn_ligth_green_color"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                cide:typefaceRoboto="regular" />
         </TableRow>
 
         <TableRow
@@ -98,7 +102,7 @@
             android:layout_height="0dp"
             android:layout_weight="1" >
 
-            <TextView
+            <mx.com.factico.cide.views.CustomTextView
                 android:id="@+id/testimonios_menu_btn_justice4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -114,9 +118,10 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:text="@string/justice_4"
                 android:textColor="@color/btn_ligth_green_color"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                cide:typefaceRoboto="regular" />
 
-            <TextView
+            <mx.com.factico.cide.views.CustomTextView
                 android:id="@+id/testimonios_menu_btn_justice5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -132,7 +137,8 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:text="@string/justice_5"
                 android:textColor="@color/btn_ligth_green_color"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                cide:typefaceRoboto="regular" />
 
             <TextView
                 android:layout_width="0dp"
@@ -145,7 +151,7 @@
         </TableRow>
     </TableLayout>
 
-    <TextView
+    <mx.com.factico.cide.views.CustomTextView
         android:id="@+id/testimonios_btn_map"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -161,6 +167,7 @@
         android:background="@drawable/selector_btn_squared_border"
         android:text="@string/testimonios_btn_map"
         android:textColor="@color/white"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        cide:typefaceRoboto="regular" />
 
 </LinearLayout>

@@ -1,6 +1,8 @@
 package mx.com.factico.cide;
 
+import mx.com.factico.cide.utils.ScreenUtils;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener {
 	private int OPTION1 = 1;
@@ -37,6 +41,14 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		findViewById(R.id.main_btn_option1).setOnClickListener(this);
 		findViewById(R.id.main_btn_option2).setOnClickListener(this);
 		findViewById(R.id.main_btn_option3).setOnClickListener(this);
+		
+		ImageView ivLogo = (ImageView) findViewById(R.id.main_logo);
+		Point point = ScreenUtils.getScreenSize(getBaseContext());
+		int width = point.x;
+		
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(width / 2, width / 2);
+		params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+		ivLogo.setLayoutParams(params);
 	}
 
 	@Override
@@ -69,6 +81,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		} else if (type == OPTION2) {
 			Intent intent = new Intent(this, TestimoniosMenuActivity.class);
 			startActivity(intent);
+			overridePendingTransition(0, 0);
 			
 		} else if (type == OPTION3) {
 			Intent intent = new Intent(this, PropuestasActivity.class);
@@ -78,26 +91,22 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_main_settings) {
-			openIntent();
+			openSettingsIntent();
 			
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 	
-	private void openIntent() {
+	private void openSettingsIntent() {
 		Intent intent = new Intent(getBaseContext(), SettingsActivity.class);
 		startActivity(intent);
 	}

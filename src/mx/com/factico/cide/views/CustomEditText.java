@@ -21,17 +21,20 @@ public class CustomEditText extends EditText {
 
 	public CustomEditText(Context context) {
 		super(context);
-		init(context);
+		if (!isInEditMode())
+			init(context);
 	}
 	
 	public CustomEditText(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		init(context, attrs);
+		if (!isInEditMode())
+			init(context, attrs);
 	}
 	
 	public CustomEditText(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		init(context, attrs);
+		if (!isInEditMode())
+			init(context, attrs);
 	}
 
 	public void init(Context context) {
@@ -57,7 +60,7 @@ public class CustomEditText extends EditText {
 				int type = Integer.parseInt(typedArray.getString(attr));
 				Dialogues.Log("CustomTextView", "TYPEFACE: " + type, Log.ERROR);
 				
-				Typeface typeface = TypefaceFactory.setTypeface(context, type);
+				Typeface typeface = TypefaceFactory.createTypeface(context, type);
 				setTypeface(typeface);
 				
 				break;
@@ -92,8 +95,8 @@ public class CustomEditText extends EditText {
 		setError(ssbuilder);
 	}
 	
-	public static boolean isEditTextEmpty(EditText editText) {
-		return editText.getText().toString().trim().length() == 0;
+	public boolean isEmpty() {
+		return getText().toString().trim().length() == 0;
 	}
 
 	public class MyCurrencyTextWatcher implements TextWatcher {

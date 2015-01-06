@@ -31,7 +31,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	private CustomEditText etName;
 	private CustomEditText etEmail;
 	private Spinner spCategory;
-	private CustomEditText etDescription;
+	private CustomEditText etExplication;
 	private Spinner spCity;
 	private Spinner spAge;
 	private RadioGroup rgGender;
@@ -52,11 +52,9 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 
 	public void setSupportActionBar() {
 		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-		mToolbar.setTitle("");
+		mToolbar.setTitle(getResources().getString(R.string.testimonios_add_new));
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
 		mToolbar.getBackground().setAlpha(0);
-		mToolbar.inflateMenu(R.menu.main);
-		
         setSupportActionBar(mToolbar);
 	}
 	
@@ -75,7 +73,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		spCategory = (Spinner) findViewById(R.id.testimonios_add_sp_category); // Category
 		loadDataFromResources(spCategory); // Load data to spinner from resources
 		
-		etDescription = (CustomEditText) findViewById(R.id.testimonios_add_et_description); // Description
+		etExplication = (CustomEditText) findViewById(R.id.testimonios_add_et_explication); // Explication
 		
 		spCity = (Spinner) findViewById(R.id.testimonios_add_sp_city); // City
 		loadDataFromResources(spCity); // Load data to spinner from resources
@@ -139,7 +137,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.testimonios_add_btn_senddata:
-			sendData();
+			validateEditText();
 			break;
 
 		default:
@@ -147,13 +145,34 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		}
 	}
 	
-	public void sendData() {
+	private void validateEditText() {
+		if (!etName.isEmpty()) {
+			
+		}
+		if (!etEmail.isEmpty()) {
+			
+		}
+		if (!etExplication.isEmpty()) {
+			
+		}
+		if (spCity.getSelectedItemPosition() != 0) {
+			
+		}
+		if (spAge.getSelectedItemPosition() != 0) {
+			
+		}
+		if (spGrade.getSelectedItemPosition() != 0) {
+			
+		}
+	}
+	
+	private void sendData() {
 		Testimonio.Items testimonio = new Testimonio().new Items();
 		
 		testimonio.setName(etName.getText().toString()); // Getting and setting Name
 		testimonio.setEmail(etEmail.getText().toString()); // Getting and setting Email
 		testimonio.setCategory(spCategory.getSelectedItem().toString()); // Getting and setting Category
-		testimonio.setExplanation(etDescription.getText().toString()); // Getting and setting Description
+		testimonio.setExplanation(etExplication.getText().toString()); // Getting and setting Description
 		testimonio.setEntidadFederativa(String.valueOf(spCity.getSelectedItemPosition())); // Getting and setting City
 		testimonio.setAge(spAge.getSelectedItem().toString()); // Getting and setting Age
 		
@@ -203,16 +222,12 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.close, menu);
+		getMenuInflater().inflate(R.menu.close_white, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_close) {
 			finish();

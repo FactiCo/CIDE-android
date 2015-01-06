@@ -9,7 +9,10 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -33,8 +36,6 @@ public class TestimoniosListActivity extends ActionBarActivity {
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
 		mToolbar.getBackground().setAlpha(0);
         setSupportActionBar(mToolbar);
-        
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 	
 	private void initUI() {
@@ -79,6 +80,13 @@ public class TestimoniosListActivity extends ActionBarActivity {
 	private View createItemView(Testimonio.Items item) {
 		View view = getLayoutInflater().inflate(R.layout.item_testimonios, null, false);
 		
+		ImageView ivIcUser = (ImageView) view.findViewById(R.id.item_testimonios_iv_icuser);
+		if (item.getGender().equals("Hombre")) {
+			ivIcUser.setImageResource(R.drawable.ic_hombre);
+		} else if (item.getGender().equals("Mujer")) {
+			ivIcUser.setImageResource(R.drawable.ic_mujer);
+		}
+		
 		TextView tvTitle = (TextView) view.findViewById(R.id.item_testimonios_tv_title);
 		if (item.getName() != null && !item.getName().equals("")) {
 			tvTitle.setText(item.getName());
@@ -90,5 +98,22 @@ public class TestimoniosListActivity extends ActionBarActivity {
 		tvDescription.setText(item.getExplanation());
 		
 		return view;
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.close_green, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id = item.getItemId();
+		if (id == R.id.action_close) {
+			finish();
+			
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

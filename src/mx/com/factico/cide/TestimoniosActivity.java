@@ -7,12 +7,14 @@ import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.httpconnection.HttpConnection;
 import mx.com.factico.cide.interfaces.OnScrollViewListener;
 import mx.com.factico.cide.parser.GsonParser;
+import mx.com.factico.cide.typeface.TypefaceFactory;
 import mx.com.factico.cide.utils.ScreenUtils;
 import mx.com.factico.cide.views.CustomScrollView;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -102,7 +104,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			params.topMargin = (height / 10 * 3) - (width / 6 / 3);
 			params.rightMargin = width / 20;
 			params.gravity = Gravity.END;
-			Button btnAddTestimonio = (Button) findViewById(R.id.testimonios_btn_addtestimonio);
+			TextView btnAddTestimonio = (TextView) findViewById(R.id.testimonios_btn_addtestimonio);
 			//btnAddTestimonio.setLayoutParams(params);
 			btnAddTestimonio.setOnClickListener(this);
 			
@@ -203,6 +205,9 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			btnMoreTestimonios.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
 			btnMoreTestimonios.setId(TAG_BTN_MORE);
 			btnMoreTestimonios.setOnClickListener(this);
+			
+			Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.ROBOTOSLAB_REGULAR);
+			btnMoreTestimonios.setTypeface(typeface);
 			
 			containerTestimonios.setOnClickListener(this);
 			containerTestimonios.addView(btnMoreTestimonios);

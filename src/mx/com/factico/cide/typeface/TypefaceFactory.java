@@ -11,7 +11,7 @@ public class TypefaceFactory {
 	
 	private static String typefaceDirRoboto = "fonts/RobotoSlab/";
 	
-	public static Typeface setTypeface(Context context, int type) {
+	public static Typeface createTypeface(Context context, int type) {
 		if(type == ROBOTOSLAB_BOLD) {
 			Typeface typeface = Typeface.createFromAsset(context.getAssets(), typefaceDirRoboto + "RobotoSlab-Bold.ttf");
 			return typeface;

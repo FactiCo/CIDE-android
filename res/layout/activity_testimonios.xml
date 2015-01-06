@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cide="http://schemas.android.com/apk/res/mx.com.factico.cide"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -45,7 +46,7 @@
                     android:paddingTop="@dimen/activity_vertical_margin"
                     android:showDividers="middle" >
 
-                    <TextView
+                    <mx.com.factico.cide.views.CustomTextView
                         android:id="@+id/testimonios_tv_title"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
@@ -55,9 +56,9 @@
                         android:text=""
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/title_color"
-                        android:textStyle="bold" />
+                        cide:typefaceRoboto="bold" />
 
-                    <TextView
+                    <mx.com.factico.cide.views.CustomTextView
                         android:id="@+id/testimonios_tv_desciption"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
@@ -67,10 +68,11 @@
                         android:layout_marginBottom="50dp"
                         android:text=""
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/default_text_color" />
+                        android:textColor="@color/default_text_color"
+                        cide:typefaceRoboto="regular" />
                 </LinearLayout>
 
-                <Button
+                <mx.com.factico.cide.views.CustomTextView
                     android:id="@+id/testimonios_btn_addtestimonio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -79,10 +81,10 @@
                     android:layout_marginTop="-50dp"
                     android:background="@drawable/selector_btn_ligth"
                     android:padding="10dp"
-                    android:text="@string/testimonios_add_new"
+                    android:text="@string/testimonios_add_btn_new"
                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:textStyle="bold" />
+                    cide:typefaceRoboto="regular" />
             </RelativeLayout>
 
             <LinearLayout
@@ -99,7 +101,7 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:showDividers="middle" >
 
-                <TextView
+                <mx.com.factico.cide.views.CustomTextView
                     android:layout_width="match_parent"	
                     android:layout_height="wrap_content"
                     android:background="@color/btn_dark_green_color"
@@ -110,7 +112,7 @@
                     android:text="@string/testimonios_news"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/white"
-                    android:textStyle="bold|italic" />
+                    cide:typefaceRoboto="bold_italic" />
 
                 <ProgressBar
                     android:id="@+id/testimonios_pb_loading"

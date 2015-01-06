@@ -14,17 +14,20 @@ public class CustomButton extends Button {
 	
 	public CustomButton(Context context) {
 		super(context);
-		init(context);
+		if (!isInEditMode())
+			init(context);
 	}
 
 	public CustomButton(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		init(context, attrs);
+		if (!isInEditMode())
+			init(context, attrs);
 	}
 
 	public CustomButton(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		init(context, attrs);
+		if (!isInEditMode())
+			init(context, attrs);
 	}
 	
 	public void init(Context context) {
@@ -50,7 +53,7 @@ public class CustomButton extends Button {
 				int type = Integer.parseInt(typedArray.getString(attr));
 				Dialogues.Log("CustomTextView", "TYPEFACE: " + type, Log.ERROR);
 				
-				Typeface typeface = TypefaceFactory.setTypeface(context, type);
+				Typeface typeface = TypefaceFactory.createTypeface(context, type);
 				setTypeface(typeface);
 				
 				break;

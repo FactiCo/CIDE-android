@@ -14,24 +14,29 @@ public class CustomTextView extends TextView {
 	
 	public CustomTextView(Context context) {
 		super(context);
-		init(context);
+		if (!isInEditMode())
+			init(context);
 	}
 
 	public CustomTextView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		init(context, attrs);
+		if (!isInEditMode())
+			init(context, attrs);
 	}
 
 	public CustomTextView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		init(context, attrs);
+		if (!isInEditMode())
+			init(context, attrs);
 	}
 	
 	public void init(Context context) {
-		
+		isInEditMode();
 	}
 	
 	public void init(Context context, AttributeSet attrs) {
+		isInEditMode();
+		
 		if (attrs == null || getContext() == null) {
             return;
         }
@@ -50,7 +55,7 @@ public class CustomTextView extends TextView {
 				int type = Integer.parseInt(typedArray.getString(attr));
 				Dialogues.Log("CustomTextView", "TYPEFACE: " + type, Log.ERROR);
 				
-				Typeface typeface = TypefaceFactory.setTypeface(context, type);
+				Typeface typeface = TypefaceFactory.createTypeface(context, type);
 				setTypeface(typeface);
 				
 				break;

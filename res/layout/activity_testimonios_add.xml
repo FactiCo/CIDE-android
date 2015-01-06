@@ -106,7 +106,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:checked="true"
                         android:text="@string/testimonios_add_gender_male"
                         android:textColor="@color/default_text_color"
                         android:textSize="15sp" />
@@ -125,6 +124,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:checked="true"
                         android:text="@string/testimonios_add_gender_none"
                         android:textColor="@color/default_text_color"
                         android:textSize="15sp" />
@@ -142,16 +142,15 @@
                 android:spinnerMode="dialog" />
 
             <mx.com.factico.cide.views.CustomEditText
-                android:id="@+id/testimonios_add_et_description"
+                android:id="@+id/testimonios_add_et_explication"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:ems="10"
-                android:hint="@string/testimonios_add_description"
+                android:hint="@string/testimonios_add_explication"
                 android:inputType="textMultiLine"
                 android:maxEms="2000"
-                android:maxLines="10"
                 android:minLines="3"
                 android:padding="10dp"
                 android:textColor="@color/default_text_color"

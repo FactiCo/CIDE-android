@@ -35,7 +35,8 @@
     <string name="testimonios_btn_map">Mapa de testimonios</string>
     
     <string name="testimonios_news">Testimonios</string>
-    <string name="testimonios_add_new">Agregar testimonio</string>
+    <string name="testimonios_add_btn_new">Agregar testimonio</string>
+    <string name="testimonios_add_new">Nuevo testimonio</string>
     <string name="testimonios_vermas">Ver mas&#8230;</string>
     
     <!-- Types of justice -->
@@ -59,9 +60,9 @@
     <string name="testimonios_add_gender_female">Mujer</string>
     <string name="testimonios_add_gender_none">Sin especificar</string>
     
-    <string name="testimonios_add_description">Explicación</string>
+    <string name="testimonios_add_explication">Explicación</string>
     
-    <string name="testimonios_add_btn_senddata">Enviar información</string>
+    <string name="testimonios_add_btn_senddata">Enviar testimonio</string>
     
     <string name="postdata_loading">Enviando información.</string>
     <string name="getdata_loading">Obteniendo información.</string>
