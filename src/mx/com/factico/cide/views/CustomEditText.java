@@ -14,8 +14,6 @@ import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
 public class CustomEditText extends EditText {
@@ -83,8 +81,8 @@ public class CustomEditText extends EditText {
 	 *            (EditText) view
 	 */
 	public void setErrorMessage(String errorMessage) {
-		Animation shake = AnimationUtils.loadAnimation(getContext(), R.anim.shake);
-		startAnimation(shake);
+		// Animation shake = AnimationUtils.loadAnimation(getContext(), R.anim.shake);
+		// startAnimation(shake);
 			
 		int errorColor = Color.WHITE;
 		ForegroundColorSpan fgcspan = new ForegroundColorSpan(errorColor);

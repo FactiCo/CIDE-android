@@ -2,7 +2,6 @@ package mx.com.factico.cide;
 
 import java.util.List;
 
-import mx.com.factico.cide.animations.AnimationsFactory;
 import mx.com.factico.cide.beans.Testimonio;
 import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.httpconnection.HttpConnection;
@@ -18,14 +17,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -40,6 +39,10 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 
 	private Toolbar mToolbar;
 	
+	private final int TAG_BTN_MORE = 20150105;
+	
+	private Testimonio testimonio = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,7 +56,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		mToolbar = (Toolbar) findViewById(R.id.toolbar);
 		mToolbar.setTitle("");
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
-		mToolbar.getBackground().setAlpha(255);
+		mToolbar.getBackground().setAlpha(0);
         setSupportActionBar(mToolbar);
         
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -69,8 +72,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			CustomScrollView svScroll = (CustomScrollView) findViewById(R.id.testimonios_sv_scroll);
 			svScroll.setOnScrollViewListener(new OnScrollViewListener() {
 				public void onScrollChanged(CustomScrollView v, int l, int t, int oldl, int oldt) {
-					// Dialogues.Log(TAG_CLASS, "t: " + t + ", oldt: " + oldt, Log.INFO);
-					setOnScrollChanged(v, l, t, oldl, oldt);
+					// setOnScrollChanged(v, l, t, oldl, oldt);
 				}
 			});
 
@@ -85,7 +87,14 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			int height = point.y;
 	        
 			// Set dimensions depending on screen
-			findViewById(R.id.testimonios_iv_logo).setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 3));
+			ImageView ivLogo = (ImageView) findViewById(R.id.testimonios_iv_logo);
+			ivLogo.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 3));
+			ivLogo.setScaleType(ScaleType.CENTER_INSIDE);
+			if (categoyTypeIndex == 0)	ivLogo.setImageResource(R.drawable.ic_justicia_trabajo);
+			if (categoyTypeIndex == 1)	ivLogo.setImageResource(R.drawable.ic_justicia_familiar);
+			if (categoyTypeIndex == 2)	ivLogo.setImageResource(R.drawable.ic_justicia_vecinal);
+			if (categoyTypeIndex == 3)	ivLogo.setImageResource(R.drawable.ic_justicia_funcionarios);
+			if (categoyTypeIndex == 4)	ivLogo.setImageResource(R.drawable.ic_justicia_emprendedores);
 			// findViewById(R.id.testimonios_vg_description).setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 3));
 			// findViewById(R.id.testimonios_vg_container).setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height / 10 * 3));
 			
@@ -94,25 +103,10 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			params.rightMargin = width / 20;
 			params.gravity = Gravity.END;
 			Button btnAddTestimonio = (Button) findViewById(R.id.testimonios_btn_addtestimonio);
-			btnAddTestimonio.setLayoutParams(params);
+			//btnAddTestimonio.setLayoutParams(params);
 			btnAddTestimonio.setOnClickListener(this);
 			
 	        loadDataTestimonios();
-		}
-	}
-	
-	boolean isToolbarHide = false;
-	private void setOnScrollChanged(CustomScrollView v, int l, int t, int oldl, int oldt) {
-		//Dialogues.Log(TAG_CLASS, "t: " + t + ", oldt: " + oldt, Log.INFO);
-		
-		Dialogues.Log(TAG_CLASS, "Scroll: " + v.getScrollY(), Log.INFO);
-		if (v.getScrollY() >= android.R.attr.actionBarSize) {
-			Dialogues.Log(TAG_CLASS, "Hidding toolbar", Log.INFO);
-			
-			if (isToolbarHide) {
-				Animation animation = AnimationsFactory.translateY(500, 0, -1 * android.R.attr.actionBarSize);
-				mToolbar.startAnimation(animation);
-			}
 		}
 	}
 	
@@ -155,9 +149,8 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			}
 			
 			// Dialogues.Toast(getApplicationContext(), "Result: " + result, Toast.LENGTH_LONG);
-			Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
+			// Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
 			
-			Testimonio testimonio = null;
 			try {
 				testimonio = GsonParser.getTestimonioFromJSON(result);
 				
@@ -175,28 +168,44 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 	private void loadTestimoniosViews(Testimonio testimonio) {
 		LinearLayout containerTestimonios = (LinearLayout) findViewById(R.id.testimonios_vg_container);
 		
-		Dialogues.Log(TAG_CLASS, "/***** Testimonio", Log.INFO);
-		Dialogues.Log(TAG_CLASS, "Count: " + testimonio.getCount(), Log.INFO);
+		//Dialogues.Log(TAG_CLASS, "/***** Testimonio", Log.INFO);
+		//Dialogues.Log(TAG_CLASS, "Count: " + testimonio.getCount(), Log.INFO);
 		
 		List<Testimonio.Items> listItems = testimonio.getItems();
-		Dialogues.Log(TAG_CLASS, "Items Size: " + listItems.size(), Log.INFO);
+		//Dialogues.Log(TAG_CLASS, "Items Size: " + listItems.size(), Log.INFO);
 		
 		if (listItems != null  && listItems.size() > 0) {
-			for (Testimonio.Items item : listItems) {
-				Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Name: " + item.getName(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Email: " + item.getEmail(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Category: " + item.getCategory(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Explanation: " + item.getExplanation(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items EntidadFederativa: " + item.getEntidadFederativa(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Age: " + item.getAge(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Gender: " + item.getGender(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Grade: " + item.getGrade(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Created: " + item.getCreated(), Log.INFO);
+			for (int i = 0; i < 3; i++) {
+				Testimonio.Items item = listItems.get(i);
 				
-				View view = createItemView(item);
-				containerTestimonios.addView(view);
+				if (item != null) {
+					//Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Name: " + item.getName(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Email: " + item.getEmail(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Category: " + item.getCategory(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Explanation: " + item.getExplanation(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items EntidadFederativa: " + item.getEntidadFederativa(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Age: " + item.getAge(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Gender: " + item.getGender(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Grade: " + item.getGrade(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Created: " + item.getCreated(), Log.INFO);
+					
+					View view = createItemView(item);
+					containerTestimonios.addView(view);
+				}
 			}
+			
+			Button btnMoreTestimonios = new Button(this);
+			btnMoreTestimonios.setPadding(20, 20, 20, 20);
+			btnMoreTestimonios.setBackgroundResource(R.drawable.selector_btn_ligth);
+			btnMoreTestimonios.setText(getResources().getString(R.string.testimonios_vermas));
+			btnMoreTestimonios.setTextColor(getResources().getColor(R.color.white));
+			btnMoreTestimonios.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+			btnMoreTestimonios.setId(TAG_BTN_MORE);
+			btnMoreTestimonios.setOnClickListener(this);
+			
+			containerTestimonios.setOnClickListener(this);
+			containerTestimonios.addView(btnMoreTestimonios);
 		}
 	}
 	
@@ -222,16 +231,31 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		switch (v.getId()) {
 		
 		case R.id.testimonios_btn_addtestimonio:
-			openAddTetsimonioIntent();
+			openAddTestimonioIntent();
 			break;
 
+		case R.id.testimonios_vg_container:
+			openListTestimonioIntent();
+			break;
+			
+		case TAG_BTN_MORE:
+			openListTestimonioIntent();
+			break;
+			
 		default:
 			break;
 		}
 	}
 	
-	private void openAddTetsimonioIntent() {
+	private void openListTestimonioIntent() {
+		Intent intent = new Intent(getBaseContext(), TestimoniosListActivity.class);
+		intent.putExtra(TestimoniosListActivity.TAG_TESTIMONIO, testimonio);
+		startActivity(intent);
+	}
+	
+	private void openAddTestimonioIntent() {
 		Intent intent = new Intent(getBaseContext(), TestimoniosAddActivity.class);
+		intent.putExtra(TAG_CATEGORY_TYPE_INDEX, categoyTypeIndex);
 		startActivity(intent);
 	}
 }

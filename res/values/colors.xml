@@ -15,6 +15,7 @@
     <color name="holodark">#333333</color>
     
     <color name="white">#FFFFFFFF</color>
+    <color name="black_44">#44000000</color>
     <color name="black">#FF000000</color>
     
     <color name="title_color">#565656</color>

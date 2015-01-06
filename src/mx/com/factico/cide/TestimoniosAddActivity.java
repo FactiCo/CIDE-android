@@ -39,6 +39,8 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	
 	private Button btnSendData;
 	
+	private int categoyTypeIndex = -1;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,6 +61,11 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	}
 	
 	public void initUI() {
+		Bundle bundle = getIntent().getExtras();
+		if (bundle != null) {
+			categoyTypeIndex = bundle.getInt(TestimoniosActivity.TAG_CATEGORY_TYPE_INDEX);
+		}
+		
 		etName = (CustomEditText) findViewById(R.id.testimonios_add_et_name); // Name
 		etEmail = (CustomEditText) findViewById(R.id.testimonios_add_et_email); // Email
 
@@ -121,6 +128,11 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		SpinnerAdapter dataAdapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, listData);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 		spinner.setAdapter(dataAdapter);
+		
+		if (spinner.getId() == R.id.testimonios_add_sp_category) {
+			spCategory.setSelection(categoyTypeIndex + 1);
+			spCategory.setEnabled(false);
+		}
 	}
 
 	@Override

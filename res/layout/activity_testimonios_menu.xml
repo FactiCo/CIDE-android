@@ -53,7 +53,7 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:text="@string/justice_1"
-                android:textColor="@color/white"
+                android:textColor="@color/btn_ligth_green_color"
                 android:textSize="15sp" />
 
             <TextView
@@ -71,7 +71,7 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:text="@string/justice_2"
-                android:textColor="@color/white"
+                android:textColor="@color/btn_ligth_green_color"
                 android:textSize="15sp" />
 
             <TextView
@@ -89,7 +89,7 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:text="@string/justice_3"
-                android:textColor="@color/white"
+                android:textColor="@color/btn_ligth_green_color"
                 android:textSize="15sp" />
         </TableRow>
 
@@ -113,7 +113,7 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:text="@string/justice_4"
-                android:textColor="@color/white"
+                android:textColor="@color/btn_ligth_green_color"
                 android:textSize="15sp" />
 
             <TextView
@@ -131,7 +131,7 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:text="@string/justice_5"
-                android:textColor="@color/white"
+                android:textColor="@color/btn_ligth_green_color"
                 android:textSize="15sp" />
 
             <TextView

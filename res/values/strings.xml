@@ -34,8 +34,9 @@
     
     <string name="testimonios_btn_map">Mapa de testimonios</string>
     
-    <string name="testimonios_news">Actividad reciente</string>
-    <string name="testimonios_add_new">+</string>
+    <string name="testimonios_news">Testimonios</string>
+    <string name="testimonios_add_new">Agregar testimonio</string>
+    <string name="testimonios_vermas">Ver mas&#8230;</string>
     
     <!-- Types of justice -->
     <string name="justice_1">Justicia en el trabajo</string>

@@ -1,10 +1,15 @@
 package mx.com.factico.cide.beans;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.google.gson.annotations.Expose;
 
-public class Testimonio {
+public class Testimonio implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private long count;
 	private List<Items> items;
 
@@ -24,7 +29,11 @@ public class Testimonio {
 		this.items = items;
 	}
 
-	public class Items {
+	public class Items implements Serializable {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		private String _id = "";
 		@Expose private String name = "";
 		@Expose private String email = "";
