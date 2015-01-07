@@ -36,18 +36,19 @@
     
     <string name="testimonios_btn_map">Mapa de testimonios</string>
     
-    <string name="testimonios_news">Testimonios</string>
+    <string name="testimonios_news">Testimonios recientes</string>
     <string name="testimonios_add_btn_new">Agregar testimonio</string>
     <string name="testimonios_add_new">Nuevo testimonio</string>
-    <string name="testimonios_vermas">Ver mas&#8230;</string>
+    <string name="testimonios_seemore">Ver mas&#8230;</string>
+    <string name="testimonios_nomore">Sin testimonios en esta categoría</string>
     
     <!-- Types of justice -->
-    <string name="justice_1">Justicia en el trabajo</string>
-    <string name="justice_2">Justicia en la familia</string>
-    <string name="justice_3">Justicia vecinal y comunitaria</string>
-    <string name="justice_4">Justicia para funcionarios</string>
-    <string name="justice_5">Justicia para emprendedores</string>
-    <string name="justice_6">Justicia </string>
+    <string name="justice_1">Justicia\nen el\ntrabajo</string>
+    <string name="justice_2">Justicia\nen las\nfamilias</string>
+    <string name="justice_3">Justicia\nvecinal y\ncomunitaria</string>
+    <string name="justice_4">Justicia\npara\nciudadanos</string>
+    <string name="justice_5">Justicia\npara\nemprendedores</string>
+    <string name="justice_6"></string>
     
     <!-- Add Testimonio -->
     <string name="testimonios_add_name">Nombre</string>

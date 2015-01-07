@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import fr.castorflex.android.verticalviewpager.VerticalViewPager;
 
 public class AboutActivity extends ActionBarActivity {
@@ -103,18 +102,23 @@ public class AboutActivity extends ActionBarActivity {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_about, container, false);
-			ImageView ivPage = (ImageView) rootView.findViewById(R.id.fragment_about_iv_page);
-			ivPage.setImageResource(R.drawable.ic_splash);
 			
-			LinearLayout vgContainer = (LinearLayout) rootView.findViewById(R.id.fragment_about_vg_container);
+			ImageView ivPage = (ImageView) rootView.findViewById(R.id.fragment_about_iv_page);
+			//ivPage.setImageResource(R.drawable.ic_splash);
+			
+			//LinearLayout vgContainer = (LinearLayout) rootView.findViewById(R.id.fragment_about_vg_container);
 			
 			int index = getArguments().getInt(ARG_SECTION_NUMBER);
-			if (index == 1)
-				vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_dark);
-			if (index == 2)
-				vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_middle);
-			if (index == 3)
-				vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_ligth);
+			if (index == 1) {
+				//vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_dark);
+				ivPage.setImageResource(R.drawable.justicia_ciudadana_1);
+			} if (index == 2) {
+				//vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_middle);
+				ivPage.setImageResource(R.drawable.justicia_ciudadana_2);
+			} if (index == 3) {
+				//vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_ligth);
+				ivPage.setImageResource(R.drawable.justicia_ciudadana_3);
+			}
 			
 			return rootView;
 		}
@@ -122,7 +126,7 @@ public class AboutActivity extends ActionBarActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.close_white, menu);
+		getMenuInflater().inflate(R.menu.close_green, menu);
 		return true;
 	}
 

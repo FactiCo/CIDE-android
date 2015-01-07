@@ -58,20 +58,24 @@ public class TestimoniosListActivity extends ActionBarActivity {
 		Dialogues.Log(TAG_CLASS, "Items Size: " + listItems.size(), Log.INFO);
 		
 		if (listItems != null  && listItems.size() > 0) {
-			for (Testimonio.Items item : listItems) {
-				//Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
-				//Dialogues.Log(TAG_CLASS, "Items Name: " + item.getName(), Log.INFO);
-				//Dialogues.Log(TAG_CLASS, "Items Email: " + item.getEmail(), Log.INFO);
-				//Dialogues.Log(TAG_CLASS, "Items Category: " + item.getCategory(), Log.INFO);
-				//Dialogues.Log(TAG_CLASS, "Items Explanation: " + item.getExplanation(), Log.INFO);
-				//Dialogues.Log(TAG_CLASS, "Items EntidadFederativa: " + item.getEntidadFederativa(), Log.INFO);
-				//Dialogues.Log(TAG_CLASS, "Items Age: " + item.getAge(), Log.INFO);
-				//Dialogues.Log(TAG_CLASS, "Items Gender: " + item.getGender(), Log.INFO);
-				//Dialogues.Log(TAG_CLASS, "Items Grade: " + item.getGrade(), Log.INFO);
-				//Dialogues.Log(TAG_CLASS, "Items Created: " + item.getCreated(), Log.INFO);
+			for (int i = listItems.size(); i < 0; i--) {
+				Testimonio.Items item = listItems.get(i);
 				
-				View view = createItemView(item);
-				containerTestimonios.addView(view);
+				if (item != null) {
+					//Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Name: " + item.getName(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Email: " + item.getEmail(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Category: " + item.getCategory(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Explanation: " + item.getExplanation(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items EntidadFederativa: " + item.getEntidadFederativa(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Age: " + item.getAge(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Gender: " + item.getGender(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Grade: " + item.getGrade(), Log.INFO);
+					//Dialogues.Log(TAG_CLASS, "Items Created: " + item.getCreated(), Log.INFO);
+					
+					View view = createItemView(item);
+					containerTestimonios.addView(view);
+				}
 			}
 		}
 	}

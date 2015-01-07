@@ -1,12 +1,12 @@
 package mx.com.factico.cide;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import mx.com.factico.cide.adapters.SpinnerAdapter;
 import mx.com.factico.cide.beans.Testimonio;
 import mx.com.factico.cide.dialogues.Dialogues;
-import mx.com.factico.cide.httpconnection.HttpConnection;
 import mx.com.factico.cide.regularexpressions.RegularExpressions;
 import mx.com.factico.cide.views.CustomEditText;
 import android.app.ProgressDialog;
@@ -24,6 +24,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class TestimoniosAddActivity extends ActionBarActivity implements OnClickListener {
 	private static final String TAG_CLASS = TestimoniosAddActivity.class.getName();
@@ -183,7 +186,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		testimonio.setEmail(etEmail.getText().toString()); // Getting and setting Email
 		testimonio.setCategory(spCategory.getSelectedItem().toString()); // Getting and setting Category
 		testimonio.setExplanation(etExplication.getText().toString()); // Getting and setting Description
-		testimonio.setEntidadFederativa(String.valueOf(spCity.getSelectedItemPosition())); // Getting and setting City
+		testimonio.setState(String.valueOf(spCity.getSelectedItemPosition())); // Getting and setting City
 		testimonio.setAge(spAge.getSelectedItem().toString()); // Getting and setting Age
 		
 		int radioButtonID = rgGender.getCheckedRadioButtonId();
@@ -215,7 +218,21 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		
 		@Override
 		protected String doInBackground(String... params) {
-			String result = HttpConnection.POST(HttpConnection.URL_TESTIMONIOS, testimonio);
+			Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+			String json = gson.toJson(this.testimonio);
+			
+			String jsonUTF8 = "";
+			try {
+				jsonUTF8 = new String(json.getBytes("ISO-8859-1"), "UTF-8");
+				
+				Dialogues.Log(TAG_CLASS, "Http Post Response:" + json.toString(), Log.DEBUG);
+				Dialogues.Log(TAG_CLASS, "Http Post Response UTF-8:" + jsonUTF8.toString(), Log.DEBUG);
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			
+			//String result = HttpConnection.POST(HttpConnection.URL_TESTIMONIOS, jsonUTF8);
+			String result = "";
 			return result;
 		}
 

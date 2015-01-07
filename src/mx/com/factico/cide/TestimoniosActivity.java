@@ -177,7 +177,15 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		//Dialogues.Log(TAG_CLASS, "Items Size: " + listItems.size(), Log.INFO);
 		
 		if (listItems != null  && listItems.size() > 0) {
-			for (int i = 0; i < 3; i++) {
+			int count = 3;
+			
+			if (listItems.size() <= 3) {
+				count = listItems.size();
+			} else {
+				count = listItems.size() - 3;
+			}
+			
+			for (int i = listItems.size(); i < count; i--) {
 				Testimonio.Items item = listItems.get(i);
 				
 				if (item != null) {
@@ -200,7 +208,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			Button btnMoreTestimonios = new Button(this);
 			btnMoreTestimonios.setPadding(20, 20, 20, 20);
 			btnMoreTestimonios.setBackgroundResource(R.drawable.selector_btn_ligth);
-			btnMoreTestimonios.setText(getResources().getString(R.string.testimonios_vermas));
+			btnMoreTestimonios.setText(getResources().getString(R.string.testimonios_seemore));
 			btnMoreTestimonios.setTextColor(getResources().getColor(R.color.white));
 			btnMoreTestimonios.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
 			btnMoreTestimonios.setId(TAG_BTN_MORE);
@@ -211,12 +219,33 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			
 			containerTestimonios.setOnClickListener(this);
 			containerTestimonios.addView(btnMoreTestimonios);
+			
+		} else {
+			TextView tvNoTestimonios = new TextView(this);
+			tvNoTestimonios.setPadding(30, 30, 30, 30);
+			tvNoTestimonios.setBackgroundColor(getResources().getColor(R.color.white));
+			tvNoTestimonios.setText(getResources().getString(R.string.testimonios_nomore));
+			tvNoTestimonios.setTextColor(getResources().getColor(R.color.title_color));
+			tvNoTestimonios.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+			tvNoTestimonios.setGravity(Gravity.CENTER);
+			
+			Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.ROBOTOSLAB_REGULAR);
+			tvNoTestimonios.setTypeface(typeface);
+			
+			containerTestimonios.addView(tvNoTestimonios);
 		}
 	}
 	
 	@SuppressLint("InflateParams")
 	private View createItemView(Testimonio.Items item) {
 		View view = getLayoutInflater().inflate(R.layout.item_testimonios, null, false);
+		
+		ImageView ivIcUser = (ImageView) view.findViewById(R.id.item_testimonios_iv_icuser);
+		if (item.getGender().equals("Hombre")) {
+			ivIcUser.setImageResource(R.drawable.ic_hombre);
+		} else if (item.getGender().equals("Mujer")) {
+			ivIcUser.setImageResource(R.drawable.ic_mujer);
+		}
 		
 		TextView tvTitle = (TextView) view.findViewById(R.id.item_testimonios_tv_title);
 		if (item.getName() != null && !item.getName().equals("")) {

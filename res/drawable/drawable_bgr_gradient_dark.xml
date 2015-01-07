@@ -7,7 +7,7 @@
         android:color="@color/white" />
 
     <gradient
-        android:angle="90"
+        android:angle="45"
         android:endColor="@color/green_dark_color"
         android:startColor="@color/green_middle_color" />
 

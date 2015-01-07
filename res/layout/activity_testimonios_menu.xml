@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cide="http://schemas.android.com/apk/res/mx.com.factico.cide"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/btn_ligth_green_color"
-    android:orientation="vertical"
-    android:weightSum="10" >
+    android:background="@drawable/drawable_bgr_gradient_dark"
+    android:orientation="vertical" >
 
     <include
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/actionbar" />
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
-        android:background="@color/btn_ligth_green_color"
-        android:weightSum="2" >
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/testimonios_btn_map" >
 
         <TableRow
             android:layout_width="match_parent"
@@ -51,8 +50,6 @@
                     android:gravity="center_horizontal"
                     android:minLines="4"
                     android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:paddingRight="@dimen/activity_horizontal_margin"
                     android:paddingTop="@dimen/activity_vertical_margin"
                     android:text="@string/justice_1"
                     android:textColor="@color/btn_ligth_green_color"
@@ -86,8 +83,6 @@
                     android:gravity="center_horizontal"
                     android:minLines="4"
                     android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:paddingRight="@dimen/activity_horizontal_margin"
                     android:paddingTop="@dimen/activity_vertical_margin"
                     android:text="@string/justice_2"
                     android:textColor="@color/btn_ligth_green_color"
@@ -121,8 +116,6 @@
                     android:gravity="center_horizontal"
                     android:minLines="4"
                     android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:paddingRight="@dimen/activity_horizontal_margin"
                     android:paddingTop="@dimen/activity_vertical_margin"
                     android:text="@string/justice_3"
                     android:textColor="@color/btn_ligth_green_color"
@@ -162,8 +155,6 @@
                     android:gravity="center_horizontal"
                     android:minLines="4"
                     android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:paddingRight="@dimen/activity_horizontal_margin"
                     android:paddingTop="@dimen/activity_vertical_margin"
                     android:text="@string/justice_4"
                     android:textColor="@color/btn_ligth_green_color"
@@ -197,8 +188,6 @@
                     android:gravity="center_horizontal"
                     android:minLines="4"
                     android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:paddingRight="@dimen/activity_horizontal_margin"
                     android:paddingTop="@dimen/activity_vertical_margin"
                     android:text="@string/justice_5"
                     android:textColor="@color/btn_ligth_green_color"
@@ -220,19 +209,18 @@
 
     <mx.com.factico.cide.views.CustomTextView
         android:id="@+id/testimonios_btn_map"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/selector_btn_squared_border"
         android:contentDescription="@string/testimonio_name"
         android:gravity="center"
+        android:padding="15dp"
         android:text="@string/testimonios_btn_map"
         android:textColor="@color/white"
         android:textSize="15sp"
         cide:typefaceRoboto="regular" />
 
-</LinearLayout>
+</RelativeLayout>

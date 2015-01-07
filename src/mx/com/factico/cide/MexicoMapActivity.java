@@ -28,7 +28,8 @@ public class MexicoMapActivity extends ActionBarActivity {
 
 	public void setSupportActionBar() {
 		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-		mToolbar.setTitle("");
+		mToolbar.setTitle("Mapa de testimonios");
+		// mToolbar.setBackgroundColor(getResources().getColor(R.color.btn_ligth_green_color));
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
 		mToolbar.getBackground().setAlpha(0);
 		setSupportActionBar(mToolbar);

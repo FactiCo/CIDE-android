@@ -39,7 +39,7 @@ public class Testimonio implements Serializable {
 		@Expose private String email = "";
 		@Expose private String category = "";
 		@Expose private String explanation = "";
-		@Expose private String entidadFederativa = "";
+		@Expose private String state = "";
 		@Expose private String age = "";
 		@Expose private String gender = "";
 		@Expose private String grade = "";
@@ -85,12 +85,12 @@ public class Testimonio implements Serializable {
 			this.explanation = explanation;
 		}
 
-		public String getEntidadFederativa() {
-			return entidadFederativa;
+		public String getState() {
+			return state;
 		}
 
-		public void setEntidadFederativa(String entidadFederativa) {
-			this.entidadFederativa = entidadFederativa;
+		public void setState(String state) {
+			this.state = state;
 		}
 
 		public String getAge() {
