@@ -1,8 +1,6 @@
 package mx.com.factico.cide;
 
-import mx.com.factico.cide.utils.ScreenUtils;
 import android.content.Intent;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,8 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener {
 	private int OPTION1 = 1;
@@ -41,14 +37,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		findViewById(R.id.main_btn_option1).setOnClickListener(this);
 		findViewById(R.id.main_btn_option2).setOnClickListener(this);
 		findViewById(R.id.main_btn_option3).setOnClickListener(this);
-		
-		ImageView ivLogo = (ImageView) findViewById(R.id.main_logo);
-		Point point = ScreenUtils.getScreenSize(getBaseContext());
-		int width = point.x;
-		
-		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(width / 2, width / 2);
-		params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-		ivLogo.setLayoutParams(params);
 	}
 
 	@Override
@@ -71,7 +59,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	/**
 	 * Open an activity
 	 * 
-	 * @param type (int) 
+	 * @param type (int)
 	 */
 	private void openIntent(int type) {
 		if (type == OPTION1) {
@@ -94,7 +82,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();

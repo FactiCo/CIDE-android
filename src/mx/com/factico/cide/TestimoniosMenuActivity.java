@@ -33,7 +33,7 @@ public class TestimoniosMenuActivity extends ActionBarActivity implements OnClic
 	
 	public void setSupportActionBar() {
 		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-		mToolbar.setTitle("");
+		mToolbar.setTitle(getResources().getString(R.string.testimonio_name));
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
 		mToolbar.getBackground().setAlpha(0);
         setSupportActionBar(mToolbar);

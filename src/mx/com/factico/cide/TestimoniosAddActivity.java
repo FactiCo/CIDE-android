@@ -120,7 +120,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 
 	public void loadDataArrayAdapter(Spinner spinner, String[] arrayData, String prompt) {
 		ArrayList<String> listData = new ArrayList<String>();
-		listData.add(prompt);
+		listData.add(prompt + " (Obligatorio)");
 		listData.addAll(new ArrayList<String>(Arrays.asList(arrayData)));
 		
 		SpinnerAdapter dataAdapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, listData);
@@ -146,23 +146,33 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	}
 	
 	private void validateEditText() {
-		if (!etName.isEmpty()) {
-			
+		boolean isOkToSend = true;
+		boolean hasError = false;
+		
+		if (etName.hasSyntaxError()) {
+			hasError = true;
 		}
-		if (!etEmail.isEmpty()) {
-			
+		if (etEmail.hasSyntaxError()) {
+			hasError = true;
 		}
-		if (!etExplication.isEmpty()) {
-			
+		if (etExplication.isEmpty()) {
+			isOkToSend = false;
 		}
-		if (spCity.getSelectedItemPosition() != 0) {
-			
+		if (spCity.getSelectedItemPosition() == 0) {
+			isOkToSend = false;
 		}
-		if (spAge.getSelectedItemPosition() != 0) {
-			
+		if (spAge.getSelectedItemPosition() == 0) {
+			isOkToSend = false;
 		}
-		if (spGrade.getSelectedItemPosition() != 0) {
-			
+		
+		if (hasError) {
+			Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.edittext_wrong_info), Toast.LENGTH_LONG);
+		} else {
+			if (!isOkToSend) {
+				Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.edittext_emtpy), Toast.LENGTH_LONG);
+			} else {
+				sendData();
+			}
 		}
 	}
 	

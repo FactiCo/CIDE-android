@@ -1,7 +1,6 @@
 package mx.com.factico.cide.views;
 
 import mx.com.factico.cide.R;
-import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.regularexpressions.RegularExpressions;
 import mx.com.factico.cide.typeface.TypefaceFactory;
 import android.content.Context;
@@ -13,11 +12,11 @@ import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.EditText;
 
 public class CustomEditText extends EditText {
 	private int regexType;
+	private boolean hasSyntaxError = false;
 
 	public CustomEditText(Context context) {
 		super(context);
@@ -58,7 +57,6 @@ public class CustomEditText extends EditText {
 			switch (attr) {
 			case R.styleable.CustomTextView_typefaceRoboto:
 				int type = Integer.parseInt(typedArray.getString(attr));
-				Dialogues.Log("CustomTextView", "TYPEFACE: " + type, Log.ERROR);
 				
 				Typeface typeface = TypefaceFactory.createTypeface(context, type);
 				setTypeface(typeface);
@@ -114,25 +112,41 @@ public class CustomEditText extends EditText {
 				if (regexType == RegularExpressions.KEY_IS_STRING) {
 					if (!RegularExpressions.isString(expression)) {
 						setErrorMessage(getContext().getString(R.string.edittext_error_string));
+						
+						hasSyntaxError = true;
 					} else {
 						setError(null);
+						
+						hasSyntaxError = false;
 					}
 					
 				} else if (regexType == RegularExpressions.KEY_IS_EMAIL) {
 					if (!RegularExpressions.isEmail(expression)) {
 						setErrorMessage(getContext().getString(R.string.edittext_error_email));
+						
+						hasSyntaxError = true;
 					} else {
 						setError(null);
+						
+						hasSyntaxError = false;
 					}
 					
 				} else if (regexType == RegularExpressions.KEY_IS_NUMBER) {
 					if (!RegularExpressions.isNumber(expression)) {
 						setErrorMessage(getContext().getString(R.string.edittext_error_number));
+						
+						hasSyntaxError = true;
 					} else {
 						setError(null);
+						
+						hasSyntaxError = false;
 					}
 				}
 			}
 		}
+	}
+	
+	public boolean hasSyntaxError() {
+		return hasSyntaxError;
 	}
 }

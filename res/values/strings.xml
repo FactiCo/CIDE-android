@@ -2,9 +2,11 @@
 <resources>
 
     <string name="app_name">Justicia Cotidiana</string>
-    <string name="about_name">¿Qué es justicia cotidiana?</string>
-    <string name="testimonio_name">Testimonio</string>
-    <string name="propuesta_name">Propuesta</string>
+    <string name="about_name">¿Qué es la justicia cotidiana?</string>
+    <string name="testimonio_name">Testimonios</string>
+    <string name="propuesta_name">Propuestas</string>
+    
+    <string name="about_description">La justicia cotidiana es el primer contacto entre ciudadanía y Estado para resolver problmeas y abusos que se cometen todos los dias. Una justicia para todos y para todas, todos los dias y en todo lugar. Ayudará a reconstruir la confianza y certidumbre del país.</string>
     
     <string name="action_settings">Preferencias</string>
     <string name="action_close">Cerrar</string>
@@ -60,7 +62,7 @@
     <string name="testimonios_add_gender_female">Mujer</string>
     <string name="testimonios_add_gender_none">Sin especificar</string>
     
-    <string name="testimonios_add_explication">Explicación</string>
+    <string name="testimonios_add_explication">Explicación (Obligatorio)</string>
     
     <string name="testimonios_add_btn_senddata">Enviar testimonio</string>
     
@@ -68,7 +70,8 @@
     <string name="getdata_loading">Obteniendo información.</string>
     
     <!-- Validations EditText -->
-    <string name="edittext_emtpy">Llena todos los campos.</string>
+    <string name="edittext_emtpy">Llena los campos obligatorios.</string>
+    <string name="edittext_obligatorio">Obligatorio.</string>
     <string name="edittext_wrong_info">Corrige los campos marcados.</string>
     <string name="edittext_error_string">Escribe letras validas [a-z A-Z].</string>
     <string name="edittext_error_number">Escribe números validos [0&#8211;9].</string>

@@ -1,13 +1,11 @@
 package mx.com.factico.cide.views;
 
 import mx.com.factico.cide.R;
-import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.typeface.TypefaceFactory;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.Button;
 
 public class CustomButton extends Button {
@@ -51,7 +49,6 @@ public class CustomButton extends Button {
 			switch (attr) {
 			case R.styleable.CustomTextView_typefaceRoboto:
 				int type = Integer.parseInt(typedArray.getString(attr));
-				Dialogues.Log("CustomTextView", "TYPEFACE: " + type, Log.ERROR);
 				
 				Typeface typeface = TypefaceFactory.createTypeface(context, type);
 				setTypeface(typeface);
