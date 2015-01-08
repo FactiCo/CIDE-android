@@ -3,12 +3,10 @@ package mx.com.factico.cide;
 import java.util.List;
 
 import mx.com.factico.cide.beans.Testimonio;
-import mx.com.factico.cide.dialogues.Dialogues;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -65,10 +63,10 @@ public class TestimoniosListActivity extends ActionBarActivity {
 		//Dialogues.Log(TAG_CLASS, "Count: " + testimonio.getCount(), Log.INFO);
 		
 		List<Testimonio.Items> listItems = testimonio.getItems();
-		Dialogues.Log(TAG_CLASS, "Items Size: " + listItems.size(), Log.INFO);
+		//Dialogues.Log(TAG_CLASS, "Items Size: " + listItems.size(), Log.INFO);
 		
 		if (listItems != null  && listItems.size() > 0) {
-			for (int count = 0, i = listItems.size() - 1; count < listItems.size(); i--, count++) {
+			for (int count = 0; count < listItems.size(); count++) {
 				Testimonio.Items item = listItems.get(count);
 				
 				if (item != null) {

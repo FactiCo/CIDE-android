@@ -1998,9 +1998,9 @@ containing a value of this type.
         public static final int acercade=0x7f0a0018;
         public static final int action_close=0x7f0a0016;
         public static final int action_settings=0x7f0a0011;
-        public static final int age_text_view=0x7f0a0020;
-        public static final int alert_dialog_failed=0x7f0a0025;
-        public static final int alert_dialog_success=0x7f0a0024;
+        public static final int age_text_view=0x7f0a0021;
+        public static final int alert_dialog_failed=0x7f0a0026;
+        public static final int alert_dialog_success=0x7f0a0025;
         public static final int app_name=0x7f0a000f;
         public static final int dialog_error=0x7f0a001b;
         public static final int dialog_message=0x7f0a001a;
@@ -2008,60 +2008,61 @@ containing a value of this type.
         public static final int dialog_share=0x7f0a001d;
         /**  Validations EditText 
          */
-        public static final int edittext_emtpy=0x7f0a0044;
-        public static final int edittext_error_email=0x7f0a0049;
-        public static final int edittext_error_number=0x7f0a0048;
-        public static final int edittext_error_string=0x7f0a0047;
-        public static final int edittext_obligatorio=0x7f0a0045;
-        public static final int edittext_wrong_info=0x7f0a0046;
-        public static final int error=0x7f0a001e;
-        public static final int gender_female_button=0x7f0a0022;
-        public static final int gender_male_button=0x7f0a0021;
-        public static final int gender_text_view=0x7f0a0023;
-        public static final int getdata_loading=0x7f0a0043;
+        public static final int edittext_emtpy=0x7f0a0045;
+        public static final int edittext_error_email=0x7f0a004a;
+        public static final int edittext_error_number=0x7f0a0049;
+        public static final int edittext_error_string=0x7f0a0048;
+        public static final int edittext_obligatorio=0x7f0a0046;
+        public static final int edittext_wrong_info=0x7f0a0047;
+        public static final int error_testimonios_recientes=0x7f0a001f;
+        public static final int gender_female_button=0x7f0a0023;
+        public static final int gender_male_button=0x7f0a0022;
+        public static final int gender_text_view=0x7f0a0024;
+        public static final int getdata_loading=0x7f0a0044;
         /**  Parse Framework 
          */
-        public static final int hello_message=0x7f0a001f;
+        public static final int hello_message=0x7f0a0020;
         public static final int hello_world=0x7f0a0010;
         /**  Types of justice 
          */
-        public static final int justice_1=0x7f0a0030;
-        public static final int justice_2=0x7f0a0031;
-        public static final int justice_3=0x7f0a0032;
-        public static final int justice_4=0x7f0a0033;
-        public static final int justice_5=0x7f0a0034;
-        public static final int justice_6=0x7f0a0035;
+        public static final int justice_1=0x7f0a0031;
+        public static final int justice_2=0x7f0a0032;
+        public static final int justice_3=0x7f0a0033;
+        public static final int justice_4=0x7f0a0034;
+        public static final int justice_5=0x7f0a0035;
+        public static final int justice_6=0x7f0a0036;
         public static final int lorem_ipsum=0x7f0a0019;
         /**  Main 
          */
-        public static final int main_menu_option1=0x7f0a0027;
-        public static final int main_menu_option2=0x7f0a0028;
-        public static final int main_menu_option3=0x7f0a0029;
-        public static final int postdata_loading=0x7f0a0042;
+        public static final int main_menu_option1=0x7f0a0028;
+        public static final int main_menu_option2=0x7f0a0029;
+        public static final int main_menu_option3=0x7f0a002a;
+        public static final int no_internet_connection=0x7f0a001e;
+        public static final int postdata_loading=0x7f0a0043;
         public static final int propuesta_name=0x7f0a0014;
         public static final int que_es_justicia=0x7f0a0017;
-        public static final int save_button=0x7f0a0026;
+        public static final int save_button=0x7f0a0027;
         public static final int testimonio_name=0x7f0a0013;
-        public static final int testimonios_add_age=0x7f0a003a;
-        public static final int testimonios_add_btn_new=0x7f0a002c;
-        public static final int testimonios_add_btn_senddata=0x7f0a0041;
-        public static final int testimonios_add_category=0x7f0a0038;
-        public static final int testimonios_add_city=0x7f0a0039;
-        public static final int testimonios_add_email=0x7f0a0037;
-        public static final int testimonios_add_explication=0x7f0a0040;
-        public static final int testimonios_add_gender=0x7f0a003b;
-        public static final int testimonios_add_gender_female=0x7f0a003e;
-        public static final int testimonios_add_gender_male=0x7f0a003d;
-        public static final int testimonios_add_gender_none=0x7f0a003f;
-        public static final int testimonios_add_grade=0x7f0a003c;
+        public static final int testimonios_add_age=0x7f0a003b;
+        public static final int testimonios_add_btn_new=0x7f0a002d;
+        public static final int testimonios_add_btn_senddata=0x7f0a0042;
+        public static final int testimonios_add_category=0x7f0a0039;
+        public static final int testimonios_add_city=0x7f0a003a;
+        public static final int testimonios_add_email=0x7f0a0038;
+        public static final int testimonios_add_explication=0x7f0a0041;
+        public static final int testimonios_add_gender=0x7f0a003c;
+        public static final int testimonios_add_gender_female=0x7f0a003f;
+        public static final int testimonios_add_gender_male=0x7f0a003e;
+        public static final int testimonios_add_gender_none=0x7f0a0040;
+        public static final int testimonios_add_grade=0x7f0a003d;
         /**  Add Testimonio 
          */
-        public static final int testimonios_add_name=0x7f0a0036;
-        public static final int testimonios_add_new=0x7f0a002d;
-        public static final int testimonios_btn_map=0x7f0a002a;
-        public static final int testimonios_news=0x7f0a002b;
-        public static final int testimonios_nomore=0x7f0a002f;
-        public static final int testimonios_seemore=0x7f0a002e;
+        public static final int testimonios_add_name=0x7f0a0037;
+        public static final int testimonios_add_new=0x7f0a002e;
+        public static final int testimonios_btn_map=0x7f0a002b;
+        public static final int testimonios_news=0x7f0a002c;
+        public static final int testimonios_nomore=0x7f0a0030;
+        public static final int testimonios_seemore=0x7f0a002f;
     }
     public static final class style {
         /** 

@@ -1,10 +1,12 @@
 package mx.com.factico.cide;
 
+import java.util.Collections;
 import java.util.List;
 
 import mx.com.factico.cide.beans.Testimonio;
 import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.httpconnection.HttpConnection;
+import mx.com.factico.cide.httpconnection.NetworkUtils;
 import mx.com.factico.cide.interfaces.OnScrollViewListener;
 import mx.com.factico.cide.parser.GsonParser;
 import mx.com.factico.cide.typeface.TypefaceFactory;
@@ -19,7 +21,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -118,8 +119,12 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 	}
 	
 	public void loadDataTestimonios() {
-		GetDataAsyncTask task = new GetDataAsyncTask();
-		task.execute();
+		if (NetworkUtils.isNetworkConnectionAvailable(getBaseContext())) {
+			GetDataAsyncTask task = new GetDataAsyncTask();
+			task.execute();
+		} else {
+			Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.no_internet_connection), Toast.LENGTH_LONG);
+		}
 	}
 	
 	private class GetDataAsyncTask extends AsyncTask<String, String, String> {
@@ -137,6 +142,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			//dialog.show();
 			
 			pbLoading = (ProgressBar) findViewById(R.id.testimonios_pb_loading);
+			pbLoading.setVisibility(View.VISIBLE);
 		}
 		
 		@Override
@@ -164,7 +170,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 				if (testimonio != null) {
 					loadTestimoniosViews(testimonio);
 				} else {
-					Dialogues.Toast(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG);
+					Dialogues.Toast(getBaseContext(), getString(R.string.error_testimonios_recientes), Toast.LENGTH_LONG);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -179,38 +185,41 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		//Dialogues.Log(TAG_CLASS, "Count: " + testimonio.getCount(), Log.INFO);
 		
 		List<Testimonio.Items> listItems = testimonio.getItems();
+		Collections.reverse(listItems);
+		
 		//Dialogues.Log(TAG_CLASS, "Items Size: " + listItems.size(), Log.INFO);
 		
 		if (listItems != null  && listItems.size() > 0) {
-			int countToShow = 0;
-			
-			if (listItems.size() > 3) {
-				countToShow = listItems.size() - 3;
-			}
+			int countToShow = 3;
+			int i = 0;
 			
 			boolean hasInCategory = false;
-			//Dialogues.Toast(getApplicationContext(), "Size: " + listItems.size(), Toast.LENGTH_LONG);
 			
-			for (int count = 0, i = listItems.size() - 1; count < listItems.size(); i--, count++) {
+			for (int count = 0; count < listItems.size(); count++) {
 				Testimonio.Items item = listItems.get(count);
 				
 				if (item != null) {
-					Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
-					Dialogues.Log(TAG_CLASS, "Items Name: " + item.getName(), Log.INFO);
-					Dialogues.Log(TAG_CLASS, "Items Email: " + item.getEmail(), Log.INFO);
-					Dialogues.Log(TAG_CLASS, "Items Category: " + item.getCategory(), Log.INFO);
-					Dialogues.Log(TAG_CLASS, "Items Explanation: " + item.getExplanation(), Log.INFO);
-					Dialogues.Log(TAG_CLASS, "Items State: " + item.getState(), Log.INFO);
-					Dialogues.Log(TAG_CLASS, "Items Age: " + item.getAge(), Log.INFO);
-					Dialogues.Log(TAG_CLASS, "Items Gender: " + item.getGender(), Log.INFO);
-					Dialogues.Log(TAG_CLASS, "Items Grade: " + item.getGrade(), Log.INFO);
-					Dialogues.Log(TAG_CLASS, "Items Created: " + item.getCreated(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Name: " + item.getName(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Email: " + item.getEmail(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Category: " + item.getCategory(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Explanation: " + item.getExplanation(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items State: " + item.getState(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Age: " + item.getAge(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Gender: " + item.getGender(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Grade: " + item.getGrade(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Created: " + item.getCreated(), Log.INFO);
 					
 					if (item.getCategory().equals(categoryName)) {
 						hasInCategory = true;
+						i += 1;
 						
-						View view = createItemView(item);
-						containerTestimonios.addView(view);
+						if (i <= countToShow) {
+							View view = createItemView(item);
+							containerTestimonios.addView(view);
+						} else {
+							break;
+						}
 					}
 				}
 			}

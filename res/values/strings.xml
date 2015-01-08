@@ -21,7 +21,8 @@
     <string name="dialog_ok">Aceptar</string>
     <string name="dialog_share">Compartir</string>
     
-    <string name="error">Algo salió mal. Inténtalo más tarde.</string>
+    <string name="no_internet_connection">Sin conexión a Internet.</string>
+    <string name="error_testimonios_recientes">No se puso cargar la información de los testimonios. Inténtalo más tarde.</string>
     
     <!-- Parse Framework -->
     <string name="hello_message">Welcome! Tell us a bit more about yourself.</string>
