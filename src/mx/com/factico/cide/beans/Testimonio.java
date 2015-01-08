@@ -10,14 +10,14 @@ public class Testimonio implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private long count;
+	private int count;
 	private List<Items> items;
 
-	public long getCount() {
+	public int getCount() {
 		return count;
 	}
 
-	public void setCount(long count) {
+	public void setCount(int count) {
 		this.count = count;
 	}
 

@@ -6,6 +6,8 @@
     <color name="accent">#4DB6AC</color>
     <color name="accent_ligth">#B2DFDB</color>
     
+    <color name="background_splash">#0081AA</color>
+    
     <color name="actionbar_text">#FFFFFF</color>
     
     <color name="control_highlight_color">#FF0000</color>
@@ -27,10 +29,12 @@
     
     <color name="divider_white_color">#FFFFFF</color>
     
-    <color name="btn_dark_green_color">#FF3E8293</color>
-    <color name="btn_dark_green_color_alpha">#AA3E8293</color>
-    <color name="btn_ligth_green_color">#FF58CA8F</color>
-    <color name="btn_ligth_green_color_alpha">#AA58CA8F</color>
+    <color name="btn_dark_green_color">#FF4A8293</color>
+    <color name="btn_dark_green_color_alpha">#AA4A8293</color>
+    <color name="btn_middle_green_color">#FF4FB7AD</color>
+    <color name="btn_middle_green_color_alpha">#AA4FB7AD</color>
+    <color name="btn_ligth_green_color">#FF58CA9C</color>
+    <color name="btn_ligth_green_color_alpha">#AA58CA9C</color>
     
     <!-- Gradient colors -->
     <color name="green_dark_color">#FF3E8293</color>

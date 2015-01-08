@@ -21,6 +21,10 @@ public class TestimoniosListActivity extends ActionBarActivity {
 	
 	public static final String TAG_TESTIMONIO = "testimonio";
 	
+	private int categoyTypeIndex = -1;
+
+	private String categoryName;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,7 +36,7 @@ public class TestimoniosListActivity extends ActionBarActivity {
 
 	public void setSupportActionBar() {
 		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-		mToolbar.setTitle("");
+		mToolbar.setTitle("Testimonios Recientes");
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
 		mToolbar.getBackground().setAlpha(0);
         setSupportActionBar(mToolbar);
@@ -43,6 +47,12 @@ public class TestimoniosListActivity extends ActionBarActivity {
 		
 		if (bundle != null) {
 			Testimonio testimonio = (Testimonio) bundle.getSerializable(TAG_TESTIMONIO);
+			
+			categoyTypeIndex = bundle.getInt(TestimoniosActivity.TAG_CATEGORY_TYPE_INDEX);
+			
+			String[] listCategories = getResources().getStringArray(R.array.testimonios_categories_titles);
+			
+			categoryName = listCategories[categoyTypeIndex];
 			
 			loadTestimoniosViews(testimonio);
 		}
@@ -58,8 +68,8 @@ public class TestimoniosListActivity extends ActionBarActivity {
 		Dialogues.Log(TAG_CLASS, "Items Size: " + listItems.size(), Log.INFO);
 		
 		if (listItems != null  && listItems.size() > 0) {
-			for (int i = listItems.size(); i < 0; i--) {
-				Testimonio.Items item = listItems.get(i);
+			for (int count = 0, i = listItems.size() - 1; count < listItems.size(); i--, count++) {
+				Testimonio.Items item = listItems.get(count);
 				
 				if (item != null) {
 					//Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
@@ -73,8 +83,10 @@ public class TestimoniosListActivity extends ActionBarActivity {
 					//Dialogues.Log(TAG_CLASS, "Items Grade: " + item.getGrade(), Log.INFO);
 					//Dialogues.Log(TAG_CLASS, "Items Created: " + item.getCreated(), Log.INFO);
 					
-					View view = createItemView(item);
-					containerTestimonios.addView(view);
+					if (item.getCategory().equals(categoryName)) {
+						View view = createItemView(item);
+						containerTestimonios.addView(view);
+					}
 				}
 			}
 		}
@@ -106,7 +118,7 @@ public class TestimoniosListActivity extends ActionBarActivity {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.close_green, menu);
+		getMenuInflater().inflate(R.menu.close_white, menu);
 		return true;
 	}
 

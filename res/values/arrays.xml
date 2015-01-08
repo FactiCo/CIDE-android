@@ -67,6 +67,12 @@
         <item>Más de 70 años</item>
     </string-array>
     
+    <string-array name="testimonios_add_gender">
+        <item>Hombre</item>
+        <item>Mujer</item>
+        <item>Sin especificar</item>
+    </string-array>
+    
     <string-array name="testimonios_add_grades">
         <item>Sin estudios</item>
         <item>Primaria</item>

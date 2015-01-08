@@ -1,14 +1,17 @@
 package mx.com.factico.cide;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import mx.com.factico.cide.adapters.SpinnerAdapter;
 import mx.com.factico.cide.beans.Testimonio;
 import mx.com.factico.cide.dialogues.Dialogues;
+import mx.com.factico.cide.httpconnection.HttpConnection;
+import mx.com.factico.cide.parser.GsonParser;
 import mx.com.factico.cide.regularexpressions.RegularExpressions;
 import mx.com.factico.cide.views.CustomEditText;
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,8 +23,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -37,7 +38,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	private CustomEditText etExplication;
 	private Spinner spCity;
 	private Spinner spAge;
-	private RadioGroup rgGender;
+	private Spinner spGender;
 	private Spinner spGrade;
 	
 	private Button btnSendData;
@@ -80,10 +81,12 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		
 		spCity = (Spinner) findViewById(R.id.testimonios_add_sp_city); // City
 		loadDataFromResources(spCity); // Load data to spinner from resources
+		
 		spAge = (Spinner) findViewById(R.id.testimonios_add_sp_age); // Age
 		loadDataFromResources(spAge); // Load data to spinner from resources
 
-		rgGender = (RadioGroup) findViewById(R.id.testimonios_add_rg_gender); // Gender
+		spGender = (Spinner) findViewById(R.id.testimonios_add_sp_gender); // Gender
+		loadDataFromResources(spGender); // Load data to spinner from resources
 
 		spGrade = (Spinner) findViewById(R.id.testimonios_add_sp_grade); // Grade
 		loadDataFromResources(spGrade); // Load data to spinner from resources
@@ -115,6 +118,11 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 				arayData = getResources().getStringArray(R.array.testimonios_add_grades);
 				loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_grade));
 				break;
+				
+			case R.id.testimonios_add_sp_gender:
+				arayData = getResources().getStringArray(R.array.testimonios_add_gender);
+				loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_gender));
+				break;
 	
 			default:
 				break;
@@ -142,6 +150,14 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		case R.id.testimonios_add_btn_senddata:
 			validateEditText();
 			break;
+			
+		case R.id.dialog_testimonio_add_ok:
+			finish();
+			break;
+			
+		case R.id.dialog_testimonio_add_share:
+			shareInSocialMedia();
+			break;
 
 		default:
 			break;
@@ -167,6 +183,9 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		if (spAge.getSelectedItemPosition() == 0) {
 			isOkToSend = false;
 		}
+		if (spGender.getSelectedItemPosition() == 0) {
+			isOkToSend = false;
+		}
 		
 		if (hasError) {
 			Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.edittext_wrong_info), Toast.LENGTH_LONG);
@@ -188,11 +207,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		testimonio.setExplanation(etExplication.getText().toString()); // Getting and setting Description
 		testimonio.setState(String.valueOf(spCity.getSelectedItemPosition())); // Getting and setting City
 		testimonio.setAge(spAge.getSelectedItem().toString()); // Getting and setting Age
-		
-		int radioButtonID = rgGender.getCheckedRadioButtonId();
-		RadioButton radioButton = (RadioButton) rgGender.findViewById(radioButtonID);
-		testimonio.setGender(radioButton.getText().toString()); // Getting and setting Gender
-		
+		testimonio.setGender(spGender.getSelectedItem().toString()); // Getting and setting Gender
 		testimonio.setGrade(spGrade.getSelectedItem().toString()); // Getting and setting Grade
 		
 		SendDataAsyncTask sendDataTask = new SendDataAsyncTask(testimonio); // Starting sending data task
@@ -221,18 +236,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 			Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 			String json = gson.toJson(this.testimonio);
 			
-			String jsonUTF8 = "";
-			try {
-				jsonUTF8 = new String(json.getBytes("ISO-8859-1"), "UTF-8");
-				
-				Dialogues.Log(TAG_CLASS, "Http Post Response:" + json.toString(), Log.DEBUG);
-				Dialogues.Log(TAG_CLASS, "Http Post Response UTF-8:" + jsonUTF8.toString(), Log.DEBUG);
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-			
-			//String result = HttpConnection.POST(HttpConnection.URL_TESTIMONIOS, jsonUTF8);
-			String result = "";
+			String result = HttpConnection.POST(HttpConnection.URL_TESTIMONIOS, json);
 			return result;
 		}
 
@@ -242,9 +246,41 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 				dialog.dismiss();
 			}
 			
-			Dialogues.Toast(getApplicationContext(), "Result: " + result, Toast.LENGTH_LONG);
-			Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
+			if (result != null) {
+				// Dialogues.Toast(getApplicationContext(), "Result: " + result, Toast.LENGTH_LONG);
+				Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
+				
+				String resultState = GsonParser.getResultFromJSON(result);
+				if (resultState.equals(GsonParser.TAG_RESULT_OK)) {
+					showResultDialog();
+				} else {
+					Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
+				}
+			} else {
+				Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
+			}
+			
+			showResultDialog();
 		}
+	}
+	
+	@SuppressLint("InflateParams")
+	private void showResultDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		View view = getLayoutInflater().inflate(R.layout.dialog_testimonio_add, null, false);
+		
+		view.findViewById(R.id.dialog_testimonio_add_ok).setOnClickListener(this);
+		view.findViewById(R.id.dialog_testimonio_add_share).setOnClickListener(this);
+		
+		builder.setView(view);
+		
+		AlertDialog dialog = builder.create();
+		dialog.setCanceledOnTouchOutside(false);
+		dialog.show();
+	}
+	
+	private void shareInSocialMedia() {
+		
 	}
 	
 	@Override

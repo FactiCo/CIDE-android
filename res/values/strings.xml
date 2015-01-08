@@ -11,10 +11,15 @@
     <string name="action_settings">Preferencias</string>
     <string name="action_close">Cerrar</string>
     
-    <string name="lorem_ipsum_title">Justicia en el trabajo</string>
-    <string name="lorem_ipsum_que_es_justicia">Primer contacto ciudadanía &#8211; gobierno para resolver abusos cometidos a diario</string>
-    <string name="lorem_ipsum_description">cbsabcjksakcbjsab jcbjlwqbljwlqljbwjl bdjqwbjcbjwqjlcbwqbjdbzjw bqwjbdzjbqwj qjwbdzjlqw bdzjqbwljd dzjqdljqw dljqwbdlzj qwjlqwbdz qwljbqwdz qwljbdl	kndlm dnwqld qw dm qwldnlkwqd zqwd ljqwdmqw dlnwqdl wqdlnqwljd ljwqkzdwq ldnzlwd zljqwndl wqldnqwld lwqk dkñwqdl wqlkdbnwqjl</string>
+    <string name="que_es_justicia">Primer contacto ciudadanía &#8211; gobierno para resolver abusos cometidos a diario</string>
     
+    <string name="acercade">Acerca de</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nibh nec sapien sagittis pretium. Morbi pharetra bibendum convallis. Sed iaculis, magna in ultrices egestas, tellus nulla tempor est, ut congue velit lacus porta felis. Duis enim ex, commodo et molestie id, eleifend eget risus. Suspendisse eu dolor suscipit, sollicitudin diam vel, sodales orci. Morbi suscipit felis nec dapibus facilisis. Sed nec nulla in dui ultricies gravida non eleifend urna. Curabitur lectus elit, maximus id commodo ut, lobortis et ligula. Duis viverra mi quis congue hendrerit. Suspendisse potenti.</string>
+    
+    <string name="dialog_message">¡Gracias por enviar tu testimonio!</string>
+    <string name="dialog_error">Algo salió mal al enviar el testimonio. Inténtalo de nuevo.</string>
+    <string name="dialog_ok">Aceptar</string>
+    <string name="dialog_share">Compartir</string>
     
     <string name="error">Algo salió mal. Inténtalo más tarde.</string>
     
@@ -63,11 +68,11 @@
     <string name="testimonios_add_gender_female">Mujer</string>
     <string name="testimonios_add_gender_none">Sin especificar</string>
     
-    <string name="testimonios_add_explication">Explicación (Obligatorio)</string>
+    <string name="testimonios_add_explication">Explicación (Obligatorio)</string> 
     
     <string name="testimonios_add_btn_senddata">Enviar testimonio</string>
     
-    <string name="postdata_loading">Enviando información.</string>
+    <string name="postdata_loading">Enviando testimonio.</string>
     <string name="getdata_loading">Obteniendo información.</string>
     
     <!-- Validations EditText -->

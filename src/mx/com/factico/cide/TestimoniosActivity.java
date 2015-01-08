@@ -19,6 +19,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -44,6 +45,8 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 	private final int TAG_BTN_MORE = 20150105;
 	
 	private Testimonio testimonio = null;
+
+	private String categoryName;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +84,9 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			String[] listCategories = getResources().getStringArray(R.array.testimonios_categories_titles);
 			String[] listDesciptions = getResources().getStringArray(R.array.testimonios_categories_descriptions);
 			
-			((TextView) findViewById(R.id.testimonios_tv_title)).setText(listCategories[categoyTypeIndex]);
+			categoryName = listCategories[categoyTypeIndex];
+			
+			((TextView) findViewById(R.id.testimonios_tv_title)).setText(categoryName);
 			((TextView) findViewById(R.id.testimonios_tv_desciption)).setText(listDesciptions[categoyTypeIndex]);
 			
 	        Point point = ScreenUtils.getScreenSize(this);
@@ -177,62 +182,68 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		//Dialogues.Log(TAG_CLASS, "Items Size: " + listItems.size(), Log.INFO);
 		
 		if (listItems != null  && listItems.size() > 0) {
-			int count = 3;
+			int countToShow = 0;
 			
-			if (listItems.size() <= 3) {
-				count = listItems.size();
-			} else {
-				count = listItems.size() - 3;
+			if (listItems.size() > 3) {
+				countToShow = listItems.size() - 3;
 			}
 			
-			for (int i = listItems.size(); i < count; i--) {
-				Testimonio.Items item = listItems.get(i);
+			boolean hasInCategory = false;
+			//Dialogues.Toast(getApplicationContext(), "Size: " + listItems.size(), Toast.LENGTH_LONG);
+			
+			for (int count = 0, i = listItems.size() - 1; count < listItems.size(); i--, count++) {
+				Testimonio.Items item = listItems.get(count);
 				
 				if (item != null) {
-					//Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
-					//Dialogues.Log(TAG_CLASS, "Items Name: " + item.getName(), Log.INFO);
-					//Dialogues.Log(TAG_CLASS, "Items Email: " + item.getEmail(), Log.INFO);
-					//Dialogues.Log(TAG_CLASS, "Items Category: " + item.getCategory(), Log.INFO);
-					//Dialogues.Log(TAG_CLASS, "Items Explanation: " + item.getExplanation(), Log.INFO);
-					//Dialogues.Log(TAG_CLASS, "Items EntidadFederativa: " + item.getEntidadFederativa(), Log.INFO);
-					//Dialogues.Log(TAG_CLASS, "Items Age: " + item.getAge(), Log.INFO);
-					//Dialogues.Log(TAG_CLASS, "Items Gender: " + item.getGender(), Log.INFO);
-					//Dialogues.Log(TAG_CLASS, "Items Grade: " + item.getGrade(), Log.INFO);
-					//Dialogues.Log(TAG_CLASS, "Items Created: " + item.getCreated(), Log.INFO);
+					Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
+					Dialogues.Log(TAG_CLASS, "Items Name: " + item.getName(), Log.INFO);
+					Dialogues.Log(TAG_CLASS, "Items Email: " + item.getEmail(), Log.INFO);
+					Dialogues.Log(TAG_CLASS, "Items Category: " + item.getCategory(), Log.INFO);
+					Dialogues.Log(TAG_CLASS, "Items Explanation: " + item.getExplanation(), Log.INFO);
+					Dialogues.Log(TAG_CLASS, "Items State: " + item.getState(), Log.INFO);
+					Dialogues.Log(TAG_CLASS, "Items Age: " + item.getAge(), Log.INFO);
+					Dialogues.Log(TAG_CLASS, "Items Gender: " + item.getGender(), Log.INFO);
+					Dialogues.Log(TAG_CLASS, "Items Grade: " + item.getGrade(), Log.INFO);
+					Dialogues.Log(TAG_CLASS, "Items Created: " + item.getCreated(), Log.INFO);
 					
-					View view = createItemView(item);
-					containerTestimonios.addView(view);
+					if (item.getCategory().equals(categoryName)) {
+						hasInCategory = true;
+						
+						View view = createItemView(item);
+						containerTestimonios.addView(view);
+					}
 				}
 			}
 			
-			Button btnMoreTestimonios = new Button(this);
-			btnMoreTestimonios.setPadding(20, 20, 20, 20);
-			btnMoreTestimonios.setBackgroundResource(R.drawable.selector_btn_ligth);
-			btnMoreTestimonios.setText(getResources().getString(R.string.testimonios_seemore));
-			btnMoreTestimonios.setTextColor(getResources().getColor(R.color.white));
-			btnMoreTestimonios.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-			btnMoreTestimonios.setId(TAG_BTN_MORE);
-			btnMoreTestimonios.setOnClickListener(this);
-			
-			Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.ROBOTOSLAB_REGULAR);
-			btnMoreTestimonios.setTypeface(typeface);
-			
-			containerTestimonios.setOnClickListener(this);
-			containerTestimonios.addView(btnMoreTestimonios);
-			
-		} else {
-			TextView tvNoTestimonios = new TextView(this);
-			tvNoTestimonios.setPadding(30, 30, 30, 30);
-			tvNoTestimonios.setBackgroundColor(getResources().getColor(R.color.white));
-			tvNoTestimonios.setText(getResources().getString(R.string.testimonios_nomore));
-			tvNoTestimonios.setTextColor(getResources().getColor(R.color.title_color));
-			tvNoTestimonios.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-			tvNoTestimonios.setGravity(Gravity.CENTER);
-			
-			Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.ROBOTOSLAB_REGULAR);
-			tvNoTestimonios.setTypeface(typeface);
-			
-			containerTestimonios.addView(tvNoTestimonios);
+			if (hasInCategory) {
+				Button btnMoreTestimonios = new Button(this);
+				btnMoreTestimonios.setPadding(20, 20, 20, 20);
+				btnMoreTestimonios.setBackgroundResource(R.drawable.selector_btn_ligth);
+				btnMoreTestimonios.setText(getResources().getString(R.string.testimonios_seemore));
+				btnMoreTestimonios.setTextColor(getResources().getColor(R.color.white));
+				btnMoreTestimonios.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+				btnMoreTestimonios.setId(TAG_BTN_MORE);
+				btnMoreTestimonios.setOnClickListener(this);
+				
+				Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.ROBOTOSLAB_REGULAR);
+				btnMoreTestimonios.setTypeface(typeface);
+				
+				containerTestimonios.setOnClickListener(this);
+				containerTestimonios.addView(btnMoreTestimonios);
+			} else {
+				TextView tvNoTestimonios = new TextView(this);
+				tvNoTestimonios.setPadding(30, 30, 30, 30);
+				tvNoTestimonios.setBackgroundColor(getResources().getColor(R.color.white));
+				tvNoTestimonios.setText(getResources().getString(R.string.testimonios_nomore));
+				tvNoTestimonios.setTextColor(getResources().getColor(R.color.title_color));
+				tvNoTestimonios.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+				tvNoTestimonios.setGravity(Gravity.CENTER);
+				
+				Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.ROBOTOSLAB_REGULAR);
+				tvNoTestimonios.setTypeface(typeface);
+				
+				containerTestimonios.addView(tvNoTestimonios);
+			}
 		}
 	}
 	
@@ -284,6 +295,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 	private void openListTestimonioIntent() {
 		Intent intent = new Intent(getBaseContext(), TestimoniosListActivity.class);
 		intent.putExtra(TestimoniosListActivity.TAG_TESTIMONIO, testimonio);
+		intent.putExtra(TAG_CATEGORY_TYPE_INDEX, categoyTypeIndex);
 		startActivity(intent);
 	}
 	

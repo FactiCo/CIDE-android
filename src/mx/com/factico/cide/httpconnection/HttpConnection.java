@@ -40,8 +40,9 @@ public class HttpConnection {
 			
 			HttpEntity httpEntity = response.getEntity();
 			
-			String entityString = EntityUtils.toString(httpEntity);
-			result = new String(entityString.getBytes("ISO-8859-1"), "UTF-8");
+			//String entityString = EntityUtils.toString(httpEntity);
+			//result = new String(entityString.getBytes("ISO-8859-1"), "UTF-8");
+			result = EntityUtils.toString(httpEntity);
 			
 			Dialogues.Log(TAG_CLASS, result, Log.ERROR);
 			
