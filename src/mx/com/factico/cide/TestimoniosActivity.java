@@ -1,31 +1,34 @@
 package mx.com.factico.cide;
 
+import java.util.Collections;
 import java.util.List;
 
-import mx.com.factico.cide.animations.AnimationsFactory;
 import mx.com.factico.cide.beans.Testimonio;
 import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.httpconnection.HttpConnection;
+import mx.com.factico.cide.httpconnection.NetworkUtils;
 import mx.com.factico.cide.interfaces.OnScrollViewListener;
 import mx.com.factico.cide.parser.GsonParser;
+import mx.com.factico.cide.typeface.TypefaceFactory;
 import mx.com.factico.cide.utils.ScreenUtils;
 import mx.com.factico.cide.views.CustomScrollView;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -40,6 +43,12 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 
 	private Toolbar mToolbar;
 	
+	private final int TAG_BTN_MORE = 20150105;
+	
+	private Testimonio testimonio = null;
+
+	private String categoryName;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,7 +62,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		mToolbar = (Toolbar) findViewById(R.id.toolbar);
 		mToolbar.setTitle("");
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
-		mToolbar.getBackground().setAlpha(255);
+		mToolbar.getBackground().setAlpha(0);
         setSupportActionBar(mToolbar);
         
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -69,15 +78,16 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			CustomScrollView svScroll = (CustomScrollView) findViewById(R.id.testimonios_sv_scroll);
 			svScroll.setOnScrollViewListener(new OnScrollViewListener() {
 				public void onScrollChanged(CustomScrollView v, int l, int t, int oldl, int oldt) {
-					// Dialogues.Log(TAG_CLASS, "t: " + t + ", oldt: " + oldt, Log.INFO);
-					setOnScrollChanged(v, l, t, oldl, oldt);
+					// setOnScrollChanged(v, l, t, oldl, oldt);
 				}
 			});
 
 			String[] listCategories = getResources().getStringArray(R.array.testimonios_categories_titles);
 			String[] listDesciptions = getResources().getStringArray(R.array.testimonios_categories_descriptions);
 			
-			((TextView) findViewById(R.id.testimonios_tv_title)).setText(listCategories[categoyTypeIndex]);
+			categoryName = listCategories[categoyTypeIndex];
+			
+			((TextView) findViewById(R.id.testimonios_tv_title)).setText(categoryName);
 			((TextView) findViewById(R.id.testimonios_tv_desciption)).setText(listDesciptions[categoyTypeIndex]);
 			
 	        Point point = ScreenUtils.getScreenSize(this);
@@ -85,7 +95,14 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			int height = point.y;
 	        
 			// Set dimensions depending on screen
-			findViewById(R.id.testimonios_iv_logo).setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 3));
+			ImageView ivLogo = (ImageView) findViewById(R.id.testimonios_iv_logo);
+			ivLogo.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 3));
+			ivLogo.setScaleType(ScaleType.CENTER_INSIDE);
+			if (categoyTypeIndex == 0)	ivLogo.setImageResource(R.drawable.ic_justicia_trabajo);
+			if (categoyTypeIndex == 1)	ivLogo.setImageResource(R.drawable.ic_justicia_familiar);
+			if (categoyTypeIndex == 2)	ivLogo.setImageResource(R.drawable.ic_justicia_vecinal);
+			if (categoyTypeIndex == 3)	ivLogo.setImageResource(R.drawable.ic_justicia_funcionarios);
+			if (categoyTypeIndex == 4)	ivLogo.setImageResource(R.drawable.ic_justicia_emprendedores);
 			// findViewById(R.id.testimonios_vg_description).setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 3));
 			// findViewById(R.id.testimonios_vg_container).setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height / 10 * 3));
 			
@@ -93,32 +110,21 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			params.topMargin = (height / 10 * 3) - (width / 6 / 3);
 			params.rightMargin = width / 20;
 			params.gravity = Gravity.END;
-			Button btnAddTestimonio = (Button) findViewById(R.id.testimonios_btn_addtestimonio);
-			btnAddTestimonio.setLayoutParams(params);
+			TextView btnAddTestimonio = (TextView) findViewById(R.id.testimonios_btn_addtestimonio);
+			//btnAddTestimonio.setLayoutParams(params);
 			btnAddTestimonio.setOnClickListener(this);
 			
 	        loadDataTestimonios();
 		}
 	}
 	
-	boolean isToolbarHide = false;
-	private void setOnScrollChanged(CustomScrollView v, int l, int t, int oldl, int oldt) {
-		//Dialogues.Log(TAG_CLASS, "t: " + t + ", oldt: " + oldt, Log.INFO);
-		
-		Dialogues.Log(TAG_CLASS, "Scroll: " + v.getScrollY(), Log.INFO);
-		if (v.getScrollY() >= android.R.attr.actionBarSize) {
-			Dialogues.Log(TAG_CLASS, "Hidding toolbar", Log.INFO);
-			
-			if (isToolbarHide) {
-				Animation animation = AnimationsFactory.translateY(500, 0, -1 * android.R.attr.actionBarSize);
-				mToolbar.startAnimation(animation);
-			}
-		}
-	}
-	
 	public void loadDataTestimonios() {
-		GetDataAsyncTask task = new GetDataAsyncTask();
-		task.execute();
+		if (NetworkUtils.isNetworkConnectionAvailable(getBaseContext())) {
+			GetDataAsyncTask task = new GetDataAsyncTask();
+			task.execute();
+		} else {
+			Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.no_internet_connection), Toast.LENGTH_LONG);
+		}
 	}
 	
 	private class GetDataAsyncTask extends AsyncTask<String, String, String> {
@@ -136,6 +142,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			//dialog.show();
 			
 			pbLoading = (ProgressBar) findViewById(R.id.testimonios_pb_loading);
+			pbLoading.setVisibility(View.VISIBLE);
 		}
 		
 		@Override
@@ -155,16 +162,15 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			}
 			
 			// Dialogues.Toast(getApplicationContext(), "Result: " + result, Toast.LENGTH_LONG);
-			Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
+			// Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
 			
-			Testimonio testimonio = null;
 			try {
 				testimonio = GsonParser.getTestimonioFromJSON(result);
 				
 				if (testimonio != null) {
 					loadTestimoniosViews(testimonio);
 				} else {
-					Dialogues.Toast(getBaseContext(), getString(R.string.error), Toast.LENGTH_LONG);
+					Dialogues.Toast(getBaseContext(), getString(R.string.error_testimonios_recientes), Toast.LENGTH_LONG);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -175,27 +181,77 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 	private void loadTestimoniosViews(Testimonio testimonio) {
 		LinearLayout containerTestimonios = (LinearLayout) findViewById(R.id.testimonios_vg_container);
 		
-		Dialogues.Log(TAG_CLASS, "/***** Testimonio", Log.INFO);
-		Dialogues.Log(TAG_CLASS, "Count: " + testimonio.getCount(), Log.INFO);
+		//Dialogues.Log(TAG_CLASS, "/***** Testimonio", Log.INFO);
+		//Dialogues.Log(TAG_CLASS, "Count: " + testimonio.getCount(), Log.INFO);
 		
 		List<Testimonio.Items> listItems = testimonio.getItems();
-		Dialogues.Log(TAG_CLASS, "Items Size: " + listItems.size(), Log.INFO);
+		Collections.reverse(listItems);
+		
+		//Dialogues.Log(TAG_CLASS, "Items Size: " + listItems.size(), Log.INFO);
 		
 		if (listItems != null  && listItems.size() > 0) {
-			for (Testimonio.Items item : listItems) {
-				Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Name: " + item.getName(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Email: " + item.getEmail(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Category: " + item.getCategory(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Explanation: " + item.getExplanation(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items EntidadFederativa: " + item.getEntidadFederativa(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Age: " + item.getAge(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Gender: " + item.getGender(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Grade: " + item.getGrade(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Created: " + item.getCreated(), Log.INFO);
+			int countToShow = 3;
+			int i = 0;
+			
+			boolean hasInCategory = false;
+			
+			for (int count = 0; count < listItems.size(); count++) {
+				Testimonio.Items item = listItems.get(count);
 				
-				View view = createItemView(item);
-				containerTestimonios.addView(view);
+				if (item != null) {
+					// Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Name: " + item.getName(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Email: " + item.getEmail(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Category: " + item.getCategory(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Explanation: " + item.getExplanation(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items State: " + item.getState(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Age: " + item.getAge(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Gender: " + item.getGender(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Grade: " + item.getGrade(), Log.INFO);
+					// Dialogues.Log(TAG_CLASS, "Items Created: " + item.getCreated(), Log.INFO);
+					
+					if (item.getCategory().equals(categoryName)) {
+						hasInCategory = true;
+						i += 1;
+						
+						if (i <= countToShow) {
+							View view = createItemView(item);
+							containerTestimonios.addView(view);
+						} else {
+							break;
+						}
+					}
+				}
+			}
+			
+			if (hasInCategory) {
+				Button btnMoreTestimonios = new Button(this);
+				btnMoreTestimonios.setPadding(20, 20, 20, 20);
+				btnMoreTestimonios.setBackgroundResource(R.drawable.selector_btn_ligth);
+				btnMoreTestimonios.setText(getResources().getString(R.string.testimonios_seemore));
+				btnMoreTestimonios.setTextColor(getResources().getColor(R.color.white));
+				btnMoreTestimonios.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+				btnMoreTestimonios.setId(TAG_BTN_MORE);
+				btnMoreTestimonios.setOnClickListener(this);
+				
+				Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.ROBOTOSLAB_REGULAR);
+				btnMoreTestimonios.setTypeface(typeface);
+				
+				containerTestimonios.setOnClickListener(this);
+				containerTestimonios.addView(btnMoreTestimonios);
+			} else {
+				TextView tvNoTestimonios = new TextView(this);
+				tvNoTestimonios.setPadding(30, 30, 30, 30);
+				tvNoTestimonios.setBackgroundColor(getResources().getColor(R.color.white));
+				tvNoTestimonios.setText(getResources().getString(R.string.testimonios_nomore));
+				tvNoTestimonios.setTextColor(getResources().getColor(R.color.title_color));
+				tvNoTestimonios.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+				tvNoTestimonios.setGravity(Gravity.CENTER);
+				
+				Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.ROBOTOSLAB_REGULAR);
+				tvNoTestimonios.setTypeface(typeface);
+				
+				containerTestimonios.addView(tvNoTestimonios);
 			}
 		}
 	}
@@ -203,6 +259,13 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 	@SuppressLint("InflateParams")
 	private View createItemView(Testimonio.Items item) {
 		View view = getLayoutInflater().inflate(R.layout.item_testimonios, null, false);
+		
+		ImageView ivIcUser = (ImageView) view.findViewById(R.id.item_testimonios_iv_icuser);
+		if (item.getGender().equals("Hombre")) {
+			ivIcUser.setImageResource(R.drawable.ic_hombre);
+		} else if (item.getGender().equals("Mujer")) {
+			ivIcUser.setImageResource(R.drawable.ic_mujer);
+		}
 		
 		TextView tvTitle = (TextView) view.findViewById(R.id.item_testimonios_tv_title);
 		if (item.getName() != null && !item.getName().equals("")) {
@@ -222,16 +285,32 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		switch (v.getId()) {
 		
 		case R.id.testimonios_btn_addtestimonio:
-			openAddTetsimonioIntent();
+			openAddTestimonioIntent();
 			break;
 
+		case R.id.testimonios_vg_container:
+			openListTestimonioIntent();
+			break;
+			
+		case TAG_BTN_MORE:
+			openListTestimonioIntent();
+			break;
+			
 		default:
 			break;
 		}
 	}
 	
-	private void openAddTetsimonioIntent() {
+	private void openListTestimonioIntent() {
+		Intent intent = new Intent(getBaseContext(), TestimoniosListActivity.class);
+		intent.putExtra(TestimoniosListActivity.TAG_TESTIMONIO, testimonio);
+		intent.putExtra(TAG_CATEGORY_TYPE_INDEX, categoyTypeIndex);
+		startActivity(intent);
+	}
+	
+	private void openAddTestimonioIntent() {
 		Intent intent = new Intent(getBaseContext(), TestimoniosAddActivity.class);
+		intent.putExtra(TAG_CATEGORY_TYPE_INDEX, categoyTypeIndex);
 		startActivity(intent);
 	}
 }

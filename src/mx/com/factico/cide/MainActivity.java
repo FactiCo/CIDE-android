@@ -59,7 +59,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	/**
 	 * Open an activity
 	 * 
-	 * @param type (int) 
+	 * @param type (int)
 	 */
 	private void openIntent(int type) {
 		if (type == OPTION1) {
@@ -69,6 +69,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		} else if (type == OPTION2) {
 			Intent intent = new Intent(this, TestimoniosMenuActivity.class);
 			startActivity(intent);
+			overridePendingTransition(0, 0);
 			
 		} else if (type == OPTION3) {
 			Intent intent = new Intent(this, PropuestasActivity.class);
@@ -78,26 +79,22 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_main_settings) {
-			openIntent();
+			openSettingsIntent();
 			
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 	
-	private void openIntent() {
+	private void openSettingsIntent() {
 		Intent intent = new Intent(getBaseContext(), SettingsActivity.class);
 		startActivity(intent);
 	}

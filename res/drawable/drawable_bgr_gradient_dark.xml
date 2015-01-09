@@ -8,8 +8,8 @@
 
     <gradient
         android:angle="45"
-        android:endColor="@color/btn_dark_green_color"
-        android:startColor="@color/btn_ligth_green_color" />
+        android:endColor="@color/green_dark_color"
+        android:startColor="@color/green_middle_color" />
 
     <corners
         android:bottomLeftRadius="0dp"

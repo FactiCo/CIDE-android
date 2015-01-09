@@ -1,30 +1,31 @@
 package mx.com.factico.cide.views;
 
 import mx.com.factico.cide.R;
-import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.typeface.TypefaceFactory;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.Button;
 
 public class CustomButton extends Button {
 	
 	public CustomButton(Context context) {
 		super(context);
-		init(context);
+		if (!isInEditMode())
+			init(context);
 	}
 
 	public CustomButton(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		init(context, attrs);
+		if (!isInEditMode())
+			init(context, attrs);
 	}
 
 	public CustomButton(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		init(context, attrs);
+		if (!isInEditMode())
+			init(context, attrs);
 	}
 	
 	public void init(Context context) {
@@ -48,9 +49,8 @@ public class CustomButton extends Button {
 			switch (attr) {
 			case R.styleable.CustomTextView_typefaceRoboto:
 				int type = Integer.parseInt(typedArray.getString(attr));
-				Dialogues.Log("CustomTextView", "TYPEFACE: " + type, Log.ERROR);
 				
-				Typeface typeface = TypefaceFactory.setTypeface(context, type);
+				Typeface typeface = TypefaceFactory.createTypeface(context, type);
 				setTypeface(typeface);
 				
 				break;

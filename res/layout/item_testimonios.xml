@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cide="http://schemas.android.com/apk/res/mx.com.factico.cide"
     android:id="@+id/item_testimonios_vg_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,6 +17,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:scaleType="centerInside"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingBottom="10dp"
         android:contentDescription="@string/testimonio_name"
         android:src="@drawable/ic_launcher" />
 
@@ -26,23 +31,25 @@
         android:layout_weight="4"
         android:orientation="vertical" >
 
-        <TextView
+        <mx.com.factico.cide.views.CustomTextView
             android:id="@+id/item_testimonios_tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/title_color"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            cide:typefaceRoboto="bold" />
 
-        <TextView
+        <mx.com.factico.cide.views.CustomTextView
             android:id="@+id/item_testimonios_tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="4"
             android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/default_text_color" />
+            android:textColor="@color/default_text_color"
+            cide:typefaceRoboto="regular" />
     </LinearLayout>
 
 </LinearLayout>
