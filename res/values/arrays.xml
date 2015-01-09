@@ -3,18 +3,18 @@
 
     <string-array name="testimonios_categories_titles">
         <item>Justicia en el trabajo</item>
-        <item>Justicia en la familia</item>
+        <item>Justicia en las familias</item>
         <item>Justicia vecinal y comunitaria</item>
-        <item>Justicia para funcionarios</item>
+        <item>Justicia para ciudadanos</item>
         <item>Justicia para emprendedores</item>
     </string-array>
     
     <string-array name="testimonios_categories_descriptions">
-        <item>Justicia en el trabajo Lorem Ipsum jlbljbjl bjdbasljdbjlsabdls lkanDKLNAKLDBLASBDLAS </item>
-        <item>Justicia en la familia Lorem Ipsum jlbljbjl bjdbasljdbjlsabdls lkanDKLNAKLDBLASBDLAS </item>
-        <item>Justicia vecinal y comunitaria Lorem Ipsum jlbljbjl bjdbasljdbjlsabdls lkanDKLNAKLDBLASBDLAS </item>
-        <item>Justicia para funcionarios Lorem Ipsum jlbljbjl bjdbasljdbjlsabdls lkanDKLNAKLDBLASBDLAS </item>
-        <item>Justicia para emprendedores Lorem Ipsum jlbljbjl bjdbasljdbjlsabdls lkanDKLNAKLDBLASBDLAS </item>
+        <item>La Justicia Laboral es un tema pendiente en México. Actualmente, los procesos para obtener justicia en el trabajo son caros, complejos y las figuras de justicia alternativa se utilizan poco.</item>
+        <item>Justicia en las Familias trata diversos temas y conflictos como el divorcio, sucesiones, pensiones alimenticias, entre otros. Es un tema complejo, pues intervienen relaciones de poder y vínculos afectivos. Las mujeres suelen ser las personas más desfavorecidas.</item>
+        <item>La convivencia vecinal y comunitaria es probablemente el mayor tema de conflictos diarios entre personas que habitan un mismo espacio o territorio. Conflictos derivados de los espacios públicos y uso de suelo se tratarán en este apartado.</item>
+        <item>Los ciudadanos tienen la facultad de defenderse frente a actos injustos de las autoridades. Sin embargo, en muchas ocasiones estos procesos resultan mucho más largos y complejos que la reparación del daño. La responsabilidad patrimonial del Estado es un tema fundamental.</item>
+        <item>Emprender es un reto constante en términos legales. Los micro, pequeños y medianos empresarios se enfrentan a numerosos obstáculos y las alternativas de justicia son pocas.</item>
     </string-array>
     
     <string-array name="testimonios_add_cities">
@@ -65,6 +65,12 @@
         <item>61 &#8211; 65 años</item>
         <item>66 &#8211; 70 años</item>
         <item>Más de 70 años</item>
+    </string-array>
+    
+    <string-array name="testimonios_add_gender">
+        <item>Hombre</item>
+        <item>Mujer</item>
+        <item>Sin especificar</item>
     </string-array>
     
     <string-array name="testimonios_add_grades">

@@ -1,18 +1,23 @@
 package mx.com.factico.cide.beans;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.google.gson.annotations.Expose;
 
-public class Testimonio {
-	private long count;
+public class Testimonio implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int count;
 	private List<Items> items;
 
-	public long getCount() {
+	public int getCount() {
 		return count;
 	}
 
-	public void setCount(long count) {
+	public void setCount(int count) {
 		this.count = count;
 	}
 
@@ -24,13 +29,17 @@ public class Testimonio {
 		this.items = items;
 	}
 
-	public class Items {
+	public class Items implements Serializable {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		private String _id = "";
 		@Expose private String name = "";
 		@Expose private String email = "";
 		@Expose private String category = "";
 		@Expose private String explanation = "";
-		@Expose private String entidadFederativa = "";
+		@Expose private String state = "";
 		@Expose private String age = "";
 		@Expose private String gender = "";
 		@Expose private String grade = "";
@@ -76,12 +85,12 @@ public class Testimonio {
 			this.explanation = explanation;
 		}
 
-		public String getEntidadFederativa() {
-			return entidadFederativa;
+		public String getState() {
+			return state;
 		}
 
-		public void setEntidadFederativa(String entidadFederativa) {
-			this.entidadFederativa = entidadFederativa;
+		public void setState(String state) {
+			this.state = state;
 		}
 
 		public String getAge() {
