@@ -1,6 +1,5 @@
 package mx.com.factico.cide;
 
-import java.util.Collections;
 import java.util.List;
 
 import mx.com.factico.cide.beans.Testimonio;

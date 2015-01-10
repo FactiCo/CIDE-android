@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:scaleType="centerInside"
-        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingStart="0dp"
         android:paddingEnd="@dimen/activity_horizontal_margin"
         android:paddingBottom="10dp"
         android:contentDescription="@string/testimonio_name"

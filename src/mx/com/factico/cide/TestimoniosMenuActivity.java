@@ -1,11 +1,14 @@
 package mx.com.factico.cide;
 
+import mx.com.factico.cide.utils.ScreenUtils;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
 
 public class TestimoniosMenuActivity extends ActionBarActivity implements OnClickListener {
 	private int OPTION1 = 1;
@@ -42,13 +45,24 @@ public class TestimoniosMenuActivity extends ActionBarActivity implements OnClic
 	}
 	
 	public void initUI() {
+		Point point = ScreenUtils.getScreenSize(getBaseContext());
+		int width = point.x;
+		
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, width / 5);
+		
+		findViewById(R.id.testimonios_menu_iv_justice1).setLayoutParams(params);
+		findViewById(R.id.testimonios_menu_iv_justice2).setLayoutParams(params);
+		findViewById(R.id.testimonios_menu_iv_justice3).setLayoutParams(params);
+		findViewById(R.id.testimonios_menu_iv_justice4).setLayoutParams(params);
+		findViewById(R.id.testimonios_menu_iv_justice5).setLayoutParams(params);
+		
 		findViewById(R.id.testimonios_menu_btn_justice1).setOnClickListener(this);
 		findViewById(R.id.testimonios_menu_btn_justice2).setOnClickListener(this);
 		findViewById(R.id.testimonios_menu_btn_justice3).setOnClickListener(this);
 		findViewById(R.id.testimonios_menu_btn_justice4).setOnClickListener(this);
 		findViewById(R.id.testimonios_menu_btn_justice5).setOnClickListener(this);
 		
-		findViewById(R.id.testimonios_btn_map).setOnClickListener(this);;
+		findViewById(R.id.testimonios_btn_map).setOnClickListener(this);
 	}
 
 	@Override

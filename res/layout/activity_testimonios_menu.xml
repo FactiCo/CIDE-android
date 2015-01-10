@@ -15,8 +15,12 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/testimonios_btn_map"
         android:layout_below="@+id/toolbar"
-        android:layout_above="@+id/testimonios_btn_map" >
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin" >
 
         <TableRow
             android:layout_width="match_parent"
@@ -26,31 +30,32 @@
             <LinearLayout
                 android:id="@+id/testimonios_menu_btn_justice1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_btn_squared"
-                android:orientation="vertical"
                 android:gravity="center_vertical"
-                android:weightSum="5" >
+                android:orientation="vertical" >
 
                 <ImageView
+                    android:id="@+id/testimonios_menu_iv_justice1"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_weight="2"
                     android:contentDescription="@string/testimonio_name"
-                    android:padding="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_justicia_trabajo" />
 
                 <mx.com.factico.cide.views.CustomTextView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:minLines="4"
-                    android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingTop="@dimen/activity_vertical_margin"
                     android:text="@string/justice_1"
                     android:textColor="@color/btn_ligth_green_color"
                     android:textSize="12sp"
@@ -60,30 +65,33 @@
             <LinearLayout
                 android:id="@+id/testimonios_menu_btn_justice2"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_btn_squared"
                 android:orientation="vertical"
-                android:weightSum="5" >
+                android:gravity="center_vertical" >
 
                 <ImageView
+                    android:id="@+id/testimonios_menu_iv_justice2"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_weight="2"
                     android:contentDescription="@string/testimonio_name"
-                    android:padding="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_justicia_familiar" />
 
                 <mx.com.factico.cide.views.CustomTextView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:minLines="4"
-                    android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingTop="@dimen/activity_vertical_margin"
                     android:text="@string/justice_2"
                     android:textColor="@color/btn_ligth_green_color"
                     android:textSize="12sp"
@@ -93,30 +101,32 @@
             <LinearLayout
                 android:id="@+id/testimonios_menu_btn_justice3"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_btn_squared"
                 android:orientation="vertical"
-                android:weightSum="5" >
+                android:gravity="center_vertical" >
 
                 <ImageView
+                    android:id="@+id/testimonios_menu_iv_justice3"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_weight="2"
                     android:contentDescription="@string/testimonio_name"
-                    android:padding="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_justicia_vecinal" />
 
                 <mx.com.factico.cide.views.CustomTextView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:minLines="4"
-                    android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingTop="@dimen/activity_vertical_margin"
                     android:text="@string/justice_3"
                     android:textColor="@color/btn_ligth_green_color"
                     android:textSize="12sp"
@@ -132,30 +142,32 @@
             <LinearLayout
                 android:id="@+id/testimonios_menu_btn_justice4"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_btn_squared"
                 android:orientation="vertical"
-                android:weightSum="5" >
+                android:gravity="center_vertical" >
 
                 <ImageView
+                    android:id="@+id/testimonios_menu_iv_justice4"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_weight="2"
                     android:contentDescription="@string/testimonio_name"
-                    android:padding="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_justicia_funcionarios" />
 
                 <mx.com.factico.cide.views.CustomTextView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:minLines="4"
-                    android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingTop="@dimen/activity_vertical_margin"
                     android:text="@string/justice_4"
                     android:textColor="@color/btn_ligth_green_color"
                     android:textSize="12sp"
@@ -165,30 +177,33 @@
             <LinearLayout
                 android:id="@+id/testimonios_menu_btn_justice5"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_btn_squared"
                 android:orientation="vertical"
-                android:weightSum="6" >
+                android:gravity="center_vertical" >
 
                 <ImageView
+                    android:id="@+id/testimonios_menu_iv_justice5"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_weight="2"
                     android:contentDescription="@string/testimonio_name"
-                    android:padding="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_justicia_emprendedores" />
 
                 <mx.com.factico.cide.views.CustomTextView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:minLines="4"
-                    android:paddingBottom="@dimen/activity_vertical_margin"
-                    android:paddingTop="@dimen/activity_vertical_margin"
                     android:text="@string/justice_5"
                     android:textColor="@color/btn_ligth_green_color"
                     android:textSize="12sp"
@@ -197,13 +212,11 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin" />
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp" />
         </TableRow>
     </TableLayout>
 
@@ -211,13 +224,16 @@
         android:id="@+id/testimonios_btn_map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/selector_btn_squared_border"
         android:contentDescription="@string/testimonio_name"
         android:gravity="center"
-        android:padding="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:text="@string/testimonios_btn_map"
         android:textColor="@color/white"
         android:textSize="15sp"
