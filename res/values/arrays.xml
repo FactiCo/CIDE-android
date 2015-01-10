@@ -3,10 +3,11 @@
 
     <string-array name="testimonios_categories_titles">
         <item>Justicia en el trabajo</item>
-        <item>Justicia en las familias</item>
+        <item>Justicia para familias</item>
         <item>Justicia vecinal y comunitaria</item>
         <item>Justicia para ciudadanos</item>
         <item>Justicia para emprendedores</item>
+        <item>Otros temas de Justicia Cotidiana</item>
     </string-array>
     
     <string-array name="testimonios_categories_descriptions">
