@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/drawable_bgr_gradient_dark" >
+
+    <Button
+        android:id="@+id/facebook_btn_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/facebook_post_message"
+        android:background="@drawable/selector_btn_ligth" />
+    
+    <TextView
+        android:id="@+id/facebook_tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</LinearLayout>

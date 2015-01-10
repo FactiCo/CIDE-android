@@ -73,6 +73,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 			
 		} else if (type == OPTION3) {
 			Intent intent = new Intent(this, PropuestasActivity.class);
+			//Intent intent = new Intent(this, FacebookLoginActivity.class);
 			startActivity(intent);
 		}
 	}

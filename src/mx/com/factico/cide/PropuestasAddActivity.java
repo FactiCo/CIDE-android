@@ -3,15 +3,13 @@ package mx.com.factico.cide;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import mx.com.factico.cide.beans.Propuesta;
-import mx.com.factico.cide.parser.GsonParser;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.TextView;
 
 public class PropuestasAddActivity extends ActionBarActivity {
 	
@@ -29,14 +27,11 @@ public class PropuestasAddActivity extends ActionBarActivity {
 	private void initUI(Bundle bundle) {
 		
 		if (bundle != null) {
-			TextView tvTitle = (TextView) findViewById(R.id.propuestas_tv_title);
-			TextView tvDescription = (TextView) findViewById(R.id.propuestas_tv_description);
+			//TextView tvTitle = (TextView) findViewById(R.id.propuestas_tv_title);
+			//TextView tvDescription = (TextView) findViewById(R.id.propuestas_tv_description);
 			
-			String data = bundle.getString("data", null);
-			Propuesta propuesta = GsonParser.getPropuestaFromJSON(data);
-			
-			tvTitle.setText(propuesta.getTitulo());
-			tvDescription.setText(propuesta.getDescripcion());
+			//String data = bundle.getString("data", null);
+			//Propuesta propuesta = GsonParser.getPropuestaFromJSON(data);
 		}
 		
 		WebView wbD3 = (WebView) findViewById(R.id.propuestas_wv_d3);

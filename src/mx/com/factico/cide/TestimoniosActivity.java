@@ -164,17 +164,21 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			// Dialogues.Toast(getApplicationContext(), "Result: " + result, Toast.LENGTH_LONG);
 			// Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
 			
-			try {
-				testimonio = GsonParser.getTestimonioFromJSON(result);
-				
-				if (testimonio != null) {
-					loadTestimoniosViews(testimonio);
-				} else {
-					Dialogues.Toast(getBaseContext(), getString(R.string.error_testimonios_recientes), Toast.LENGTH_LONG);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+			loadDataFromJson(result);
+		}
+	}
+	
+	private void loadDataFromJson(String json) {
+		try {
+			testimonio = GsonParser.getTestimonioFromJSON(json);
+			
+			if (testimonio != null) {
+				loadTestimoniosViews(testimonio);
+			} else {
+				Dialogues.Toast(getBaseContext(), getString(R.string.error_testimonios_recientes), Toast.LENGTH_LONG);
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	

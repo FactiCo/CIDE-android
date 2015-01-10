@@ -13,16 +13,23 @@
     
     <string name="que_es_justicia">Primer contacto ciudadanía &#8211; gobierno para resolver abusos cometidos a diario</string>
     
+    <!-- Acerca de -->
     <string name="acercade">Acerca de</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nibh nec sapien sagittis pretium. Morbi pharetra bibendum convallis. Sed iaculis, magna in ultrices egestas, tellus nulla tempor est, ut congue velit lacus porta felis. Duis enim ex, commodo et molestie id, eleifend eget risus. Suspendisse eu dolor suscipit, sollicitudin diam vel, sodales orci. Morbi suscipit felis nec dapibus facilisis. Sed nec nulla in dui ultricies gravida non eleifend urna. Curabitur lectus elit, maximus id commodo ut, lobortis et ligula. Duis viverra mi quis congue hendrerit. Suspendisse potenti.</string>
     
+    <!-- Dialog Testimonio -->
     <string name="dialog_message">¡Gracias por enviar tu testimonio!</string>
     <string name="dialog_error">Algo salió mal al enviar el testimonio. Inténtalo de nuevo.</string>
     <string name="dialog_ok">Aceptar</string>
     <string name="dialog_share">Compartir</string>
     
     <string name="no_internet_connection">Sin conexión a Internet.</string>
+    
+    <!-- Testimonios -->
     <string name="error_testimonios_recientes">No se puso cargar la información de los testimonios. Inténtalo más tarde.</string>
+    
+    <!-- Propuestas -->
+    <string name="error_propuestas_recientes">No se puso cargar la información de las propuestas. Inténtalo más tarde.</string>
     
     <!-- Parse Framework -->
     <string name="hello_message">Welcome! Tell us a bit more about yourself.</string>
@@ -83,5 +90,12 @@
     <string name="edittext_error_string">Escribe letras validas [a-z A-Z].</string>
     <string name="edittext_error_number">Escribe números validos [0&#8211;9].</string>
     <string name="edittext_error_email">Escribe una sintaxis de correo valido.</string>
+    
+    <!-- Facebook -->
+    <string name="facebook_app_id">765499670170326</string>
+    <string name="facebook_post_message">Post message to Facebook</string>
+    <string name="facebook_is_not_installed">Facebook app is not installed</string>
+    <string name="facebook_package">com.facebook.katana</string>
+    <string name="facebook_session_is_not_open">Session is not open</string>
     
 </resources>

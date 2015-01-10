@@ -1,74 +1,288 @@
 package mx.com.factico.cide.beans;
 
-public class Propuesta {
-	private long id;
-	private String categoria;
-	private String titulo;
-	private String descripcion;
-	private Autor autor;
-	
-	public long getId() {
-		return id;
+import java.io.Serializable;
+import java.util.List;
+
+public class Propuesta implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private int count;
+	private List<Items> items;
+
+	public int getCount() {
+		return count;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setCount(int count) {
+		this.count = count;
 	}
 
-	public String getCategoria() {
-		return categoria;
+	public List<Items> getItems() {
+		return items;
 	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setItems(List<Items> items) {
+		this.items = items;
 	}
 
-	public String getTitulo() {
-		return titulo;
-	}
+	public class Items implements Serializable {
+		private static final long serialVersionUID = 1L;
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
+		private String _id;
+		private String category;
+		private String categoryId;
+		private String title;
+		private String description;
+		private Comments comments;
+		private Votes votes;
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+		public String getId() {
+			return _id;
+		}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+		public void setId(String _id) {
+			this._id = _id;
+		}
 
-	public Autor getAutor() {
-		return autor;
-	}
+		public String getCategory() {
+			return category;
+		}
 
-	public void setAutor(Autor autor) {
-		this.autor = autor;
-	}
-	
-	public class Autor {
-		private long id_FB;
-		private String nombre;
-		private String mail;
+		public void setCategory(String category) {
+			this.category = category;
+		}
+
+		public String getCategoryId() {
+			return categoryId;
+		}
+
+		public void setCategoryId(String categoryId) {
+			this.categoryId = categoryId;
+		}
+
+		public String getTitle() {
+			return title;
+		}
+
+		public void setTitle(String title) {
+			this.title = title;
+		}
+
+		public String getDescription() {
+			return description;
+		}
+
+		public void setDescription(String description) {
+			this.description = description;
+		}
+
+		public Comments getComments() {
+			return comments;
+		}
+
+		public void setComments(Comments comments) {
+			this.comments = comments;
+		}
 		
-		public long getId_FB() {
-			return id_FB;
+		public Votes getVotes() {
+			return votes;
 		}
-		public void setId_FB(long id_FB) {
-			this.id_FB = id_FB;
+
+		public void setVotes(Votes votes) {
+			this.votes = votes;
 		}
-		public String getNombre() {
-			return nombre;
+
+		public class Comments implements Serializable {
+			private static final long serialVersionUID = 1L;
+			
+			private List<Data> data;
+
+			public List<Data> getData() {
+				return data;
+			}
+
+			public void setData(List<Data> data) {
+				this.data = data;
+			}
+
+			public class Data implements Serializable {
+				private static final long serialVersionUID = 1L;
+				
+				private String _id;
+				private String parent;
+				private String proposalId;
+				private String message;
+				private String created;
+				private From from;
+
+				public String getId() {
+					return _id;
+				}
+
+				public void setId(String _id) {
+					this._id = _id;
+				}
+
+				public String getParent() {
+					return parent;
+				}
+
+				public void setParent(String parent) {
+					this.parent = parent;
+				}
+
+				public String getProposalId() {
+					return proposalId;
+				}
+
+				public void setProposalId(String proposalId) {
+					this.proposalId = proposalId;
+				}
+
+				public String getMessage() {
+					return message;
+				}
+
+				public void setMessage(String message) {
+					this.message = message;
+				}
+
+				public String getCreated() {
+					return created;
+				}
+
+				public void setCreated(String created) {
+					this.created = created;
+				}
+
+				public From getFrom() {
+					return from;
+				}
+
+				public void setFrom(From from) {
+					this.from = from;
+				}
+
+				public class From implements Serializable {
+					private static final long serialVersionUID = 1L;
+					
+					private String fcbookid;
+					private String name;
+
+					public String getFcbookid() {
+						return fcbookid;
+					}
+
+					public void setFcbookid(String fcbookid) {
+						this.fcbookid = fcbookid;
+					}
+
+					public String getName() {
+						return name;
+					}
+
+					public void setName(String name) {
+						this.name = name;
+					}
+				}
+			}
 		}
-		public void setNombre(String nombre) {
-			this.nombre = nombre;
-		}
-		public String getMail() {
-			return mail;
-		}
-		public void setMail(String mail) {
-			this.mail = mail;
+
+		public class Votes implements Serializable {
+			private static final long serialVersionUID = 1L;
+			
+			private Favor favor;
+			private Contra contra;
+			private Abstencion abstencion;
+
+			public Favor getFavor() {
+				return favor;
+			}
+
+			public void setFavor(Favor favor) {
+				this.favor = favor;
+			}
+
+			public Contra getContra() {
+				return contra;
+			}
+
+			public void setContra(Contra contra) {
+				this.contra = contra;
+			}
+
+			public Abstencion getAbtencion() {
+				return abstencion;
+			}
+
+			public void setAbtencion(Abstencion abstencion) {
+				this.abstencion = abstencion;
+			}
+
+			public class Favor implements Serializable {
+				private static final long serialVersionUID = 1L;
+				
+				private List<Participantes> participantes;
+
+				public List<Participantes> getParticipantes() {
+					return participantes;
+				}
+
+				public void setParticipantes(List<Participantes> participantes) {
+					this.participantes = participantes;
+				}
+			}
+
+			public class Contra implements Serializable {
+				private static final long serialVersionUID = 1L;
+				
+				private List<Participantes> participantes;
+
+				public List<Participantes> getParticipantes() {
+					return participantes;
+				}
+
+				public void setParticipantes(List<Participantes> participantes) {
+					this.participantes = participantes;
+				}
+			}
+
+			public class Abstencion implements Serializable {
+				private static final long serialVersionUID = 1L;
+				
+				private List<Participantes> participantes;
+
+				public List<Participantes> getParticipantes() {
+					return participantes;
+				}
+
+				public void setParticipantes(List<Participantes> participantes) {
+					this.participantes = participantes;
+				}
+			}
+
+			public class Participantes implements Serializable {
+				private static final long serialVersionUID = 1L;
+				
+				private String _id;
+				private String fcbookid;
+
+				public String getId() {
+					return _id;
+				}
+
+				public void setId(String _id) {
+					this._id = _id;
+				}
+
+				public String getFcbookid() {
+					return fcbookid;
+				}
+
+				public void setFcbookid(String fcbookid) {
+					this.fcbookid = fcbookid;
+				}
+			}
 		}
 	}
 }

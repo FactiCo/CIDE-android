@@ -44,9 +44,6 @@ public class GsonParser {
 		Gson gson = new Gson();
 		Propuesta propuesta = gson.fromJson(json, Propuesta.class);
 		
-		Dialogues.Log(TAG_CLASS, "Propuestas: " + propuesta.getTitulo(), Log.INFO);
-		Dialogues.Log(TAG_CLASS, "Autor nombre: " + propuesta.getAutor().getNombre(), Log.INFO);
-		
 		return propuesta;
 	}
 	

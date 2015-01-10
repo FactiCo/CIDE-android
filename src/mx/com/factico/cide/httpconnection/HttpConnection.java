@@ -25,6 +25,8 @@ public class HttpConnection {
 	// public static final String GET_LIST = "q=getList";
 	
 	public static final String URL_TESTIMONIOS = "http://justiciacotidiana.mx:8080/justiciacotidiana/api/v1/testimonios";
+	
+	public static final String URL_PROPUESTAS = "http://justiciacotidiana.mx:8080/justiciacotidiana/api/v1/propuestas";
 
 	public static String GET(String url) {
 		HttpClient client = new DefaultHttpClient();
