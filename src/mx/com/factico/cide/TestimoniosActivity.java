@@ -189,7 +189,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		//Dialogues.Log(TAG_CLASS, "Count: " + testimonio.getCount(), Log.INFO);
 		
 		List<Testimonio.Items> listItems = testimonio.getItems();
-		Collections.reverse(listItems);
+		//Collections.reverse(listItems);
 		
 		//Dialogues.Log(TAG_CLASS, "Items Size: " + listItems.size(), Log.INFO);
 		
