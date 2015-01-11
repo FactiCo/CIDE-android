@@ -83,6 +83,10 @@
     <string name="postdata_loading">Enviando testimonio.</string>
     <string name="getdata_loading">Obteniendo información.</string>
     
+    <!-- Propuestas -->
+    <string name="propuestas_login_fb_label">Para poder ver y participar en las propuestas, inicia sesión con Facebook.</string>
+    <string name="propuestas_login_fb">Facebook</string>
+    
     <!-- Validations EditText -->
     <string name="edittext_emtpy">Llena los campos obligatorios.</string>
     <string name="edittext_obligatorio">Obligatorio.</string>
@@ -92,7 +96,7 @@
     <string name="edittext_error_email">Escribe una sintaxis de correo valido.</string>
     
     <!-- Facebook -->
-    <string name="facebook_app_id">765499670170326</string>
+    <string name="facebook_app_id">654570061331636</string>
     <string name="facebook_post_message">Post message to Facebook</string>
     <string name="facebook_is_not_installed">Facebook app is not installed</string>
     <string name="facebook_package">com.facebook.katana</string>

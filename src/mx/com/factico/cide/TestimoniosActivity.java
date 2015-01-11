@@ -100,7 +100,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			if (categoyTypeIndex == 0)	ivLogo.setImageResource(R.drawable.ic_justicia_trabajo);
 			if (categoyTypeIndex == 1)	ivLogo.setImageResource(R.drawable.ic_justicia_familiar);
 			if (categoyTypeIndex == 2)	ivLogo.setImageResource(R.drawable.ic_justicia_vecinal);
-			if (categoyTypeIndex == 3)	ivLogo.setImageResource(R.drawable.ic_justicia_funcionarios);
+			if (categoyTypeIndex == 3)	ivLogo.setImageResource(R.drawable.ic_justicia_ciudadanos);
 			if (categoyTypeIndex == 4)	ivLogo.setImageResource(R.drawable.ic_justicia_emprendedores);
 			// findViewById(R.id.testimonios_vg_description).setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 3));
 			// findViewById(R.id.testimonios_vg_container).setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height / 10 * 3));

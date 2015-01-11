@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.webkit.WebView;
 
 public class CustomMexicoMapView extends WebView {
-	public static final String MEXICO_MAP = "http://www.carloscastellanos.com.mx/mapas/mexico.html";
+	public static final String MEXICO_MAP = "http://justiciacotidiana.mx/es/JusticiaCotidiana/mapatestimonios";
 
 	public CustomMexicoMapView(Context context) {
 		super(context);
