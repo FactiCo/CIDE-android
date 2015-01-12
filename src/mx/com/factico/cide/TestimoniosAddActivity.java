@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -151,11 +152,11 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 			validateEditText();
 			break;
 			
-		case R.id.dialog_testimonio_add_ok:
+		case R.id.dialog_result_post_ok:
 			finish();
 			break;
 			
-		case R.id.dialog_testimonio_add_share:
+		case R.id.dialog_result_post_share:
 			shareInSocialMedia();
 			break;
 
@@ -236,7 +237,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 			Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 			String json = gson.toJson(this.testimonio);
 			
-			String result = HttpConnection.POST(HttpConnection.URL_TESTIMONIOS, json);
+			String result = HttpConnection.POST(HttpConnection.ACTION_TESTIMONIOS, json);
 			return result;
 		}
 
@@ -250,27 +251,27 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 				// Dialogues.Toast(getApplicationContext(), "Result: " + result, Toast.LENGTH_LONG);
 				Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
 				
-				String resultState = GsonParser.getResultFromJSON(result);
-				if (resultState.equals(GsonParser.TAG_RESULT_OK)) {
-					showResultDialog();
-				} else {
+				String resultCode = GsonParser.getResultFromJSON(result);
+				if (resultCode.equals(GsonParser.TAG_RESULT_OK)) {
+					showResultDialog(getResources().getString(R.string.dialog_message_testimonio));
+				} else if (resultCode.equals(GsonParser.TAG_RESULT_ERROR)) {
 					Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
 				}
 			} else {
 				Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
 			}
-			
-			showResultDialog();
 		}
 	}
 	
 	@SuppressLint("InflateParams")
-	private void showResultDialog() {
+	private void showResultDialog(String message) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		View view = getLayoutInflater().inflate(R.layout.dialog_testimonio_add, null, false);
+		View view = getLayoutInflater().inflate(R.layout.dialog_result_post, null, false);
 		
-		view.findViewById(R.id.dialog_testimonio_add_ok).setOnClickListener(this);
-		view.findViewById(R.id.dialog_testimonio_add_share).setOnClickListener(this);
+		((TextView) view.findViewById(R.id.dialog_result_post_message)).setText(message);
+		
+		view.findViewById(R.id.dialog_result_post_ok).setOnClickListener(this);
+		view.findViewById(R.id.dialog_result_post_share).setOnClickListener(this);
 		
 		builder.setView(view);
 		

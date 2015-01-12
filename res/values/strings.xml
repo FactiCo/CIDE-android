@@ -18,7 +18,10 @@
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nibh nec sapien sagittis pretium. Morbi pharetra bibendum convallis. Sed iaculis, magna in ultrices egestas, tellus nulla tempor est, ut congue velit lacus porta felis. Duis enim ex, commodo et molestie id, eleifend eget risus. Suspendisse eu dolor suscipit, sollicitudin diam vel, sodales orci. Morbi suscipit felis nec dapibus facilisis. Sed nec nulla in dui ultricies gravida non eleifend urna. Curabitur lectus elit, maximus id commodo ut, lobortis et ligula. Duis viverra mi quis congue hendrerit. Suspendisse potenti.</string>
     
     <!-- Dialog Testimonio -->
-    <string name="dialog_message">¡Gracias por enviar tu testimonio!</string>
+    <string name="dialog_message_testimonio">¡Gracias por enviar tu testimonio!</string>
+    <string name="dialog_message_propuesta_vote">¡Gracias por enviar tu voto!</string>
+    <string name="dialog_message_propuesta_answer">¡Gracias por enviar tu respuesta!</string>
+    <string name="dialog_message_propuesta_comment">¡Gracias por enviar tu comentario!</string>
     <string name="dialog_error">Algo salió mal al enviar el testimonio. Inténtalo de nuevo.</string>
     <string name="dialog_ok">Aceptar</string>
     <string name="dialog_share">Compartir</string>
@@ -87,6 +90,18 @@
     <string name="propuestas_login_fb_label">Para poder ver y participar en las propuestas, inicia sesión con Facebook.</string>
     <string name="propuestas_login_fb">Facebook</string>
     
+    <string name="propuestas_vote">¡Vota!</string>
+    
+    <string name="propuestas_btn_favor">Favor</string>
+    <string name="propuestas_btn_contra">Contra</string>
+    <string name="propuestas_btn_abstencion">Abstención</string>
+    
+    <string name="propuestas_question">Pregunta</string>
+    
+    <string name="propuestas_btn_comments_vermas">Ver comentarios</string>
+    <string name="propuestas_btn_comments_hintcomment">Escribe un comentario</string>
+    <string name="propuestas_btn_comments_sendcomment">Enviar</string>
+    
     <!-- Validations EditText -->
     <string name="edittext_emtpy">Llena los campos obligatorios.</string>
     <string name="edittext_obligatorio">Obligatorio.</string>
@@ -95,8 +110,8 @@
     <string name="edittext_error_number">Escribe números validos [0&#8211;9].</string>
     <string name="edittext_error_email">Escribe una sintaxis de correo valido.</string>
     
-    <!-- Facebook -->
-    <string name="facebook_app_id">654570061331636</string>
+    <!-- Facebook 654570061331636-->
+    <string name="facebook_app_id">765499670170326</string>
     <string name="facebook_post_message">Post message to Facebook</string>
     <string name="facebook_is_not_installed">Facebook app is not installed</string>
     <string name="facebook_package">com.facebook.katana</string>

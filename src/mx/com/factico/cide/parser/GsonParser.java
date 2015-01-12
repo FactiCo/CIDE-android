@@ -9,8 +9,10 @@ import org.json.JSONObject;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import mx.com.factico.cide.beans.Facebook;
 import mx.com.factico.cide.beans.Propuesta;
 import mx.com.factico.cide.beans.Testimonio;
 import mx.com.factico.cide.dialogues.Dialogues;
@@ -20,6 +22,7 @@ public class GsonParser {
 	
 	public static final String TAG_RESULT = "result";
 	public static final String TAG_RESULT_OK = "OK";
+	public static final String TAG_RESULT_ERROR = "ERROR";
 	
 	public static Testimonio getTestimonioFromJSON(String json) throws Exception {
 		Gson gson = new Gson();
@@ -64,11 +67,27 @@ public class GsonParser {
 		return result;
 	}
 	
-	public static String createJSON(Propuesta propuesta) {
+	public static Facebook getFacebookFromJSON(String json) throws Exception {
 		Gson gson = new Gson();
-		String json = gson.toJson(propuesta);
+		Facebook facebook = gson.fromJson(json, Facebook.class);
 		
-		Dialogues.Log(TAG_CLASS, "Json Propuestas: " + json, Log.INFO);
+		return facebook;
+	}
+	
+	public static String createJsonFromObject(Object object) {
+		Gson gson = new Gson();
+		String json = gson.toJson(object);
+		
+		Dialogues.Log(TAG_CLASS, "Json: " + json, Log.INFO);
+		
+		return json;
+	}
+	
+	public static String createJsonFromObjectWithoutExposeAnnotations(Object object) {
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		String json = gson.toJson(object);
+		
+		Dialogues.Log(TAG_CLASS, "Json: " + json, Log.INFO);
 		
 		return json;
 	}

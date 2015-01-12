@@ -19,14 +19,16 @@ import android.util.Log;
 
 public class HttpConnection {
 	public static final String TAG_CLASS = HttpConnection.class.getName();
-
-	// public static final String URL = "http://www.factico.com.mx/CIDE/APIBeta/expediente.php?";
-	// public static final String ADD = "q=add";
-	// public static final String GET_LIST = "q=getList";
 	
-	public static final String URL_TESTIMONIOS = "http://justiciacotidiana.mx:8080/justiciacotidiana/api/v1/testimonios";
+	public static final String URL = "http://justiciacotidiana.mx:8080/justiciacotidiana/api/v1/";
 	
-	public static final String URL_PROPUESTAS = "http://justiciacotidiana.mx:8080/justiciacotidiana/api/v1/propuestas";
+	public static final String ACTION_TESTIMONIOS = URL + "testimonios";
+	public static final String ACTION_PROPUESTAS = URL + "propuestas";
+	public static final String ACTION_VOTE = URL + "votos";
+	public static final String ACTION_COMENTARIOS = URL + "comentarios";
+	
+	public static final String ACTION_PREGUNTAS = URL + "preguntas";
+	public static final String ACTION_ANSWER = "?answer=";
 
 	public static String GET(String url) {
 		HttpClient client = new DefaultHttpClient();

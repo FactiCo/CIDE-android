@@ -34,6 +34,7 @@ public class Propuesta implements Serializable {
 		private String title;
 		private String description;
 		private Comments comments;
+		private Question question;
 		private Votes votes;
 
 		public String getId() {
@@ -83,7 +84,15 @@ public class Propuesta implements Serializable {
 		public void setComments(Comments comments) {
 			this.comments = comments;
 		}
-		
+
+		public Question getQuestion() {
+			return question;
+		}
+
+		public void setQuestion(Question question) {
+			this.question = question;
+		}
+
 		public Votes getVotes() {
 			return votes;
 		}
@@ -94,7 +103,7 @@ public class Propuesta implements Serializable {
 
 		public class Comments implements Serializable {
 			private static final long serialVersionUID = 1L;
-			
+
 			private List<Data> data;
 
 			public List<Data> getData() {
@@ -107,10 +116,9 @@ public class Propuesta implements Serializable {
 
 			public class Data implements Serializable {
 				private static final long serialVersionUID = 1L;
-				
+
 				private String _id;
 				private String parent;
-				private String proposalId;
 				private String message;
 				private String created;
 				private From from;
@@ -129,14 +137,6 @@ public class Propuesta implements Serializable {
 
 				public void setParent(String parent) {
 					this.parent = parent;
-				}
-
-				public String getProposalId() {
-					return proposalId;
-				}
-
-				public void setProposalId(String proposalId) {
-					this.proposalId = proposalId;
 				}
 
 				public String getMessage() {
@@ -165,7 +165,7 @@ public class Propuesta implements Serializable {
 
 				public class From implements Serializable {
 					private static final long serialVersionUID = 1L;
-					
+
 					private String fcbookid;
 					private String name;
 
@@ -188,9 +188,73 @@ public class Propuesta implements Serializable {
 			}
 		}
 
+		public class Question implements Serializable {
+			private static final long serialVersionUID = 1L;
+
+			private String _id;
+			private String title;
+			private List<Answers> answers;
+
+			public String getId() {
+				return _id;
+			}
+
+			public void setId(String _id) {
+				this._id = _id;
+			}
+
+			public String getTitle() {
+				return title;
+			}
+
+			public void setTitle(String title) {
+				this.title = title;
+			}
+
+			public List<Answers> getAnswers() {
+				return answers;
+			}
+
+			public void setAnswers(List<Answers> answers) {
+				this.answers = answers;
+			}
+
+			public class Answers implements Serializable {
+				private static final long serialVersionUID = 1L;
+
+				private String title;
+				private String _id;
+				private String count;
+
+				public String getTitle() {
+					return title;
+				}
+
+				public void setTitle(String title) {
+					this.title = title;
+				}
+
+				public String getId() {
+					return _id;
+				}
+
+				public void setId(String _id) {
+					this._id = _id;
+				}
+
+				public String getCount() {
+					return count;
+				}
+
+				public void setCount(String count) {
+					this.count = count;
+				}
+			}
+		}
+
 		public class Votes implements Serializable {
 			private static final long serialVersionUID = 1L;
-			
+
 			private Favor favor;
 			private Contra contra;
 			private Abstencion abstencion;
@@ -221,7 +285,7 @@ public class Propuesta implements Serializable {
 
 			public class Favor implements Serializable {
 				private static final long serialVersionUID = 1L;
-				
+
 				private List<Participantes> participantes;
 
 				public List<Participantes> getParticipantes() {
@@ -235,7 +299,7 @@ public class Propuesta implements Serializable {
 
 			public class Contra implements Serializable {
 				private static final long serialVersionUID = 1L;
-				
+
 				private List<Participantes> participantes;
 
 				public List<Participantes> getParticipantes() {
@@ -249,7 +313,7 @@ public class Propuesta implements Serializable {
 
 			public class Abstencion implements Serializable {
 				private static final long serialVersionUID = 1L;
-				
+
 				private List<Participantes> participantes;
 
 				public List<Participantes> getParticipantes() {
@@ -263,7 +327,7 @@ public class Propuesta implements Serializable {
 
 			public class Participantes implements Serializable {
 				private static final long serialVersionUID = 1L;
-				
+
 				private String _id;
 				private String fcbookid;
 

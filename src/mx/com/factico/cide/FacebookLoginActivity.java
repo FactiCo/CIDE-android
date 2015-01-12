@@ -3,7 +3,10 @@ package mx.com.factico.cide;
 import java.util.Arrays;
 import java.util.List;
 
+import mx.com.factico.cide.beans.Facebook;
 import mx.com.factico.cide.dialogues.Dialogues;
+import mx.com.factico.cide.parser.GsonParser;
+import mx.com.factico.cide.preferences.PreferencesUtils;
 import mx.com.factico.cide.utils.IntentUtils;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +28,7 @@ public class FacebookLoginActivity extends ActionBarActivity implements OnClickL
 
 	public static final int RESULT_CODE_LOGIN_OK = 1;
 	public static final int RESULT_CODE_LOGIN_CANCEL = 0;
-	public static final int REQUEST_CODE_LOGIN = 20150111;
+	public static final int REQUEST_CODE_LOGIN = 2015;
 	
 	private final List<String> PERMISSIONS_TO_READ = Arrays.asList("public_profile");
 
@@ -36,10 +39,10 @@ public class FacebookLoginActivity extends ActionBarActivity implements OnClickL
 		
 		if (IntentUtils.appIsALreadyInstalled(this, getResources().getString(R.string.facebook_package))) {
 			if (isFacebookSessionActived()) {
-				setResult(FacebookLoginActivity.RESULT_CODE_LOGIN_OK);
-				finish();
-				overridePendingTransition(0, 0);
+				setResultOk();
 			} else {
+				PreferencesUtils.putPreference(getApplication(), PreferencesUtils.FACEBOOK, null);
+				
 				initUI();
 			}
 		} else {
@@ -47,6 +50,12 @@ public class FacebookLoginActivity extends ActionBarActivity implements OnClickL
 		}
 	}
 
+	private void setResultOk() {
+		setResult(FacebookLoginActivity.RESULT_CODE_LOGIN_OK);
+		finish();
+		overridePendingTransition(0, 0);
+	}
+	
 	private void initUI() {
 		findViewById(R.id.facebook_btn_facebook_login).setOnClickListener(this);
 	}
@@ -69,11 +78,7 @@ public class FacebookLoginActivity extends ActionBarActivity implements OnClickL
 
 	private boolean isFacebookSessionActived() {
 		Session session = Session.getActiveSession();
-		
-		if (session == null)
-			return false;
-		else
-			return true;
+		return (session != null && session.isOpened());
 	}
 
 	private void initFacebookSession() {
@@ -98,14 +103,21 @@ public class FacebookLoginActivity extends ActionBarActivity implements OnClickL
 					@Override
 					public void onCompleted(GraphUser user, Response response) {
 						if (user != null) {
+							Facebook facebook = new Facebook(user.getId(), user.getName());
+							String json = GsonParser.createJsonFromObject(facebook);
+							
+							PreferencesUtils.putPreference(getApplication(), PreferencesUtils.FACEBOOK, json);
+							
 							Dialogues.Toast(getApplicationContext(), "Hola " + user.getName() + "!" + "\nCon id: " + user.getId(), Toast.LENGTH_LONG);
 							
 							Settings.sdkInitialize(getBaseContext());
+							
+							setResultOk();
 						}
 					}
 				}).executeAsync();
 			} else {
-				Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.facebook_session_is_not_open), Toast.LENGTH_LONG);
+				Dialogues.Toast(getApplicationContext(), "Edgar " + getResources().getString(R.string.facebook_session_is_not_open), Toast.LENGTH_LONG);
 			}
 		}
 	};
@@ -114,7 +126,6 @@ public class FacebookLoginActivity extends ActionBarActivity implements OnClickL
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
-		Toast.makeText(getApplicationContext(), "onActivityResult", Toast.LENGTH_SHORT).show();
 	}
 
 	@Override

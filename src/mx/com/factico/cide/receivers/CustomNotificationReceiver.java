@@ -1,6 +1,6 @@
 package mx.com.factico.cide.receivers;
 
-import mx.com.factico.cide.PropuestasAddActivity;
+import mx.com.factico.cide.PropuestasActivity;
 import mx.com.factico.cide.R;
 import mx.com.factico.cide.dialogues.Dialogues;
 
@@ -62,7 +62,7 @@ public class CustomNotificationReceiver extends BroadcastReceiver {
 		mBuilder.setAutoCancel(true);
 		
 		// Setting custom activity to show in custom notification
-		resultIntent = new Intent(context, PropuestasAddActivity.class);
+		resultIntent = new Intent(context, PropuestasActivity.class);
 		resultIntent.putExtra("data", data);
 
 		PendingIntent resultPendingIntent = PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);

@@ -69,11 +69,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		} else if (type == OPTION2) {
 			Intent intent = new Intent(this, TestimoniosMenuActivity.class);
 			startActivity(intent);
-			overridePendingTransition(0, 0);
 			
 		} else if (type == OPTION3) {
-			Intent intent = new Intent(this, PropuestasActivity.class);
-			//Intent intent = new Intent(this, FacebookLoginActivity.class);
+			Intent intent = new Intent(this, PropuestasMenuActivity.class);
 			startActivity(intent);
 		}
 	}

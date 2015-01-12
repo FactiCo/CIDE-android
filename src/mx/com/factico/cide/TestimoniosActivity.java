@@ -146,7 +146,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		
 		@Override
 		protected String doInBackground(String... params) {
-			String result = HttpConnection.GET(HttpConnection.URL_TESTIMONIOS);
+			String result = HttpConnection.GET(HttpConnection.ACTION_TESTIMONIOS);
 			return result;
 		}
 
