@@ -2200,7 +2200,6 @@ containing a value of this type.
         public static final int testimonios_add_sp_grade=0x7f0b0085;
         public static final int testimonios_btn_addtestimonio=0x7f0b007d;
         public static final int testimonios_btn_map=0x7f0b008b;
-        public static final int testimonios_btn_showmore=0x7f0b0080;
         public static final int testimonios_iv_logo=0x7f0b0079;
         public static final int testimonios_list_vg_container=0x7f0b008a;
         public static final int testimonios_menu_btn_justice1=0x7f0b008c;
@@ -2213,11 +2212,12 @@ containing a value of this type.
         public static final int testimonios_menu_iv_justice3=0x7f0b0091;
         public static final int testimonios_menu_iv_justice4=0x7f0b0093;
         public static final int testimonios_menu_iv_justice5=0x7f0b0095;
-        public static final int testimonios_pb_loading=0x7f0b007f;
+        public static final int testimonios_pb_loading=0x7f0b0080;
         public static final int testimonios_sv_scroll=0x7f0b0078;
         public static final int testimonios_tv_desciption=0x7f0b007c;
         public static final int testimonios_tv_title=0x7f0b007b;
-        public static final int testimonios_vg_container=0x7f0b007e;
+        public static final int testimonios_vg_container_items=0x7f0b007f;
+        public static final int testimonios_vg_container_items_btn=0x7f0b007e;
         public static final int testimonios_vg_description=0x7f0b007a;
         public static final int title=0x7f0b003b;
         public static final int toolbar=0x7f0b0053;
