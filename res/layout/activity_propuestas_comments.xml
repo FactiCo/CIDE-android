@@ -60,7 +60,7 @@
             android:text="@string/propuestas_btn_comments_sendcomment"
             android:textAppearance="@android:attr/textAppearanceMedium"
             android:textColor="@color/white"
-            cide:typefaceRoboto="regular" />
+            cide:typefaceRoboto="SourceSansPro_Regular" />
     </LinearLayout>
 
 </LinearLayout>

@@ -20,7 +20,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/title_color"
         android:textStyle="bold"
-        cide:typefaceRoboto="bold" />
+        cide:typefaceRoboto="SourceSansPro_Bold" />
 
     <mx.com.factico.cide.views.CustomTextView
         android:id="@+id/item_propuestas_tv_description"
@@ -29,6 +29,6 @@
         android:text=""
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/default_text_color"
-        cide:typefaceRoboto="regular" />
+        cide:typefaceRoboto="SourceSansPro_Regular" />
 
 </LinearLayout>

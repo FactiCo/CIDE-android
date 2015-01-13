@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class TestimoniosMenuActivity extends ActionBarActivity implements OnClickListener {
 	private int OPTION1 = 1;
@@ -36,9 +37,11 @@ public class TestimoniosMenuActivity extends ActionBarActivity implements OnClic
 	
 	public void setSupportActionBar() {
 		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-		mToolbar.setTitle(getResources().getString(R.string.testimonio_name));
+		mToolbar.setTitle("");
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
 		mToolbar.getBackground().setAlpha(0);
+		TextView mTitle = (TextView) mToolbar.findViewById(R.id.toolbar_title);
+		mTitle.setText(getResources().getString(R.string.testimonio_name));
         setSupportActionBar(mToolbar);
         
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

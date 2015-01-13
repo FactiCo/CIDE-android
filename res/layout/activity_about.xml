@@ -9,9 +9,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <include
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/actionbar" />
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/about_name"
+        android:src="@drawable/ic_splash" />
 
 </RelativeLayout>

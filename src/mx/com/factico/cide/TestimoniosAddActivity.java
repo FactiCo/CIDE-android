@@ -22,7 +22,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,8 +41,6 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	private Spinner spGender;
 	private Spinner spGrade;
 	
-	private Button btnSendData;
-	
 	private int categoyTypeIndex = -1;
 	
 	@Override
@@ -57,9 +54,11 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 
 	public void setSupportActionBar() {
 		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-		mToolbar.setTitle(getResources().getString(R.string.testimonios_add_new));
+		mToolbar.setTitle("");
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
 		mToolbar.getBackground().setAlpha(0);
+		TextView mTitle = (TextView) mToolbar.findViewById(R.id.toolbar_title);
+		mTitle.setText(getResources().getString(R.string.testimonios_add_new));
         setSupportActionBar(mToolbar);
 	}
 	
@@ -92,8 +91,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		spGrade = (Spinner) findViewById(R.id.testimonios_add_sp_grade); // Grade
 		loadDataFromResources(spGrade); // Load data to spinner from resources
 		
-		btnSendData = (Button) findViewById(R.id.testimonios_add_btn_senddata);
-		btnSendData.setOnClickListener(this);
+		findViewById(R.id.testimonios_add_btn_senddata).setOnClickListener(this);
 	}
 
 	public void loadDataFromResources(Spinner spinner) {

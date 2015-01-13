@@ -36,6 +36,11 @@
     <color name="btn_ligth_green_color">#FF58CA9C</color>
     <color name="btn_ligth_green_color_alpha">#AA58CA9C</color>
     
+    <color name="btn_other_green">#6CDA84</color>
+    <color name="btn_other_green_alpha">#AA65DB7C</color>
+    
+    <color name="background_testimonio_add">#D3EFDA</color>
+    
     <!-- Gradient colors -->
     <color name="green_dark_color">#FF3E8293</color>
     <color name="green_middle_color">#FF42CB90</color>

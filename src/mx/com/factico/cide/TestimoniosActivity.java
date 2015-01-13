@@ -95,13 +95,13 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 	        
 			// Set dimensions depending on screen
 			ImageView ivLogo = (ImageView) findViewById(R.id.testimonios_iv_logo);
-			ivLogo.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 3));
+			ivLogo.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 2));
 			ivLogo.setScaleType(ScaleType.CENTER_INSIDE);
-			if (categoyTypeIndex == 0)	ivLogo.setImageResource(R.drawable.ic_justicia_trabajo);
-			if (categoyTypeIndex == 1)	ivLogo.setImageResource(R.drawable.ic_justicia_familiar);
-			if (categoyTypeIndex == 2)	ivLogo.setImageResource(R.drawable.ic_justicia_vecinal);
-			if (categoyTypeIndex == 3)	ivLogo.setImageResource(R.drawable.ic_justicia_ciudadanos);
-			if (categoyTypeIndex == 4)	ivLogo.setImageResource(R.drawable.ic_justicia_emprendedores);
+			if (categoyTypeIndex == 0)	ivLogo.setImageResource(R.drawable.ic_justicia_trabajo_white);
+			if (categoyTypeIndex == 1)	ivLogo.setImageResource(R.drawable.ic_justicia_familiar_white);
+			if (categoyTypeIndex == 2)	ivLogo.setImageResource(R.drawable.ic_justicia_vecinal_white);
+			if (categoyTypeIndex == 3)	ivLogo.setImageResource(R.drawable.ic_justicia_ciudadanos_white);
+			if (categoyTypeIndex == 4)	ivLogo.setImageResource(R.drawable.ic_justicia_emprendedores_white);
 			// findViewById(R.id.testimonios_vg_description).setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 3));
 			// findViewById(R.id.testimonios_vg_container).setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height / 10 * 3));
 			
@@ -230,14 +230,14 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			if (hasInCategory) {
 				Button btnMoreTestimonios = new Button(this);
 				btnMoreTestimonios.setPadding(20, 20, 20, 20);
-				btnMoreTestimonios.setBackgroundResource(R.drawable.selector_btn_ligth);
+				btnMoreTestimonios.setBackgroundResource(R.drawable.selector_btn_other);
 				btnMoreTestimonios.setText(getResources().getString(R.string.testimonios_seemore));
 				btnMoreTestimonios.setTextColor(getResources().getColor(R.color.white));
 				btnMoreTestimonios.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
 				btnMoreTestimonios.setId(TAG_BTN_MORE);
 				btnMoreTestimonios.setOnClickListener(this);
 				
-				Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.ROBOTOSLAB_REGULAR);
+				Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.SourceSansPro_Regular);
 				btnMoreTestimonios.setTypeface(typeface);
 				
 				containerTestimonios.setOnClickListener(this);
@@ -251,11 +251,24 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 				tvNoTestimonios.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
 				tvNoTestimonios.setGravity(Gravity.CENTER);
 				
-				Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.ROBOTOSLAB_REGULAR);
+				Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.RobotoSlab_Regular);
 				tvNoTestimonios.setTypeface(typeface);
 				
 				containerTestimonios.addView(tvNoTestimonios);
 			}
+		} else {
+			TextView tvNoTestimonios = new TextView(this);
+			tvNoTestimonios.setPadding(30, 30, 30, 30);
+			tvNoTestimonios.setBackgroundColor(getResources().getColor(R.color.white));
+			tvNoTestimonios.setText(getResources().getString(R.string.testimonios_nomore));
+			tvNoTestimonios.setTextColor(getResources().getColor(R.color.title_color));
+			tvNoTestimonios.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+			tvNoTestimonios.setGravity(Gravity.CENTER);
+			
+			Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.SourceSansPro_Regular);
+			tvNoTestimonios.setTypeface(typeface);
+			
+			containerTestimonios.addView(tvNoTestimonios);
 		}
 	}
 	

@@ -207,7 +207,7 @@ public class PropuestasActivity extends ActionBarActivity implements OnClickList
 		btnAnswer.setOnClickListener(AnswerOnClickListener);
 		btnAnswer.setTag(idQuestion + HttpConnection.ACTION_ANSWER + answer.getId());
 
-		Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.ROBOTOSLAB_REGULAR);
+		Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.RobotoSlab_Regular);
 		btnAnswer.setTypeface(typeface);
 		
 		return btnAnswer;

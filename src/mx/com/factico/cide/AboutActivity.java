@@ -29,7 +29,7 @@ public class AboutActivity extends ActionBarActivity {
 		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
 		mToolbar.setTitle("");
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
-		mToolbar.getBackground().setAlpha(0);
+		mToolbar.getBackground().setAlpha(255);
 		setSupportActionBar(mToolbar);
 	}
 
@@ -111,13 +111,13 @@ public class AboutActivity extends ActionBarActivity {
 			int index = getArguments().getInt(ARG_SECTION_NUMBER);
 			if (index == 1) {
 				//vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_dark);
-				ivPage.setImageResource(R.drawable.justicia_ciudadana_1);
+				ivPage.setImageResource(R.drawable.justicia_cotidiana_1);
 			} if (index == 2) {
 				//vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_middle);
-				ivPage.setImageResource(R.drawable.justicia_ciudadana_2);
+				ivPage.setImageResource(R.drawable.justicia_cotidiana_2);
 			} if (index == 3) {
 				//vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_ligth);
-				ivPage.setImageResource(R.drawable.justicia_ciudadana_3);
+				ivPage.setImageResource(R.drawable.justicia_cotidiana_3);
 			}
 			
 			return rootView;

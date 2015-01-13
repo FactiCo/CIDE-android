@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cide="http://schemas.android.com/apk/res/mx.com.factico.cide"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/drawable_bgr_gradient_dark"
@@ -13,7 +14,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/btn_ligth_green_color"
+        android:background="@color/background_testimonio_add"
         android:fillViewport="true"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -36,7 +37,8 @@
                 android:padding="10dp"
                 android:textColor="@color/default_text_color"
                 android:textColorHint="@color/hololigth"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                cide:typefaceRoboto="SourceSansPro_Regular" />
 
             <View
                 android:layout_width="match_parent"
@@ -54,7 +56,8 @@
                 android:padding="10dp"
                 android:textColor="@color/default_text_color"
                 android:textColorHint="@color/hololigth"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                cide:typefaceRoboto="SourceSansPro_Regular" />
 
             <Spinner
                 android:id="@+id/testimonios_add_sp_age"
@@ -133,15 +136,22 @@
                 android:padding="10dp"
                 android:textColor="@color/default_text_color"
                 android:textColorHint="@color/hololigth"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                cide:typefaceRoboto="RobotoSlab_Regular" />
 
-            <Button
+            <mx.com.factico.cide.views.CustomTextView
                 android:id="@+id/testimonios_add_btn_senddata"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/selector_btn_dark"
+                android:background="@drawable/selector_btn_other"
                 android:text="@string/testimonios_add_btn_senddata"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                cide:typefaceRoboto="RobotoSlab_Regular" />
         </LinearLayout>
     </ScrollView>
 

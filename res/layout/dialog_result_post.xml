@@ -22,7 +22,7 @@
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/title_color"
-        cide:typefaceRoboto="regular" />
+        cide:typefaceRoboto="SourceSansPro_Regular" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
             android:text="@string/dialog_ok"
             android:textColor="@color/white"
             android:textSize="15sp"
-            cide:typefaceRoboto="regular" />
+            cide:typefaceRoboto="SourceSansPro_Regular" />
 
         <mx.com.factico.cide.views.CustomTextView
             android:id="@+id/dialog_result_post_share"
@@ -59,7 +59,7 @@
             android:text="@string/dialog_share"
             android:textColor="@color/white"
             android:textSize="15sp"
-            cide:typefaceRoboto="regular" />
+            cide:typefaceRoboto="SourceSansPro_Regular" />
     </LinearLayout>
 
 </LinearLayout>

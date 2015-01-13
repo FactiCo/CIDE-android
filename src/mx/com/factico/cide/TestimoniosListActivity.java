@@ -3,7 +3,9 @@ package mx.com.factico.cide;
 import java.util.List;
 
 import mx.com.factico.cide.beans.Testimonio;
+import mx.com.factico.cide.typeface.TypefaceFactory;
 import android.annotation.SuppressLint;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,9 +36,13 @@ public class TestimoniosListActivity extends ActionBarActivity {
 
 	public void setSupportActionBar() {
 		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-		mToolbar.setTitle("Testimonios Recientes");
+		mToolbar.setTitle("");
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
 		mToolbar.getBackground().setAlpha(0);
+		TextView mTitle = (TextView) mToolbar.findViewById(R.id.toolbar_title);
+		Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.RobotoSlab_Bold);
+		mTitle.setTypeface(typeface);
+		mTitle.setText(getResources().getString(R.string.testimonios_news));
         setSupportActionBar(mToolbar);
 	}
 	

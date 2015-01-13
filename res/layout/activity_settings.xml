@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cide="http://schemas.android.com/apk/res/mx.com.factico.cide"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/title_color"
@@ -10,7 +11,7 @@
         android:layout_height="wrap_content"
         layout="@layout/actionbar" />
 
-    <TextView
+    <mx.com.factico.cide.views.CustomTextView
         android:id="@+id/settings_tv_acercade_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +22,8 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         android:text="@string/acercade"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        cide:typefaceRoboto="SourceSansPro_Regular" />
 
     <View
         android:layout_width="match_parent"
@@ -30,7 +32,7 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin" />
 
-    <TextView
+    <mx.com.factico.cide.views.CustomTextView
         android:id="@+id/settings_tv_acercade_description"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,6 +42,7 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         android:text="@string/lorem_ipsum"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        cide:typefaceRoboto="SourceSansPro_Regular" />
 
 </LinearLayout>

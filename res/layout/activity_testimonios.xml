@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cide="http://schemas.android.com/apk/res/mx.com.factico.cide"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/drawable_bgr_gradient_dark"
     android:orientation="vertical" >
 
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/actionbar" />
+    
     <mx.com.factico.cide.views.CustomScrollView
         android:id="@+id/testimonios_sv_scroll"
         android:layout_width="match_parent"
@@ -25,7 +30,6 @@
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
                 android:src="@drawable/ic_launcher" />
 
             <RelativeLayout
@@ -56,7 +60,7 @@
                         android:text=""
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/title_color"
-                        cide:typefaceRoboto="bold" />
+                        cide:typefaceRoboto="RobotoSlab_Bold" />
 
                     <mx.com.factico.cide.views.CustomTextView
                         android:id="@+id/testimonios_tv_desciption"
@@ -67,7 +71,7 @@
                         android:text=""
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/default_text_color"
-                        cide:typefaceRoboto="regular" />
+                        cide:typefaceRoboto="SourceSansPro_Regular" />
                 </LinearLayout>
 
                 <mx.com.factico.cide.views.CustomTextView
@@ -77,12 +81,12 @@
                     android:layout_below="@+id/testimonios_vg_description"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="-35dp"
-                    android:background="@drawable/selector_btn_ligth"
+                    android:background="@drawable/selector_btn_other"
                     android:padding="10dp"
                     android:text="@string/testimonios_add_btn_new"
                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    cide:typefaceRoboto="regular" />
+                    cide:typefaceRoboto="RobotoSlab_Regular" />
             </RelativeLayout>
 
             <LinearLayout
@@ -106,7 +110,7 @@
                     android:text="@string/testimonios_news"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/white"
-                    cide:typefaceRoboto="bold_italic" />
+                    cide:typefaceRoboto="SourceSansPro_BoldItalic" />
 
                 <ProgressBar
                     android:id="@+id/testimonios_pb_loading"
@@ -121,9 +125,4 @@
         </LinearLayout>
     </mx.com.factico.cide.views.CustomScrollView>
 
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/actionbar" />
-
-</RelativeLayout>
+</LinearLayout>
