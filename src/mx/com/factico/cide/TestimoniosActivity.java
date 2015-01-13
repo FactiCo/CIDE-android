@@ -25,7 +25,6 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -42,8 +41,6 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 	private int categoyTypeIndex = -1;
 
 	private Toolbar mToolbar;
-	
-	private final int TAG_BTN_MORE = 20150105;
 	
 	private Testimonio testimonio = null;
 
@@ -229,10 +226,14 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			}
 			
 			if (hasInCategory) {
-				Button btnMoreTestimonios = new Button(this);
+				CustomTextView btnShowMore = (CustomTextView) findViewById(R.id.testimonios_btn_showmore);
+				btnShowMore.setVisibility(View.VISIBLE);
+				btnShowMore.setOnClickListener(this);
+				
+				/*Button btnMoreTestimonios = new Button(this);
 				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 				params.gravity = Gravity.CENTER_HORIZONTAL;
-				params.topMargin = -40;
+				params.topMargin = 40
 				btnMoreTestimonios.setLayoutParams(params);
 				
 				btnMoreTestimonios.setPadding(100, 0, 100, 0);
@@ -247,7 +248,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 				btnMoreTestimonios.setTypeface(typeface);
 				
 				containerTestimonios.setOnClickListener(this);
-				containerTestimonios.addView(btnMoreTestimonios);
+				containerTestimonios.addView(btnMoreTestimonios);*/
 			} else {
 				TextView tvNoTestimonios = new TextView(this);
 				tvNoTestimonios.setPadding(30, 30, 30, 30);
@@ -314,7 +315,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			openListTestimonioIntent();
 			break;
 			
-		case TAG_BTN_MORE:
+		case R.id.testimonios_btn_showmore:
 			openListTestimonioIntent();
 			break;
 			

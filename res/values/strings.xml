@@ -26,6 +26,8 @@
     <string name="dialog_ok">Aceptar</string>
     <string name="dialog_share">Compartir</string>
     
+    <string name="dialog_share_testimonio">Acabo de compartir mi testimonio desde #JusticiaCotidiana http://www.justiciacotidiana.mx</string>
+    
     <string name="no_internet_connection">Sin conexión a Internet.</string>
     
     <!-- Testimonios -->

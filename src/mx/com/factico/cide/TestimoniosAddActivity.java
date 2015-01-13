@@ -13,6 +13,7 @@ import mx.com.factico.cide.views.CustomEditText;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -31,7 +32,7 @@ import com.google.gson.GsonBuilder;
 
 public class TestimoniosAddActivity extends ActionBarActivity implements OnClickListener {
 	private static final String TAG_CLASS = TestimoniosAddActivity.class.getName();
-	
+
 	private CustomEditText etName;
 	private CustomEditText etEmail;
 	private Spinner spCategory;
@@ -40,9 +41,9 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	private Spinner spAge;
 	private Spinner spGender;
 	private Spinner spGrade;
-	
+
 	private int categoyTypeIndex = -1;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,29 +60,30 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		mToolbar.getBackground().setAlpha(0);
 		TextView mTitle = (TextView) mToolbar.findViewById(R.id.toolbar_title);
 		mTitle.setText(getResources().getString(R.string.testimonios_add_new));
-        setSupportActionBar(mToolbar);
+		setSupportActionBar(mToolbar);
 	}
-	
+
 	public void initUI() {
 		Bundle bundle = getIntent().getExtras();
 		if (bundle != null) {
 			categoyTypeIndex = bundle.getInt(TestimoniosActivity.TAG_CATEGORY_TYPE_INDEX);
 		}
-		
+
 		etName = (CustomEditText) findViewById(R.id.testimonios_add_et_name); // Name
 		etEmail = (CustomEditText) findViewById(R.id.testimonios_add_et_email); // Email
 
 		etName.setRegexType(RegularExpressions.KEY_IS_STRING);
 		etEmail.setRegexType(RegularExpressions.KEY_IS_EMAIL);
-		
+
 		spCategory = (Spinner) findViewById(R.id.testimonios_add_sp_category); // Category
-		loadDataFromResources(spCategory); // Load data to spinner from resources
-		
+		loadDataFromResources(spCategory); // Load data to spinner from
+											// resources
+
 		etExplication = (CustomEditText) findViewById(R.id.testimonios_add_et_explication); // Explication
-		
+
 		spCity = (Spinner) findViewById(R.id.testimonios_add_sp_city); // City
 		loadDataFromResources(spCity); // Load data to spinner from resources
-		
+
 		spAge = (Spinner) findViewById(R.id.testimonios_add_sp_age); // Age
 		loadDataFromResources(spAge); // Load data to spinner from resources
 
@@ -90,41 +92,41 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 
 		spGrade = (Spinner) findViewById(R.id.testimonios_add_sp_grade); // Grade
 		loadDataFromResources(spGrade); // Load data to spinner from resources
-		
+
 		findViewById(R.id.testimonios_add_btn_senddata).setOnClickListener(this);
 	}
 
 	public void loadDataFromResources(Spinner spinner) {
 		String[] arayData = null;
-		
+
 		switch (spinner.getId()) {
-			case R.id.testimonios_add_sp_category:
-				arayData = getResources().getStringArray(R.array.testimonios_categories_titles);
-				loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_category));
-				break;
-	
-			case R.id.testimonios_add_sp_city:
-				arayData = getResources().getStringArray(R.array.testimonios_add_cities);
-				loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_city));
-				break;
-	
-			case R.id.testimonios_add_sp_age:
-				arayData = getResources().getStringArray(R.array.testimonios_add_ages);
-				loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_age));
-				break;
-	
-			case R.id.testimonios_add_sp_grade:
-				arayData = getResources().getStringArray(R.array.testimonios_add_grades);
-				loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_grade));
-				break;
-				
-			case R.id.testimonios_add_sp_gender:
-				arayData = getResources().getStringArray(R.array.testimonios_add_gender);
-				loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_gender));
-				break;
-	
-			default:
-				break;
+		case R.id.testimonios_add_sp_category:
+			arayData = getResources().getStringArray(R.array.testimonios_categories_titles);
+			loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_category));
+			break;
+
+		case R.id.testimonios_add_sp_city:
+			arayData = getResources().getStringArray(R.array.testimonios_add_cities);
+			loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_city));
+			break;
+
+		case R.id.testimonios_add_sp_age:
+			arayData = getResources().getStringArray(R.array.testimonios_add_ages);
+			loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_age));
+			break;
+
+		case R.id.testimonios_add_sp_grade:
+			arayData = getResources().getStringArray(R.array.testimonios_add_grades);
+			loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_grade));
+			break;
+
+		case R.id.testimonios_add_sp_gender:
+			arayData = getResources().getStringArray(R.array.testimonios_add_gender);
+			loadDataArrayAdapter(spinner, arayData, getResources().getString(R.string.testimonios_add_gender));
+			break;
+
+		default:
+			break;
 		}
 	}
 
@@ -132,11 +134,11 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		ArrayList<String> listData = new ArrayList<String>();
 		listData.add(prompt + " (Obligatorio)");
 		listData.addAll(new ArrayList<String>(Arrays.asList(arrayData)));
-		
+
 		SpinnerAdapter dataAdapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, listData);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
 		spinner.setAdapter(dataAdapter);
-		
+
 		if (spinner.getId() == R.id.testimonios_add_sp_category) {
 			spCategory.setSelection(categoyTypeIndex + 1);
 			spCategory.setEnabled(false);
@@ -149,11 +151,11 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		case R.id.testimonios_add_btn_senddata:
 			validateEditText();
 			break;
-			
+
 		case R.id.dialog_result_post_ok:
 			finish();
 			break;
-			
+
 		case R.id.dialog_result_post_share:
 			shareInSocialMedia();
 			break;
@@ -162,11 +164,11 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 			break;
 		}
 	}
-	
+
 	private void validateEditText() {
 		boolean isOkToSend = true;
 		boolean hasError = false;
-		
+
 		if (etName.hasSyntaxError()) {
 			hasError = true;
 		}
@@ -185,7 +187,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		if (spGender.getSelectedItemPosition() == 0) {
 			isOkToSend = false;
 		}
-		
+
 		if (hasError) {
 			Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.edittext_wrong_info), Toast.LENGTH_LONG);
 		} else {
@@ -196,31 +198,52 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 			}
 		}
 	}
-	
+
 	private void sendData() {
 		Testimonio.Items testimonio = new Testimonio().new Items();
-		
-		testimonio.setName(etName.getText().toString()); // Getting and setting Name
-		testimonio.setEmail(etEmail.getText().toString()); // Getting and setting Email
-		testimonio.setCategory(spCategory.getSelectedItem().toString()); // Getting and setting Category
-		testimonio.setExplanation(etExplication.getText().toString()); // Getting and setting Description
-		testimonio.setState(String.valueOf(spCity.getSelectedItemPosition())); // Getting and setting City
-		testimonio.setAge(spAge.getSelectedItem().toString()); // Getting and setting Age
-		testimonio.setGender(spGender.getSelectedItem().toString()); // Getting and setting Gender
-		testimonio.setGrade(spGrade.getSelectedItem().toString()); // Getting and setting Grade
-		
-		SendDataAsyncTask sendDataTask = new SendDataAsyncTask(testimonio); // Starting sending data task
+
+		testimonio.setName(etName.getText().toString()); // Getting and setting
+															// Name
+		testimonio.setEmail(etEmail.getText().toString()); // Getting and
+															// setting Email
+		testimonio.setCategory(spCategory.getSelectedItem().toString()); // Getting
+																			// and
+																			// setting
+																			// Category
+		testimonio.setExplanation(etExplication.getText().toString()); // Getting
+																		// and
+																		// setting
+																		// Description
+		testimonio.setState(String.valueOf(spCity.getSelectedItemPosition())); // Getting
+																				// and
+																				// setting
+																				// City
+		testimonio.setAge(spAge.getSelectedItem().toString()); // Getting and
+																// setting Age
+		testimonio.setGender(spGender.getSelectedItem().toString()); // Getting
+																		// and
+																		// setting
+																		// Gender
+		testimonio.setGrade(spGrade.getSelectedItem().toString()); // Getting
+																	// and
+																	// setting
+																	// Grade
+
+		SendDataAsyncTask sendDataTask = new SendDataAsyncTask(testimonio); // Starting
+																			// sending
+																			// data
+																			// task
 		sendDataTask.execute();
 	}
-	
+
 	private class SendDataAsyncTask extends AsyncTask<String, String, String> {
 		private ProgressDialog dialog;
 		private Testimonio.Items testimonio;
-		
+
 		public SendDataAsyncTask(Testimonio.Items testimonio) {
 			this.testimonio = testimonio;
 		}
-		
+
 		@Override
 		protected void onPreExecute() {
 			dialog = new ProgressDialog(TestimoniosAddActivity.this);
@@ -229,12 +252,12 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 			dialog.setCancelable(false);
 			dialog.show();
 		}
-		
+
 		@Override
 		protected String doInBackground(String... params) {
 			Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 			String json = gson.toJson(this.testimonio);
-			
+
 			String result = HttpConnection.POST(HttpConnection.ACTION_TESTIMONIOS, json);
 			return result;
 		}
@@ -244,11 +267,12 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 			if (dialog != null && dialog.isShowing()) {
 				dialog.dismiss();
 			}
-			
+
 			if (result != null) {
-				// Dialogues.Toast(getApplicationContext(), "Result: " + result, Toast.LENGTH_LONG);
+				// Dialogues.Toast(getApplicationContext(), "Result: " + result,
+				// Toast.LENGTH_LONG);
 				Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
-				
+
 				String resultCode = GsonParser.getResultFromJSON(result);
 				if (resultCode.equals(GsonParser.TAG_RESULT_OK)) {
 					showResultDialog(getResources().getString(R.string.dialog_message_testimonio));
@@ -260,28 +284,32 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 			}
 		}
 	}
-	
+
 	@SuppressLint("InflateParams")
 	private void showResultDialog(String message) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		View view = getLayoutInflater().inflate(R.layout.dialog_result_post, null, false);
-		
+
 		((TextView) view.findViewById(R.id.dialog_result_post_message)).setText(message);
-		
+
 		view.findViewById(R.id.dialog_result_post_ok).setOnClickListener(this);
 		view.findViewById(R.id.dialog_result_post_share).setOnClickListener(this);
-		
+
 		builder.setView(view);
-		
+
 		AlertDialog dialog = builder.create();
 		dialog.setCanceledOnTouchOutside(false);
 		dialog.show();
 	}
-	
+
 	private void shareInSocialMedia() {
-		
+		Intent sendIntent = new Intent();
+		sendIntent.setAction(Intent.ACTION_SEND);
+		sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.dialog_share_testimonio));
+		sendIntent.setType("text/plain");
+		startActivity(sendIntent);
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.close_white, menu);
@@ -293,7 +321,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		int id = item.getItemId();
 		if (id == R.id.action_close) {
 			finish();
-			
+
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

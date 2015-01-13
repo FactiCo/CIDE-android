@@ -150,7 +150,7 @@
                 android:paddingRight="20dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                cide:typefaceRoboto="RobotoSlab_Regular" />
+                cide:typefaceRoboto="SourceSansPro_Regular" />
         </LinearLayout>
     </ScrollView>
 

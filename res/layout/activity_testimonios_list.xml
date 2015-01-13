@@ -23,9 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:divider="@drawable/divider_horizontal"
-            android:orientation="vertical"
-            android:showDividers="middle" />
+            android:orientation="vertical" />
     </ScrollView>
 
 </LinearLayout>
