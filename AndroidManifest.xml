@@ -79,6 +79,11 @@
             android:parentActivityName="mx.com.factico.cide.TestimoniosMenuActivity" />
         
         <activity
+            android:name="mx.com.factico.cide.SeeMoreDescriptionActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName="mx.com.factico.cide.TestimoniosActivity" />
+        
+        <activity
             android:name="mx.com.factico.cide.PropuestasMenuActivity"
             android:screenOrientation="portrait"
             android:parentActivityName="mx.com.factico.cide.MainActivity" />

@@ -159,7 +159,7 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 			ivIcon.setImageResource(R.drawable.ic_justicia_trabajo);
 			break;
 		case 1:
-			ivIcon.setImageResource(R.drawable.ic_justicia_familiar);
+			ivIcon.setImageResource(R.drawable.ic_justicia_familias);
 			break;
 		case 2:
 			ivIcon.setImageResource(R.drawable.ic_justicia_vecinal);

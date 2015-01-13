@@ -78,7 +78,7 @@
                     android:layout_height="80dp"
                     android:contentDescription="@string/testimonio_name"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ic_justicia_familiar" />
+                    android:src="@drawable/ic_justicia_familias" />
 
                 <mx.com.factico.cide.views.CustomTextView
                     android:layout_width="match_parent"

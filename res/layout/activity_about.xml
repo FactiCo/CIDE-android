@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <fr.castorflex.android.verticalviewpager.VerticalViewPager
-        android:id="@+id/verticalviewpager"
+        android:id="@+id/about_verticlaviewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -23,5 +23,16 @@
         android:layout_marginTop="20dp"
         android:contentDescription="@string/about_name"
         android:src="@drawable/ic_splash" />
+    
+    <ImageView
+        android:id="@+id/about_iv_scroll"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/about_name"
+        android:src="@drawable/ic_about_scroll_1"
+        android:paddingEnd="5dp"
+        android:paddingStart="0dp" />
 
 </RelativeLayout>

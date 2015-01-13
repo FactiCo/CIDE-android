@@ -19,7 +19,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -61,6 +60,8 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		TextView mTitle = (TextView) mToolbar.findViewById(R.id.toolbar_title);
 		mTitle.setText(getResources().getString(R.string.testimonios_add_new));
 		setSupportActionBar(mToolbar);
+		
+		mToolbar.setNavigationIcon(R.drawable.ic_action_close_white);
 	}
 
 	public void initUI() {
@@ -76,8 +77,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		etEmail.setRegexType(RegularExpressions.KEY_IS_EMAIL);
 
 		spCategory = (Spinner) findViewById(R.id.testimonios_add_sp_category); // Category
-		loadDataFromResources(spCategory); // Load data to spinner from
-											// resources
+		loadDataFromResources(spCategory); // Load data to spinner from resources
 
 		etExplication = (CustomEditText) findViewById(R.id.testimonios_add_et_explication); // Explication
 
@@ -292,15 +292,9 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.close_white, menu);
-		return true;
-	}
-
-	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
-		if (id == R.id.action_close) {
+		if (id == android.R.id.home) {
 			finish();
 
 			return true;

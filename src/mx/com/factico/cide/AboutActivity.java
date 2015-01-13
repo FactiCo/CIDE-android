@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -15,7 +16,8 @@ import android.widget.ImageView;
 import fr.castorflex.android.verticalviewpager.VerticalViewPager;
 
 public class AboutActivity extends ActionBarActivity {
-    
+	private ImageView ivScroll;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,13 +36,35 @@ public class AboutActivity extends ActionBarActivity {
 	}
 
 	private void initUI() {
-		VerticalViewPager verticalViewPager = (VerticalViewPager) findViewById(R.id.verticalviewpager);
+		VerticalViewPager verticalViewPager = (VerticalViewPager) findViewById(R.id.about_verticlaviewpager);
 		verticalViewPager.setAdapter(new DummyAdapter(getSupportFragmentManager()));
 		verticalViewPager.setPageMargin(0);
 		// verticalViewPager.setPageMarginDrawable(new ColorDrawable(getResources().getColor(android.R.color.holo_green_dark)));
 		//verticalViewPager.setPageTransformer(true, new VerticalPageTransformer());
+		
+		ivScroll = (ImageView) findViewById(R.id.about_iv_scroll);
+		
+		verticalViewPager.setOnPageChangeListener(VerticalOnPageChangeListener);
 	}
 
+	OnPageChangeListener VerticalOnPageChangeListener = new OnPageChangeListener() {
+		@Override
+		public void onPageSelected(int position) {
+			if (position == 0)
+				ivScroll.setImageResource(R.drawable.ic_about_scroll_1);
+			if (position == 1)
+				ivScroll.setImageResource(R.drawable.ic_about_scroll_2);
+			if (position == 2)
+				ivScroll.setImageResource(R.drawable.ic_about_scroll_3);
+		}
+		
+		@Override
+		public void onPageScrolled(int arg0, float arg1, int arg2) {}
+		
+		@Override
+		public void onPageScrollStateChanged(int arg0) {}
+	};
+	
 	public class DummyAdapter extends FragmentPagerAdapter {
 
 		public DummyAdapter(FragmentManager fm) {

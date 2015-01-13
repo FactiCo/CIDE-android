@@ -97,20 +97,17 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			ivLogo.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 10 * 2));
 			ivLogo.setScaleType(ScaleType.CENTER_INSIDE);
 			if (categoyTypeIndex == 0)
-				ivLogo.setImageResource(R.drawable.ic_justicia_trabajo_white);
+				ivLogo.setImageResource(R.drawable.ic_justicia_trabajo);
 			if (categoyTypeIndex == 1)
-				ivLogo.setImageResource(R.drawable.ic_justicia_familiar_white);
+				ivLogo.setImageResource(R.drawable.ic_justicia_familias);
 			if (categoyTypeIndex == 2)
-				ivLogo.setImageResource(R.drawable.ic_justicia_vecinal_white);
+				ivLogo.setImageResource(R.drawable.ic_justicia_vecinal);
 			if (categoyTypeIndex == 3)
-				ivLogo.setImageResource(R.drawable.ic_justicia_ciudadanos_white);
+				ivLogo.setImageResource(R.drawable.ic_justicia_ciudadanos);
 			if (categoyTypeIndex == 4)
-				ivLogo.setImageResource(R.drawable.ic_justicia_emprendedores_white);
-			// findViewById(R.id.testimonios_vg_description).setLayoutParams(new
-			// LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-			// height / 10 * 3));
-			// findViewById(R.id.testimonios_vg_container).setLayoutParams(new
-			// LayoutParams(LayoutParams.MATCH_PARENT, height / 10 * 3));
+				ivLogo.setImageResource(R.drawable.ic_justicia_emprendedores);
+			
+			findViewById(R.id.testimonios_vg_description).setOnClickListener(this);
 
 			FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width / 7, width / 7);
 			params.topMargin = (height / 10 * 3) - (width / 6 / 3);
@@ -336,6 +333,10 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			openAddTestimonioIntent();
 			break;
 
+		case R.id.testimonios_vg_description:
+			openSeeMoreDescriptionIntent();
+			break;
+		
 		default:
 			break;
 		}
@@ -376,6 +377,13 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		startActivity(intent);
 	}
 
+	private void openSeeMoreDescriptionIntent() {
+		Intent intent = new Intent(getBaseContext(), SeeMoreDescriptionActivity.class);
+		intent.putExtra(SeeMoreDescriptionActivity.TITLE, "");
+		intent.putExtra(SeeMoreDescriptionActivity.DESCRIPTION, "");
+		startActivity(intent);
+	}
+	
 	private void openAddTestimonioIntent() {
 		Intent intent = new Intent(getBaseContext(), TestimoniosAddActivity.class);
 		intent.putExtra(TAG_CATEGORY_TYPE_INDEX, categoyTypeIndex);
