@@ -4,13 +4,12 @@
         <enum name="RobotoSlab_Light" value="0" />
         <enum name="RobotoSlab_Regular" value="1" />
         <enum name="RobotoSlab_Bold" value="2" />
-        <enum name="RobotoSlab_Black" value="3" />
-        <enum name="SourceSansPro_Bold" value="4" />
-        <enum name="SourceSansPro_BoldItalic" value="5" />
-        <enum name="SourceSansPro_Light" value="6" />
-        <enum name="SourceSansPro_Regular" value="7" />
-        <enum name="SourceSansPro_Semibold" value="8" />
-        <enum name="SourceSansPro_SemiboldItalic" value="9" />
+        <enum name="SourceSansPro_Bold" value="3" />
+        <enum name="SourceSansPro_BoldItalic" value="4" />
+        <enum name="SourceSansPro_Light" value="5" />
+        <enum name="SourceSansPro_Regular" value="6" />
+        <enum name="SourceSansPro_Semibold" value="7" />
+        <enum name="SourceSansPro_SemiboldItalic" value="8" />
     </attr>
     
     <declare-styleable name="CustomTextView">

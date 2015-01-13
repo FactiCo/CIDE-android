@@ -56,7 +56,7 @@
                     android:text="@string/justice_1"
                     android:textColor="@color/btn_ligth_green_color"
                     android:textSize="12sp"
-                    cide:typefaceRoboto="SourceSansPro_Regular" />
+                    cide:typefaceRoboto="RobotoSlab_Regular" />
             </LinearLayout>
 
             <LinearLayout
@@ -89,7 +89,7 @@
                     android:text="@string/justice_2"
                     android:textColor="@color/btn_ligth_green_color"
                     android:textSize="12sp"
-                    cide:typefaceRoboto="SourceSansPro_Regular" />
+                    cide:typefaceRoboto="RobotoSlab_Regular" />
             </LinearLayout>
 
             <LinearLayout
@@ -121,7 +121,7 @@
                     android:text="@string/justice_3"
                     android:textColor="@color/btn_ligth_green_color"
                     android:textSize="12sp"
-                    cide:typefaceRoboto="SourceSansPro_Regular" />
+                    cide:typefaceRoboto="RobotoSlab_Regular" />
             </LinearLayout>
         </TableRow>
 
@@ -159,7 +159,7 @@
                     android:text="@string/justice_4"
                     android:textColor="@color/btn_ligth_green_color"
                     android:textSize="12sp"
-                    cide:typefaceRoboto="SourceSansPro_Regular" />
+                    cide:typefaceRoboto="RobotoSlab_Regular" />
             </LinearLayout>
 
             <LinearLayout
@@ -192,7 +192,7 @@
                     android:text="@string/justice_5"
                     android:textColor="@color/btn_ligth_green_color"
                     android:textSize="12sp"
-                    cide:typefaceRoboto="SourceSansPro_Regular" />
+                    cide:typefaceRoboto="RobotoSlab_Regular" />
             </LinearLayout>
 
             <TextView

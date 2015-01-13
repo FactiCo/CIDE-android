@@ -11,6 +11,7 @@ import mx.com.factico.cide.parser.GsonParser;
 import mx.com.factico.cide.typeface.TypefaceFactory;
 import mx.com.factico.cide.utils.ScreenUtils;
 import mx.com.factico.cide.views.CustomScrollView;
+import mx.com.factico.cide.views.CustomTextView;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -86,8 +87,8 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			
 			categoryName = listCategories[categoyTypeIndex];
 			
-			((TextView) findViewById(R.id.testimonios_tv_title)).setText(categoryName);
-			((TextView) findViewById(R.id.testimonios_tv_desciption)).setText(listDesciptions[categoyTypeIndex]);
+			((CustomTextView) findViewById(R.id.testimonios_tv_title)).setText(categoryName);
+			((CustomTextView) findViewById(R.id.testimonios_tv_desciption)).setText(listDesciptions[categoyTypeIndex]);
 			
 	        Point point = ScreenUtils.getScreenSize(this);
 	        int width = point.x;
@@ -229,7 +230,12 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			
 			if (hasInCategory) {
 				Button btnMoreTestimonios = new Button(this);
-				btnMoreTestimonios.setPadding(20, 20, 20, 20);
+				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+				params.gravity = Gravity.CENTER_HORIZONTAL;
+				params.topMargin = -40;
+				btnMoreTestimonios.setLayoutParams(params);
+				
+				btnMoreTestimonios.setPadding(100, 0, 100, 0);
 				btnMoreTestimonios.setBackgroundResource(R.drawable.selector_btn_other);
 				btnMoreTestimonios.setText(getResources().getString(R.string.testimonios_seemore));
 				btnMoreTestimonios.setTextColor(getResources().getColor(R.color.white));
@@ -237,7 +243,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 				btnMoreTestimonios.setId(TAG_BTN_MORE);
 				btnMoreTestimonios.setOnClickListener(this);
 				
-				Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.SourceSansPro_Regular);
+				Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.RobotoSlab_Regular);
 				btnMoreTestimonios.setTypeface(typeface);
 				
 				containerTestimonios.setOnClickListener(this);

@@ -7,13 +7,12 @@ public class TypefaceFactory {
 	public static final int RobotoSlab_Light = 0;
 	public static final int RobotoSlab_Regular = 1;
 	public static final int RobotoSlab_Bold = 2;
-	public static final int RobotoSlab_Black = 3;
-	public static final int SourceSansPro_Bold = 4;
-	public static final int SourceSansPro_BoldItalic = 5;
-	public static final int SourceSansPro_Light = 6;
-	public static final int SourceSansPro_Regular = 7;
-	public static final int SourceSansPro_Semibold = 8;
-	public static final int SourceSansPro_SemiboldItalic = 9;
+	public static final int SourceSansPro_Bold = 3;
+	public static final int SourceSansPro_BoldItalic = 4;
+	public static final int SourceSansPro_Light = 5;
+	public static final int SourceSansPro_Regular = 6;
+	public static final int SourceSansPro_Semibold = 7;
+	public static final int SourceSansPro_SemiboldItalic = 8;
 	
 	private static String typefaceDirRobotoSlab = "fonts/Roboto_Slab/";
 	

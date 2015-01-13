@@ -50,7 +50,7 @@
                     android:paddingRight="@dimen/activity_horizontal_margin"
                     android:paddingTop="@dimen/activity_vertical_margin"
                     android:showDividers="middle" >
-
+                    
                     <mx.com.factico.cide.views.CustomTextView
                         android:id="@+id/testimonios_tv_title"
                         android:layout_width="match_parent"
@@ -110,7 +110,7 @@
                     android:text="@string/testimonios_news"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/white"
-                    cide:typefaceRoboto="SourceSansPro_BoldItalic" />
+                    cide:typefaceRoboto="RobotoSlab_Regular" />
 
                 <ProgressBar
                     android:id="@+id/testimonios_pb_loading"
