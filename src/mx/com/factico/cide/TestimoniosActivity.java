@@ -322,10 +322,6 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		tvDescription.setText(item.getExplanation());
 		tvDescription.setTag(false);
 
-		if (tvDescription.getLineCount() > 3) {
-			tvDescription.setMaxLines(3);
-		}
-
 		view.setTag(tvDescription);
 		view.setOnClickListener(BtnShowTestimonioOnClickListener);
 
@@ -360,10 +356,6 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 					tvDescription.setMaxLines(Integer.MAX_VALUE);
 					state = true;
 				}
-				
-				/*Dialogues.Toast(getApplicationContext(), "State:" + state + 
-						", LinesCount: " + tvDescription.getLineCount() + 
-						", MaxLines: " + tvDescription.getMaxLines(), Toast.LENGTH_LONG);*/
 			}
 			
 			tvDescription.setTag(state);

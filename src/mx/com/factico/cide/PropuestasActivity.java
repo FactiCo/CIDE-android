@@ -301,8 +301,9 @@ public class PropuestasActivity extends ActionBarActivity implements OnClickList
 			if (resultCode.equals(GsonParser.TAG_RESULT_OK)) {
 				showResultDialog(getResources().getString(R.string.dialog_message_propuesta_vote));
 				
-			} else if (resultCode.equals(GsonParser.TAG_RESULT_ERROR)) {
+			} else {
 				Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
+				
 			}
 		}
 	}

@@ -202,37 +202,16 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 	private void sendData() {
 		Testimonio.Items testimonio = new Testimonio().new Items();
 
-		testimonio.setName(etName.getText().toString()); // Getting and setting
-															// Name
-		testimonio.setEmail(etEmail.getText().toString()); // Getting and
-															// setting Email
-		testimonio.setCategory(spCategory.getSelectedItem().toString()); // Getting
-																			// and
-																			// setting
-																			// Category
-		testimonio.setExplanation(etExplication.getText().toString()); // Getting
-																		// and
-																		// setting
-																		// Description
-		testimonio.setState(String.valueOf(spCity.getSelectedItemPosition())); // Getting
-																				// and
-																				// setting
-																				// City
-		testimonio.setAge(spAge.getSelectedItem().toString()); // Getting and
-																// setting Age
-		testimonio.setGender(spGender.getSelectedItem().toString()); // Getting
-																		// and
-																		// setting
-																		// Gender
-		testimonio.setGrade(spGrade.getSelectedItem().toString()); // Getting
-																	// and
-																	// setting
-																	// Grade
+		testimonio.setName(etName.getText().toString()); // Getting and setting Name
+		testimonio.setEmail(etEmail.getText().toString()); // Getting and setting Email
+		testimonio.setCategory(spCategory.getSelectedItem().toString()); // Getting and setting Category
+		testimonio.setExplanation(etExplication.getText().toString()); // Getting and setting Description
+		testimonio.setState(String.valueOf(spCity.getSelectedItemPosition())); // Getting and setting City
+		testimonio.setAge(spAge.getSelectedItem().toString()); // Getting and setting Age
+		testimonio.setGender(spGender.getSelectedItem().toString()); // Getting and setting Gender
+		testimonio.setGrade(spGrade.getSelectedItem().toString()); // Getting and setting Grade
 
-		SendDataAsyncTask sendDataTask = new SendDataAsyncTask(testimonio); // Starting
-																			// sending
-																			// data
-																			// task
+		SendDataAsyncTask sendDataTask = new SendDataAsyncTask(testimonio); // Starting sending data task
 		sendDataTask.execute();
 	}
 
@@ -259,6 +238,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 			String json = gson.toJson(this.testimonio);
 
 			String result = HttpConnection.POST(HttpConnection.ACTION_TESTIMONIOS, json);
+			
 			return result;
 		}
 
@@ -276,7 +256,8 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 				String resultCode = GsonParser.getResultFromJSON(result);
 				if (resultCode.equals(GsonParser.TAG_RESULT_OK)) {
 					showResultDialog(getResources().getString(R.string.dialog_message_testimonio));
-				} else if (resultCode.equals(GsonParser.TAG_RESULT_ERROR)) {
+					
+				} else {
 					Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
 				}
 			} else {

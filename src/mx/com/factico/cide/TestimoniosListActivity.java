@@ -4,6 +4,7 @@ import java.util.List;
 
 import mx.com.factico.cide.beans.Testimonio;
 import mx.com.factico.cide.typeface.TypefaceFactory;
+import mx.com.factico.cide.views.CustomTextView;
 import android.annotation.SuppressLint;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -116,9 +118,34 @@ public class TestimoniosListActivity extends ActionBarActivity {
 		
 		TextView tvDescription = (TextView) view.findViewById(R.id.item_testimonios_tv_description);
 		tvDescription.setText(item.getExplanation());
+		tvDescription.setTag(false);
+		
+		view.setTag(tvDescription);
+		view.setOnClickListener(BtnShowTestimonioOnClickListener);
 		
 		return view;
 	}
+	
+	OnClickListener BtnShowTestimonioOnClickListener = new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+
+			CustomTextView tvDescription = (CustomTextView) v.findViewById(R.id.item_testimonios_tv_description);
+			boolean state = (boolean) tvDescription.getTag();
+			
+			if (tvDescription.getLineCount() > 3) {
+				if (state) {
+					tvDescription.setMaxLines(3);
+					state = false;
+				} else {
+					tvDescription.setMaxLines(Integer.MAX_VALUE);
+					state = true;
+				}
+			}
+			
+			tvDescription.setTag(state);
+		}
+	};
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
