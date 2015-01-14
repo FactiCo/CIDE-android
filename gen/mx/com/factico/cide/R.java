@@ -19,11 +19,12 @@ public final class R {
         public static final int shake=0x7f040007;
     }
     public static final class array {
-        public static final int testimonios_add_ages=0x7f0c0003;
-        public static final int testimonios_add_cities=0x7f0c0002;
-        public static final int testimonios_add_gender=0x7f0c0004;
-        public static final int testimonios_add_grades=0x7f0c0005;
+        public static final int testimonios_add_ages=0x7f0c0004;
+        public static final int testimonios_add_cities=0x7f0c0003;
+        public static final int testimonios_add_gender=0x7f0c0005;
+        public static final int testimonios_add_grades=0x7f0c0006;
         public static final int testimonios_categories_descriptions=0x7f0c0001;
+        public static final int testimonios_categories_descriptions_large=0x7f0c0002;
         public static final int testimonios_categories_titles=0x7f0c0000;
     }
     public static final class attr {
@@ -2391,19 +2392,18 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f070029;
-        public static final int about_description=0x7f070034;
+        public static final int about_description=0x7f070031;
         public static final int about_name=0x7f07002e;
-        public static final int about_name_description=0x7f07002f;
-        public static final int acercade_description=0x7f070038;
+        public static final int acercade_description=0x7f070035;
         /**  Acerca de 
          */
-        public static final int acercade_name=0x7f070037;
-        public static final int acercade_politicas=0x7f07003b;
-        public static final int action_close=0x7f070035;
+        public static final int acercade_name=0x7f070034;
+        public static final int acercade_politicas=0x7f070038;
+        public static final int action_close=0x7f070032;
         public static final int action_settings=0x7f07002d;
-        public static final int age_text_view=0x7f070048;
-        public static final int alert_dialog_failed=0x7f07004d;
-        public static final int alert_dialog_success=0x7f07004c;
+        public static final int age_text_view=0x7f070045;
+        public static final int alert_dialog_failed=0x7f07004a;
+        public static final int alert_dialog_success=0x7f070049;
         public static final int app_name=0x7f07002b;
         public static final int com_facebook_choose_friends=0x7f070011;
         public static final int com_facebook_dialogloginactivity_ok_button=0x7f070000;
@@ -2433,16 +2433,16 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment_log_in_button=0x7f07000a;
         public static final int com_facebook_usersettingsfragment_logged_in=0x7f07000b;
         public static final int com_facebook_usersettingsfragment_not_logged_in=0x7f07000c;
-        public static final int dialog_error=0x7f070040;
-        public static final int dialog_message_propuesta_answer=0x7f07003e;
-        public static final int dialog_message_propuesta_comment=0x7f07003f;
-        public static final int dialog_message_propuesta_vote=0x7f07003d;
+        public static final int dialog_error=0x7f07003d;
+        public static final int dialog_message_propuesta_answer=0x7f07003b;
+        public static final int dialog_message_propuesta_comment=0x7f07003c;
+        public static final int dialog_message_propuesta_vote=0x7f07003a;
         /**  Dialog Testimonio 
          */
-        public static final int dialog_message_testimonio=0x7f07003c;
-        public static final int dialog_ok=0x7f070041;
-        public static final int dialog_share=0x7f070042;
-        public static final int dialog_share_testimonio=0x7f070043;
+        public static final int dialog_message_testimonio=0x7f070039;
+        public static final int dialog_ok=0x7f07003e;
+        public static final int dialog_share=0x7f07003f;
+        public static final int dialog_share_testimonio=0x7f070040;
         /**  Validations EditText 
          */
         public static final int edittext_emtpy=0x7f070077;
@@ -2453,10 +2453,10 @@ containing a value of this type.
         public static final int edittext_wrong_info=0x7f070079;
         /**  Propuestas 
          */
-        public static final int error_propuestas_recientes=0x7f070046;
+        public static final int error_propuestas_recientes=0x7f070043;
         /**  Testimonios 
          */
-        public static final int error_testimonios_recientes=0x7f070045;
+        public static final int error_testimonios_recientes=0x7f070042;
         /**  Facebook 654570061331636
          */
         public static final int facebook_app_id=0x7f07007d;
@@ -2464,13 +2464,13 @@ containing a value of this type.
         public static final int facebook_package=0x7f070080;
         public static final int facebook_post_message=0x7f07007e;
         public static final int facebook_session_is_not_open=0x7f070081;
-        public static final int gender_female_button=0x7f07004a;
-        public static final int gender_male_button=0x7f070049;
-        public static final int gender_text_view=0x7f07004b;
+        public static final int gender_female_button=0x7f070047;
+        public static final int gender_male_button=0x7f070046;
+        public static final int gender_text_view=0x7f070048;
         public static final int getdata_loading=0x7f07006b;
         /**  Parse Framework 
          */
-        public static final int hello_message=0x7f070047;
+        public static final int hello_message=0x7f070044;
         public static final int hello_world=0x7f07002c;
         /**  Types of justice 
          */
@@ -2480,17 +2480,19 @@ containing a value of this type.
         public static final int justice_4=0x7f07005b;
         public static final int justice_5=0x7f07005c;
         public static final int justice_6=0x7f07005d;
-        public static final int lorem_ipsum=0x7f070039;
-        public static final int lorem_ipsum_large=0x7f07003a;
+        public static final int lorem_ipsum=0x7f070036;
+        public static final int lorem_ipsum_large=0x7f070037;
         /**  Main 
          */
-        public static final int main_menu_option1=0x7f07004f;
-        public static final int main_menu_option2=0x7f070050;
-        public static final int main_menu_option3=0x7f070051;
-        public static final int no_internet_connection=0x7f070044;
+        public static final int main_menu_option_1=0x7f07004c;
+        public static final int main_menu_option_2=0x7f07004d;
+        public static final int main_menu_option_3=0x7f07004e;
+        public static final int main_menu_option_description_1=0x7f07004f;
+        public static final int main_menu_option_description_2=0x7f070050;
+        public static final int main_menu_option_description_3=0x7f070051;
+        public static final int no_internet_connection=0x7f070041;
         public static final int postdata_loading=0x7f07006a;
-        public static final int propuesta_name=0x7f070032;
-        public static final int propuesta_name_description=0x7f070033;
+        public static final int propuesta_name=0x7f070030;
         public static final int propuestas_btn_abstencion=0x7f070072;
         public static final int propuestas_btn_comments_hintcomment=0x7f070075;
         public static final int propuestas_btn_comments_sendcomment=0x7f070076;
@@ -2504,10 +2506,9 @@ containing a value of this type.
         public static final int propuestas_preview=0x7f07006c;
         public static final int propuestas_question=0x7f070073;
         public static final int propuestas_vote=0x7f07006f;
-        public static final int que_es_justicia=0x7f070036;
-        public static final int save_button=0x7f07004e;
-        public static final int testimonio_name=0x7f070030;
-        public static final int testimonio_name_description=0x7f070031;
+        public static final int que_es_justicia=0x7f070033;
+        public static final int save_button=0x7f07004b;
+        public static final int testimonio_name=0x7f07002f;
         public static final int testimonios_add_age=0x7f070062;
         public static final int testimonios_add_btn_new=0x7f070054;
         public static final int testimonios_add_btn_senddata=0x7f070069;

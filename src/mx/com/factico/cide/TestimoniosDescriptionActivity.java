@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class SeeMoreDescriptionActivity extends ActionBarActivity {
+public class TestimoniosDescriptionActivity extends ActionBarActivity {
 	public static String CATEGORY_INDEX = "";
 	
 	private TextView mTitle;
@@ -42,11 +42,11 @@ public class SeeMoreDescriptionActivity extends ActionBarActivity {
 			int categoryIndex = bundle.getInt(CATEGORY_INDEX, 0);
 			
 			String[] listCategories = getResources().getStringArray(R.array.testimonios_categories_titles);
-			String[] listDescriptions = getResources().getStringArray(R.array.testimonios_categories_descriptions);
+			String[] listDescriptionsLarge = getResources().getStringArray(R.array.testimonios_categories_descriptions_large);
 			
 			mTitle.setText(listCategories[categoryIndex]);
 			
-			((CustomTextView)findViewById(R.id.seemoredescription_tv_description)).setText(listDescriptions[categoryIndex]);
+			((CustomTextView)findViewById(R.id.seemoredescription_tv_description)).setText(listDescriptionsLarge[categoryIndex]);
 			
 			
 		}

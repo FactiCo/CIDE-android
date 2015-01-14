@@ -34,8 +34,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
-            android:padding="20dp"
-            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
             android:text="@string/que_es_justicia"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/white"
@@ -65,7 +68,7 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingStart="@dimen/activity_horizontal_margin"
-                android:text="@string/main_menu_option1"
+                android:text="@string/main_menu_option_1"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/white"
                 cide:typefaceRoboto="SourceSansPro_Regular" />
@@ -79,7 +82,7 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:paddingTop="5dp"
-                android:text="@string/main_menu_option1"
+                android:text="@string/main_menu_option_description_1"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white"
                 cide:typefaceRoboto="SourceSansPro_Light" />
@@ -115,7 +118,7 @@
                 android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
-                android:text="@string/main_menu_option2"
+                android:text="@string/main_menu_option_2"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/white"
                 cide:typefaceRoboto="SourceSansPro_Regular" />
@@ -129,7 +132,7 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:paddingTop="5dp"
-                android:text="@string/main_menu_option1"
+                android:text="@string/main_menu_option_description_2"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white"
                 cide:typefaceRoboto="SourceSansPro_Light" />
@@ -165,7 +168,7 @@
                 android:paddingEnd="@dimen/activity_horizontal_margin"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
-                android:text="@string/main_menu_option3"
+                android:text="@string/main_menu_option_3"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/white"
                 cide:typefaceRoboto="SourceSansPro_Regular" />
@@ -179,7 +182,7 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingStart="@dimen/activity_horizontal_margin"
                 android:paddingTop="5dp"
-                android:text="@string/main_menu_option1"
+                android:text="@string/main_menu_option_description_3"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white"
                 cide:typefaceRoboto="SourceSansPro_Light" />

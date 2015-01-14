@@ -3,11 +3,8 @@
 
     <string name="app_name">Justicia Cotidiana</string>
     <string name="about_name">¿Qué es la justicia cotidiana?</string>
-    <string name="about_name_description">La Justicia Cotidiana es un concepto novedoso que busca fomentar derechos y sancionar abusos de una manera ágil, sencilla y barata. Conoce más.</string>
     <string name="testimonio_name">Testimonios</string>
-    <string name="testimonio_name_description">Abusos e injusticias se cometen todos los días en la familia, en la calle, en la oficina. Escoge una categoría y ayúdanos a recopilar testimonios por cada tema.</string>
     <string name="propuesta_name">Propuestas</string>
-    <string name="propuesta_name_description">Expertos e instituciones tienen propuestas para mejorar la justicia cotidiana. Conoce, vota y argumenta las propuestas.</string>
     
     <string name="about_description">La justicia cotidiana es el primer contacto entre ciudadanía y Estado para resolver problmeas y abusos que se cometen todos los dias. Una justicia para todos y para todas, todos los dias y en todo lugar. Ayudará a reconstruir la confianza y certidumbre del país.</string>
     
@@ -57,9 +54,13 @@
     <string name="save_button">Save</string>
 
     <!-- Main -->
-    <string name="main_menu_option1">¿Qué es la justicia cotidiana?</string>
-    <string name="main_menu_option2">Testimonios</string>
-    <string name="main_menu_option3">Propuestas</string>
+    <string name="main_menu_option_1">¿Qué es la justicia cotidiana?</string>
+    <string name="main_menu_option_2">Testimonios</string>
+    <string name="main_menu_option_3">Propuestas</string>
+    
+    <string name="main_menu_option_description_1">Conoce los conceptos y datos relevantes.</string>
+    <string name="main_menu_option_description_2">Envía testimonios de injusticias o abusos, según categorías.</string>
+    <string name="main_menu_option_description_3">Vota y argumenta las propuestas para mejorar la Justicia Cotidiana.</string>
     
     <string name="testimonios_btn_map">Mapa de testimonios</string>
     

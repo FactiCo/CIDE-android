@@ -385,8 +385,8 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 	}
 
 	private void openSeeMoreDescriptionIntent() {
-		Intent intent = new Intent(getBaseContext(), SeeMoreDescriptionActivity.class);
-		intent.putExtra(SeeMoreDescriptionActivity.CATEGORY_INDEX, categoyTypeIndex);
+		Intent intent = new Intent(getBaseContext(), TestimoniosDescriptionActivity.class);
+		intent.putExtra(TestimoniosDescriptionActivity.CATEGORY_INDEX, categoyTypeIndex);
 		startActivity(intent);
 	}
 	

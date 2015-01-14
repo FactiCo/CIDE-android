@@ -50,7 +50,7 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 
 		setSupportActionBar();
 
-		startFacebookLoginIntent();
+		// startFacebookLoginIntent();
 		
 		// initUI(FacebookLoginActivity.RESULT_CODE_LOGIN_OK);
 	}
@@ -65,13 +65,13 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
-	private void startFacebookLoginIntent() {
+	protected void startFacebookLoginIntent() {
 		Intent intent = new Intent(PropuestasMenuActivity.this, FacebookLoginActivity.class);
 		startActivityForResult(intent, FacebookLoginActivity.REQUEST_CODE_LOGIN);
 		overridePendingTransition(0, 0);
 	}
 
-	private void initUI(int result) {
+	protected void initUI(int result) {
 		if (result == FacebookLoginActivity.RESULT_CODE_LOGIN_OK) {
 			getDataPropuestas();
 			
