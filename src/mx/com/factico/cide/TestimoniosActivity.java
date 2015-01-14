@@ -47,6 +47,8 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 
 	private String categoryName;
 
+	private String categoryDescription;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -84,9 +86,10 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			String[] listDesciptions = getResources().getStringArray(R.array.testimonios_categories_descriptions);
 
 			categoryName = listCategories[categoyTypeIndex];
-
+			categoryDescription = listDesciptions[categoyTypeIndex];
+			
 			((CustomTextView) findViewById(R.id.testimonios_tv_title)).setText(categoryName);
-			((CustomTextView) findViewById(R.id.testimonios_tv_desciption)).setText(listDesciptions[categoyTypeIndex]);
+			((CustomTextView) findViewById(R.id.testimonios_tv_desciption)).setText(categoryDescription);
 
 			Point point = ScreenUtils.getScreenSize(this);
 			int width = point.x;
@@ -383,8 +386,8 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 
 	private void openSeeMoreDescriptionIntent() {
 		Intent intent = new Intent(getBaseContext(), SeeMoreDescriptionActivity.class);
-		intent.putExtra(SeeMoreDescriptionActivity.TITLE, "");
-		intent.putExtra(SeeMoreDescriptionActivity.DESCRIPTION, "");
+		intent.putExtra(SeeMoreDescriptionActivity.TITLE, categoryName);
+		intent.putExtra(SeeMoreDescriptionActivity.DESCRIPTION, categoryDescription);
 		startActivity(intent);
 	}
 	

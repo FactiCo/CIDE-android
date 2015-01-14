@@ -17,6 +17,7 @@ import fr.castorflex.android.verticalviewpager.VerticalViewPager;
 
 public class AboutActivity extends ActionBarActivity {
 	private ImageView ivScroll;
+	private Toolbar mToolbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class AboutActivity extends ActionBarActivity {
 	}
 
 	public void setSupportActionBar() {
-		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+		mToolbar = (Toolbar) findViewById(R.id.toolbar);
 		mToolbar.setTitle("");
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
 		mToolbar.getBackground().setAlpha(255);
@@ -59,11 +60,35 @@ public class AboutActivity extends ActionBarActivity {
 		}
 		
 		@Override
-		public void onPageScrolled(int arg0, float arg1, int arg2) {}
+		public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+			/*Point point = ScreenUtils.getScreenSize(getBaseContext());
+			
+			int headerHeight = (point.y * 3) - getSupportActionBar().getHeight();
+            float ratio = (float) Math.min(Math.max(positionOffsetPixels, 0), headerHeight) / headerHeight;
+            int newAlpha = (int) (ratio * 255);
+            mToolbar.setAlpha(newAlpha);*/
+		}
 		
 		@Override
-		public void onPageScrollStateChanged(int arg0) {}
+		public void onPageScrollStateChanged(int state) {}
 	};
+	
+	/*private float getAlphaForView(int position) {
+		int diff = 0;
+		float minAlpha = 0.4f, maxAlpha = 1.f;
+		float alpha = minAlpha; // min alpha
+		if (position > screenHeight)
+			alpha = minAlpha;
+		else if (position + locationImageHeight < screenHeight)
+			alpha = maxAlpha;
+		else {
+			diff = screenHeight - position;
+			alpha += ((diff * 1f) / locationImageHeight) * (maxAlpha - minAlpha); // 1f and 0.4f are maximum and min
+			// alpha this will return a number betn 0f and 0.6f
+		}
+		// System.out.println(alpha+" "+screenHeight +" "+locationImageInitialLocation+" "+position+" "+diff);
+		return alpha;
+	}*/
 	
 	public class DummyAdapter extends FragmentPagerAdapter {
 

@@ -11,12 +11,12 @@
     </string-array>
     
     <string-array name="testimonios_categories_descriptions">
-        <item>La Justicia Laboral es un tema pendiente en México. Actualmente, los procesos para obtener justicia en el trabajo son caros, complejos y las figuras de justicia alternativa se utilizan poco.</item>
-        <item>Justicia en las Familias trata diversos temas y conflictos como el divorcio, sucesiones, pensiones alimenticias, entre otros. Es un tema complejo, pues intervienen relaciones de poder y vínculos afectivos. Las mujeres suelen ser las personas más desfavorecidas.</item>
-        <item>La convivencia vecinal y comunitaria es probablemente el mayor tema de conflictos diarios entre personas que habitan un mismo espacio o territorio. Conflictos derivados de los espacios públicos y uso de suelo se tratarán en este apartado.</item>
-        <item>Los ciudadanos tienen la facultad de defenderse frente a actos injustos de las autoridades. Sin embargo, en muchas ocasiones estos procesos resultan mucho más largos y complejos que la reparación del daño. La responsabilidad patrimonial del Estado es un tema fundamental.</item>
-        <item>Emprender es un reto constante en términos legales. Los micro, pequeños y medianos empresarios se enfrentan a numerosos obstáculos y las alternativas de justicia son pocas.</item>
-        <item>Descripción de Otros temas de Justicia Cotidiana</item>
+        <item>Trabajadores, empleadores y sindicatos requieren una justicia rápida, transparente y eficaz para resolver aquellos conflictos que suceden en los espacios de trabajo.</item>
+        <item>Divorcios, herencias, pensiones alimentarias, tutelas o violencia dentro de la familia son temas complejos, pues entran en juego sentimientos y relaciones de poder, y merecen una atención especial desde la Justicia.</item>
+        <item>Los espacio de convivencia: una ciudad, un barrio, un condominio, una comunidad, suelen generar algún tipo de conflictos. La Justicia debe ayudar a prevenirlos y resolverlos de manera rápida y sencilla.</item>
+        <item>Todas las personas tenemos derecho a demandar actos de autoridad, es decir, acciones o decisiones de órganos del Estado que afectan nuestros bienes o derechos como ciudadanos.</item>
+        <item>La debilidad del sistema de justicia frena el crecimiento económico y el potencial de los emprendedores. Para las empresas es arriesgado invertir cuando no cuentan con las instituciones de justicia adecuadas para dirimir conflictos o sancionar autoridades.</item>
+        <item>Desde la resolución de conflictos agrarios hasta la protección a consumidores y a usuarios del sistema bancario son temas de Justicia Cotidiana que requieren especial atención.</item>
     </string-array>
     
     <string-array name="testimonios_add_cities">

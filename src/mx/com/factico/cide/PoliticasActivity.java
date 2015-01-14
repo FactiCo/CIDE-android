@@ -1,25 +1,18 @@
 package mx.com.factico.cide;
 
-import mx.com.factico.cide.views.CustomTextView;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.MenuItem;
+import android.webkit.WebView;
 import android.widget.TextView;
 
-public class SeeMoreDescriptionActivity extends ActionBarActivity {
-	public static String TITLE = "";
-	public static String DESCRIPTION = "";
-	
-	private String title = "";
-	private String description = "";
-	private TextView mTitle;
+public class PoliticasActivity extends ActionBarActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_seemoredescription);
+		setContentView(R.layout.activity_politicas);
 
 		setSupportActionBar();
 		initUI();
@@ -30,8 +23,9 @@ public class SeeMoreDescriptionActivity extends ActionBarActivity {
 		mToolbar.setTitle("");
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
 		mToolbar.getBackground().setAlpha(0);
-		mTitle = (TextView) mToolbar.findViewById(R.id.toolbar_title);
+		TextView mTitle = (TextView) mToolbar.findViewById(R.id.toolbar_title);
 		mTitle.setTextColor(getResources().getColor(R.color.title_color));
+		mTitle.setText(getResources().getText(R.string.acercade_politicas));
 		setSupportActionBar(mToolbar);
 		
 		mToolbar.setNavigationIcon(R.drawable.ic_action_close_gray);
@@ -40,18 +34,8 @@ public class SeeMoreDescriptionActivity extends ActionBarActivity {
 	}
 
 	private void initUI() {
-		Bundle bundle = getIntent().getExtras();
-		
-		if (bundle != null) {
-			title = bundle.getString(TITLE, "");
-			
-			description = bundle.getString(DESCRIPTION, "");
-			
-			mTitle.setText(Html.fromHtml(title));
-			mTitle.setTextColor(getResources().getColor(R.color.title_color));
-			
-			((CustomTextView)findViewById(R.id.seemoredescription_tv_description)).setText(Html.fromHtml(description));
-		}
+		WebView wvDescription = ((WebView)findViewById(R.id.politicas_wb_description));
+		wvDescription.loadUrl("file:///android_asset/politicas/politicas.html"); 
 	}
 
 	@Override

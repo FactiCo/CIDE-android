@@ -1,12 +1,15 @@
 package mx.com.factico.cide;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class SettingsActivity extends ActionBarActivity {
+public class SettingsActivity extends ActionBarActivity implements OnClickListener {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +29,7 @@ public class SettingsActivity extends ActionBarActivity {
 	}
 	
 	private void initUI() {
-		
+		findViewById(R.id.settings_tv_acercade_politicas).setOnClickListener(this);
 	}
 	
 	@Override
@@ -44,5 +47,22 @@ public class SettingsActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.settings_tv_acercade_politicas:
+			openSeeMoreDescriptionIntent();
+			break;
+
+		default:
+			break;
+		}
+	}
+	
+	private void openSeeMoreDescriptionIntent() {
+		Intent intent = new Intent(getBaseContext(), PoliticasActivity.class);
+		startActivity(intent);
 	}
 }

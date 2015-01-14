@@ -11,11 +11,12 @@
     <string name="action_settings">Preferencias</string>
     <string name="action_close">Cerrar</string>
     
-    <string name="que_es_justicia">Primera aplicación para recopilar y visualizar testimonios y propuestas de Justicia Cotidiana en México</string>
+    <string name="que_es_justicia">Primera aplicación para recopilar y visualizar testimonios y propuestas de Justicia Cotidiana en México.</string>
     
     <!-- Acerca de -->
-    <string name="acercade">Acerca de</string>
+    <string name="acercade_name">Acerca de</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nibh nec sapien sagittis pretium. Morbi pharetra bibendum convallis. Sed iaculis, magna in ultrices egestas, tellus nulla tempor est, ut congue velit lacus porta felis. Duis enim ex, commodo et molestie id, eleifend eget risus. Suspendisse eu dolor suscipit, sollicitudin diam vel, sodales orci. Morbi suscipit felis nec dapibus facilisis. Sed nec nulla in dui ultricies gravida non eleifend urna. Curabitur lectus elit, maximus id commodo ut, lobortis et ligula. Duis viverra mi quis congue hendrerit. Suspendisse potenti.</string>
+    <string name="acercade_politicas">Politicas de privacidad</string>
     
     <!-- Dialog Testimonio -->
     <string name="dialog_message_testimonio">¡Gracias por enviar tu testimonio!</string>
