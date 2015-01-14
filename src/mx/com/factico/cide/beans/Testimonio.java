@@ -44,6 +44,7 @@ public class Testimonio implements Serializable {
 		@Expose private String gender = "";
 		@Expose private String grade = "";
 		private String created = "";
+		private boolean valid = false;
 
 		public String getId() {
 			return _id;
@@ -123,6 +124,14 @@ public class Testimonio implements Serializable {
 
 		public void setCreated(String created) {
 			this.created = created;
+		}
+
+		public boolean isValid() {
+			return valid;
+		}
+
+		public void setValid(boolean valid) {
+			this.valid = valid;
 		}
 	}
 }

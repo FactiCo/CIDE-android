@@ -195,13 +195,38 @@
                     cide:typefaceRoboto="RobotoSlab_Regular" />
             </LinearLayout>
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/testimonios_menu_btn_justice6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@drawable/selector_btn_squared"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/testimonios_menu_iv_justice6"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/testimonio_name"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_justicia_otrostemas" />
+
+                <mx.com.factico.cide.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:minLines="4"
+                    android:paddingTop="10dp"
+                    android:text="@string/justice_6"
+                    android:textColor="@color/btn_ligth_green_color"
+                    android:textSize="12sp"
+                    cide:typefaceRoboto="RobotoSlab_Regular" />
+            </LinearLayout>
         </TableRow>
     </TableLayout>
 

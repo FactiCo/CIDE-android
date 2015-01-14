@@ -7,6 +7,7 @@
         <item>Justicia vecinal y comunitaria</item>
         <item>Justicia para ciudadanos</item>
         <item>Justicia para emprendedores</item>
+        <item>Otros temas de Justicia Cotidiana</item>
     </string-array>
     
     <string-array name="testimonios_categories_descriptions">
@@ -15,6 +16,7 @@
         <item>La convivencia vecinal y comunitaria es probablemente el mayor tema de conflictos diarios entre personas que habitan un mismo espacio o territorio. Conflictos derivados de los espacios públicos y uso de suelo se tratarán en este apartado.</item>
         <item>Los ciudadanos tienen la facultad de defenderse frente a actos injustos de las autoridades. Sin embargo, en muchas ocasiones estos procesos resultan mucho más largos y complejos que la reparación del daño. La responsabilidad patrimonial del Estado es un tema fundamental.</item>
         <item>Emprender es un reto constante en términos legales. Los micro, pequeños y medianos empresarios se enfrentan a numerosos obstáculos y las alternativas de justicia son pocas.</item>
+        <item>Descripción de Otros temas de Justicia Cotidiana</item>
     </string-array>
     
     <string-array name="testimonios_add_cities">

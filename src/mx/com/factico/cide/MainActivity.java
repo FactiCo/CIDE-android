@@ -1,6 +1,8 @@
 package mx.com.factico.cide;
 
+import mx.com.factico.cide.utils.ScreenUtils;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener {
 	private int OPTION1 = 1;
@@ -37,6 +40,14 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		findViewById(R.id.main_btn_option1).setOnClickListener(this);
 		findViewById(R.id.main_btn_option2).setOnClickListener(this);
 		findViewById(R.id.main_btn_option3).setOnClickListener(this);
+		
+		Point point = ScreenUtils.getScreenSize(getBaseContext());
+		int height = point.y;
+		
+		View view = findViewById(R.id.main_vg_container_header);
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height / 4);
+		view.setLayoutParams(params);
+		
 	}
 
 	@Override

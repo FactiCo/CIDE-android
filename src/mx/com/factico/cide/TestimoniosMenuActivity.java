@@ -17,6 +17,7 @@ public class TestimoniosMenuActivity extends ActionBarActivity implements OnClic
 	private int OPTION3 = 3;
 	private int OPTION4 = 4;
 	private int OPTION5 = 5;
+	private int OPTION6 = 6;
 	
 	private int OPTION_MAPVIEW = 0;
 	
@@ -58,12 +59,14 @@ public class TestimoniosMenuActivity extends ActionBarActivity implements OnClic
 		findViewById(R.id.testimonios_menu_iv_justice3).setLayoutParams(params);
 		findViewById(R.id.testimonios_menu_iv_justice4).setLayoutParams(params);
 		findViewById(R.id.testimonios_menu_iv_justice5).setLayoutParams(params);
+		findViewById(R.id.testimonios_menu_iv_justice6).setLayoutParams(params);
 		
 		findViewById(R.id.testimonios_menu_btn_justice1).setOnClickListener(this);
 		findViewById(R.id.testimonios_menu_btn_justice2).setOnClickListener(this);
 		findViewById(R.id.testimonios_menu_btn_justice3).setOnClickListener(this);
 		findViewById(R.id.testimonios_menu_btn_justice4).setOnClickListener(this);
 		findViewById(R.id.testimonios_menu_btn_justice5).setOnClickListener(this);
+		findViewById(R.id.testimonios_menu_btn_justice6).setOnClickListener(this);
 		
 		findViewById(R.id.testimonios_btn_map).setOnClickListener(this);
 	}
@@ -90,7 +93,11 @@ public class TestimoniosMenuActivity extends ActionBarActivity implements OnClic
 		case R.id.testimonios_menu_btn_justice5:
 			openIntent(OPTION5, 4);
 			break;
-
+			
+		case R.id.testimonios_menu_btn_justice6:
+			openIntent(OPTION5, 5);
+			break;
+			
 		case R.id.testimonios_btn_map:
 			openIntent(OPTION_MAPVIEW, -1);
 			break;
@@ -127,6 +134,11 @@ public class TestimoniosMenuActivity extends ActionBarActivity implements OnClic
 			startActivity(intent);
 			
 		} else if (type == OPTION5) {
+			Intent intent = new Intent(this, TestimoniosActivity.class);
+			intent.putExtra(TestimoniosActivity.TAG_CATEGORY_TYPE_INDEX, index);
+			startActivity(intent);
+			
+		}  else if (type == OPTION6) {
 			Intent intent = new Intent(this, TestimoniosActivity.class);
 			intent.putExtra(TestimoniosActivity.TAG_CATEGORY_TYPE_INDEX, index);
 			startActivity(intent);

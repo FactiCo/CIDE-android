@@ -106,6 +106,8 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 				ivLogo.setImageResource(R.drawable.ic_justicia_ciudadanos);
 			if (categoyTypeIndex == 4)
 				ivLogo.setImageResource(R.drawable.ic_justicia_emprendedores);
+			if (categoyTypeIndex == 5)
+				ivLogo.setImageResource(R.drawable.ic_justicia_otrostemas);
 			
 			findViewById(R.id.testimonios_vg_description).setOnClickListener(this);
 
@@ -232,14 +234,16 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 					// item.getCreated(), Log.INFO);
 
 					if (item.getCategory().equals(categoryName)) {
-						hasInCategory = true;
-						i += 1;
-
-						if (i <= countToShow) {
-							View view = createItemView(item);
-							containerTestimonios.addView(view);
-						} else {
-							break;
+						if (item.isValid()) {
+							hasInCategory = true;
+							i += 1;
+	
+							if (i <= countToShow) {
+								View view = createItemView(item);
+								containerTestimonios.addView(view);
+							} else {
+								break;
+							}
 						}
 					}
 				}

@@ -91,8 +91,10 @@ public class TestimoniosListActivity extends ActionBarActivity {
 					// Dialogues.Log(TAG_CLASS, "Items Created: " + item.getCreated(), Log.INFO);
 
 					if (item.getCategory().equals(categoryName)) {
-						View view = createItemView(item);
-						containerTestimonios.addView(view);
+						if (item.isValid()) {
+							View view = createItemView(item);
+							containerTestimonios.addView(view);
+						}
 					}
 				}
 			}

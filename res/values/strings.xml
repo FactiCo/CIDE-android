@@ -11,7 +11,7 @@
     <string name="action_settings">Preferencias</string>
     <string name="action_close">Cerrar</string>
     
-    <string name="que_es_justicia">Primer contacto ciudadanía &#8211; gobierno para resolver abusos cometidos a diario</string>
+    <string name="que_es_justicia">Primera aplicación para recopilar y visualizar testimonios y propuestas de Justicia Cotidiana en México</string>
     
     <!-- Acerca de -->
     <string name="acercade">Acerca de</string>
@@ -66,7 +66,7 @@
     <string name="justice_3">Justicia\nvecinal y\ncomunitaria</string>
     <string name="justice_4">Justicia\npara\nciudadanos</string>
     <string name="justice_5">Justicia\npara\nemprendedores</string>
-    <string name="justice_6">Otros temas de Justicia Cotidiana</string>
+    <string name="justice_6">Otros\ntemas de\nJusticia Cotidiana</string>
     
     <!-- Add Testimonio -->
     <string name="testimonios_add_name">Nombre</string>
