@@ -3,23 +3,31 @@
 
     <string name="app_name">Justicia Cotidiana</string>
     <string name="about_name">¿Qué es la justicia cotidiana?</string>
+    <string name="about_name_description">La Justicia Cotidiana es un concepto novedoso que busca fomentar derechos y sancionar abusos de una manera ágil, sencilla y barata. Conoce más.</string>
     <string name="testimonio_name">Testimonios</string>
+    <string name="testimonio_name_description">Abusos e injusticias se cometen todos los días en la familia, en la calle, en la oficina. Escoge una categoría y ayúdanos a recopilar testimonios por cada tema.</string>
     <string name="propuesta_name">Propuestas</string>
+    <string name="propuesta_name_description">Expertos e instituciones tienen propuestas para mejorar la justicia cotidiana. Conoce, vota y argumenta las propuestas.</string>
     
     <string name="about_description">La justicia cotidiana es el primer contacto entre ciudadanía y Estado para resolver problmeas y abusos que se cometen todos los dias. Una justicia para todos y para todas, todos los dias y en todo lugar. Ayudará a reconstruir la confianza y certidumbre del país.</string>
     
     <string name="action_settings">Preferencias</string>
     <string name="action_close">Cerrar</string>
     
-    <string name="que_es_justicia">Primera aplicación para recopilar y visualizar testimonios y propuestas de Justicia Cotidiana en México.</string>
+    <string name="que_es_justicia">Aplicación para recopilar y visualizar testimonios y propuestas de Justicia Cotidiana en México</string>
     
     <!-- Acerca de -->
     <string name="acercade_name">Acerca de</string>
+    <string name="acercade_description">El Centro de Investigación y Docencia Económicas (CIDE) es una institución pública y autónoma fundada en 1974 que se dedica a la docencia e investigación en ciencias sociales, comprometido con la generación de conocimiento que pueda ser relevante para el desarrollo nacional. Se ha orientado al diseño y evaluación de políticas públicas, al diagnóstico de problemas sociales y a la elaboración de propuestas de solución, desde una perspectiva plural, con la participación de politólogos, abogados, economistas, internacionalistas, entre otros especialistas.
+\n\nEn noviembre de 2014, el Presidente de la República solicitó al CIDE  la tarea de encabezar una amplia consulta que permitiera el diálogo entre ciudadanos, académicos, organizaciones sociales, especialistas, autoridades, con el propósito de elaborar recomendaciones para hacer más eficaz el sistema de justicia, que las reglas de convivencia social se cumplan, las personas puedan reivindicar sus derechos y los infractores tengan consecuencias por sus actos.
+\n\nEn conjunto con Infotec, centro público de innovación y desarrollo tecnológico adscrito al Consejo Nacional de Ciencia y Tecnología (Conacyt), el CIDE e instituciones aliadas hemos construido esta plataforma tecnológica que permite recopilar testimonios desde cualquier lugar del país sobre las problemáticas referidas y conocer las propuestas de expertos para mejorar la justicia en México. 
+\n\nGracias por participar.</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nibh nec sapien sagittis pretium. Morbi pharetra bibendum convallis. Sed iaculis, magna in ultrices egestas, tellus nulla tempor est, ut congue velit lacus porta felis. Duis enim ex, commodo et molestie id, eleifend eget risus. Suspendisse eu dolor suscipit, sollicitudin diam vel, sodales orci. Morbi suscipit felis nec dapibus facilisis. Sed nec nulla in dui ultricies gravida non eleifend urna. Curabitur lectus elit, maximus id commodo ut, lobortis et ligula. Duis viverra mi quis congue hendrerit. Suspendisse potenti.</string>
-    <string name="acercade_politicas">Politicas de privacidad</string>
+    <string name="lorem_ipsum_large">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nibh nec sapien sagittis pretium. Morbi pharetra bibendum convallis. Sed iaculis, magna in ultrices egestas, tellus nulla tempor est, ut congue velit lacus porta felis. Duis enim ex, commodo et molestie id, eleifend eget risus. Suspendisse eu dolor suscipit, sollicitudin diam vel, sodales orci. Morbi suscipit felis nec dapibus facilisis. Sed nec nulla in dui ultricies gravida non eleifend urna. Curabitur lectus elit, maximus id commodo ut, lobortis et ligula. Duis viverra mi quis congue hendrerit. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nibh nec sapien sagittis pretium. Morbi pharetra bibendum convallis. Sed iaculis, magna in ultrices egestas, tellus nulla tempor est, ut congue velit lacus porta felis. Duis enim ex, commodo et molestie id, eleifend eget risus. Suspendisse eu dolor suscipit, sollicitudin diam vel, sodales orci. Morbi suscipit felis nec dapibus facilisis. Sed nec nulla in dui ultricies gravida non eleifend urna. Curabitur lectus elit, maximus id commodo ut, lobortis et ligula. Duis viverra mi quis congue hendrerit. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nibh nec sapien sagittis pretium. Morbi pharetra bibendum convallis.</string>
+    <string name="acercade_politicas">Términos y condiciones</string>
     
     <!-- Dialog Testimonio -->
-    <string name="dialog_message_testimonio">¡Gracias por enviar tu testimonio!</string>
+    <string name="dialog_message_testimonio">Muchas gracias por enviar tu testimonio. En breve aparecerá en la plataforma y nos ayudará a mapear la injusticia cotidiana en México.</string>
     <string name="dialog_message_propuesta_vote">¡Gracias por enviar tu voto!</string>
     <string name="dialog_message_propuesta_answer">¡Gracias por enviar tu respuesta!</string>
     <string name="dialog_message_propuesta_comment">¡Gracias por enviar tu comentario!</string>
@@ -27,7 +35,7 @@
     <string name="dialog_ok">Aceptar</string>
     <string name="dialog_share">Compartir</string>
     
-    <string name="dialog_share_testimonio">Acabo de compartir mi testimonio desde #JusticiaCotidiana http://www.justiciacotidiana.mx</string>
+    <string name="dialog_share_testimonio">He enviado un testimonio sobre #%1$s desde www.justiciacotidiana.mx @JusCotidiana</string>
     
     <string name="no_internet_connection">Sin conexión a Internet.</string>
     
@@ -90,6 +98,8 @@
     <string name="getdata_loading">Obteniendo información.</string>
     
     <!-- Propuestas -->
+    <string name="propuestas_preview">A partir del 22 de enero podrás conocer y comentar las propuestas de expertos e instituciones para mejorar la justicia cotidiana. Espéralo.</string>
+    
     <string name="propuestas_login_fb_label">Para poder ver y participar en las propuestas, inicia sesión con Facebook.</string>
     <string name="propuestas_login_fb">Facebook</string>
     

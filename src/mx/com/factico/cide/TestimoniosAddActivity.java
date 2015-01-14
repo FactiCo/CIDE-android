@@ -266,6 +266,7 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		}
 	}
 
+	AlertDialog alertDialog;
 	@SuppressLint("InflateParams")
 	private void showResultDialog(String message) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -278,17 +279,30 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 
 		builder.setView(view);
 
-		AlertDialog dialog = builder.create();
-		dialog.setCanceledOnTouchOutside(false);
-		dialog.show();
+		alertDialog = builder.create();
+		alertDialog.setCanceledOnTouchOutside(false);
+		alertDialog.setCancelable(false);
+		alertDialog.show();
 	}
 
 	private void shareInSocialMedia() {
+		String hashtag = spCategory.getSelectedItem().toString();
+		hashtag = hashtag.replace(" ", "");
+		String text = String.format(getResources().getString(R.string.dialog_share_testimonio), hashtag);
+		
 		Intent sendIntent = new Intent();
 		sendIntent.setAction(Intent.ACTION_SEND);
-		sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.dialog_share_testimonio));
+		sendIntent.putExtra(Intent.EXTRA_TEXT, text);
 		sendIntent.setType("text/plain");
 		startActivity(sendIntent);
+	}
+
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		
+		if (alertDialog != null && alertDialog.isShowing())
+			alertDialog.dismiss();
 	}
 
 	@Override

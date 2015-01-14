@@ -32,11 +32,11 @@
                 android:text="@string/acercade_name"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/white"
-                cide:typefaceRoboto="SourceSansPro_Regular" />
+                cide:typefaceRoboto="RobotoSlab_Regular" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:background="#AAFFFFFF" />
@@ -49,25 +49,31 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                android:text="@string/lorem_ipsum"
+                android:text="@string/acercade_description"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white"
                 cide:typefaceRoboto="SourceSansPro_Regular" />
-            
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:background="#AAFFFFFF" />
+
             <mx.com.factico.cide.views.CustomTextView
                 android:id="@+id/settings_tv_acercade_politicas"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:text="@string/acercade_politicas"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/blue"
-                cide:typefaceRoboto="SourceSansPro_Regular" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white"
+                cide:typefaceRoboto="RobotoSlab_Regular" />
         </LinearLayout>
     </ScrollView>
 

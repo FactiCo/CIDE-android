@@ -1,13 +1,17 @@
 package mx.com.factico.cide;
 
+import mx.com.factico.cide.views.CustomTextView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView.BufferType;
 
 public class SettingsActivity extends ActionBarActivity implements OnClickListener {
 	
@@ -29,6 +33,18 @@ public class SettingsActivity extends ActionBarActivity implements OnClickListen
 	}
 	
 	private void initUI() {
+		CustomTextView tvAcercaDeTitle = (CustomTextView) findViewById(R.id.settings_tv_acercade_title);
+		String textAcercaDe = tvAcercaDeTitle.getText().toString();
+		SpannableString contentAcercaDe = new SpannableString(textAcercaDe);
+	    contentAcercaDe.setSpan(new UnderlineSpan(), 0, textAcercaDe.length(), 0);
+	    tvAcercaDeTitle.setText(contentAcercaDe, BufferType.SPANNABLE);
+	    
+	    CustomTextView tvTerminosTitle = (CustomTextView) findViewById(R.id.settings_tv_acercade_politicas);
+		String textTerminos = tvTerminosTitle.getText().toString();
+		SpannableString contentTerminos = new SpannableString(textTerminos);
+	    contentTerminos.setSpan(new UnderlineSpan(), 0, textTerminos.length(), 0);
+	    tvTerminosTitle.setText(contentTerminos, BufferType.SPANNABLE);
+		
 		findViewById(R.id.settings_tv_acercade_politicas).setOnClickListener(this);
 	}
 	

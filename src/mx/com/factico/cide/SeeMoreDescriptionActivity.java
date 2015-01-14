@@ -4,16 +4,12 @@ import mx.com.factico.cide.views.CustomTextView;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 public class SeeMoreDescriptionActivity extends ActionBarActivity {
-	public static String TITLE = "";
-	public static String DESCRIPTION = "";
+	public static String CATEGORY_INDEX = "";
 	
-	private String title = "";
-	private String description = "";
 	private TextView mTitle;
 	
 	@Override
@@ -43,14 +39,16 @@ public class SeeMoreDescriptionActivity extends ActionBarActivity {
 		Bundle bundle = getIntent().getExtras();
 		
 		if (bundle != null) {
-			title = bundle.getString(TITLE, "");
+			int categoryIndex = bundle.getInt(CATEGORY_INDEX, 0);
 			
-			description = bundle.getString(DESCRIPTION, "");
+			String[] listCategories = getResources().getStringArray(R.array.testimonios_categories_titles);
+			String[] listDescriptions = getResources().getStringArray(R.array.testimonios_categories_descriptions);
 			
-			mTitle.setText(Html.fromHtml(title));
-			mTitle.setTextColor(getResources().getColor(R.color.title_color));
+			mTitle.setText(listCategories[categoryIndex]);
 			
-			((CustomTextView)findViewById(R.id.seemoredescription_tv_description)).setText(Html.fromHtml(description));
+			((CustomTextView)findViewById(R.id.seemoredescription_tv_description)).setText(listDescriptions[categoryIndex]);
+			
+			
 		}
 	}
 
