@@ -18,6 +18,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -80,7 +82,24 @@ public class TestimoniosAddActivity extends ActionBarActivity implements OnClick
 		loadDataFromResources(spCategory); // Load data to spinner from resources
 
 		etExplication = (CustomEditText) findViewById(R.id.testimonios_add_et_explication); // Explication
+		
+		final int MAX_WORDS = 2000;
+		etExplication.addTextChangedListener(new TextWatcher() {
+			public void afterTextChanged(Editable s) {}
 
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				int countLetters = s.length();
+				((CustomEditText) findViewById(R.id.testimonios_add_et_explication_count)).setHint(countLetters + " de " + MAX_WORDS); // Explication Count
+				/*if (words.length > MAX_WORDS) {
+					// Trim words to length MAX_WORDS
+					// Join words into a String
+					etExplication.setText(wordString);
+				}*/
+			}
+		});
+		
 		spCity = (Spinner) findViewById(R.id.testimonios_add_sp_city); // City
 		loadDataFromResources(spCity); // Load data to spinner from resources
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <gradient
+        android:angle="45"
+        android:startColor="@color/btn_dark_green_color"
+        android:endColor="@color/btn_middle_green_color"
+        android:centerColor="@color/btn_ligth_green_color" />
+
+    <corners android:radius="8dp" />
+
+    <size android:width="3dp" />
+
+    <padding
+        android:left="1dp"
+        android:right="1dp" />
+
+</shape>

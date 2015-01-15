@@ -112,7 +112,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			if (categoyTypeIndex == 5)
 				ivLogo.setImageResource(R.drawable.ic_justicia_otrostemas);
 			
-			findViewById(R.id.testimonios_vg_description).setOnClickListener(this);
+			findViewById(R.id.testimonios_btn_showmoredesciption).setOnClickListener(this);
 
 			FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width / 7, width / 7);
 			params.topMargin = (height / 10 * 3) - (width / 6 / 3);
@@ -342,7 +342,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			openAddTestimonioIntent();
 			break;
 
-		case R.id.testimonios_vg_description:
+		case R.id.testimonios_btn_showmoredesciption:
 			openSeeMoreDescriptionIntent();
 			break;
 		

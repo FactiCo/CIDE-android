@@ -64,6 +64,7 @@
     
     <string name="testimonios_btn_map">Mapa de testimonios</string>
     
+    <string name="testimonios_btn_moredescription">+</string>
     <string name="testimonios_news">Testimonios recientes</string>
     <string name="testimonios_add_btn_new">Agregar testimonio</string>
     <string name="testimonios_add_new">Nuevo testimonio</string>
@@ -91,6 +92,7 @@
     <string name="testimonios_add_gender_female">Mujer</string>
     <string name="testimonios_add_gender_none">Sin especificar</string>
     
+    <string name="testimonios_add_explication_count">0 de 2000</string>
     <string name="testimonios_add_explication">Explicación (Obligatorio)</string> 
     
     <string name="testimonios_add_btn_senddata">Enviar testimonio</string>

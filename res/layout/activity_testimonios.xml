@@ -14,7 +14,8 @@
     <mx.com.factico.cide.views.CustomScrollView
         android:id="@+id/testimonios_sv_scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:scrollbarThumbVertical="@drawable/drawable_customscroll" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/testimonios_vg_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -44,35 +45,54 @@
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:background="@drawable/drawable_bgr_rounded_white"
-                    android:orientation="vertical"
                     android:paddingBottom="@dimen/activity_vertical_margin"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:paddingTop="@dimen/activity_vertical_margin"
-                    android:showDividers="middle" >
+                    android:paddingTop="@dimen/activity_vertical_margin" >
 
-                    <mx.com.factico.cide.views.CustomTextView
-                        android:id="@+id/testimonios_tv_title"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:paddingTop="@dimen/activity_vertical_margin"
-                        android:text=""
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/title_color"
+                        android:orientation="vertical" >
+
+                        <mx.com.factico.cide.views.CustomTextView
+                            android:id="@+id/testimonios_tv_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:paddingTop="@dimen/activity_vertical_margin"
+                            android:text=""
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/title_color"
+                            cide:typefaceRoboto="RobotoSlab_Bold" />
+
+                        <mx.com.factico.cide.views.CustomTextView
+                            android:id="@+id/testimonios_tv_desciption"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="50dp"
+                            android:paddingTop="@dimen/activity_vertical_margin"
+                            android:text=""
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/default_text_color"
+                            cide:typefaceRoboto="SourceSansPro_Regular" />
+                    </LinearLayout>
+
+                    <mx.com.factico.cide.views.CustomTextView
+                        android:id="@+id/testimonios_btn_showmoredesciption"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/selector_btn_circle"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/testimonios_btn_moredescription"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/btn_dark_green_color"
                         cide:typefaceRoboto="RobotoSlab_Bold" />
-
-                    <mx.com.factico.cide.views.CustomTextView
-                        android:id="@+id/testimonios_tv_desciption"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="50dp"
-                        android:paddingTop="@dimen/activity_vertical_margin"
-                        android:text=""
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/default_text_color"
-                        cide:typefaceRoboto="SourceSansPro_Regular" />
-                </LinearLayout>
+                </RelativeLayout>
 
                 <mx.com.factico.cide.views.CustomTextView
                     android:id="@+id/testimonios_btn_addtestimonio"
@@ -115,11 +135,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
+                    android:divider="@drawable/divider_horizontal_green"
                     android:orientation="vertical"
                     android:paddingBottom="@dimen/activity_vertical_margin"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:divider="@drawable/divider_horizontal_green"
                     android:showDividers="middle" >
 
                     <ProgressBar
