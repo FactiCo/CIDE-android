@@ -40,8 +40,6 @@ public class AboutActivity extends ActionBarActivity {
 		VerticalViewPager verticalViewPager = (VerticalViewPager) findViewById(R.id.about_verticlaviewpager);
 		verticalViewPager.setAdapter(new DummyAdapter(getSupportFragmentManager()));
 		verticalViewPager.setPageMargin(0);
-		// verticalViewPager.setPageMarginDrawable(new ColorDrawable(getResources().getColor(android.R.color.holo_green_dark)));
-		//verticalViewPager.setPageTransformer(true, new VerticalPageTransformer());
 		
 		ivScroll = (ImageView) findViewById(R.id.about_iv_scroll);
 		
@@ -57,38 +55,18 @@ public class AboutActivity extends ActionBarActivity {
 				ivScroll.setImageResource(R.drawable.ic_about_scroll_2);
 			if (position == 2)
 				ivScroll.setImageResource(R.drawable.ic_about_scroll_3);
+			if (position == 3)
+				ivScroll.setImageResource(R.drawable.ic_about_scroll_4);
+			if (position == 4)
+				ivScroll.setImageResource(R.drawable.ic_about_scroll_5);
 		}
 		
 		@Override
-		public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-			/*Point point = ScreenUtils.getScreenSize(getBaseContext());
-			
-			int headerHeight = (point.y * 3) - getSupportActionBar().getHeight();
-            float ratio = (float) Math.min(Math.max(positionOffsetPixels, 0), headerHeight) / headerHeight;
-            int newAlpha = (int) (ratio * 255);
-            mToolbar.setAlpha(newAlpha);*/
-		}
+		public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 		
 		@Override
 		public void onPageScrollStateChanged(int state) {}
 	};
-	
-	/*private float getAlphaForView(int position) {
-		int diff = 0;
-		float minAlpha = 0.4f, maxAlpha = 1.f;
-		float alpha = minAlpha; // min alpha
-		if (position > screenHeight)
-			alpha = minAlpha;
-		else if (position + locationImageHeight < screenHeight)
-			alpha = maxAlpha;
-		else {
-			diff = screenHeight - position;
-			alpha += ((diff * 1f) / locationImageHeight) * (maxAlpha - minAlpha); // 1f and 0.4f are maximum and min
-			// alpha this will return a number betn 0f and 0.6f
-		}
-		// System.out.println(alpha+" "+screenHeight +" "+locationImageInitialLocation+" "+position+" "+diff);
-		return alpha;
-	}*/
 	
 	public class DummyAdapter extends FragmentPagerAdapter {
 
@@ -107,7 +85,7 @@ public class AboutActivity extends ActionBarActivity {
 		@Override
 		public int getCount() {
 			// Show 3 total pages.
-			return 3;
+			return 5;
 		}
 
 		@Override
@@ -153,20 +131,18 @@ public class AboutActivity extends ActionBarActivity {
 			View rootView = inflater.inflate(R.layout.fragment_about, container, false);
 			
 			ImageView ivPage = (ImageView) rootView.findViewById(R.id.fragment_about_iv_page);
-			//ivPage.setImageResource(R.drawable.ic_splash);
-			
-			//LinearLayout vgContainer = (LinearLayout) rootView.findViewById(R.id.fragment_about_vg_container);
 			
 			int index = getArguments().getInt(ARG_SECTION_NUMBER);
 			if (index == 1) {
-				//vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_dark);
 				ivPage.setImageResource(R.drawable.justicia_cotidiana_1);
 			} if (index == 2) {
-				//vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_middle);
 				ivPage.setImageResource(R.drawable.justicia_cotidiana_2);
 			} if (index == 3) {
-				//vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_ligth);
 				ivPage.setImageResource(R.drawable.justicia_cotidiana_3);
+			} if (index == 4) {
+				ivPage.setImageResource(R.drawable.justicia_cotidiana_4);
+			} if (index == 5) {
+				ivPage.setImageResource(R.drawable.justicia_cotidiana_5);
 			}
 			
 			return rootView;
