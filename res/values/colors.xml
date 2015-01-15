@@ -37,6 +37,8 @@
     <color name="btn_ligth_green_color">#FF58CA9C</color>
     <color name="btn_ligth_green_color_alpha">#AA58CA9C</color>
     
+    <color name="btn_hover">#444444</color>
+    
     <color name="btn_other_green">#6CDA84</color>
     <color name="btn_other_green_alpha">#AA6CDA84</color>
     

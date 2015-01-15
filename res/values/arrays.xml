@@ -3,19 +3,19 @@
 
     <string-array name="testimonios_categories_titles">
         <item>Justicia en el trabajo</item>
-        <item>Justicia para familias</item>
-        <item>Justicia vecinal y comunitaria</item>
         <item>Justicia para ciudadanos</item>
+        <item>Justicia para familias</item>
         <item>Justicia para emprendedores</item>
+        <item>Justicia vecinal y comunitaria</item>
         <item>Otros temas de Justicia Cotidiana</item>
     </string-array>
     
     <string-array name="testimonios_categories_descriptions">
         <item>Trabajadores, empleadores y sindicatos requieren una justicia rápida, transparente y eficaz para resolver conflictos que suceden en los espacios de trabajo. Despidos injustificados, prestaciones no entregadas, legislación laboral no aplicada, son algunos temas que se abordan en el Foro “Justicia en el trabajo”.\n\nLugar: Aguascalientes\nFecha: 22 de enero de 2015</item>
-        <item>Divorcios, herencias, pensiones, tutelas o violencia familiar son temas complejos, pues entran en juego sentimientos y relaciones de poder. El Foro “Justicia para familias” busca identificar en qué casos se deben rediseñar políticas públicas, simplificar legislación o utilizar sistemas alternativos de solución de conflictos.\n\nLugar: Tijuana\nFecha: 4 de febrero</item>
-        <item>Los espacio de convivencia, sean urbanos o rurales, suelen generar distintos tipos de conflictos. Un barrio, un condominio, una comunidad tienen diversos actores, reglas y normas de entendimiento. Temas como contaminación ambiental, usos de suelo y prevención del delito se tratan en el Foro “Justicia vecinal y comunitaria”.\n\nLugar: Tuxtla Gutiérrez\nFecha: 19 de febrero</item>
         <item>Los ciudadanos pueden combatir abusos cometidos por las autoridades por medio de la justicia administrativa. Una multa injusta, una licitación alejada de la ley o el mal mantenimiento de las calles son ejemplos de actos de autoridad que se combaten ante un tribunal. Estos temas se tratan en el Foro “Justicia para ciudadanos”.\n\nLugar: Guanajuato\nFecha: 29 de enero</item>
+        <item>Divorcios, herencias, pensiones, tutelas o violencia familiar son temas complejos, pues entran en juego sentimientos y relaciones de poder. El Foro “Justicia para familias” busca identificar en qué casos se deben rediseñar políticas públicas, simplificar legislación o utilizar sistemas alternativos de solución de conflictos.\n\nLugar: Tijuana\nFecha: 4 de febrero</item>
         <item>La debilidad del sistema de justicia frena el crecimiento económico y el potencial de los emprendedores. Para las empresas es arriesgado invertir cuando no cuentan con las instituciones de justicia adecuadas para dirimir conflictos o sancionar autoridades. Estos temas se discuten en el Foro “Justicia para emprendedores”.\n\nLugar: Monterrey EGAP – ITESM\nFecha: 12 de febrero</item>
+        <item>Los espacio de convivencia, sean urbanos o rurales, suelen generar distintos tipos de conflictos. Un barrio, un condominio, una comunidad tienen diversos actores, reglas y normas de entendimiento. Temas como contaminación ambiental, usos de suelo y prevención del delito se tratan en el Foro “Justicia vecinal y comunitaria”.\n\nLugar: Tuxtla Gutiérrez\nFecha: 19 de febrero</item>
         <item>Desde la resolución de conflictos agrarios, la necesidad de mejorar la capacitación de jueces y defensores, hasta la protección a consumidores y a usuarios del sistema bancario son otros temas de justicia cotidiana que requieren especial atención y consulta. Conoce los temas que se abordan en el Foro “Otras Justicias”.\n\nLugar: Ciudad de México\nFecha: 26 de febrero</item>
     </string-array>
     
@@ -32,6 +32,16 @@ El taller, la fábrica, la oficina y otros centros de trabajo son campos propici
         </item>
         
         <item>
+Una multa o clausura injustas, una licitación alejada de la ley o el mal mantenimiento de las calles, son ejemplos de actos de autoridad que se pueden combatir ante un Tribunal Contencioso Administrativo.
+\n\nLos juicios ante estos tribunales buscan solucionar los conflictos entre el Estado y los ciudadanos, a quienes se les brinda la posibilidad obtener un trato justo y asegurar una reparación adecuada de los agravios causados.
+\n\nCuando existe certeza sobre la aplicación del derecho hay confianza en el funcionamiento de las instituciones. La justicia accesible, oportuna y las resoluciones respetadas, son un claro indicador de que se vive en un Estado de derecho, ello resulta en garantía a la ciudadanía para acudir a los tribunales contenciosos administrativos y obtener remedios efectivos en contra de abusos en el ejercicio del poder.
+\n\nSin embargo, la justicia administrativa no escapa a los problemas que enfrentan otros tipos de mecanismos judiciales. Entre estos problemas se encuentran los siguientes:
+\n\n- Los tribunales administrativos y sus servicios son poco conocidos por los ciudadanos. 
+\n- Los juicios administrativos pueden ser largos, complicados y costosos. 
+\n- El acceso a estos procedimientos puede ser difícil.
+		</item>
+        
+        <item>
 Busca encontrar formulas sencillas para mantener el equilibrio y la cohesión familiar.
 \n\nEn este tema se pretende determinar en qué casos: 
 \n\n- Se puede simplificar la legislación.
@@ -46,23 +56,6 @@ Busca encontrar formulas sencillas para mantener el equilibrio y la cohesión fa
 \n6. Violencia Intrafamiliar: Es mucho lo que se puede proponer para ayudar a personas que sufren violencia y que no encuentran actualmente cauce idóneo, oportuno y eficaz de protección.
 		</item>
 		
-        <item>
-Los conflictos comunitarios y vecinales representan un área sensible y compleja del mundo social. Prácticamente en todos los espacios de convivencia, ya sean rurales o urbanos, el conflicto representa un aspecto constitutivo de la vida cotidiana.
-\n\nDisputas por el espacio y el uso de suelo, problemas sobre basura y contaminación auditiva en barrios y condominios, pleitos entre automovilistas por el derecho de paso o litigios entre autoridades y vecinos son, tan sólo, una mínima lista del conjunto de interacciones sociales de carácter conflictivo que se presentan cotidianamente en la sociedad.
-\n\nSe entiende por conflicto vecinal a un tipo particular de relaciones sociales que es el resultado de la convergencia espacio-temporal de intereses incompatibles [razones del conflicto] entre dos o más actores [partes del conflicto] con respecto a los usos o localización de un pedazo concreto del territorio habitado [componente geográfico del conflicto]. 
-\n\nEl Foro de Justicia vecinal y comunitaria busca identificar cómo mejorar los mecanismos de mediación y conciliación entre vecinos, acercar la justicia a las comunidades y prevenir los delitos en espacios o territorios específicos.           
-        </item>
-        
-		<item>
-Una multa o clausura injustas, una licitación alejada de la ley o el mal mantenimiento de las calles, son ejemplos de actos de autoridad que se pueden combatir ante un Tribunal Contencioso Administrativo.
-\n\nLos juicios ante estos tribunales buscan solucionar los conflictos entre el Estado y los ciudadanos, a quienes se les brinda la posibilidad obtener un trato justo y asegurar una reparación adecuada de los agravios causados.
-\n\nCuando existe certeza sobre la aplicación del derecho hay confianza en el funcionamiento de las instituciones. La justicia accesible, oportuna y las resoluciones respetadas, son un claro indicador de que se vive en un Estado de derecho, ello resulta en garantía a la ciudadanía para acudir a los tribunales contenciosos administrativos y obtener remedios efectivos en contra de abusos en el ejercicio del poder.
-\n\nSin embargo, la justicia administrativa no escapa a los problemas que enfrentan otros tipos de mecanismos judiciales. Entre estos problemas se encuentran los siguientes:
-\n\n- Los tribunales administrativos y sus servicios son poco conocidos por los ciudadanos. 
-\n- Los juicios administrativos pueden ser largos, complicados y costosos. 
-\n- El acceso a estos procedimientos puede ser difícil.
-		</item>
-		
 		<item>
 ¿Cuáles son los conflictos más comunes a los que se enfrentan los emprendedores de nuestro país? ¿Se resuelven o no? ¿Cómo? ¿A qué costos? ¿Qué se podría hacer para que la resolución de conflictos propios de la actividad empresarial fuese rápida, accesible y eficaz?
 \n\nLos conflictos a los que se enfrentan los empresarios son de muchos tipos y en varios ámbitos:
@@ -71,6 +64,13 @@ Una multa o clausura injustas, una licitación alejada de la ley o el mal manten
 \n- Tratándose de conflictos mercantiles, el cobro de deudas de montos menores es prácticamente incosteable con el sistema de justicia actual. Todo está diseñado para tener que contratar un abogado y, durante el proceso, tener que dar muchas propinas en el juzgado: al actuario, al secretario, al que saca las copias, etcétera.
 \n\nEl objetivo de este foro es conocer a fondo las características de los conflictos a los que se enfrentan los empresarios en México con más frecuencia y las limitaciones del sistema de justicia para resolverlos.
 		</item>
+		
+		<item>
+Los conflictos comunitarios y vecinales representan un área sensible y compleja del mundo social. Prácticamente en todos los espacios de convivencia, ya sean rurales o urbanos, el conflicto representa un aspecto constitutivo de la vida cotidiana.
+\n\nDisputas por el espacio y el uso de suelo, problemas sobre basura y contaminación auditiva en barrios y condominios, pleitos entre automovilistas por el derecho de paso o litigios entre autoridades y vecinos son, tan sólo, una mínima lista del conjunto de interacciones sociales de carácter conflictivo que se presentan cotidianamente en la sociedad.
+\n\nSe entiende por conflicto vecinal a un tipo particular de relaciones sociales que es el resultado de la convergencia espacio-temporal de intereses incompatibles [razones del conflicto] entre dos o más actores [partes del conflicto] con respecto a los usos o localización de un pedazo concreto del territorio habitado [componente geográfico del conflicto]. 
+\n\nEl Foro de Justicia vecinal y comunitaria busca identificar cómo mejorar los mecanismos de mediación y conciliación entre vecinos, acercar la justicia a las comunidades y prevenir los delitos en espacios o territorios específicos.           
+        </item>
 		
 		<item>
 Los abusos e injusticias suceden en numerosos ámbitos y es fundamental conocerlos, entenderlos y modificarlos. 

@@ -12,12 +12,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class TestimoniosMenuActivity extends ActionBarActivity implements OnClickListener {
-	private int OPTION1 = 1;
-	private int OPTION2 = 2;
-	private int OPTION3 = 3;
-	private int OPTION4 = 4;
-	private int OPTION5 = 5;
-	private int OPTION6 = 6;
+	private int OPTION_TRABAJO = 1;
+	private int OPTION_CIUDADANOS = 2;
+	private int OPTION_FAMILIAS = 3;
+	private int OPTION_EMPRENDEDORES = 4;
+	private int OPTION_VECINAL = 5;
+	private int OPTION_OTROS = 6;
 	
 	private int OPTION_MAPVIEW = 0;
 	
@@ -54,19 +54,19 @@ public class TestimoniosMenuActivity extends ActionBarActivity implements OnClic
 		
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, width / 5);
 		
-		findViewById(R.id.testimonios_menu_iv_justice1).setLayoutParams(params);
-		findViewById(R.id.testimonios_menu_iv_justice2).setLayoutParams(params);
-		findViewById(R.id.testimonios_menu_iv_justice3).setLayoutParams(params);
-		findViewById(R.id.testimonios_menu_iv_justice4).setLayoutParams(params);
-		findViewById(R.id.testimonios_menu_iv_justice5).setLayoutParams(params);
-		findViewById(R.id.testimonios_menu_iv_justice6).setLayoutParams(params);
+		findViewById(R.id.testimonios_menu_iv_justice_trabajo).setLayoutParams(params);
+		findViewById(R.id.testimonios_menu_iv_justice_ciudadanos).setLayoutParams(params);
+		findViewById(R.id.testimonios_menu_iv_justice_familias).setLayoutParams(params);
+		findViewById(R.id.testimonios_menu_iv_justice_emprendedores).setLayoutParams(params);
+		findViewById(R.id.testimonios_menu_iv_justice_vecinal).setLayoutParams(params);
+		findViewById(R.id.testimonios_menu_iv_justice_otros).setLayoutParams(params);
 		
-		findViewById(R.id.testimonios_menu_btn_justice1).setOnClickListener(this);
-		findViewById(R.id.testimonios_menu_btn_justice2).setOnClickListener(this);
-		findViewById(R.id.testimonios_menu_btn_justice3).setOnClickListener(this);
-		findViewById(R.id.testimonios_menu_btn_justice4).setOnClickListener(this);
-		findViewById(R.id.testimonios_menu_btn_justice5).setOnClickListener(this);
-		findViewById(R.id.testimonios_menu_btn_justice6).setOnClickListener(this);
+		findViewById(R.id.testimonios_menu_btn_justice_trabajo).setOnClickListener(this);
+		findViewById(R.id.testimonios_menu_btn_justice_ciudadanos).setOnClickListener(this);
+		findViewById(R.id.testimonios_menu_btn_justice_familias).setOnClickListener(this);
+		findViewById(R.id.testimonios_menu_btn_justice_emprendedores).setOnClickListener(this);
+		findViewById(R.id.testimonios_menu_btn_justice_vecinal).setOnClickListener(this);
+		findViewById(R.id.testimonios_menu_btn_justice_otros).setOnClickListener(this);
 		
 		findViewById(R.id.testimonios_btn_map).setOnClickListener(this);
 	}
@@ -74,28 +74,28 @@ public class TestimoniosMenuActivity extends ActionBarActivity implements OnClic
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.testimonios_menu_btn_justice1:
-			openIntent(OPTION1, 0);
+		case R.id.testimonios_menu_btn_justice_trabajo:
+			openIntent(OPTION_TRABAJO, 0);
 			break;
 			
-		case R.id.testimonios_menu_btn_justice2:
-			openIntent(OPTION2, 1);
+		case R.id.testimonios_menu_btn_justice_ciudadanos:
+			openIntent(OPTION_CIUDADANOS, 1);
 			break;
 			
-		case R.id.testimonios_menu_btn_justice3:
-			openIntent(OPTION3, 2);
+		case R.id.testimonios_menu_btn_justice_familias:
+			openIntent(OPTION_FAMILIAS, 2);
 			break;
 			
-		case R.id.testimonios_menu_btn_justice4:
-			openIntent(OPTION4, 3);
+		case R.id.testimonios_menu_btn_justice_emprendedores:
+			openIntent(OPTION_EMPRENDEDORES, 3);
 			break;
 			
-		case R.id.testimonios_menu_btn_justice5:
-			openIntent(OPTION5, 4);
+		case R.id.testimonios_menu_btn_justice_vecinal:
+			openIntent(OPTION_VECINAL, 4);
 			break;
 			
-		case R.id.testimonios_menu_btn_justice6:
-			openIntent(OPTION5, 5);
+		case R.id.testimonios_menu_btn_justice_otros:
+			openIntent(OPTION_OTROS, 5);
 			break;
 			
 		case R.id.testimonios_btn_map:
@@ -113,32 +113,32 @@ public class TestimoniosMenuActivity extends ActionBarActivity implements OnClic
 	 * @param type (int) 
 	 */
 	private void openIntent(int type, int index) {
-		if (type == OPTION1) {
+		if (type == OPTION_TRABAJO) {
 			Intent intent = new Intent(this, TestimoniosActivity.class);
 			intent.putExtra(TestimoniosActivity.TAG_CATEGORY_TYPE_INDEX, index);
 			startActivity(intent);
 			
-		} else if (type == OPTION2) {
+		} else if (type == OPTION_CIUDADANOS) {
 			Intent intent = new Intent(this, TestimoniosActivity.class);
 			intent.putExtra(TestimoniosActivity.TAG_CATEGORY_TYPE_INDEX, index);
 			startActivity(intent);
 			
-		} else if (type == OPTION3) {
+		} else if (type == OPTION_FAMILIAS) {
 			Intent intent = new Intent(this, TestimoniosActivity.class);
 			intent.putExtra(TestimoniosActivity.TAG_CATEGORY_TYPE_INDEX, index);
 			startActivity(intent);
 			
-		} else if (type == OPTION4) {
+		} else if (type == OPTION_EMPRENDEDORES) {
 			Intent intent = new Intent(this, TestimoniosActivity.class);
 			intent.putExtra(TestimoniosActivity.TAG_CATEGORY_TYPE_INDEX, index);
 			startActivity(intent);
 			
-		} else if (type == OPTION5) {
+		} else if (type == OPTION_VECINAL) {
 			Intent intent = new Intent(this, TestimoniosActivity.class);
 			intent.putExtra(TestimoniosActivity.TAG_CATEGORY_TYPE_INDEX, index);
 			startActivity(intent);
 			
-		}  else if (type == OPTION6) {
+		}  else if (type == OPTION_OTROS) {
 			Intent intent = new Intent(this, TestimoniosActivity.class);
 			intent.putExtra(TestimoniosActivity.TAG_CATEGORY_TYPE_INDEX, index);
 			startActivity(intent);

@@ -20,6 +20,8 @@
         android:contentDescription="@string/testimonio_name"
         android:paddingBottom="10dp"
         android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingLeft="0dp"
+        android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingStart="0dp"
         android:scaleType="centerInside"
         android:src="@drawable/ic_launcher" />
@@ -45,11 +47,11 @@
             android:id="@+id/item_testimonios_tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxLines="3"
             android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/default_text_color"
-            cide:typefaceRoboto="SourceSansPro_Regular"
-            android:maxLines="3" />
+            cide:typefaceRoboto="SourceSansPro_Regular" />
     </LinearLayout>
 
 </LinearLayout>

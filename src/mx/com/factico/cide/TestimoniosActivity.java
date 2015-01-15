@@ -255,14 +255,16 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			if (hasInCategory) {
 				LinearLayout vgContainerItemsBtn = (LinearLayout) findViewById(R.id.testimonios_vg_container_items_btn);
 
+				Point point = ScreenUtils.getScreenSize(getBaseContext());
+				int width = point.x;
+				
 				Button btnMoreTestimonios = new Button(this);
-				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-						LinearLayout.LayoutParams.WRAP_CONTENT);
+				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width / 3, LinearLayout.LayoutParams.WRAP_CONTENT);
 				params.gravity = Gravity.CENTER_HORIZONTAL;
 				params.topMargin = -40;
 				btnMoreTestimonios.setLayoutParams(params);
 
-				btnMoreTestimonios.setPadding(100, 0, 100, 0);
+				//btnMoreTestimonios.setPadding(20, 0, 20, 0);
 				btnMoreTestimonios.setBackgroundResource(R.drawable.selector_btn_other);
 				btnMoreTestimonios.setText(getResources().getString(R.string.testimonios_seemore));
 				btnMoreTestimonios.setTextColor(getResources().getColor(R.color.white));
@@ -327,7 +329,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		tvDescription.setTag(false);
 
 		view.setTag(tvDescription);
-		view.setOnClickListener(BtnShowTestimonioOnClickListener);
+		view.setOnClickListener(BtnSeeMoreOnClickListener);
 
 		return view;
 	}
@@ -349,7 +351,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		}
 	}
 
-	OnClickListener BtnShowTestimonioOnClickListener = new OnClickListener() {
+	/*OnClickListener BtnShowTestimonioOnClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			
@@ -368,7 +370,7 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			
 			tvDescription.setTag(state);
 		}
-	};
+	};*/
 
 	OnClickListener BtnSeeMoreOnClickListener = new OnClickListener() {
 		@Override

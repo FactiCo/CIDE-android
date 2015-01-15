@@ -71,12 +71,12 @@
     <string name="testimonios_nomore">Sin testimonios en esta categoría</string>
     
     <!-- Types of justice -->
-    <string name="justice_1">Justicia\nen el\ntrabajo</string>
-    <string name="justice_2">Justicia\npara\nfamilias</string>
-    <string name="justice_3">Justicia\nvecinal y\ncomunitaria</string>
-    <string name="justice_4">Justicia\npara\nciudadanos</string>
-    <string name="justice_5">Justicia\npara\nemprendedores</string>
-    <string name="justice_6">Otros\ntemas de\nJusticia Cotidiana</string>
+    <string name="justice_trabajo">Justicia\nen el\ntrabajo</string>
+    <string name="justice_ciudadanos">Justicia\npara\nciudadanos</string>
+    <string name="justice_familias">Justicia\npara\nfamilias</string>
+    <string name="justice_emprendedores">Justicia\npara\nemprendedores</string>
+    <string name="justice_vecinal">Justicia\nvecinal y\ncomunitaria</string>
+    <string name="justice_otros">Otros\ntemas de\nJusticia Cotidiana</string>
     
     <!-- Add Testimonio -->
     <string name="testimonios_add_name">Nombre</string>

@@ -46,6 +46,7 @@ public class TestimoniosListActivity extends ActionBarActivity {
 		mTitle.setText(getResources().getString(R.string.testimonios_news));
 		setSupportActionBar(mToolbar);
 
+		getSupportActionBar().setElevation(5);
 		mToolbar.setNavigationIcon(R.drawable.ic_action_close_white);
 	}
 
@@ -121,7 +122,8 @@ public class TestimoniosListActivity extends ActionBarActivity {
 
 		TextView tvDescription = (TextView) view.findViewById(R.id.item_testimonios_tv_description);
 		tvDescription.setText(item.getExplanation());
-		tvDescription.setTag(false);
+		tvDescription.setMaxLines(Integer.MAX_VALUE);
+		tvDescription.setTag(true);
 
 		view.setTag(tvDescription);
 		view.setOnClickListener(BtnShowTestimonioOnClickListener);
