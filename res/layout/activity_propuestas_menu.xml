@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cide="http://schemas.android.com/apk/res/mx.com.factico.cide"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/drawable_bgr_gradient_dark"
@@ -9,6 +10,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/actionbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/drawable_bgr_gradient_dark"
+        android:orientation="vertical"
+        android:weightSum="5" >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:padding="15dp"
+            android:src="@drawable/ic_splash"
+            android:contentDescription="@string/propuesta_name" />
+        
+        <mx.com.factico.cide.views.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:gravity="center_horizontal"
+            android:padding="15dp"
+            android:text="@string/propuestas_preview"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            cide:typefaceRoboto="SourceSansPro_Regular" />
+    </LinearLayout>
 
     <TabHost
         android:id="@+id/propuestas_menu_tabhost"

@@ -12,93 +12,200 @@
         layout="@layout/actionbar" />
 
     <LinearLayout
+        android:id="@+id/main_vg_container_header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@drawable/divider_horizontal_white"
-        android:orientation="vertical"
-        android:showDividers="middle" >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="7" >
+
+        <ImageView
+            android:id="@+id/main_logo"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_weight="2"
+            android:contentDescription="@string/app_name"
+            android:layout_gravity="top"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:src="@drawable/ic_splash" />
+
+        <mx.com.factico.cide.views.CustomTextView
+            android:id="@+id/main_desciption"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:paddingBottom="20dp"
+            android:paddingLeft="0dp"
+            android:paddingStart="0dp"
+            android:paddingRight="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="20dp"
+            android:text="@string/que_es_justicia"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/white"
+            cide:typefaceRoboto="RobotoSlab_Regular" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/main_btn_option1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/selector_btn_dark"
+        android:orientation="horizontal" >
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="6" >
-
-            <ImageView
-                android:id="@+id/main_logo"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:contentDescription="@string/app_name"
-                android:padding="20dp"
-                android:src="@drawable/ic_splash" />
+            android:orientation="vertical" >
 
             <mx.com.factico.cide.views.CustomTextView
-                android:id="@+id/main_desciption"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:gravity="center_vertical"
-                android:padding="20dp"
-                android:text="@string/que_es_justicia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:text="@string/main_menu_option_1"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white"
+                cide:typefaceRoboto="SourceSansPro_Regular" />
+
+            <mx.com.factico.cide.views.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_horizontal"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingTop="5dp"
+                android:text="@string/main_menu_option_description_1"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white"
-                android:textSize="15sp"
-                cide:typefaceRoboto="regular" />
+                cide:typefaceRoboto="SourceSansPro_Light" />
         </LinearLayout>
 
-        <mx.com.factico.cide.views.CustomTextView
-            android:id="@+id/main_btn_option1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/selector_btn_dark"
-            android:drawableEnd="@drawable/ic_menu_arrow"
-            android:drawableRight="@drawable/ic_menu_arrow"
-            android:gravity="start|center_vertical"
-            android:paddingEnd="@dimen/activity_horizontal_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingStart="@dimen/activity_horizontal_margin"
-            android:text="@string/main_menu_option1"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            cide:typefaceRoboto="regular" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_menu_arrow" />
+    </LinearLayout>
 
-        <mx.com.factico.cide.views.CustomTextView
-            android:id="@+id/main_btn_option2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/selector_btn_middle"
-            android:drawableEnd="@drawable/ic_menu_arrow"
-            android:drawableRight="@drawable/ic_menu_arrow"
-            android:gravity="start|center_vertical"
-            android:paddingEnd="@dimen/activity_horizontal_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:text="@string/main_menu_option2"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            cide:typefaceRoboto="regular" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white" />
 
-        <mx.com.factico.cide.views.CustomTextView
-            android:id="@+id/main_btn_option3"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+    <LinearLayout
+        android:id="@+id/main_btn_option2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/selector_btn_middle"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:background="@drawable/selector_btn_ligth"
-            android:drawableEnd="@drawable/ic_menu_arrow"
-            android:drawableRight="@drawable/ic_menu_arrow"
-            android:gravity="start|center_vertical"
-            android:paddingEnd="@dimen/activity_horizontal_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:text="@string/main_menu_option3"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            cide:typefaceRoboto="regular" />
+            android:orientation="vertical" >
+
+            <mx.com.factico.cide.views.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/main_menu_option_2"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white"
+                cide:typefaceRoboto="SourceSansPro_Regular" />
+
+            <mx.com.factico.cide.views.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_horizontal"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingTop="5dp"
+                android:text="@string/main_menu_option_description_2"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/white"
+                cide:typefaceRoboto="SourceSansPro_Light" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_menu_arrow" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white" />
+    
+    <LinearLayout
+        android:id="@+id/main_btn_option3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/selector_btn_ligth"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <mx.com.factico.cide.views.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/main_menu_option_3"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white"
+                cide:typefaceRoboto="SourceSansPro_Regular" />
+
+            <mx.com.factico.cide.views.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_horizontal"
+                android:paddingEnd="@dimen/activity_horizontal_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingTop="5dp"
+                android:text="@string/main_menu_option_description_3"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/white"
+                cide:typefaceRoboto="SourceSansPro_Light" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_menu_arrow" />
     </LinearLayout>
 
 </LinearLayout>

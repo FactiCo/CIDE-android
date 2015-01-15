@@ -17,6 +17,7 @@
     <color name="holodark">#333333</color>
     
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#FF0000FF</color>
     <color name="black_44">#44000000</color>
     <color name="black">#FF000000</color>
     
@@ -25,8 +26,8 @@
     
     <color name="default_background_color">#F2F2F2</color>
     
-    <color name="divider_color">#6CDA84</color>
-    
+    <color name="divider_gray_color">#E0E0E0</color>
+    <color name="divider_green_color">#6CDA84</color>
     <color name="divider_white_color">#FFFFFF</color>
     
     <color name="btn_dark_green_color">#FF4A8293</color>
@@ -35,6 +36,13 @@
     <color name="btn_middle_green_color_alpha">#AA4FB7AD</color>
     <color name="btn_ligth_green_color">#FF58CA9C</color>
     <color name="btn_ligth_green_color_alpha">#AA58CA9C</color>
+    
+    <color name="btn_hover">#444444</color>
+    
+    <color name="btn_other_green">#6CDA84</color>
+    <color name="btn_other_green_alpha">#AA6CDA84</color>
+    
+    <color name="background_testimonio_add">#D3EFDA</color>
     
     <!-- Gradient colors -->
     <color name="green_dark_color">#FF3E8293</color>

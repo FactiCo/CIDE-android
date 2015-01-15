@@ -4,14 +4,46 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <fr.castorflex.android.verticalviewpager.VerticalViewPager
-        android:id="@+id/verticalviewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <include
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/actionbar" />
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize" />
+
+    <FrameLayout
+        android:id="@+id/actiobarShadow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:foreground="?android:windowContentOverlay" >
+
+        <fr.castorflex.android.verticalviewpager.VerticalViewPager
+            android:id="@+id/about_verticlaviewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/about_name"
+        android:src="@drawable/ic_splash" />
+    
+    <ImageView
+        android:id="@+id/about_iv_scroll"
+        android:layout_width="25dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/about_name"
+        android:paddingEnd="5dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="5dp"
+        android:paddingStart="0dp"
+        android:src="@drawable/ic_about_scroll_1" />
 
 </RelativeLayout>

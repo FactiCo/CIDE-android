@@ -52,7 +52,7 @@ public class GsonParser {
 	
 	public static String getResultFromJSON(String json) {
 		JSONObject root;
-		String result = null;
+		String result = "";
 		
 		try {
 			root = new JSONObject(json);

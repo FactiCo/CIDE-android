@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cide="http://schemas.android.com/apk/res/mx.com.factico.cide"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/primary_color"
-    android:minHeight="?attr/actionBarSize" />
+    android:minHeight="?attr/actionBarSize" >
+
+    <mx.com.factico.cide.views.CustomTextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/white"
+        android:text=""
+        cide:typefaceRoboto="RobotoSlab_Bold" />
+
+</android.support.v7.widget.Toolbar>

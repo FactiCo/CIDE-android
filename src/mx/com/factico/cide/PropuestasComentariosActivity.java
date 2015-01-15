@@ -298,7 +298,7 @@ public class PropuestasComentariosActivity extends ActionBarActivity implements 
 				CustomEditText etComment = (CustomEditText) findViewById(R.id.propuestas_comments_et_comment);
 				etComment.setText("");
 				
-			} else if (resultCode.equals(GsonParser.TAG_RESULT_ERROR)) {
+			} else {
 				Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
 			}
 		}

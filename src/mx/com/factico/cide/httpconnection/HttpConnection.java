@@ -66,9 +66,10 @@ public class HttpConnection {
 		String result = null;
 		
 		try {
-		    httpPost.setEntity(new StringEntity(json));
+			// httpPost.setEntity(new StringEntity(json));
+			httpPost.setEntity(createStringEntity(json));
 		    httpPost.setHeader("Accept", "application/json");
-		    httpPost.setHeader("Content-type", "application/json");
+		    httpPost.setHeader("Content-Type", "application/json");
 			
 			// httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair, HTTP.UTF_8));
 			// httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
@@ -91,5 +92,16 @@ public class HttpConnection {
 		}
 		
 		return result;
+	}
+	
+	private static HttpEntity createStringEntity(String json) {
+		StringEntity se = null;
+		try {
+			se = new StringEntity(json, "UTF-8");
+			se.setContentType("application/json; charset=UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			Log.e(TAG_CLASS, "Failed to create StringEntity", e);
+		}
+		return se;
 	}
 }

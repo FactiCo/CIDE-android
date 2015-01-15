@@ -40,7 +40,7 @@
                     android:text=""
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/title_color"
-                    cide:typefaceRoboto="bold" />
+                    cide:typefaceRoboto="SourceSansPro_Bold" />
 
                 <mx.com.factico.cide.views.CustomTextView
                     android:id="@+id/propuestas_tv_description"
@@ -53,7 +53,7 @@
                     android:text=""
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/title_color"
-                    cide:typefaceRoboto="regular" />
+                    cide:typefaceRoboto="SourceSansPro_Regular" />
             </LinearLayout>
 
             <mx.com.factico.cide.views.CustomTextView
@@ -66,7 +66,7 @@
                 android:text="@string/propuestas_vote"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/white"
-                cide:typefaceRoboto="regular" />
+                cide:typefaceRoboto="SourceSansPro_Regular" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -90,7 +90,7 @@
                     android:onClick="voteOnClick"
                     android:text="@string/propuestas_btn_favor"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    cide:typefaceRoboto="regular" />
+                    cide:typefaceRoboto="SourceSansPro_Regular" />
 
                 <mx.com.factico.cide.views.CustomTextView
                     android:id="@+id/propuestas_btn_contra"
@@ -104,7 +104,7 @@
                     android:onClick="voteOnClick"
                     android:text="@string/propuestas_btn_contra"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    cide:typefaceRoboto="regular" />
+                    cide:typefaceRoboto="SourceSansPro_Regular" />
 
                 <mx.com.factico.cide.views.CustomTextView
                     android:id="@+id/propuestas_btn_abstencion"
@@ -118,7 +118,7 @@
                     android:onClick="voteOnClick"
                     android:text="@string/propuestas_btn_abstencion"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    cide:typefaceRoboto="regular" />
+                    cide:typefaceRoboto="SourceSansPro_Regular" />
             </LinearLayout>
 
             <mx.com.factico.cide.views.CustomTextView
@@ -132,7 +132,7 @@
                 android:text=""
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/white"
-                cide:typefaceRoboto="regular" />
+                cide:typefaceRoboto="SourceSansPro_Regular" />
 
             <LinearLayout
                 android:id="@+id/propuestas_vg_answers"
@@ -156,7 +156,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/white"
                 android:visibility="gone"
-                cide:typefaceRoboto="regular" />
+                cide:typefaceRoboto="SourceSansPro_Regular" />
         </LinearLayout>
     </ScrollView>
 

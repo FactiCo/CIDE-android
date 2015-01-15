@@ -18,8 +18,8 @@
         android:layout_above="@+id/testimonios_btn_map"
         android:layout_below="@+id/toolbar"
         android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:paddingTop="@dimen/activity_vertical_margin" >
 
         <TableRow
@@ -28,11 +28,12 @@
             android:layout_weight="1" >
 
             <LinearLayout
-                android:id="@+id/testimonios_menu_btn_justice1"
+                android:id="@+id/testimonios_menu_btn_justice_trabajo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_btn_squared"
@@ -40,14 +41,10 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/testimonios_menu_iv_justice1"
+                    android:id="@+id/testimonios_menu_iv_justice_trabajo"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:contentDescription="@string/testimonio_name"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="10dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_justicia_trabajo" />
 
@@ -56,81 +53,79 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:minLines="4"
-                    android:text="@string/justice_1"
+                    android:paddingTop="10dp"
+                    android:text="@string/justice_trabajo"
                     android:textColor="@color/btn_ligth_green_color"
                     android:textSize="12sp"
-                    cide:typefaceRoboto="regular" />
+                    cide:typefaceRoboto="RobotoSlab_Regular" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/testimonios_menu_btn_justice2"
+                android:id="@+id/testimonios_menu_btn_justice_ciudadanos"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:layout_marginEnd="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_btn_squared"
-                android:orientation="vertical"
-                android:gravity="center_vertical" >
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/testimonios_menu_iv_justice2"
+                    android:id="@+id/testimonios_menu_iv_justice_ciudadanos"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:contentDescription="@string/testimonio_name"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="10dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ic_justicia_familiar" />
+                    android:src="@drawable/ic_justicia_ciudadanos" />
 
                 <mx.com.factico.cide.views.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:minLines="4"
-                    android:text="@string/justice_2"
+                    android:paddingTop="10dp"
+                    android:text="@string/justice_ciudadanos"
                     android:textColor="@color/btn_ligth_green_color"
                     android:textSize="12sp"
-                    cide:typefaceRoboto="regular" />
+                    cide:typefaceRoboto="RobotoSlab_Regular" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/testimonios_menu_btn_justice3"
+                android:id="@+id/testimonios_menu_btn_justice_familias"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_btn_squared"
-                android:orientation="vertical"
-                android:gravity="center_vertical" >
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/testimonios_menu_iv_justice3"
+                    android:id="@+id/testimonios_menu_iv_justice_familias"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:contentDescription="@string/testimonio_name"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="10dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ic_justicia_vecinal" />
+                    android:src="@drawable/ic_justicia_familias" />
 
                 <mx.com.factico.cide.views.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:minLines="4"
-                    android:text="@string/justice_3"
+                    android:paddingTop="10dp"
+                    android:text="@string/justice_familias"
                     android:textColor="@color/btn_ligth_green_color"
                     android:textSize="12sp"
-                    cide:typefaceRoboto="regular" />
+                    cide:typefaceRoboto="RobotoSlab_Regular" />
             </LinearLayout>
         </TableRow>
 
@@ -140,62 +135,23 @@
             android:layout_weight="1" >
 
             <LinearLayout
-                android:id="@+id/testimonios_menu_btn_justice4"
+                android:id="@+id/testimonios_menu_btn_justice_emprendedores"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_btn_squared"
-                android:orientation="vertical"
-                android:gravity="center_vertical" >
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
 
                 <ImageView
-                    android:id="@+id/testimonios_menu_iv_justice4"
+                    android:id="@+id/testimonios_menu_iv_justice_emprendedores"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:contentDescription="@string/testimonio_name"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="10dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_justicia_ciudadanos" />
-
-                <mx.com.factico.cide.views.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:minLines="4"
-                    android:text="@string/justice_4"
-                    android:textColor="@color/btn_ligth_green_color"
-                    android:textSize="12sp"
-                    cide:typefaceRoboto="regular" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/testimonios_menu_btn_justice5"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/selector_btn_squared"
-                android:orientation="vertical"
-                android:gravity="center_vertical" >
-
-                <ImageView
-                    android:id="@+id/testimonios_menu_iv_justice5"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:contentDescription="@string/testimonio_name"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="10dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_justicia_emprendedores" />
 
@@ -204,19 +160,80 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:minLines="4"
-                    android:text="@string/justice_5"
+                    android:paddingTop="10dp"
+                    android:text="@string/justice_emprendedores"
                     android:textColor="@color/btn_ligth_green_color"
                     android:textSize="12sp"
-                    cide:typefaceRoboto="regular" />
+                    cide:typefaceRoboto="RobotoSlab_Regular" />
             </LinearLayout>
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/testimonios_menu_btn_justice_vecinal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_btn_squared"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/testimonios_menu_iv_justice_vecinal"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/testimonio_name"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_justicia_vecinal" />
+
+                <mx.com.factico.cide.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:minLines="4"
+                    android:paddingTop="10dp"
+                    android:text="@string/justice_vecinal"
+                    android:textColor="@color/btn_ligth_green_color"
+                    android:textSize="12sp"
+                    cide:typefaceRoboto="RobotoSlab_Regular" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/testimonios_menu_btn_justice_otros"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/selector_btn_squared"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/testimonios_menu_iv_justice_otros"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/testimonio_name"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_justicia_otrostemas" />
+
+                <mx.com.factico.cide.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:minLines="4"
+                    android:paddingTop="10dp"
+                    android:text="@string/justice_otros"
+                    android:textColor="@color/btn_ligth_green_color"
+                    android:textSize="12sp"
+                    cide:typefaceRoboto="RobotoSlab_Regular" />
+            </LinearLayout>
         </TableRow>
     </TableLayout>
 
@@ -227,16 +244,16 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/selector_btn_squared_border"
+        android:background="@drawable/selector_btn_other"
         android:contentDescription="@string/testimonio_name"
         android:gravity="center"
-        android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
         android:text="@string/testimonios_btn_map"
         android:textColor="@color/white"
         android:textSize="15sp"
-        cide:typefaceRoboto="regular" />
+        cide:typefaceRoboto="RobotoSlab_Regular" />
 
 </RelativeLayout>

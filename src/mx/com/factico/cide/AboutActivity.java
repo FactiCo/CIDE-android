@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -15,7 +16,9 @@ import android.widget.ImageView;
 import fr.castorflex.android.verticalviewpager.VerticalViewPager;
 
 public class AboutActivity extends ActionBarActivity {
-    
+	private ImageView ivScroll;
+	private Toolbar mToolbar;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,21 +29,45 @@ public class AboutActivity extends ActionBarActivity {
 	}
 
 	public void setSupportActionBar() {
-		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+		mToolbar = (Toolbar) findViewById(R.id.toolbar);
 		mToolbar.setTitle("");
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
-		mToolbar.getBackground().setAlpha(0);
+		mToolbar.getBackground().setAlpha(255);
 		setSupportActionBar(mToolbar);
 	}
 
 	private void initUI() {
-		VerticalViewPager verticalViewPager = (VerticalViewPager) findViewById(R.id.verticalviewpager);
+		VerticalViewPager verticalViewPager = (VerticalViewPager) findViewById(R.id.about_verticlaviewpager);
 		verticalViewPager.setAdapter(new DummyAdapter(getSupportFragmentManager()));
 		verticalViewPager.setPageMargin(0);
-		// verticalViewPager.setPageMarginDrawable(new ColorDrawable(getResources().getColor(android.R.color.holo_green_dark)));
-		//verticalViewPager.setPageTransformer(true, new VerticalPageTransformer());
+		
+		ivScroll = (ImageView) findViewById(R.id.about_iv_scroll);
+		
+		verticalViewPager.setOnPageChangeListener(VerticalOnPageChangeListener);
 	}
 
+	OnPageChangeListener VerticalOnPageChangeListener = new OnPageChangeListener() {
+		@Override
+		public void onPageSelected(int position) {
+			if (position == 0)
+				ivScroll.setImageResource(R.drawable.ic_about_scroll_1);
+			if (position == 1)
+				ivScroll.setImageResource(R.drawable.ic_about_scroll_2);
+			if (position == 2)
+				ivScroll.setImageResource(R.drawable.ic_about_scroll_3);
+			if (position == 3)
+				ivScroll.setImageResource(R.drawable.ic_about_scroll_4);
+			if (position == 4)
+				ivScroll.setImageResource(R.drawable.ic_about_scroll_5);
+		}
+		
+		@Override
+		public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+		
+		@Override
+		public void onPageScrollStateChanged(int state) {}
+	};
+	
 	public class DummyAdapter extends FragmentPagerAdapter {
 
 		public DummyAdapter(FragmentManager fm) {
@@ -58,7 +85,7 @@ public class AboutActivity extends ActionBarActivity {
 		@Override
 		public int getCount() {
 			// Show 3 total pages.
-			return 3;
+			return 5;
 		}
 
 		@Override
@@ -104,20 +131,18 @@ public class AboutActivity extends ActionBarActivity {
 			View rootView = inflater.inflate(R.layout.fragment_about, container, false);
 			
 			ImageView ivPage = (ImageView) rootView.findViewById(R.id.fragment_about_iv_page);
-			//ivPage.setImageResource(R.drawable.ic_splash);
-			
-			//LinearLayout vgContainer = (LinearLayout) rootView.findViewById(R.id.fragment_about_vg_container);
 			
 			int index = getArguments().getInt(ARG_SECTION_NUMBER);
 			if (index == 1) {
-				//vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_dark);
-				ivPage.setImageResource(R.drawable.justicia_ciudadana_1);
+				ivPage.setImageResource(R.drawable.justicia_cotidiana_1);
 			} if (index == 2) {
-				//vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_middle);
-				ivPage.setImageResource(R.drawable.justicia_ciudadana_2);
+				ivPage.setImageResource(R.drawable.justicia_cotidiana_2);
 			} if (index == 3) {
-				//vgContainer.setBackgroundResource(R.drawable.drawable_bgr_gradient_ligth);
-				ivPage.setImageResource(R.drawable.justicia_ciudadana_3);
+				ivPage.setImageResource(R.drawable.justicia_cotidiana_3);
+			} if (index == 4) {
+				ivPage.setImageResource(R.drawable.justicia_cotidiana_4);
+			} if (index == 5) {
+				ivPage.setImageResource(R.drawable.justicia_cotidiana_5);
 			}
 			
 			return rootView;

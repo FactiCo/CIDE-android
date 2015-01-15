@@ -12,6 +12,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class MexicoMapActivity extends ActionBarActivity {
 
@@ -28,10 +29,11 @@ public class MexicoMapActivity extends ActionBarActivity {
 
 	public void setSupportActionBar() {
 		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-		mToolbar.setTitle("Mapa de testimonios");
-		// mToolbar.setBackgroundColor(getResources().getColor(R.color.btn_ligth_green_color));
+		mToolbar.setTitle("");
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
 		mToolbar.getBackground().setAlpha(0);
+		TextView mTitle = (TextView) mToolbar.findViewById(R.id.toolbar_title);
+		mTitle.setText(getResources().getString(R.string.testimonios_btn_map));
 		setSupportActionBar(mToolbar);
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
