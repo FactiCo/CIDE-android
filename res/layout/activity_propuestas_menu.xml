@@ -16,16 +16,17 @@
         android:layout_height="match_parent"
         android:background="@drawable/drawable_bgr_gradient_dark"
         android:orientation="vertical"
+        android:visibility="gone"
         android:weightSum="5" >
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
+            android:contentDescription="@string/propuesta_name"
             android:padding="15dp"
-            android:src="@drawable/ic_splash"
-            android:contentDescription="@string/propuesta_name" />
-        
+            android:src="@drawable/ic_splash" />
+
         <mx.com.factico.cide.views.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -51,7 +52,9 @@
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="fill_parent"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:fadingEdge="none"
+                android:showDividers="none" />
 
             <FrameLayout
                 android:id="@android:id/tabcontent"

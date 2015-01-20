@@ -1,13 +1,19 @@
 package mx.com.factico.cide.fragments;
 
+import java.io.IOException;
+
 import mx.com.factico.cide.PropuestasActivity;
 import mx.com.factico.cide.R;
 import mx.com.factico.cide.beans.Propuesta;
 import mx.com.factico.cide.beans.Propuesta.Items;
+import mx.com.factico.cide.parser.URLImageParser;
+import mx.com.factico.cide.utils.AssetsUtils;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -97,8 +103,21 @@ public class PropuestasMenuPageFragment extends Fragment {
 		TextView tvTitle = (TextView) view.findViewById(R.id.item_propuestas_tv_title);
 		TextView tvDescription = (TextView) view.findViewById(R.id.item_propuestas_tv_description);
 		
-		tvTitle.setText(item.getTitle());
-		tvDescription.setText(item.getDescription());
+		// String html = "<html><body><p>Propuesta para <strong>juntas</strong> <strong>vecinales<\/strong>, puedes ver un ejemplo en el siguiente video:<\/p><p><iframe src=\"http:\/\/www.youtube.com\/embed\/il7WTHIKvq8\" width=\"100%\" height=\"228\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"><\/iframe><\/p><\/body><\/html>";
+		String html;
+		try {
+			html = AssetsUtils.getStringFromAssets(getActivity().getBaseContext(), "prueba.html");
+			
+			URLImageParser p = new URLImageParser(tvDescription, getActivity().getBaseContext());
+			Spanned htmlSpan = Html.fromHtml(html, p, null);
+			tvDescription.setText(htmlSpan);
+			
+			tvTitle.setText(item.getTitle());
+			//tvDescription.setText(Html.fromHtml(item.getDescription()).toString());
+			//tvDescription.setText(Html.fromHtml(html));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		return view;
 	}

@@ -75,6 +75,14 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		} else if (type == OPTION3) {
 			Intent intent = new Intent(this, PropuestasMenuActivity.class);
 			startActivity(intent);
+			
+			//Intent intent = new Intent(this, PruebasActivity.class);
+			//startActivity(intent);
+			
+			/*Intent intent = new Intent();
+			intent.setComponent(new ComponentName("com.zace3d.pruebas", "com.zace3d.pruebas.MyService"));
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			ComponentName c = startService(intent);*/
 		}
 	}
 

@@ -50,7 +50,7 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 
 		setSupportActionBar();
 
-		// startFacebookLoginIntent();
+		startFacebookLoginIntent();
 		
 		// initUI(FacebookLoginActivity.RESULT_CODE_LOGIN_OK);
 	}
@@ -159,16 +159,19 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 			ivIcon.setImageResource(R.drawable.ic_justicia_trabajo);
 			break;
 		case 1:
-			ivIcon.setImageResource(R.drawable.ic_justicia_familias);
-			break;
-		case 2:
-			ivIcon.setImageResource(R.drawable.ic_justicia_vecinal);
-			break;
-		case 3:
 			ivIcon.setImageResource(R.drawable.ic_justicia_ciudadanos);
 			break;
-		case 4:
+		case 2:
+			ivIcon.setImageResource(R.drawable.ic_justicia_familias);
+			break;
+		case 3:
 			ivIcon.setImageResource(R.drawable.ic_justicia_emprendedores);
+			break;
+		case 4:
+			ivIcon.setImageResource(R.drawable.ic_justicia_vecinal);
+			break;
+		case 5:
+			ivIcon.setImageResource(R.drawable.ic_justicia_otrostemas);
 			break;
 
 		default:

@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
@@ -38,15 +39,13 @@ public class FacebookLoginActivity extends ActionBarActivity implements OnClickL
 		setContentView(R.layout.activity_facebook);
 		
 		if (IntentUtils.appIsALreadyInstalled(this, getResources().getString(R.string.facebook_package))) {
-			if (isFacebookSessionActived()) {
-				setResultOk();
-			} else {
-				PreferencesUtils.putPreference(getApplication(), PreferencesUtils.FACEBOOK, null);
-				
-				initUI();
-			}
+			initFacebookSession();
+			
+			initUI();
 		} else {
 			Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.facebook_is_not_installed), Toast.LENGTH_LONG);
+			
+			finish();
 		}
 	}
 
@@ -76,11 +75,6 @@ public class FacebookLoginActivity extends ActionBarActivity implements OnClickL
 		AppEventsLogger.deactivateApp(this);
 	}
 
-	private boolean isFacebookSessionActived() {
-		Session session = Session.getActiveSession();
-		return (session != null && session.isOpened());
-	}
-
 	private void initFacebookSession() {
 		Session session = new Session(this);
 		Session.setActiveSession(session);
@@ -89,9 +83,8 @@ public class FacebookLoginActivity extends ActionBarActivity implements OnClickL
 		request.setCallback(SessionStatusCallback);
 		session.openForRead(request);
 	}
-
+	
 	private Session.StatusCallback SessionStatusCallback = new Session.StatusCallback() {
-
 		// callback when session changes state
 		@Override
 		public void call(Session session, SessionState state, Exception exception) {
@@ -108,7 +101,7 @@ public class FacebookLoginActivity extends ActionBarActivity implements OnClickL
 							
 							PreferencesUtils.putPreference(getApplication(), PreferencesUtils.FACEBOOK, json);
 							
-							Dialogues.Toast(getApplicationContext(), "Hola " + user.getName() + "!" + "\nCon id: " + user.getId(), Toast.LENGTH_LONG);
+							// Dialogues.Toast(getApplicationContext(), "Hola " + user.getName() + "!" + "\nCon id: " + user.getId(), Toast.LENGTH_LONG);
 							
 							Settings.sdkInitialize(getBaseContext());
 							
@@ -117,7 +110,10 @@ public class FacebookLoginActivity extends ActionBarActivity implements OnClickL
 					}
 				}).executeAsync();
 			} else {
-				Dialogues.Toast(getApplicationContext(), "Edgar " + getResources().getString(R.string.facebook_session_is_not_open), Toast.LENGTH_LONG);
+				//Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.facebook_session_is_not_open), Toast.LENGTH_LONG);
+				
+				ViewGroup vgContainer = (ViewGroup) findViewById(R.id.facebook_vg_container);
+				vgContainer.setVisibility(View.VISIBLE);
 			}
 		}
 	};

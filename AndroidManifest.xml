@@ -20,11 +20,14 @@
 		android:protectionLevel="signature" />
 	<uses-permission android:name="mx.com.factico.cide.permission.C2D_MESSAGE" />
 	
+	<tool-api-level>11</tool-api-level>
+	
     <application android:name="mx.com.factico.cide.Application"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:hardwareAccelerated="true" >
         
         <activity
             android:name="mx.com.factico.cide.SplashActivity"
@@ -104,6 +107,14 @@
             android:windowSoftInputMode="stateHidden" />
         
         <activity
+            android:name="mx.com.factico.cide.PropuestasActivity"
+            android:screenOrientation="portrait" />
+        
+        <activity
+            android:name="mx.com.factico.cide.PruebasActivity"
+            android:screenOrientation="portrait" />
+        
+        <activity
             android:name="mx.com.factico.cide.FacebookLoginActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name" />
@@ -117,10 +128,6 @@
         
         <activity
             android:name="mx.com.factico.cide.GcmRegisterActivity"
-            android:screenOrientation="portrait" />
-        
-        <activity
-            android:name="mx.com.factico.cide.PropuestasActivity"
             android:screenOrientation="portrait" />
         
         <!-- Parse Framework -->

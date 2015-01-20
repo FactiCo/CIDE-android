@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cide="http://schemas.android.com/apk/res/mx.com.factico.cide"
+    android:id="@+id/facebook_vg_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/drawable_bgr_gradient_dark"
@@ -9,7 +10,8 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" >
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:visibility="invisible" >
 
     <mx.com.factico.cide.views.CustomTextView
         android:layout_width="wrap_content"

@@ -20,6 +20,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -69,7 +70,7 @@ public class PropuestasActivity extends ActionBarActivity implements OnClickList
 	private void loadPropuestasViews(Propuesta.Items item) {
 		if (item != null) {
 			((TextView) findViewById(R.id.propuestas_tv_title)).setText(item.getTitle());
-			((TextView) findViewById(R.id.propuestas_tv_description)).setText(item.getDescription());
+			((TextView) findViewById(R.id.propuestas_tv_description)).setText(Html.fromHtml(item.getDescription().toString()));
 
 			proposalId = item.getId();
 
