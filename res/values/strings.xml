@@ -112,11 +112,12 @@
     
     <string name="propuestas_votes_favor">a favor</string>
     <string name="propuestas_votes_contra">en contra</string>
-    <string name="propuestas_votes_abstencion">bstención</string>
+    <string name="propuestas_votes_abstencion">abstención</string>
     
-    <string name="propuestas_votes_same">%1$d personas han votado %1$s como tu</string>
+    <string name="propuestas_votes_same">%1$s personas han votado %2$s como tu</string>
     
     <string name="propuestas_question">Pregunta</string>
+    <string name="propuestas_question_sings">¿?</string>
     
     <string name="propuestas_btn_comments_vermas">Ver comentarios</string>
     <string name="propuestas_btn_comments_hintcomment">Escribe un comentario</string>
@@ -131,6 +132,8 @@
     <string name="edittext_error_email">Escribe una sintaxis de correo valido.</string>
     
     <!-- Facebook 654570061331636-->
+    <string name="facebook_userid">916537998378480</string>
+    
     <string name="facebook_app_id">654570061331636</string>
     <string name="facebook_post_message">Post message to Facebook</string>
     <string name="facebook_is_not_installed">Facebook app is not installed</string>

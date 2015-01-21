@@ -102,7 +102,7 @@ public class PropuestasMenuPageFragment extends Fragment {
 		tvTitle.setText(item.getTitle());
 		
 		ImageView ivUser = (ImageView) view.findViewById(R.id.item_propuestas_menu_iv_user);
-		FacebookUtils.loadImageProfileToImageView(ivUser, "10152933527772221");
+		FacebookUtils.loadImageProfileToImageView(ivUser, getResources().getString(R.string.facebook_userid));
 		
 		TextView tvCurrentVotes = (TextView) view.findViewById(R.id.item_propuestas_menu_tv_currentvotes);
 		

@@ -5,25 +5,29 @@ import java.util.List;
 import mx.com.factico.cide.R;
 import mx.com.factico.cide.beans.Facebook;
 import mx.com.factico.cide.beans.Propuesta;
-import mx.com.factico.cide.beans.Vote;
 import mx.com.factico.cide.beans.Propuesta.Items.Votes.Participantes;
+import mx.com.factico.cide.beans.Vote;
 import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.facebook.FacebookUtils;
 import mx.com.factico.cide.httpconnection.HttpConnection;
 import mx.com.factico.cide.parser.GsonParser;
 import mx.com.factico.cide.preferences.PreferencesUtils;
-import mx.com.factico.cide.typeface.TypefaceFactory;
+import mx.com.factico.cide.spannables.SpannableFactory;
 import mx.com.factico.cide.views.CustomTextView;
 import mx.com.factico.cide.views.CustomWebView;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.graphics.Typeface;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Spannable;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -107,8 +111,12 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 	@SuppressWarnings("deprecation")
 	private void loadPropuestasViews(Propuesta.Items item) {
 		if (item != null) {
+			rootView.findViewById(R.id.propuestas_votes_btn_favor).setOnClickListener(this);
+			rootView.findViewById(R.id.propuestas_votes_btn_abstencion).setOnClickListener(this);
+			rootView.findViewById(R.id.propuestas_votes_btn_contra).setOnClickListener(this);
+			
 			ImageView ivUser = (ImageView) rootView.findViewById(R.id.propuestas_votes_iv_userphoto);
-			FacebookUtils.loadImageProfileToImageView(ivUser, "10152933527772221");
+			FacebookUtils.loadImageProfileToImageView(ivUser, getResources().getString(R.string.facebook_userid));
 			
 			// User name
 			((CustomTextView) rootView.findViewById(R.id.propuestas_votes_tv_username)).setText(item.getName());
@@ -173,14 +181,17 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 					if (listAnswers != null && listAnswers.size() > 0) {
 						LinearLayout vgAnswers = (LinearLayout) rootView.findViewById(R.id.propuestas_votes_vg_answers);
 
+						int index = 0;
 						for (Propuesta.Items.Question.Answers data : listAnswers) {
 							Dialogues.Log(TAG_CLASS, "Items Question Answers Id: " + data.getId(), Log.INFO);
 							Dialogues.Log(TAG_CLASS, "Items Question Answers Title: " + data.getTitle(), Log.INFO);
 							Dialogues.Log(TAG_CLASS, "Items Question Answers Count: " + data.getCount(), Log.INFO);
 
-							View answerView = createAnswerButton(data, question.getId());
+							View answerView = createAnswerButton(data, question.getId(), index);
 							if (answerView != null)
 								vgAnswers.addView(answerView);
+							
+							index++;
 						}
 					}
 				}
@@ -203,6 +214,8 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 						if (!alreadyVote) {
 							if (alreadyVote = isAlreadyVote(listVotesFavorParticipantes)) {
 								changeStateOfVoteView(VOTE_FAVOR);
+								
+								setNumberOfVotes(VOTE_FAVOR);
 							}
 						}
 						
@@ -226,6 +239,8 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 						if (!alreadyVote) {
 							if (alreadyVote = isAlreadyVote(listVotesContraParticipantes)) {
 								changeStateOfVoteView(VOTE_CONTRA);
+								
+								setNumberOfVotes(VOTE_CONTRA);
 							}
 						}
 						
@@ -249,6 +264,8 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 						if (!alreadyVote) {
 							if (alreadyVote = isAlreadyVote(listVotesAbstencionParticipantes)) {
 								changeStateOfVoteView(VOTE_ABSTENCION);
+								
+								setNumberOfVotes(VOTE_ABSTENCION);
 							}
 						}
 						
@@ -281,22 +298,29 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 		return false;
 	}
 	
-	private View createAnswerButton(Propuesta.Items.Question.Answers answer, String idQuestion) {
-		CustomTextView btnAnswer = new CustomTextView(getActivity().getBaseContext());
-		btnAnswer.setBackgroundResource(R.drawable.selector_btn_ligth);
-		btnAnswer.setPadding(10, 10, 10, 10);
-		btnAnswer.setGravity(Gravity.CENTER);
-		btnAnswer.setText(answer.getTitle());
-		btnAnswer.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
-		btnAnswer.setTextColor(getResources().getColor(R.color.title_color));
-		btnAnswer.setTextAppearance(getActivity().getBaseContext(), android.R.attr.textAppearanceSmall);
-		btnAnswer.setOnClickListener(AnswerOnClickListener);
-		btnAnswer.setTag(idQuestion + HttpConnection.ACTION_ANSWER + answer.getId());
-
-		Typeface typeface = TypefaceFactory.createTypeface(getActivity().getBaseContext(), TypefaceFactory.RobotoSlab_Regular);
-		btnAnswer.setTypeface(typeface);
+	private String[] colorsAnswers = {
+			"#FF4A8293",
+			"#FF4FB7AD",
+			"#FF58CA9C",
+			"#FF6CDA84" };
+	
+	@SuppressLint("InflateParams")
+	private View createAnswerButton(Propuesta.Items.Question.Answers answer, String idQuestion, int index) {
+		View view = getActivity().getLayoutInflater().inflate(R.layout.item_propuestas_answer, null, false);
 		
-		return btnAnswer;
+		Drawable drawable = getResources().getDrawable(R.drawable.drawable_circle_default);
+		drawable.setColorFilter(Color.parseColor(colorsAnswers[index]), PorterDuff.Mode.SRC_ATOP);
+		
+		CustomTextView btnNumberAnswer = (CustomTextView) view.findViewById(R.id.item_propuestas_answer_tv_number);
+		btnNumberAnswer.setBackground(drawable);
+		btnNumberAnswer.setText(String.valueOf(index + 1));
+		
+		CustomTextView btnAnswer = (CustomTextView) view.findViewById(R.id.item_propuestas_answer_tv_title);
+		btnAnswer.setText(answer.getTitle());
+		btnAnswer.setTag(idQuestion + HttpConnection.ACTION_ANSWER + answer.getId());
+		btnAnswer.setOnClickListener(AnswerOnClickListener);
+		
+		return view;
 	}
 
 	View.OnClickListener AnswerOnClickListener = new View.OnClickListener() {
@@ -363,7 +387,7 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 			
 			String resultCode = GsonParser.getResultFromJSON(result);
 			if (resultCode.equals(GsonParser.TAG_RESULT_OK)) {
-				setNumberOfVotes();
+				setNumberOfVotes(vote.getValue());
 				
 				changeStateOfVoteView(vote.getValue());
 				
@@ -373,33 +397,56 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 				Dialogues.Toast(getActivity().getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
 			}
 		}
-		
-		private void setNumberOfVotes() {
-			if (propuesta.getVotes() != null && propuesta.getVotes().getFavor() != null
-					&& propuesta.getVotes().getAbtencion() != null && propuesta.getVotes().getContra() != null) {
-				String text = "";
-				if (vote.getValue().equals(VOTE_FAVOR)) {
-					text = getResources().getString(R.string.propuestas_votes_same, 
-							propuesta.getVotes().getFavor().getParticipantes().size(), 
-							getResources().getString(R.string.propuestas_votes_favor));
+	}
+	
+	private void setNumberOfVotes(String value) {
+		Resources resources = getResources();
+		if (propuesta.getVotes() != null) {
+			int color = resources.getColor(R.color.btn_other_green);
+			CharSequence text = "";
+			CharSequence number = "";
+			CharSequence type = "";
+			
+			if (value.equals(VOTE_FAVOR)) {
+				if (propuesta.getVotes().getFavor() != null) {
+					number = SpannableFactory.color(color, String.valueOf(propuesta.getVotes().getFavor().getParticipantes().size()));
+					type = SpannableFactory.color(color, getResources().getString(R.string.propuestas_votes_favor));
 					
-				} else if (vote.getValue().equals(VOTE_ABSTENCION)) {
-					text = getResources().getString(R.string.propuestas_votes_same, 
-							propuesta.getVotes().getAbtencion().getParticipantes().size(), 
-							getResources().getString(R.string.propuestas_votes_abstencion));
+					text = String.format(resources.getString(R.string.propuestas_votes_same, number, type));
+				}
 					
-				} else if (vote.getValue().equals(VOTE_CONTRA)) {
-					text = getResources().getString(R.string.propuestas_votes_same, 
-							propuesta.getVotes().getContra().getParticipantes().size(), 
-							getResources().getString(R.string.propuestas_votes_contra));
+			} else if (value.equals(VOTE_ABSTENCION)) {
+				if (propuesta.getVotes().getAbtencion() != null) {
+					number = SpannableFactory.color(color, String.valueOf(propuesta.getVotes().getAbtencion().getParticipantes().size()));
+					type = SpannableFactory.color(color, getResources().getString(R.string.propuestas_votes_abstencion));
+					
+					text = String.format(getResources().getString(R.string.propuestas_votes_same, number, type));
 				}
-				
-				if (!text.equals("")) {
-					((CustomTextView) rootView.findViewById(R.id.propuestas_votes_tv_votes_same)).setText(text);
+			} else if (value.equals(VOTE_CONTRA)) {
+				if (propuesta.getVotes().getContra() != null) {
+					number = SpannableFactory.color(color, String.valueOf(propuesta.getVotes().getContra().getParticipantes().size()));
+					type = SpannableFactory.color(color, getResources().getString(R.string.propuestas_votes_contra));
+					
+					text = String.format(getResources().getString(R.string.propuestas_votes_same, number, type));
 				}
+			}
+			
+			if (!text.equals("")) {
+				CustomTextView tvVotesSame = (CustomTextView) rootView.findViewById(R.id.propuestas_votes_tv_votes_same);
+				tvVotesSame.setVisibility(View.VISIBLE);
+				//tvVotesSame.setText(text, TextView.BufferType.SPANNABLE);
+				setSpannableColor(tvVotesSame, String.valueOf(text), String.valueOf(number), color);
+				setSpannableColor(tvVotesSame, tvVotesSame.getText().toString(), String.valueOf(type), color);
 			}
 		}
 	}
+	
+	private void setSpannableColor(TextView view, String fulltext, String subtext, int color) {
+	      view.setText(fulltext, TextView.BufferType.SPANNABLE);
+	      Spannable str = (Spannable) view.getText();
+	      int i = fulltext.indexOf(subtext);
+	      str.setSpan(new ForegroundColorSpan(color), i, i+subtext.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+	   }
 	
 	private void changeStateOfVoteView(String value) {
 		CustomTextView tvVoteLabel = (CustomTextView) rootView.findViewById(R.id.propuestas_votes_tv_vote_label);
