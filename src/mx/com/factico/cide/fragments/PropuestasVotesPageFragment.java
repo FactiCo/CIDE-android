@@ -200,6 +200,8 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 					
 					startChart(listAnswers);
 				}
+			} else {
+				rootView.findViewById(R.id.propuestas_votes_vg_question).setVisibility(View.GONE);
 			}
 			
 			// Votes
@@ -542,10 +544,9 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 		
 		LinearLayout chartContainer = (LinearLayout) rootView.findViewById(R.id.propuestas_votes_vg_chart);
 		CircleChartView pieChart = new CircleChartView(getActivity());
-		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1);
 		params.gravity = Gravity.CENTER;
 		pieChart.setLayoutParams(params);
-		//pieChart.setPercentage(90);
 		pieChart.startDraw(listAnswers);
 		chartContainer.addView(pieChart);
 	}

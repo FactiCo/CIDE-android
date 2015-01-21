@@ -2213,11 +2213,10 @@ containing a value of this type.
         public static final int propuestas_menu_pager=0x7f0b006c;
         public static final int propuestas_menu_tabhost=0x7f0b006b;
         public static final int propuestas_votes_btn_abstencion=0x7f0b00c4;
-        public static final int propuestas_votes_btn_comments_vermas=0x7f0b00c7;
         public static final int propuestas_votes_btn_contra=0x7f0b00c5;
         public static final int propuestas_votes_btn_favor=0x7f0b00c3;
-        public static final int propuestas_votes_iv_userphoto=0x7f0b00bd;
-        public static final int propuestas_votes_sv_container=0x7f0b00be;
+        public static final int propuestas_votes_iv_userphoto=0x7f0b00be;
+        public static final int propuestas_votes_sv_container=0x7f0b00bd;
         public static final int propuestas_votes_tv_question=0x7f0b00ba;
         public static final int propuestas_votes_tv_title=0x7f0b00c0;
         public static final int propuestas_votes_tv_username=0x7f0b00bf;
@@ -2226,6 +2225,7 @@ containing a value of this type.
         public static final int propuestas_votes_vf_question=0x7f0b00b9;
         public static final int propuestas_votes_vg_answers=0x7f0b00bb;
         public static final int propuestas_votes_vg_chart=0x7f0b00bc;
+        public static final int propuestas_votes_vg_question=0x7f0b00c7;
         public static final int propuestas_votes_wv_description=0x7f0b00c1;
         public static final int radio=0x7f0b003f;
         public static final int right=0x7f0b0014;
@@ -2508,26 +2508,26 @@ containing a value of this type.
         public static final int dialog_share_testimonio=0x7f070040;
         /**  Validations EditText 
          */
-        public static final int edittext_emtpy=0x7f07007c;
-        public static final int edittext_error_email=0x7f070081;
-        public static final int edittext_error_number=0x7f070080;
-        public static final int edittext_error_string=0x7f07007f;
-        public static final int edittext_obligatorio=0x7f07007d;
-        public static final int edittext_wrong_info=0x7f07007e;
+        public static final int edittext_emtpy=0x7f07007d;
+        public static final int edittext_error_email=0x7f070082;
+        public static final int edittext_error_number=0x7f070081;
+        public static final int edittext_error_string=0x7f070080;
+        public static final int edittext_obligatorio=0x7f07007e;
+        public static final int edittext_wrong_info=0x7f07007f;
         /**  Propuestas 
          */
         public static final int error_propuestas_recientes=0x7f070043;
         /**  Testimonios 
          */
         public static final int error_testimonios_recientes=0x7f070042;
-        public static final int facebook_app_id=0x7f070083;
-        public static final int facebook_is_not_installed=0x7f070085;
-        public static final int facebook_package=0x7f070086;
-        public static final int facebook_post_message=0x7f070084;
-        public static final int facebook_session_is_not_open=0x7f070087;
+        public static final int facebook_app_id=0x7f070084;
+        public static final int facebook_is_not_installed=0x7f070086;
+        public static final int facebook_package=0x7f070087;
+        public static final int facebook_post_message=0x7f070085;
+        public static final int facebook_session_is_not_open=0x7f070088;
         /**  Facebook 654570061331636
          */
-        public static final int facebook_userid=0x7f070082;
+        public static final int facebook_userid=0x7f070083;
         public static final int gender_female_button=0x7f070047;
         public static final int gender_male_button=0x7f070046;
         public static final int gender_text_view=0x7f070048;
@@ -2557,9 +2557,9 @@ containing a value of this type.
         public static final int no_internet_connection=0x7f070041;
         public static final int postdata_loading=0x7f07006c;
         public static final int propuesta_name=0x7f070030;
-        public static final int propuestas_btn_comments_hintcomment=0x7f07007a;
-        public static final int propuestas_btn_comments_sendcomment=0x7f07007b;
-        public static final int propuestas_btn_comments_vermas=0x7f070079;
+        public static final int propuestas_btn_comments_hintcomment=0x7f07007b;
+        public static final int propuestas_btn_comments_sendcomment=0x7f07007c;
+        public static final int propuestas_btn_comments_vermas=0x7f07007a;
         public static final int propuestas_login_fb=0x7f070070;
         public static final int propuestas_login_fb_label=0x7f07006f;
         public static final int propuestas_menu_current_votes=0x7f070071;
@@ -2567,6 +2567,7 @@ containing a value of this type.
          */
         public static final int propuestas_preview=0x7f07006e;
         public static final int propuestas_question=0x7f070077;
+        public static final int propuestas_question_chart_title=0x7f070079;
         public static final int propuestas_question_sings=0x7f070078;
         public static final int propuestas_vote=0x7f070072;
         public static final int propuestas_votes_abstencion=0x7f070075;

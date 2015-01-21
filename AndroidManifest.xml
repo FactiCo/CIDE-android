@@ -103,6 +103,8 @@
         <activity
             android:name="mx.com.factico.cide.PropuestasComentariosActivity"
             android:screenOrientation="portrait"
+            android:configChanges="orientation"
+            android:windowSoftInputMode="stateHidden"
             android:parentActivityName="mx.com.factico.cide.PropuestasMenuActivity" />
         
         <activity

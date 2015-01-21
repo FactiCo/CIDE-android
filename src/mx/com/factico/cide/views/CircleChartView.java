@@ -11,6 +11,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
@@ -29,6 +30,14 @@ public class CircleChartView extends View {
 	
 	public CircleChartView(Context context) {
 		super(context);
+	}
+
+	public CircleChartView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+	}
+
+	public CircleChartView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
 	}
 
 	@Override
@@ -111,15 +120,17 @@ public class CircleChartView extends View {
 			int i = 0;
 			int startAngle = 0;
 			int angle = 0;
-			for (Paint paint : listPaints) {
-				if (i == (listPaints.length - 1)) {
-					angle = 360 - startAngle;
-				} else {
-					angle = listGrades[i];
+			if (listPaints != null) {
+				for (Paint paint : listPaints) {
+					if (i == (listPaints.length - 1)) {
+						angle = 360 - startAngle;
+					} else {
+						angle = listGrades[i];
+					}
+					drawArcs(canvas, mBigOval, startAngle, angle, true, paint);
+					startAngle += listGrades[i];
+					i++;
 				}
-				drawArcs(canvas, mBigOval, startAngle, angle, true, paint);
-				startAngle += listGrades[i];
-				i++;
 			}
 		}
 	}
