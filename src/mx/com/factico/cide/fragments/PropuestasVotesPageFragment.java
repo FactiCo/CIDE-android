@@ -13,6 +13,7 @@ import mx.com.factico.cide.httpconnection.HttpConnection;
 import mx.com.factico.cide.parser.GsonParser;
 import mx.com.factico.cide.preferences.PreferencesUtils;
 import mx.com.factico.cide.spannables.SpannableFactory;
+import mx.com.factico.cide.views.CircleChartView;
 import mx.com.factico.cide.views.CustomTextView;
 import mx.com.factico.cide.views.CustomWebView;
 import android.annotation.SuppressLint;
@@ -28,6 +29,7 @@ import android.support.v4.app.Fragment;
 import android.text.Spannable;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -40,6 +42,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 public class PropuestasVotesPageFragment extends Fragment implements OnClickListener {
 	public static final String TAG_CLASS = PropuestasVotesPageFragment.class.getName();
@@ -194,9 +197,11 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 							index++;
 						}
 					}
+					
+					startChart(listAnswers);
 				}
 			}
-
+			
 			// Votes
 			Propuesta.Items.Votes votes = item.getVotes();
 			Dialogues.Log(TAG_CLASS, "/***** Votes", Log.INFO);
@@ -520,6 +525,8 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 				if (resultCode.equals(GsonParser.TAG_RESULT_OK)) {
 					showResultDialog(getResources().getString(R.string.dialog_message_propuesta_answer));
 					
+					// startChart();
+					
 				} else if (resultCode.equals(GsonParser.TAG_RESULT_ERROR)) {
 					Dialogues.Toast(getActivity().getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
 				}
@@ -529,6 +536,20 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 		}
 	}
 
+	private void startChart(List<Propuesta.Items.Question.Answers> listAnswers) {
+		ViewFlipper vfContainer = (ViewFlipper) rootView.findViewById(R.id.propuestas_votes_vf_question);
+		vfContainer.setDisplayedChild(1);
+		
+		LinearLayout chartContainer = (LinearLayout) rootView.findViewById(R.id.propuestas_votes_vg_chart);
+		CircleChartView pieChart = new CircleChartView(getActivity());
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+		params.gravity = Gravity.CENTER;
+		pieChart.setLayoutParams(params);
+		//pieChart.setPercentage(90);
+		pieChart.startDraw(listAnswers);
+		chartContainer.addView(pieChart);
+	}
+	
 	private AlertDialog dialog;
 	@SuppressLint("InflateParams")
 	private void showResultDialog(String message) {
