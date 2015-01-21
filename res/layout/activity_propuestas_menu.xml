@@ -42,7 +42,9 @@
     <TabHost
         android:id="@+id/propuestas_menu_tabhost"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
 
         <LinearLayout
             android:layout_width="fill_parent"

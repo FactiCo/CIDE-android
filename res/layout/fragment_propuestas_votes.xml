@@ -12,10 +12,7 @@
         android:id="@+id/propuestas_votes_sv_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingStart="10dp"
-        android:paddingRight="10dp"
-        android:paddingEnd="10dp"
+        android:background="@drawable/drawable_bgr_rounded_white"
         android:scrollbarThumbVertical="@drawable/drawable_customscroll" >
 
         <LinearLayout
@@ -27,12 +24,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/drawable_bgr_rounded_white"
                 android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingStart="10dp"
-                android:paddingRight="0dp"
-                android:paddingEnd="0dp" >
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin" >
 
                 <ImageView
                     android:id="@+id/propuestas_votes_iv_userphoto"
@@ -42,6 +36,28 @@
                     android:contentDescription="@string/propuesta_name"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_launcher" />
+
+                <mx.com.factico.cide.views.CustomTextView
+                    android:id="@+id/propuestas_votes_tv_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="5dp"
+                    android:text=""
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/title_color"
+                    cide:typefaceRoboto="SourceSansPro_Light" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingEnd="0dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="0dp"
+                android:paddingStart="10dp" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -54,17 +70,6 @@
                         android:background="@color/white"
                         android:orientation="vertical"
                         android:padding="10dp" >
-
-                        <mx.com.factico.cide.views.CustomTextView
-                            android:id="@+id/propuestas_votes_tv_username"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:paddingBottom="5dp"
-                            android:text=""
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/title_color"
-                            cide:typefaceRoboto="SourceSansPro_Light" />
 
                         <mx.com.factico.cide.views.CustomTextView
                             android:id="@+id/propuestas_votes_tv_title"
@@ -150,6 +155,7 @@
                         android:paddingBottom="@dimen/activity_vertical_margin"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
+                        android:gravity="center_horizontal"
                         android:text="@string/propuestas_votes_same"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/title_color"
@@ -159,11 +165,11 @@
             </LinearLayout>
 
             <include
+                layout="@layout/fragment_propuestas_question"
                 android:id="@+id/propuestas_votes_vg_question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                layout="@layout/fragment_propuestas_question" />
+                android:layout_margin="10dp" />
         </LinearLayout>
     </mx.com.factico.cide.views.CustomScrollView>
 

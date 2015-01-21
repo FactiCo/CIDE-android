@@ -7,13 +7,15 @@
 
     <mx.com.factico.cide.views.CustomTextView
         android:id="@+id/item_propuestas_answer_tv_number"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_margin="5dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         android:text=""
         android:gravity="center"
         android:textColor="@color/white"
-        android:textSize="12sp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:background="@drawable/drawable_circle_default"
         cide:typefaceRoboto="SourceSansPro_Regular" />
     
@@ -26,7 +28,7 @@
         android:gravity="center_vertical"
         android:text=""
         android:textColor="@drawable/selector_btn_text_answer"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         cide:typefaceRoboto="SourceSansPro_Regular" />
 
 </LinearLayout>

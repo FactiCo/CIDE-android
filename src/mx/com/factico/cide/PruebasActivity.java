@@ -2,6 +2,7 @@ package mx.com.factico.cide;
 
 import java.lang.reflect.InvocationTargetException;
 
+import mx.com.factico.cide.views.CircleChartView;
 import mx.com.factico.cide.views.CustomWebView;
 import mx.com.factico.cide.webviewsettings.VideoEnabledWebChromeClient;
 import android.annotation.SuppressLint;
@@ -10,6 +11,7 @@ import android.media.AudioManager;
 import android.media.AudioManager.OnAudioFocusChangeListener;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -17,6 +19,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 
 public class PruebasActivity extends ActionBarActivity {
 	private CustomWebView webView;
@@ -25,9 +28,19 @@ public class PruebasActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.webview);
+		setContentView(R.layout.activity_pruebas);
 		
-		initUI();
+		LinearLayout vgContainer = (LinearLayout) findViewById(R.id.pruebas_vg_container);
+		
+		CircleChartView pieChart = new CircleChartView(this);
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+		params.gravity = Gravity.CENTER;
+		pieChart.setLayoutParams(params);
+		pieChart.startDraw(null);
+		
+		vgContainer.addView(pieChart);
+		
+		// initUI();
 		
 		//initWebView();
 	}

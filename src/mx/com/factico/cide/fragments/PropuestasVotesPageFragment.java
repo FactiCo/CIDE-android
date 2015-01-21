@@ -13,6 +13,7 @@ import mx.com.factico.cide.httpconnection.HttpConnection;
 import mx.com.factico.cide.parser.GsonParser;
 import mx.com.factico.cide.preferences.PreferencesUtils;
 import mx.com.factico.cide.spannables.SpannableFactory;
+import mx.com.factico.cide.utils.ScreenUtils;
 import mx.com.factico.cide.views.CircleChartView;
 import mx.com.factico.cide.views.CustomTextView;
 import mx.com.factico.cide.views.CustomWebView;
@@ -21,6 +22,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -37,6 +39,7 @@ import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.LayoutAlgorithm;
+import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -123,7 +126,7 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 			
 			// User name
 			((CustomTextView) rootView.findViewById(R.id.propuestas_votes_tv_username)).setText(item.getName());
-						
+			
 			// Title
 			((CustomTextView) rootView.findViewById(R.id.propuestas_votes_tv_title)).setText(item.getTitle());
 			
@@ -132,6 +135,10 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 			webviewDescription.loadData(item.getDescription(), "text/html", "UTF-8");
 			webviewDescription.setWebChromeClient(new WebChromeClient());
 			webviewDescription.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
+			webviewDescription.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+			webviewDescription.setScrollbarFadingEnabled(false);
+			// webviewDescription.getSettings().setLoadWithOverviewMode(true);
+			// webviewDescription.getSettings().setUseWideViewPort(true);
 			webviewDescription.getSettings().setPluginState(WebSettings.PluginState.ON);
 			webviewDescription.getSettings().setPluginState(WebSettings.PluginState.ON_DEMAND);
 			webviewDescription.setWebViewClient(new WebViewClient());
@@ -198,7 +205,7 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 						}
 					}
 					
-					startChart(listAnswers);
+					// startChart(question.getAnswers());
 				}
 			} else {
 				rootView.findViewById(R.id.propuestas_votes_vg_question).setVisibility(View.GONE);
@@ -320,7 +327,8 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 		
 		CustomTextView btnNumberAnswer = (CustomTextView) view.findViewById(R.id.item_propuestas_answer_tv_number);
 		btnNumberAnswer.setBackground(drawable);
-		btnNumberAnswer.setText(String.valueOf(index + 1));
+		//btnNumberAnswer.setText(String.valueOf(index + 1));
+		btnNumberAnswer.setText(" ");
 		
 		CustomTextView btnAnswer = (CustomTextView) view.findViewById(R.id.item_propuestas_answer_tv_title);
 		btnAnswer.setText(answer.getTitle());
@@ -527,7 +535,7 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 				if (resultCode.equals(GsonParser.TAG_RESULT_OK)) {
 					showResultDialog(getResources().getString(R.string.dialog_message_propuesta_answer));
 					
-					// startChart();
+					startChart(propuesta.getQuestion().getAnswers());
 					
 				} else if (resultCode.equals(GsonParser.TAG_RESULT_ERROR)) {
 					Dialogues.Toast(getActivity().getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
@@ -542,13 +550,24 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 		ViewFlipper vfContainer = (ViewFlipper) rootView.findViewById(R.id.propuestas_votes_vf_question);
 		vfContainer.setDisplayedChild(1);
 		
-		LinearLayout chartContainer = (LinearLayout) rootView.findViewById(R.id.propuestas_votes_vg_chart);
-		CircleChartView pieChart = new CircleChartView(getActivity());
-		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1);
+		//LinearLayout vgContainer = (LinearLayout) rootView.findViewById(R.id.propuestas_votes_vg_chart);
+		
+		Point point = ScreenUtils.getScreenSize(getActivity());
+		int width = point.x;
+		
+		/*CircleChartView pieChart = new CircleChartView(getActivity());
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width / 3, width / 3);
+		params.gravity = Gravity.CENTER;
+		pieChart.setLayoutParams(params);
+		pieChart.startDraw(listAnswers);*/
+		
+		CircleChartView pieChart = (CircleChartView) rootView.findViewById(R.id.propuestas_votes_chartview);
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width / 3, width / 3);
 		params.gravity = Gravity.CENTER;
 		pieChart.setLayoutParams(params);
 		pieChart.startDraw(listAnswers);
-		chartContainer.addView(pieChart);
+		
+		//vgContainer.addView(pieChart);
 	}
 	
 	private AlertDialog dialog;
