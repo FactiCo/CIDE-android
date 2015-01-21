@@ -71,6 +71,8 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 	
 	private boolean alreadyVote = false;
 	
+	private boolean isAlreadyAnswer = false;
+	
 	/**
 	 * Instances a new fragment with a background color and an index page.
 	 * 
@@ -341,9 +343,11 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 	View.OnClickListener AnswerOnClickListener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			String ids = v.getTag().toString();
-			SendAnswerAsyncTask task = new SendAnswerAsyncTask(ids);
-			task.execute();
+			if (!isAlreadyAnswer) {
+				String ids = v.getTag().toString();
+				SendAnswerAsyncTask task = new SendAnswerAsyncTask(ids);
+				task.execute();
+			}
 		}
 	};
 
@@ -534,6 +538,8 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 				String resultCode = GsonParser.getResultFromJSON(result);
 				if (resultCode.equals(GsonParser.TAG_RESULT_OK)) {
 					showResultDialog(getResources().getString(R.string.dialog_message_propuesta_answer));
+					
+					isAlreadyAnswer = true;
 					
 					startChart(propuesta.getQuestion().getAnswers());
 					

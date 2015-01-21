@@ -3,16 +3,19 @@
     xmlns:cide="http://schemas.android.com/apk/res/mx.com.factico.cide"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:divider="@drawable/divider_horizontal_green"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:showDividers="middle" >
 
     <mx.com.factico.cide.views.CustomScrollView
         android:id="@+id/propuestas_comments_sv_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_weight="1"
-        android:background="@color/white"
+        android:background="@drawable/drawable_bgr_rounded_white"
         android:scrollbarThumbVertical="@drawable/drawable_customscroll" >
 
         <LinearLayout
@@ -32,9 +35,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin" >
+        android:orientation="horizontal" >
 
         <mx.com.factico.cide.views.CustomEditText
             android:id="@+id/propuestas_comments_et_comment"
@@ -42,14 +43,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="@string/propuestas_btn_comments_hintcomment"
             android:padding="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/default_text_color"
             android:textColorHint="@color/hololigth"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:hint="@string/propuestas_btn_comments_hintcomment"
             cide:typefaceRoboto="SourceSansPro_Regular" />
-        
-        <mx.com.factico.cide.views.CustomTextView 
+
+        <mx.com.factico.cide.views.CustomTextView
             android:id="@+id/propuestas_comments_btn_sendcomment"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

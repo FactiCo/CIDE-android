@@ -49,6 +49,16 @@
             android:layout_height="fill_parent"
             android:orientation="vertical" >
 
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:fadingEdge="none"
+                android:showDividers="none"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/white_alpha" />
+            
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="fill_parent"
@@ -60,14 +70,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </FrameLayout>
-            
-            <TabWidget
-                android:id="@android:id/tabs"
-                android:layout_width="fill_parent"
-                android:layout_height="50dp"
-                android:fadingEdge="none"
-                android:showDividers="none"
-                android:background="@color/white_alpha" />
         </LinearLayout>
     </TabHost>
 
