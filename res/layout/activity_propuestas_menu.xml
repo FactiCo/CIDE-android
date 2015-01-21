@@ -54,7 +54,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:fadingEdge="none"
-                android:showDividers="none" />
+                android:showDividers="none"
+                android:background="@color/white_alpha" />
 
             <FrameLayout
                 android:id="@android:id/tabcontent"

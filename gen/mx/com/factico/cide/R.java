@@ -1613,19 +1613,19 @@ containing a value of this type.
         public static final int abc_config_showMenuShortcutsWhenKeyboardPresent=0x7f090003;
     }
     public static final class color {
-        public static final int abc_background_cache_hint_selector_material_dark=0x7f06005e;
-        public static final int abc_background_cache_hint_selector_material_light=0x7f06005f;
+        public static final int abc_background_cache_hint_selector_material_dark=0x7f06005f;
+        public static final int abc_background_cache_hint_selector_material_light=0x7f060060;
         public static final int abc_input_method_navigation_guard=0x7f06000e;
-        public static final int abc_primary_text_disable_only_material_dark=0x7f060060;
-        public static final int abc_primary_text_disable_only_material_light=0x7f060061;
-        public static final int abc_primary_text_material_dark=0x7f060062;
-        public static final int abc_primary_text_material_light=0x7f060063;
-        public static final int abc_search_url_text=0x7f060064;
+        public static final int abc_primary_text_disable_only_material_dark=0x7f060061;
+        public static final int abc_primary_text_disable_only_material_light=0x7f060062;
+        public static final int abc_primary_text_material_dark=0x7f060063;
+        public static final int abc_primary_text_material_light=0x7f060064;
+        public static final int abc_search_url_text=0x7f060065;
         public static final int abc_search_url_text_normal=0x7f06000b;
         public static final int abc_search_url_text_pressed=0x7f06000d;
         public static final int abc_search_url_text_selected=0x7f06000c;
-        public static final int abc_secondary_text_material_dark=0x7f060065;
-        public static final int abc_secondary_text_material_light=0x7f060066;
+        public static final int abc_secondary_text_material_dark=0x7f060066;
+        public static final int abc_secondary_text_material_light=0x7f060067;
         public static final int accent=0x7f06003e;
         public static final int accent_ligth=0x7f06003f;
         public static final int accent_material_dark=0x7f06001a;
@@ -1636,10 +1636,10 @@ containing a value of this type.
         public static final int background_material_dark=0x7f06000f;
         public static final int background_material_light=0x7f060010;
         public static final int background_splash=0x7f060040;
-        public static final int background_testimonio_add=0x7f060059;
-        public static final int black=0x7f060049;
-        public static final int black_44=0x7f060048;
-        public static final int blue=0x7f060047;
+        public static final int background_testimonio_add=0x7f06005a;
+        public static final int black=0x7f06004a;
+        public static final int black_44=0x7f060049;
+        public static final int blue=0x7f060048;
         /**  White 50% 
          */
         public static final int bright_foreground_disabled_material_dark=0x7f060021;
@@ -1650,15 +1650,15 @@ containing a value of this type.
         public static final int bright_foreground_inverse_material_light=0x7f060024;
         public static final int bright_foreground_material_dark=0x7f06001f;
         public static final int bright_foreground_material_light=0x7f060020;
-        public static final int btn_dark_green_color=0x7f060050;
-        public static final int btn_dark_green_color_alpha=0x7f060051;
-        public static final int btn_hover=0x7f060056;
-        public static final int btn_ligth_green_color=0x7f060054;
-        public static final int btn_ligth_green_color_alpha=0x7f060055;
-        public static final int btn_middle_green_color=0x7f060052;
-        public static final int btn_middle_green_color_alpha=0x7f060053;
-        public static final int btn_other_green=0x7f060057;
-        public static final int btn_other_green_alpha=0x7f060058;
+        public static final int btn_dark_green_color=0x7f060051;
+        public static final int btn_dark_green_color_alpha=0x7f060052;
+        public static final int btn_hover=0x7f060057;
+        public static final int btn_ligth_green_color=0x7f060055;
+        public static final int btn_ligth_green_color_alpha=0x7f060056;
+        public static final int btn_middle_green_color=0x7f060053;
+        public static final int btn_middle_green_color_alpha=0x7f060054;
+        public static final int btn_other_green=0x7f060058;
+        public static final int btn_other_green_alpha=0x7f060059;
         public static final int button_material_dark=0x7f06001b;
         public static final int button_material_light=0x7f06001c;
         public static final int com_facebook_blue=0x7f060002;
@@ -1673,21 +1673,21 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment_connected_text_color=0x7f060003;
         public static final int com_facebook_usersettingsfragment_not_connected_text_color=0x7f060005;
         public static final int control_highlight_color=0x7f060042;
-        public static final int default_background_color=0x7f06004c;
-        public static final int default_text_color=0x7f06004b;
+        public static final int default_background_color=0x7f06004d;
+        public static final int default_text_color=0x7f06004c;
         public static final int dim_foreground_disabled_material_dark=0x7f060027;
         public static final int dim_foreground_disabled_material_light=0x7f060028;
         public static final int dim_foreground_material_dark=0x7f060025;
         public static final int dim_foreground_material_light=0x7f060026;
-        public static final int divider_gray_color=0x7f06004d;
-        public static final int divider_green_color=0x7f06004e;
-        public static final int divider_white_color=0x7f06004f;
+        public static final int divider_gray_color=0x7f06004e;
+        public static final int divider_green_color=0x7f06004f;
+        public static final int divider_white_color=0x7f060050;
         /**  Gradient colors 
          */
-        public static final int green_dark_color=0x7f06005a;
-        public static final int green_ligth_color=0x7f06005c;
-        public static final int green_ligth_ligth_color=0x7f06005d;
-        public static final int green_middle_color=0x7f06005b;
+        public static final int green_dark_color=0x7f06005b;
+        public static final int green_ligth_color=0x7f06005d;
+        public static final int green_ligth_ligth_color=0x7f06005e;
+        public static final int green_middle_color=0x7f06005c;
         /**  TODO: This is 40% alpha on the default accent color. 
          */
         public static final int highlighted_text_material_dark=0x7f06002b;
@@ -1728,8 +1728,9 @@ containing a value of this type.
         public static final int switch_thumb_normal_material_dark=0x7f06001d;
         public static final int switch_thumb_normal_material_light=0x7f06001e;
         public static final int switch_thumbnormal_color=0x7f060043;
-        public static final int title_color=0x7f06004a;
+        public static final int title_color=0x7f06004b;
         public static final int white=0x7f060046;
+        public static final int white_alpha=0x7f060047;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1974,7 +1975,7 @@ containing a value of this type.
         public static final int com_facebook_list_section_header_background=0x7f020047;
         public static final int com_facebook_loginbutton_silver=0x7f020048;
         public static final int com_facebook_logo=0x7f020049;
-        public static final int com_facebook_picker_default_separator_color=0x7f020093;
+        public static final int com_facebook_picker_default_separator_color=0x7f02009b;
         public static final int com_facebook_picker_item_background=0x7f02004a;
         public static final int com_facebook_picker_list_focused=0x7f02004b;
         public static final int com_facebook_picker_list_longpressed=0x7f02004c;
@@ -2025,29 +2026,37 @@ containing a value of this type.
         public static final int ic_action_settings=0x7f020079;
         public static final int ic_hombre=0x7f02007a;
         public static final int ic_justicia_ciudadanos=0x7f02007b;
-        public static final int ic_justicia_emprendedores=0x7f02007c;
-        public static final int ic_justicia_familias=0x7f02007d;
-        public static final int ic_justicia_otrostemas=0x7f02007e;
-        public static final int ic_justicia_trabajo=0x7f02007f;
-        public static final int ic_justicia_vecinal=0x7f020080;
-        public static final int ic_launcher=0x7f020081;
-        public static final int ic_menu_arrow=0x7f020082;
-        public static final int ic_mujer=0x7f020083;
-        public static final int ic_splash=0x7f020084;
-        public static final int justicia_cotidiana_1=0x7f020085;
-        public static final int justicia_cotidiana_2=0x7f020086;
-        public static final int justicia_cotidiana_3=0x7f020087;
-        public static final int justicia_cotidiana_4=0x7f020088;
-        public static final int justicia_cotidiana_5=0x7f020089;
-        public static final int selector_btn_circle=0x7f02008a;
-        public static final int selector_btn_dark=0x7f02008b;
-        public static final int selector_btn_ligth=0x7f02008c;
-        public static final int selector_btn_middle=0x7f02008d;
-        public static final int selector_btn_other=0x7f02008e;
-        public static final int selector_btn_squared=0x7f02008f;
-        public static final int selector_btn_squared_border=0x7f020090;
-        public static final int selector_btn_white=0x7f020091;
-        public static final int selector_tab_dark=0x7f020092;
+        public static final int ic_justicia_ciudadanos_alpha=0x7f02007c;
+        public static final int ic_justicia_emprendedores=0x7f02007d;
+        public static final int ic_justicia_emprendedores_alpha=0x7f02007e;
+        public static final int ic_justicia_familias=0x7f02007f;
+        public static final int ic_justicia_familias_alpha=0x7f020080;
+        public static final int ic_justicia_otrostemas=0x7f020081;
+        public static final int ic_justicia_otrostemas_alpha=0x7f020082;
+        public static final int ic_justicia_trabajo=0x7f020083;
+        public static final int ic_justicia_trabajo_alpha=0x7f020084;
+        public static final int ic_justicia_vecinal=0x7f020085;
+        public static final int ic_justicia_vecinal_alpha=0x7f020086;
+        public static final int ic_launcher=0x7f020087;
+        public static final int ic_menu_arrow=0x7f020088;
+        public static final int ic_menu_arrow_dark=0x7f020089;
+        public static final int ic_mujer=0x7f02008a;
+        public static final int ic_splash=0x7f02008b;
+        public static final int justicia_cotidiana_1=0x7f02008c;
+        public static final int justicia_cotidiana_2=0x7f02008d;
+        public static final int justicia_cotidiana_3=0x7f02008e;
+        public static final int justicia_cotidiana_4=0x7f02008f;
+        public static final int justicia_cotidiana_5=0x7f020090;
+        public static final int selector_btn_circle=0x7f020091;
+        public static final int selector_btn_dark=0x7f020092;
+        public static final int selector_btn_holo=0x7f020093;
+        public static final int selector_btn_ligth=0x7f020094;
+        public static final int selector_btn_middle=0x7f020095;
+        public static final int selector_btn_other=0x7f020096;
+        public static final int selector_btn_squared=0x7f020097;
+        public static final int selector_btn_squared_border=0x7f020098;
+        public static final int selector_btn_white=0x7f020099;
+        public static final int selector_tab_dark=0x7f02009a;
     }
     public static final class id {
         public static final int RobotoSlab_Bold=0x7f0b0029;
@@ -2144,15 +2153,15 @@ containing a value of this type.
         public static final int image=0x7f0b0037;
         public static final int imageView1=0x7f0b007f;
         public static final int inline=0x7f0b0010;
-        public static final int item_propuestas_comments_tv_description=0x7f0b00cd;
-        public static final int item_propuestas_comments_tv_title=0x7f0b00cc;
-        public static final int item_propuestas_comments_vg_root=0x7f0b00cb;
-        public static final int item_propuestas_tv_description=0x7f0b00ca;
-        public static final int item_propuestas_tv_title=0x7f0b00c9;
-        public static final int item_propuestas_vg_root=0x7f0b00c8;
-        public static final int item_spinner_tv_text=0x7f0b00ce;
-        public static final int item_tabhost_iv_logo=0x7f0b00cf;
-        public static final int item_tabhost_tv_title=0x7f0b00d0;
+        public static final int item_propuestas_comments_tv_description=0x7f0b00ce;
+        public static final int item_propuestas_comments_tv_title=0x7f0b00cd;
+        public static final int item_propuestas_comments_vg_root=0x7f0b00cc;
+        public static final int item_propuestas_menu_iv_user=0x7f0b00c9;
+        public static final int item_propuestas_menu_tv_currentvotes=0x7f0b00cb;
+        public static final int item_propuestas_menu_tv_title=0x7f0b00ca;
+        public static final int item_propuestas_menu_vg_container=0x7f0b00c8;
+        public static final int item_spinner_tv_text=0x7f0b00cf;
+        public static final int item_tabhost_iv_logo=0x7f0b00d0;
         public static final int item_testimonios_iv_icuser=0x7f0b00d2;
         public static final int item_testimonios_tv_description=0x7f0b00d5;
         public static final int item_testimonios_tv_title=0x7f0b00d4;
@@ -2353,7 +2362,7 @@ containing a value of this type.
         public static final int dialog_result_post=0x7f030039;
         public static final int fragment_about=0x7f03003a;
         public static final int fragment_propuestas_menu=0x7f03003b;
-        public static final int item_propuestas=0x7f03003c;
+        public static final int item_menu_propuestas=0x7f03003c;
         public static final int item_propuestas_comments=0x7f03003d;
         public static final int item_spinner=0x7f03003e;
         public static final int item_tabhost=0x7f03003f;
@@ -2473,12 +2482,12 @@ containing a value of this type.
         public static final int dialog_share_testimonio=0x7f070040;
         /**  Validations EditText 
          */
-        public static final int edittext_emtpy=0x7f070079;
-        public static final int edittext_error_email=0x7f07007e;
-        public static final int edittext_error_number=0x7f07007d;
-        public static final int edittext_error_string=0x7f07007c;
-        public static final int edittext_obligatorio=0x7f07007a;
-        public static final int edittext_wrong_info=0x7f07007b;
+        public static final int edittext_emtpy=0x7f07007a;
+        public static final int edittext_error_email=0x7f07007f;
+        public static final int edittext_error_number=0x7f07007e;
+        public static final int edittext_error_string=0x7f07007d;
+        public static final int edittext_obligatorio=0x7f07007b;
+        public static final int edittext_wrong_info=0x7f07007c;
         /**  Propuestas 
          */
         public static final int error_propuestas_recientes=0x7f070043;
@@ -2487,11 +2496,11 @@ containing a value of this type.
         public static final int error_testimonios_recientes=0x7f070042;
         /**  Facebook 654570061331636
          */
-        public static final int facebook_app_id=0x7f07007f;
-        public static final int facebook_is_not_installed=0x7f070081;
-        public static final int facebook_package=0x7f070082;
-        public static final int facebook_post_message=0x7f070080;
-        public static final int facebook_session_is_not_open=0x7f070083;
+        public static final int facebook_app_id=0x7f070080;
+        public static final int facebook_is_not_installed=0x7f070082;
+        public static final int facebook_package=0x7f070083;
+        public static final int facebook_post_message=0x7f070081;
+        public static final int facebook_session_is_not_open=0x7f070084;
         public static final int gender_female_button=0x7f070047;
         public static final int gender_male_button=0x7f070046;
         public static final int gender_text_view=0x7f070048;
@@ -2521,19 +2530,20 @@ containing a value of this type.
         public static final int no_internet_connection=0x7f070041;
         public static final int postdata_loading=0x7f07006c;
         public static final int propuesta_name=0x7f070030;
-        public static final int propuestas_btn_abstencion=0x7f070074;
-        public static final int propuestas_btn_comments_hintcomment=0x7f070077;
-        public static final int propuestas_btn_comments_sendcomment=0x7f070078;
-        public static final int propuestas_btn_comments_vermas=0x7f070076;
-        public static final int propuestas_btn_contra=0x7f070073;
-        public static final int propuestas_btn_favor=0x7f070072;
+        public static final int propuestas_btn_abstencion=0x7f070075;
+        public static final int propuestas_btn_comments_hintcomment=0x7f070078;
+        public static final int propuestas_btn_comments_sendcomment=0x7f070079;
+        public static final int propuestas_btn_comments_vermas=0x7f070077;
+        public static final int propuestas_btn_contra=0x7f070074;
+        public static final int propuestas_btn_favor=0x7f070073;
         public static final int propuestas_login_fb=0x7f070070;
         public static final int propuestas_login_fb_label=0x7f07006f;
+        public static final int propuestas_menu_current_votes=0x7f070071;
         /**  Propuestas 
          */
         public static final int propuestas_preview=0x7f07006e;
-        public static final int propuestas_question=0x7f070075;
-        public static final int propuestas_vote=0x7f070071;
+        public static final int propuestas_question=0x7f070076;
+        public static final int propuestas_vote=0x7f070072;
         public static final int que_es_justicia=0x7f070033;
         public static final int save_button=0x7f07004b;
         public static final int testimonio_name=0x7f07002f;

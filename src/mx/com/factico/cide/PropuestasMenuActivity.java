@@ -1,5 +1,6 @@
 package mx.com.factico.cide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import mx.com.factico.cide.adapters.PropuestasPagerAdapter;
@@ -23,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
+import android.widget.TabWidget;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
@@ -38,7 +40,7 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 	private ViewPager mViewPager;
 
 	private TabHost mTabHost;
-
+	
 	private String[] listCategories;
 
 	private Toolbar mToolbar;
@@ -97,6 +99,8 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 			setupTab(new TextView(this), i, listCategories[i]);
 		}
 		
+		changeImageDrawableToTab(0);
+		
 		mTabHost.setOnTabChangedListener(new OnTabChangeListener() {
 			@Override
 			public void onTabChanged(String tabId) {
@@ -104,6 +108,8 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 				mViewPager.setCurrentItem(position, false);
 				
 				mToolbar.setTitle(listCategories[position]);
+				
+				changeImageDrawableToTab(position);
 			}
 		});
 		
@@ -118,6 +124,8 @@ public class PropuestasMenuActivity extends ActionBarActivity {
                 mTabHost.setCurrentTab(position);
                 
                 mToolbar.setTitle(listCategories[position]);
+                
+                changeImageDrawableToTab(position);
             }
         };
 		
@@ -138,22 +146,64 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 		mViewPager.setAdapter(mPagerAdapter);
 	}
 	
+	private List<View> listViews = new ArrayList<View>();
 	private void setupTab(final View view, final int index, String tag) {
 		View tabview = createTabView(mTabHost.getContext(), index);
-		TabSpec setContent = mTabHost.newTabSpec(String.valueOf(index)).setIndicator(tabview).setContent(new TabContentFactory() {
-			@Override
-			public View createTabContent(String tag) {
-				return view;
-			}
-		});
-		mTabHost.addTab(setContent);
-	}
-
-	@SuppressLint("InflateParams")
-	private static View createTabView(Context context, int index) {
-		View view = LayoutInflater.from(context).inflate(R.layout.item_tabhost, null);
-		ImageView ivIcon = (ImageView) view.findViewById(R.id.item_tabhost_iv_logo);
 		
+		if (tabview != null) {
+			listViews.add(tabview);
+			TabSpec setContent = mTabHost.newTabSpec(String.valueOf(index)).setIndicator(tabview).setContent(new TabContentFactory() {
+				@Override
+				public View createTabContent(String tag) {
+					return view;
+				}
+			});
+			mTabHost.addTab(setContent);
+		}
+	}
+	
+	private void changeImageDrawableToTab(int index) {
+		TabWidget mTabWidget = mTabHost.getTabWidget();
+		
+		for (int i = 0; i < mTabWidget.getChildCount(); i++) {
+			View view = mTabWidget.getChildTabViewAt(i);
+			ImageView ivIcon = (ImageView) view.findViewById(R.id.item_tabhost_iv_logo);
+			
+			if (index == i) {
+				setImageResourceToTabSelected(ivIcon, index);
+			} else {
+				setImageResourceToTabDefault(ivIcon, i);
+			}
+		}
+	}
+	
+	private void setImageResourceToTabDefault(ImageView ivIcon, int index) {
+		switch (index) {
+		case 0:
+			ivIcon.setImageResource(R.drawable.ic_justicia_trabajo_alpha);
+			break;
+		case 1:
+			ivIcon.setImageResource(R.drawable.ic_justicia_ciudadanos_alpha);
+			break;
+		case 2:
+			ivIcon.setImageResource(R.drawable.ic_justicia_familias_alpha);
+			break;
+		case 3:
+			ivIcon.setImageResource(R.drawable.ic_justicia_emprendedores_alpha);
+			break;
+		case 4:
+			ivIcon.setImageResource(R.drawable.ic_justicia_vecinal_alpha);
+			break;
+		case 5:
+			ivIcon.setImageResource(R.drawable.ic_justicia_otrostemas_alpha);
+			break;
+
+		default:
+			break;
+		}
+	}
+	
+	private void setImageResourceToTabSelected(ImageView ivIcon, int index) {
 		switch (index) {
 		case 0:
 			ivIcon.setImageResource(R.drawable.ic_justicia_trabajo);
@@ -177,6 +227,14 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 		default:
 			break;
 		}
+	}
+	
+	@SuppressLint("InflateParams")
+	private View createTabView(Context context, int index) {
+		View view = LayoutInflater.from(context).inflate(R.layout.item_tabhost, null);
+		ImageView ivIcon = (ImageView) view.findViewById(R.id.item_tabhost_iv_logo);
+		setImageResourceToTabDefault(ivIcon, index);
+		
 		return view;
 	}
 	

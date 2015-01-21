@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:cide="http://schemas.android.com/apk/res/mx.com.factico.cide"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
@@ -15,15 +14,5 @@
         android:contentDescription="@string/app_name"
         android:scaleType="centerInside"
         android:src="@drawable/ic_launcher" />
-
-    <mx.com.factico.cide.views.CustomTextView
-        android:id="@+id/item_tabhost_tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text=""
-        android:textColor="@color/title_color"
-        android:textSize="15sp"
-        cide:typefaceRoboto="SourceSansPro_Regular" />
 
 </LinearLayout>

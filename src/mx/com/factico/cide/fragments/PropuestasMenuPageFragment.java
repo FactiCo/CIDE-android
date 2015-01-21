@@ -1,23 +1,19 @@
 package mx.com.factico.cide.fragments;
 
-import java.io.IOException;
-
 import mx.com.factico.cide.PropuestasActivity;
 import mx.com.factico.cide.R;
 import mx.com.factico.cide.beans.Propuesta;
 import mx.com.factico.cide.beans.Propuesta.Items;
-import mx.com.factico.cide.parser.URLImageParser;
-import mx.com.factico.cide.utils.AssetsUtils;
+import mx.com.factico.cide.facebook.FacebookUtils;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
-import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -96,28 +92,28 @@ public class PropuestasMenuPageFragment extends Fragment {
 	
 	@SuppressLint("InflateParams")
 	private View createItemPropuestasView(Propuesta.Items item) {
-		View view = getActivity().getLayoutInflater().inflate(R.layout.item_propuestas, null, false);
-		view.setTag(item);
-		view.setOnClickListener(PropuestasOnClickListener);
+		View view = getActivity().getLayoutInflater().inflate(R.layout.item_menu_propuestas, null, false);
 		
-		TextView tvTitle = (TextView) view.findViewById(R.id.item_propuestas_tv_title);
-		TextView tvDescription = (TextView) view.findViewById(R.id.item_propuestas_tv_description);
+		View container = view.findViewById(R.id.item_propuestas_menu_vg_container);
+		container.setTag(item);
+		container.setOnClickListener(PropuestasOnClickListener);
 		
-		// String html = "<html><body><p>Propuesta para <strong>juntas</strong> <strong>vecinales<\/strong>, puedes ver un ejemplo en el siguiente video:<\/p><p><iframe src=\"http:\/\/www.youtube.com\/embed\/il7WTHIKvq8\" width=\"100%\" height=\"228\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"><\/iframe><\/p><\/body><\/html>";
-		String html;
-		try {
-			html = AssetsUtils.getStringFromAssets(getActivity().getBaseContext(), "prueba.html");
-			
-			URLImageParser p = new URLImageParser(tvDescription, getActivity().getBaseContext());
-			Spanned htmlSpan = Html.fromHtml(html, p, null);
-			tvDescription.setText(htmlSpan);
-			
-			tvTitle.setText(item.getTitle());
-			//tvDescription.setText(Html.fromHtml(item.getDescription()).toString());
-			//tvDescription.setText(Html.fromHtml(html));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		TextView tvTitle = (TextView) view.findViewById(R.id.item_propuestas_menu_tv_title);
+		tvTitle.setText(item.getTitle());
+		
+		ImageView ivUser = (ImageView) view.findViewById(R.id.item_propuestas_menu_iv_user);
+		FacebookUtils.loadImageProfileToImageView(ivUser, "10152933527772221");
+		
+		TextView tvCurrentVotes = (TextView) view.findViewById(R.id.item_propuestas_menu_tv_currentvotes);
+		
+		int currentVotes = 0;
+		if (item.getVotes() != null && item.getVotes().getFavor() != null 
+				&& item.getVotes().getContra() != null 
+				&& item.getVotes().getAbtencion() != null)
+			currentVotes = item.getVotes().getFavor().getParticipantes().size() +
+					item.getVotes().getContra().getParticipantes().size() +
+					item.getVotes().getAbtencion().getParticipantes().size();
+		tvCurrentVotes.setText(getResources().getString(R.string.propuestas_menu_current_votes, currentVotes));
 		
 		return view;
 	}
