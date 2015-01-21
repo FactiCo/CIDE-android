@@ -26,7 +26,8 @@ public class CustomScrollView extends ScrollView {
 
 	@Override
 	protected void onScrollChanged(int l, int t, int oldl, int oldt) {
-		mOnScrollViewListener.onScrollChanged(this, l, t, oldl, oldt);
+		if (mOnScrollViewListener != null)
+			mOnScrollViewListener.onScrollChanged(this, l, t, oldl, oldt);
 		super.onScrollChanged(l, t, oldl, oldt);
 	}
 }

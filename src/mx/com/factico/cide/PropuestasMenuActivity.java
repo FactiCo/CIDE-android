@@ -1,6 +1,5 @@
 package mx.com.factico.cide;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import mx.com.factico.cide.adapters.PropuestasPagerAdapter;
@@ -24,10 +23,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
-import android.widget.TabWidget;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
+import android.widget.TabWidget;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,7 +42,7 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 	
 	private String[] listCategories;
 
-	private Toolbar mToolbar;
+	private TextView mTitle;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +57,11 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 	}
 
 	private void setSupportActionBar() {
-		mToolbar = (Toolbar) findViewById(R.id.toolbar);
+		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
 		mToolbar.setTitle("");
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
 		mToolbar.getBackground().setAlpha(0);
+		mTitle = (TextView) mToolbar.findViewById(R.id.toolbar_title);
 		setSupportActionBar(mToolbar);
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -93,7 +93,7 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 		
 		listCategories = getResources().getStringArray(R.array.testimonios_categories_titles);
 		
-		mToolbar.setTitle(listCategories[0]);
+		mTitle.setText(listCategories[0]);
 		
 		for (int i = 0; i < listCategories.length; i++) {
 			setupTab(new TextView(this), i, listCategories[i]);
@@ -107,7 +107,7 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 				int position = Integer.parseInt(tabId);
 				mViewPager.setCurrentItem(position, false);
 				
-				mToolbar.setTitle(listCategories[position]);
+				mTitle.setText(listCategories[position]);
 				
 				changeImageDrawableToTab(position);
 			}
@@ -123,7 +123,7 @@ public class PropuestasMenuActivity extends ActionBarActivity {
                 
                 mTabHost.setCurrentTab(position);
                 
-                mToolbar.setTitle(listCategories[position]);
+                mTitle.setText(listCategories[position]);
                 
                 changeImageDrawableToTab(position);
             }
@@ -146,12 +146,10 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 		mViewPager.setAdapter(mPagerAdapter);
 	}
 	
-	private List<View> listViews = new ArrayList<View>();
 	private void setupTab(final View view, final int index, String tag) {
 		View tabview = createTabView(mTabHost.getContext(), index);
 		
 		if (tabview != null) {
-			listViews.add(tabview);
 			TabSpec setContent = mTabHost.newTabSpec(String.valueOf(index)).setIndicator(tabview).setContent(new TabContentFactory() {
 				@Override
 				public View createTabContent(String tag) {

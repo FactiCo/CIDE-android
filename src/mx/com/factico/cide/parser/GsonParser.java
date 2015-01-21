@@ -3,6 +3,11 @@ package mx.com.factico.cide.parser;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import mx.com.factico.cide.beans.Facebook;
+import mx.com.factico.cide.beans.Propuesta;
+import mx.com.factico.cide.beans.Testimonio;
+import mx.com.factico.cide.dialogues.Dialogues;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -11,11 +16,6 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-
-import mx.com.factico.cide.beans.Facebook;
-import mx.com.factico.cide.beans.Propuesta;
-import mx.com.factico.cide.beans.Testimonio;
-import mx.com.factico.cide.dialogues.Dialogues;
 
 public class GsonParser {
 	private static String TAG_CLASS = GsonParser.class.getName();

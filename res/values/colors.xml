@@ -45,6 +45,13 @@
     
     <color name="background_testimonio_add">#D3EFDA</color>
     
+    <color name="bgr_favor">#6CDA84</color>
+    <color name="bgr_favor_alpha">#AA6CDA84</color>
+    <color name="bgr_abstencion">#565656</color>
+    <color name="bgr_abstencion_alpha">#AA565656</color>
+    <color name="bgr_contra">#FF0000</color>
+    <color name="bgr_contra_alpha">#AAFF0000</color>
+    
     <!-- Gradient colors -->
     <color name="green_dark_color">#FF3E8293</color>
     <color name="green_middle_color">#FF42CB90</color>

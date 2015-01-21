@@ -96,6 +96,11 @@
             android:parentActivityName="mx.com.factico.cide.MainActivity" />
         
         <activity
+            android:name="mx.com.factico.cide.PropuestasActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName="mx.com.factico.cide.PropuestasMenuActivity" />
+        
+        <activity
             android:name="mx.com.factico.cide.PropuestasComentariosActivity"
             android:screenOrientation="portrait"
             android:parentActivityName="mx.com.factico.cide.PropuestasMenuActivity" />
@@ -105,10 +110,6 @@
             android:screenOrientation="portrait"
             android:configChanges="orientation"
             android:windowSoftInputMode="stateHidden" />
-        
-        <activity
-            android:name="mx.com.factico.cide.PropuestasActivity"
-            android:screenOrientation="portrait" />
         
         <activity
             android:name="mx.com.factico.cide.PruebasActivity"

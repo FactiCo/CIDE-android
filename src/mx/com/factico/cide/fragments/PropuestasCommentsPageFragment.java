@@ -1,8 +1,9 @@
-package mx.com.factico.cide;
+package mx.com.factico.cide.fragments;
 
 import java.util.Collections;
 import java.util.List;
 
+import mx.com.factico.cide.R;
 import mx.com.factico.cide.beans.Comment;
 import mx.com.factico.cide.beans.Facebook;
 import mx.com.factico.cide.beans.Propuesta;
@@ -17,58 +18,80 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class PropuestasComentariosActivity extends ActionBarActivity implements OnClickListener {
-	public static final String TAG_CLASS = PropuestasActivity.class.getName();
-
-	public static final String TAG_PROPUESTA = "propuesta";
-
-	private Propuesta.Items propuesta = null;
+public class PropuestasCommentsPageFragment extends Fragment implements OnClickListener {
+	public static final String TAG_CLASS = PropuestasCommentsPageFragment.class.getName();
 	
-	private String proposalId;
+	/**
+	 * Key to insert the background color into the mapping of a Bundle.
+	 */
+	private static final String PROPUESTA = "propuesta";
+
+	/**
+	 * Key to insert the index page into the mapping of a Bundle.
+	 */
+	private static final String INDEX = "index";
+
+	private Propuesta.Items propuesta;
+	private int index;
+
+	private View rootView;
+
+	/**
+	 * Instances a new fragment with a background color and an index page.
+	 * 
+	 * @param propuesta
+	 *            list of items
+	 * @param index
+	 *            index page
+	 * @return a new page
+	 */
+	public static Fragment newInstance(int index, Propuesta.Items propuesta) {
+
+		// Instantiate a new fragment
+		PropuestasCommentsPageFragment fragment = new PropuestasCommentsPageFragment();
+
+		// Save the parameters
+		Bundle bundle = new Bundle();
+		bundle.putInt(INDEX, index);
+		bundle.putSerializable(PROPUESTA, propuesta);
+		fragment.setArguments(bundle);
+		fragment.setRetainInstance(true);
+
+		return fragment;
+	}
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.fragment_propuestas_comments);
+	public void onCreate(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
 
-		setSupportActionBar();
-		initUI();
+		// Load parameters when the initial creation of the fragment is done
+		this.propuesta = (Propuesta.Items) ((getArguments() != null) ? getArguments().getSerializable(PROPUESTA) : null);
+		this.index = (getArguments() != null) ? getArguments().getInt(INDEX) : -1;
 	}
 
-	public void setSupportActionBar() {
-		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-		mToolbar.setTitle("");
-		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
-		mToolbar.getBackground().setAlpha(0);
-		setSupportActionBar(mToolbar);
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		rootView = inflater.inflate(R.layout.fragment_propuestas_comments, container, false);
+		
+		loadPropuestasViews(propuesta);
+		
+		rootView.findViewById(R.id.propuestas_comments_btn_sendcomment).setOnClickListener(this);
+		
+		return rootView;
 	}
-
-	private void initUI() {
-		Bundle bundle = getIntent().getExtras();
-		if (bundle != null) {
-			propuesta = (Propuesta.Items) bundle.getSerializable(TAG_PROPUESTA);
-
-			loadPropuestasViews(propuesta);
-			
-			findViewById(R.id.propuestas_comments_btn_sendcomment).setOnClickListener(this);
-		}
-	}
-
+	
 	private void loadPropuestasViews(Propuesta.Items item) {
 		if (item != null) {
-			proposalId = item.getId();
-			
 			Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
 			Dialogues.Log(TAG_CLASS, "Items Category: " + item.getCategory(), Log.INFO);
 			Dialogues.Log(TAG_CLASS, "Items CategoryId: " + item.getCategoryId(), Log.INFO);
@@ -80,7 +103,7 @@ public class PropuestasComentariosActivity extends ActionBarActivity implements 
 				List<Propuesta.Items.Comments.Data> listCommentsData = item.getComments().getData();
 
 				if (listCommentsData != null && listCommentsData.size() > 0) {
-					LinearLayout vgContainer = (LinearLayout) findViewById(R.id.propuestas_comments_vg_container);
+					LinearLayout vgContainer = (LinearLayout) rootView.findViewById(R.id.propuestas_comments_vg_container);
 					Collections.reverse(listCommentsData); // Reverse the list
 					
 					Dialogues.Log(TAG_CLASS, "/***** Comments", Log.INFO);
@@ -186,10 +209,10 @@ public class PropuestasComentariosActivity extends ActionBarActivity implements 
 			}
 		}
 	}
-	
+
 	@SuppressLint("InflateParams")
 	private View createCommentView(Data data) {
-		View view = getLayoutInflater().inflate(R.layout.item_propuestas_comments, null, false);
+		View view = getActivity().getLayoutInflater().inflate(R.layout.item_propuestas_comments, null, false);
 		
 		TextView tvTitle = (TextView) view.findViewById(R.id.item_propuestas_comments_tv_title);
 		TextView tvDescription = (TextView) view.findViewById(R.id.item_propuestas_comments_tv_description);
@@ -199,24 +222,7 @@ public class PropuestasComentariosActivity extends ActionBarActivity implements 
 		
 		return view;
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.close_white, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		int id = item.getItemId();
-		if (id == R.id.action_close) {
-			finish();
-
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
+	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -239,17 +245,17 @@ public class PropuestasComentariosActivity extends ActionBarActivity implements 
 	}
 	
 	private void sendComment() {
-		CustomEditText etComment = (CustomEditText) findViewById(R.id.propuestas_comments_et_comment);
+		CustomEditText etComment = (CustomEditText) rootView.findViewById(R.id.propuestas_comments_et_comment);
 		if (!etComment.isEmpty()) {
 			String message = etComment.getText().toString();
 			
-			String jsonFacebook = PreferencesUtils.getPreference(getApplication(), PreferencesUtils.FACEBOOK);
+			String jsonFacebook = PreferencesUtils.getPreference(getActivity().getApplication(), PreferencesUtils.FACEBOOK);
 			Facebook facebook;
 			try {
 				facebook = GsonParser.getFacebookFromJSON(jsonFacebook);
 				
 				Comment.From from = new Comment().new From(facebook.getFcbookid(), facebook.getName());
-				Comment comment = new Comment("", proposalId, message, from);
+				Comment comment = new Comment("", propuesta.getId(), message, from);
 				
 				SendCommentAsyncTask task = new SendCommentAsyncTask(comment);
 				task.execute();
@@ -269,7 +275,7 @@ public class PropuestasComentariosActivity extends ActionBarActivity implements 
 
 		@Override
 		protected void onPreExecute() {
-			dialog = new ProgressDialog(PropuestasComentariosActivity.this);
+			dialog = new ProgressDialog(getActivity());
 			dialog.setMessage(getResources().getString(R.string.getdata_loading));
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.setCancelable(false);
@@ -295,11 +301,11 @@ public class PropuestasComentariosActivity extends ActionBarActivity implements 
 			String resultCode = GsonParser.getResultFromJSON(result);
 			if (resultCode.equals(GsonParser.TAG_RESULT_OK)) {
 				showResultDialog(getResources().getString(R.string.dialog_message_propuesta_comment));
-				CustomEditText etComment = (CustomEditText) findViewById(R.id.propuestas_comments_et_comment);
+				CustomEditText etComment = (CustomEditText) rootView.findViewById(R.id.propuestas_comments_et_comment);
 				etComment.setText("");
 				
 			} else {
-				Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
+				Dialogues.Toast(getActivity().getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
 			}
 		}
 	}
@@ -307,8 +313,8 @@ public class PropuestasComentariosActivity extends ActionBarActivity implements 
 	private AlertDialog dialog;
 	@SuppressLint("InflateParams")
 	private void showResultDialog(String message) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		View view = getLayoutInflater().inflate(R.layout.dialog_result_post, null, false);
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		View view = getActivity().getLayoutInflater().inflate(R.layout.dialog_result_post, null, false);
 
 		((TextView) view.findViewById(R.id.dialog_result_post_message)).setText(message);
 		

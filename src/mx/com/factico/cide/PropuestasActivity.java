@@ -1,45 +1,40 @@
 package mx.com.factico.cide;
 
-import java.util.List;
-
-import mx.com.factico.cide.beans.Facebook;
+import mx.com.factico.cide.adapters.PropuestasPagerAdapter;
 import mx.com.factico.cide.beans.Propuesta;
-import mx.com.factico.cide.beans.Vote;
-import mx.com.factico.cide.dialogues.Dialogues;
-import mx.com.factico.cide.httpconnection.HttpConnection;
-import mx.com.factico.cide.parser.GsonParser;
-import mx.com.factico.cide.preferences.PreferencesUtils;
-import mx.com.factico.cide.typeface.TypefaceFactory;
-import mx.com.factico.cide.views.CustomTextView;
+import mx.com.factico.cide.fragments.PropuestasCommentsPageFragment;
+import mx.com.factico.cide.fragments.PropuestasVotesPageFragment;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.graphics.Typeface;
-import android.os.AsyncTask;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.Menu;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
+import android.widget.TabHost;
+import android.widget.TabHost.OnTabChangeListener;
+import android.widget.TabHost.TabContentFactory;
+import android.widget.TabHost.TabSpec;
+import android.widget.TabWidget;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class PropuestasActivity extends ActionBarActivity implements OnClickListener {
+public class PropuestasActivity extends ActionBarActivity {
 	public static final String TAG_CLASS = PropuestasActivity.class.getName();
 
 	public static final String TAG_PROPUESTA = "propuesta";
 
 	private Propuesta.Items propuesta = null;
 
-	private String proposalId;
+	private TextView mTitle;
 
+	private PropuestasPagerAdapter mPagerAdapter;
+	private ViewPager mViewPager;
+
+	private TabHost mTabHost;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,375 +50,147 @@ public class PropuestasActivity extends ActionBarActivity implements OnClickList
 		mToolbar.setTitle("");
 		mToolbar.setTitleTextColor(getResources().getColor(R.color.white));
 		mToolbar.getBackground().setAlpha(0);
+		mTitle = (TextView) mToolbar.findViewById(R.id.toolbar_title);
 		setSupportActionBar(mToolbar);
+		
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
+	private void setTabs() {
+		mTabHost = (TabHost) findViewById(R.id.propuestas_menu_tabhost);
+		mTabHost.setup();
+		
+		mTitle.setText(propuesta.getCategory());
+		
+		setupTab(new TextView(this), 0, "Vota");
+		setupTab(new TextView(this), 1, "Comenta");
+		
+		changeImageDrawableToTab(0);
+		
+		mTabHost.setOnTabChangedListener(new OnTabChangeListener() {
+			@Override
+			public void onTabChanged(String tabId) {
+				int position = Integer.parseInt(tabId);
+				mViewPager.setCurrentItem(position, true);
+				
+				changeImageDrawableToTab(position);
+			}
+		});
+		
+		mViewPager = (ViewPager) findViewById(R.id.propuestas_menu_pager);
+		
+		// Defining a listener for pageChange
+        ViewPager.SimpleOnPageChangeListener pageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                
+                mTabHost.setCurrentTab(position);
+                
+                changeImageDrawableToTab(position);
+            }
+        };
+		
+        // Setting the pageChange listener to the viewPager
+        mViewPager.setOnPageChangeListener(pageChangeListener);
+        // mViewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+        mViewPager.setOffscreenPageLimit(2);
+        
+        // Creating an instance of PagerAdapter
+		mPagerAdapter = new PropuestasPagerAdapter(getSupportFragmentManager());
+		
+		mPagerAdapter.addFragment(PropuestasVotesPageFragment.newInstance(0, propuesta));
+		mPagerAdapter.addFragment(PropuestasCommentsPageFragment.newInstance(1, propuesta));
+		
+		// Setting the PagerAdapter object to the viewPager object
+		mViewPager.setAdapter(mPagerAdapter);
+	}
+	
 	private void initUI() {
 		Bundle bundle = getIntent().getExtras();
 		if (bundle != null) {
 			propuesta = (Propuesta.Items) bundle.getSerializable(TAG_PROPUESTA);
-
-			loadPropuestasViews(propuesta);
+			
+			mTitle.setText(propuesta.getCategory());
+			
+			setTabs();
 		}
 	}
 
-	private void loadPropuestasViews(Propuesta.Items item) {
-		if (item != null) {
-			((TextView) findViewById(R.id.propuestas_tv_title)).setText(item.getTitle());
-			((TextView) findViewById(R.id.propuestas_tv_description)).setText(Html.fromHtml(item.getDescription().toString()));
-
-			proposalId = item.getId();
-
-			Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
-			Dialogues.Log(TAG_CLASS, "Items Category: " + item.getCategory(), Log.INFO);
-			Dialogues.Log(TAG_CLASS, "Items CategoryId: " + item.getCategoryId(), Log.INFO);
-			Dialogues.Log(TAG_CLASS, "Items Title: " + item.getTitle(), Log.INFO);
-			Dialogues.Log(TAG_CLASS, "Items Description: " + item.getDescription(), Log.INFO);
-
-			// Comments
-			if (item.getComments() != null) {
-				List<Propuesta.Items.Comments.Data> listCommentsData = item.getComments().getData();
-
-				if (listCommentsData != null && listCommentsData.size() > 0) {
-					Dialogues.Log(TAG_CLASS, "/***** Comments", Log.INFO);
-					Dialogues.Log(TAG_CLASS, "Items Comments Data Size: " + listCommentsData.size(), Log.INFO);
-
-					for (Propuesta.Items.Comments.Data data : listCommentsData) {
-						findViewById(R.id.propuestas_btn_answers_vermas).setVisibility(View.VISIBLE);
-						findViewById(R.id.propuestas_btn_answers_vermas).setOnClickListener(this);
-						
-						Dialogues.Log(TAG_CLASS, "Items Comments Data Id: " + data.getId(), Log.INFO);
-						Dialogues.Log(TAG_CLASS, "Items Comments Data Parent: " + data.getParent(), Log.INFO);
-						Dialogues.Log(TAG_CLASS, "Items Comments Data Message: " + data.getMessage(), Log.INFO);
-						Dialogues.Log(TAG_CLASS, "Items Comments Data Created: " + data.getCreated(), Log.INFO);
-
-						Propuesta.Items.Comments.Data.From from = data.getFrom();
-						if (from != null) {
-							Dialogues.Log(TAG_CLASS, "Items Comments Data From Id: " + from.getFcbookid(), Log.INFO);
-							Dialogues.Log(TAG_CLASS, "Items Comments Data From Name: " + from.getName(), Log.INFO);
-						}
-					}
-				}
-			}
-
-			// Question
-			Propuesta.Items.Question question = item.getQuestion();
-			if (question != null) {
-				((TextView) findViewById(R.id.propuestas_tv_question)).setText(question.getTitle());
-
-				Dialogues.Log(TAG_CLASS, "/***** Question", Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Question Id: " + question.getId(), Log.INFO);
-				Dialogues.Log(TAG_CLASS, "Items Question Title: " + question.getTitle(), Log.INFO);
-
-				if (question.getAnswers() != null) {
-					Dialogues.Log(TAG_CLASS, "/***** Answers", Log.INFO);
-					Dialogues.Log(TAG_CLASS, "Items Question Answers Size: " + question.getAnswers().size(), Log.INFO);
-
-					List<Propuesta.Items.Question.Answers> listAnswers = question.getAnswers();
-
-					if (listAnswers != null && listAnswers.size() > 0) {
-						LinearLayout vgAnswers = (LinearLayout) findViewById(R.id.propuestas_vg_answers);
-
-						for (Propuesta.Items.Question.Answers data : listAnswers) {
-							Dialogues.Log(TAG_CLASS, "Items Question Answers Id: " + data.getId(), Log.INFO);
-							Dialogues.Log(TAG_CLASS, "Items Question Answers Title: " + data.getTitle(), Log.INFO);
-							Dialogues.Log(TAG_CLASS, "Items Question Answers Count: " + data.getCount(), Log.INFO);
-
-							View answerView = createAnswerButton(data, question.getId());
-							if (answerView != null)
-								vgAnswers.addView(answerView);
-						}
-					}
-				}
-			}
-
-			// Votes
-			Propuesta.Items.Votes votes = item.getVotes();
-			Dialogues.Log(TAG_CLASS, "/***** Votes", Log.INFO);
-
-			if (votes != null) {
-				// Votes Favor
-				Propuesta.Items.Votes.Favor votesFavor = votes.getFavor();
-				if (votesFavor != null) {
-					List<Propuesta.Items.Votes.Participantes> listVotesFavorParticipantes = votesFavor.getParticipantes();
-
-					if (listVotesFavorParticipantes != null && listVotesFavorParticipantes.size() > 0) {
-						Dialogues.Log(TAG_CLASS, "/***** Favor Participantes", Log.INFO);
-						Dialogues.Log(TAG_CLASS, "Items Votes Favor Size: " + listVotesFavorParticipantes.size(), Log.INFO);
-
-						for (Propuesta.Items.Votes.Participantes participantes : listVotesFavorParticipantes) {
-							Dialogues.Log(TAG_CLASS, "Items Votes Favor Participantes Id: " + participantes.getId(), Log.INFO);
-							Dialogues
-									.Log(TAG_CLASS, "Items Votes Favor Participantes FacebookId: " + participantes.getFcbookid(), Log.INFO);
-						}
-					}
-				}
-
-				// Votes Contra
-				Propuesta.Items.Votes.Contra votesContra = votes.getContra();
-				if (votesContra != null) {
-					List<Propuesta.Items.Votes.Participantes> listVotesContraParticipantes = votesContra.getParticipantes();
-
-					if (listVotesContraParticipantes != null && listVotesContraParticipantes.size() > 0) {
-						Dialogues.Log(TAG_CLASS, "/***** Contra Participantes", Log.INFO);
-						Dialogues.Log(TAG_CLASS, "Items Votes Contra Size: " + listVotesContraParticipantes.size(), Log.INFO);
-
-						for (Propuesta.Items.Votes.Participantes participantes : listVotesContraParticipantes) {
-							Dialogues.Log(TAG_CLASS, "Items Votes Contra Participantes Id: " + participantes.getId(), Log.INFO);
-							Dialogues.Log(TAG_CLASS, "Items Votes Contra Participantes FacebookId: " + participantes.getFcbookid(),
-									Log.INFO);
-						}
-					}
-				}
-
-				// Votes Abstencion
-				Propuesta.Items.Votes.Abstencion votesAbstencion = votes.getAbtencion();
-				if (votesAbstencion != null) {
-					List<Propuesta.Items.Votes.Participantes> listVotesAbstencionParticipantes = votesAbstencion.getParticipantes();
-
-					if (listVotesAbstencionParticipantes != null && listVotesAbstencionParticipantes.size() > 0) {
-						Dialogues.Log(TAG_CLASS, "/***** Abstencion Participantes", Log.INFO);
-						Dialogues.Log(TAG_CLASS, "Items Votes Abstencion Size: " + listVotesAbstencionParticipantes.size(), Log.INFO);
-
-						for (Propuesta.Items.Votes.Participantes participantes : listVotesAbstencionParticipantes) {
-							Dialogues.Log(TAG_CLASS, "Items Votes Abstencion Participantes Id: " + participantes.getId(), Log.INFO);
-							Dialogues.Log(TAG_CLASS, "Items Votes Abstencion Participantes FacebookId: " + participantes.getFcbookid(),
-									Log.INFO);
-						}
-					}
-				}
-			}
-		}
-	}
-
-	private View createAnswerButton(Propuesta.Items.Question.Answers answer, String idQuestion) {
-		CustomTextView btnAnswer = new CustomTextView(getBaseContext());
-		btnAnswer.setBackgroundResource(R.drawable.selector_btn_ligth);
-		btnAnswer.setPadding(10, 10, 10, 10);
-		btnAnswer.setGravity(Gravity.CENTER);
-		btnAnswer.setText(answer.getTitle());
-		btnAnswer.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1));
-		btnAnswer.setTextColor(getResources().getColor(R.color.title_color));
-		btnAnswer.setTextAppearance(getBaseContext(), android.R.attr.textAppearanceSmall);
-		btnAnswer.setOnClickListener(AnswerOnClickListener);
-		btnAnswer.setTag(idQuestion + HttpConnection.ACTION_ANSWER + answer.getId());
-
-		Typeface typeface = TypefaceFactory.createTypeface(getBaseContext(), TypefaceFactory.RobotoSlab_Regular);
-		btnAnswer.setTypeface(typeface);
+	private void setupTab(final View view, final int index, String tag) {
+		View tabview = createTabView(mTabHost.getContext(), index);
 		
-		return btnAnswer;
-	}
-
-	View.OnClickListener AnswerOnClickListener = new View.OnClickListener() {
-		@Override
-		public void onClick(View v) {
-			String ids = v.getTag().toString();
-			SendAnswerAsyncTask task = new SendAnswerAsyncTask(ids);
-			task.execute();
-		}
-	};
-
-	private String VOTE_FAVOR = "favor";
-	private String VOTE_CONTRA = "contra";
-	private String VOTE_ABSTENCION = "abstencion";
-
-	public void voteOnClick(View view) {
-		switch (view.getId()) {
-		case R.id.propuestas_btn_favor:
-			voteProposal(VOTE_FAVOR);
-			break;
-		case R.id.propuestas_btn_contra:
-			voteProposal(VOTE_CONTRA);
-			break;
-		case R.id.propuestas_btn_abstencion:
-			voteProposal(VOTE_ABSTENCION);
-			break;
-
-		default:
-			break;
-		}
-	}
-
-	private void voteProposal(String voteString) {
-		String json = PreferencesUtils.getPreference(getApplication(), PreferencesUtils.FACEBOOK);
-		Facebook facebook;
-		try {
-			if (json != null) {
-				facebook = GsonParser.getFacebookFromJSON(json);
-
-				Vote vote = new Vote(proposalId, facebook.getFcbookid(), voteString);
-
-				SendVoteAsyncTask task = new SendVoteAsyncTask(vote);
-				task.execute();
-			} else {
-				Dialogues
-						.Toast(getApplicationContext(), getResources().getString(R.string.facebook_session_is_not_open), Toast.LENGTH_LONG);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	private class SendVoteAsyncTask extends AsyncTask<String, String, String> {
-		private ProgressDialog dialog;
-		private Vote vote;
-
-		public SendVoteAsyncTask(Vote vote) {
-			this.vote = vote;
-		}
-
-		@Override
-		protected void onPreExecute() {
-			dialog = new ProgressDialog(PropuestasActivity.this);
-			dialog.setMessage(getResources().getString(R.string.getdata_loading));
-			dialog.setCanceledOnTouchOutside(false);
-			dialog.setCancelable(false);
-			dialog.show();
-		}
-
-		@Override
-		protected String doInBackground(String... params) {
-			String json = GsonParser.createJsonFromObject(vote);
-
-			String result = HttpConnection.POST(HttpConnection.ACTION_VOTE, json);
-			return result;
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-			if (dialog != null && dialog.isShowing()) {
-				dialog.dismiss();
-			}
-
-			Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
-			
-			String resultCode = GsonParser.getResultFromJSON(result);
-			if (resultCode.equals(GsonParser.TAG_RESULT_OK)) {
-				showResultDialog(getResources().getString(R.string.dialog_message_propuesta_vote));
-				
-			} else {
-				Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
-				
-			}
-		}
-	}
-
-	private class SendAnswerAsyncTask extends AsyncTask<String, String, String> {
-		private ProgressDialog dialog;
-		private String ids;
-
-		public SendAnswerAsyncTask(String ids) {
-			this.ids = ids;
-		}
-
-		@Override
-		protected void onPreExecute() {
-			dialog = new ProgressDialog(PropuestasActivity.this);
-			dialog.setMessage(getResources().getString(R.string.getdata_loading));
-			dialog.setCanceledOnTouchOutside(false);
-			dialog.setCancelable(false);
-			dialog.show();
-		}
-
-		@Override
-		protected String doInBackground(String... params) {
-			String jsonFacebook = PreferencesUtils.getPreference(getApplication(), PreferencesUtils.FACEBOOK);
-			Facebook facebook;
-			String result = null;
-			
-			try {
-				facebook = GsonParser.getFacebookFromJSON(jsonFacebook);
-				
-				String json = GsonParser.createJsonFromObjectWithoutExposeAnnotations(facebook);
-				
-				result = HttpConnection.POST(HttpConnection.ACTION_PREGUNTAS + "/" + ids, json);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return result;
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-			if (dialog != null && dialog.isShowing()) {
-				dialog.dismiss();
-			}
-			Dialogues.Log(TAG_CLASS, "Result: " + result, Log.INFO);
-			
-			if (result != null) {
-				String resultCode = GsonParser.getResultFromJSON(result);
-				if (resultCode.equals(GsonParser.TAG_RESULT_OK)) {
-					showResultDialog(getResources().getString(R.string.dialog_message_propuesta_answer));
-					
-				} else if (resultCode.equals(GsonParser.TAG_RESULT_ERROR)) {
-					Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
+		if (tabview != null) {
+			TabSpec setContent = mTabHost.newTabSpec(String.valueOf(index)).setIndicator(tabview).setContent(new TabContentFactory() {
+				@Override
+				public View createTabContent(String tag) {
+					return view;
 				}
-			} else {
-				Dialogues.Toast(getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);
-			}
+			});
+			mTabHost.addTab(setContent);
 		}
 	}
-
-	private AlertDialog dialog;
+	
 	@SuppressLint("InflateParams")
-	private void showResultDialog(String message) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		View view = getLayoutInflater().inflate(R.layout.dialog_result_post, null, false);
-
-		((TextView) view.findViewById(R.id.dialog_result_post_message)).setText(message);
+	private View createTabView(Context context, int index) {
+		View view = LayoutInflater.from(context).inflate(R.layout.item_tabhost, null);
+		ImageView ivIcon = (ImageView) view.findViewById(R.id.item_tabhost_iv_logo);
+		setImageResourceToTabDefault(ivIcon, index);
 		
-		view.findViewById(R.id.dialog_result_post_ok).setOnClickListener(this);
-		view.findViewById(R.id.dialog_result_post_share).setOnClickListener(this);
-
-		builder.setView(view);
-
-		dialog = builder.create();
-		dialog.setCanceledOnTouchOutside(false);
-		dialog.show();
+		return view;
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.close_white, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		int id = item.getItemId();
-		if (id == R.id.action_close) {
-			finish();
-
-			return true;
+	
+	private void changeImageDrawableToTab(int index) {
+		TabWidget mTabWidget = mTabHost.getTabWidget();
+		
+		for (int i = 0; i < mTabWidget.getChildCount(); i++) {
+			View view = mTabWidget.getChildTabViewAt(i);
+			ImageView ivIcon = (ImageView) view.findViewById(R.id.item_tabhost_iv_logo);
+			
+			if (index == i) {
+				setImageResourceToTabSelected(ivIcon, index);
+			} else {
+				setImageResourceToTabDefault(ivIcon, i);
+			}
 		}
-		return super.onOptionsItemSelected(item);
 	}
-
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.dialog_result_post_ok:
-			if (dialog != null && dialog.isShowing())
-				dialog.dismiss();
+	
+	private void setImageResourceToTabDefault(ImageView ivIcon, int index) {
+		switch (index) {
+		case 0:
+			ivIcon.setImageResource(R.drawable.tab_propuestas_vote_off);
+			break;
+		case 1:
+			ivIcon.setImageResource(R.drawable.tab_propuestas_comments_off);
 			break;
 
-		case R.id.dialog_result_post_share:
-			
-			break;
-
-		case R.id.propuestas_btn_answers_vermas:
-			openPropuestasComentariosIntent();
-			break;
-			
 		default:
 			break;
 		}
 	}
 	
-	private void openPropuestasComentariosIntent() {
-		Intent intent = new Intent(PropuestasActivity.this, PropuestasComentariosActivity.class);
-		intent.putExtra(PropuestasComentariosActivity.TAG_PROPUESTA, propuesta);
-		startActivity(intent);
+	private void setImageResourceToTabSelected(ImageView ivIcon, int index) {
+		switch (index) {
+		case 0:
+			ivIcon.setImageResource(R.drawable.tab_propuestas_vote_on);
+			break;
+		case 1:
+			ivIcon.setImageResource(R.drawable.tab_propuestas_comments_on);
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id = item.getItemId();
+		if (id == R.id.home) {
+			finish();
+
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

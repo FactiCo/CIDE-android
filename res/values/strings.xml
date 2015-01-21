@@ -28,7 +28,7 @@
     <string name="dialog_message_propuesta_vote">¡Gracias por enviar tu voto!</string>
     <string name="dialog_message_propuesta_answer">¡Gracias por enviar tu respuesta!</string>
     <string name="dialog_message_propuesta_comment">¡Gracias por enviar tu comentario!</string>
-    <string name="dialog_error">Algo salió mal al enviar el testimonio. Inténtalo de nuevo.</string>
+    <string name="dialog_error">Algo salió mal. Inténtalo de nuevo.</string>
     <string name="dialog_ok">Aceptar</string>
     <string name="dialog_share">Compartir</string>
     
@@ -108,11 +108,13 @@
     
     <string name="propuestas_menu_current_votes">Votos hasta ahora: %1$d</string>
     
-    <string name="propuestas_vote">¡Vota!</string>
+    <string name="propuestas_vote">Vota esta propuesta:</string>
     
-    <string name="propuestas_btn_favor">Favor</string>
-    <string name="propuestas_btn_contra">Contra</string>
-    <string name="propuestas_btn_abstencion">Abstención</string>
+    <string name="propuestas_votes_favor">a favor</string>
+    <string name="propuestas_votes_contra">en contra</string>
+    <string name="propuestas_votes_abstencion">bstención</string>
+    
+    <string name="propuestas_votes_same">%1$d personas han votado %1$s como tu</string>
     
     <string name="propuestas_question">Pregunta</string>
     

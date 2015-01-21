@@ -25,7 +25,7 @@ public class PruebasActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_pruebas);
+		setContentView(R.layout.webview);
 		
 		initUI();
 		
@@ -34,7 +34,7 @@ public class PruebasActivity extends ActionBarActivity {
 	
 	private void initWebView() {
 		// Save the web view
-		webView = (CustomWebView) findViewById(R.id.pruebas_wb_data);
+		webView = (CustomWebView) findViewById(R.id.webview_data);
 
 		// Initialize the VideoEnabledWebChromeClient and set event handlers
 		View nonVideoLayout = findViewById(R.id.nonVideoLayout); // Your own view,read classcomments
@@ -145,7 +145,7 @@ public class PruebasActivity extends ActionBarActivity {
 		
 		//String url = "<p>Propuesta para <strong>juntas<\/strong> <strong>vecinales<\/strong>, puedes ver un ejemplo en el siguiente video:<\/p>\r\n<p><iframe src=\"\/\/www.youtube.com\/embed\/il7WTHIKvq8\" width=\"405\" height=\"228\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"><\/iframe><\/p>\r\n<p>O en el siguiente enlace&nbsp;<a href=\"http:\/\/youtu.be\/il7WTHIKvq8\">http:\/\/youtu.be\/il7WTHIKvq8<\/a><\/p>\r\n<p>&nbsp;<\/p>\r\n<p><img src=\"http:\/\/l3.yimg.com\/bt\/api\/res\/1.2\/NgBOlAyfZJ3OA6.W8ZEZzQ--\/YXBwaWQ9eW5ld3M7cT04NQ--\/http:\/\/media.zenfs.com\/es-ES\/blogs\/finlaotracaradelamoneda\/justicia.jpg\" alt=\"\" width=\"200\" height=\"133\" \/><\/p>\r\n<p>&nbsp;<\/p>";
 		
-		wvData = (WebView) findViewById(R.id.pruebas_wb_data);
+		wvData = (WebView) findViewById(R.id.webview_data);
 		//wvData.loadDataWithBaseURL(mStory.getUrl(), mStory.getUnparsedContent(), "text/html; charset=utf-8", "UTF-8", null);
 		wvData.loadUrl("file:///android_asset/prueba.html");
 		wvData.setWebChromeClient(new WebChromeClient());

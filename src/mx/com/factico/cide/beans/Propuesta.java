@@ -1,6 +1,7 @@
 package mx.com.factico.cide.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Propuesta implements Serializable {
@@ -33,6 +34,9 @@ public class Propuesta implements Serializable {
 		private String categoryId;
 		private String title;
 		private String description;
+		private String created;
+		private String name;
+		private String state;
 		private Comments comments;
 		private Question question;
 		private Votes votes;
@@ -77,6 +81,30 @@ public class Propuesta implements Serializable {
 			this.description = description;
 		}
 
+		public String getCreated() {
+			return created;
+		}
+
+		public void setCreated(String created) {
+			this.created = created;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public String getState() {
+			return state;
+		}
+
+		public void setState(String state) {
+			this.state = state;
+		}
+		
 		public Comments getComments() {
 			return comments;
 		}
@@ -104,7 +132,7 @@ public class Propuesta implements Serializable {
 		public class Comments implements Serializable {
 			private static final long serialVersionUID = 1L;
 
-			private List<Data> data;
+			private List<Data> data = new ArrayList<Propuesta.Items.Comments.Data>();
 
 			public List<Data> getData() {
 				return data;
@@ -193,7 +221,7 @@ public class Propuesta implements Serializable {
 
 			private String _id;
 			private String title;
-			private List<Answers> answers;
+			private List<Answers> answers = new ArrayList<Propuesta.Items.Question.Answers>();
 
 			public String getId() {
 				return _id;
@@ -286,7 +314,7 @@ public class Propuesta implements Serializable {
 			public class Favor implements Serializable {
 				private static final long serialVersionUID = 1L;
 
-				private List<Participantes> participantes;
+				private List<Participantes> participantes = new ArrayList<Propuesta.Items.Votes.Participantes>();
 
 				public List<Participantes> getParticipantes() {
 					return participantes;
@@ -300,7 +328,7 @@ public class Propuesta implements Serializable {
 			public class Contra implements Serializable {
 				private static final long serialVersionUID = 1L;
 
-				private List<Participantes> participantes;
+				private List<Participantes> participantes = new ArrayList<Propuesta.Items.Votes.Participantes>();
 
 				public List<Participantes> getParticipantes() {
 					return participantes;
@@ -314,7 +342,7 @@ public class Propuesta implements Serializable {
 			public class Abstencion implements Serializable {
 				private static final long serialVersionUID = 1L;
 
-				private List<Participantes> participantes;
+				private List<Participantes> participantes = new ArrayList<Propuesta.Items.Votes.Participantes>();
 
 				public List<Participantes> getParticipantes() {
 					return participantes;

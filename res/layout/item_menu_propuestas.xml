@@ -34,7 +34,7 @@
             android:paddingStart="@dimen/activity_horizontal_margin"
             android:paddingEnd="0dp"
             android:paddingRight="0dp"
-            android:text="Hola mundo"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/title_color"
             android:textStyle="bold"
