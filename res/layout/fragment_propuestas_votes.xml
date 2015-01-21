@@ -108,7 +108,6 @@
                             android:layout_weight="1"
                             android:padding="10dp"
                             android:background="@drawable/selector_btn_votes_favor"
-                            android:onClick="voteOnClick"
                             android:scaleType="centerInside"
                             android:src="@drawable/ic_propuestas_votos_favor"
                             android:contentDescription="@string/propuesta_name" />
@@ -121,7 +120,6 @@
                             android:layout_weight="1"
                             android:padding="10dp"
                             android:background="@drawable/selector_btn_votes_abstencion"
-                            android:onClick="voteOnClick"
                             android:scaleType="centerInside"
                             android:src="@drawable/ic_propuestas_votos_abstencion"
                             android:contentDescription="@string/propuesta_name" />
@@ -134,7 +132,6 @@
                             android:layout_weight="1"
                             android:padding="10dp"
                             android:background="@drawable/selector_btn_votes_contra"
-                            android:onClick="voteOnClick"
                             android:scaleType="centerInside"
                             android:src="@drawable/ic_propuestas_votos_contra"
                             android:contentDescription="@string/propuesta_name" />

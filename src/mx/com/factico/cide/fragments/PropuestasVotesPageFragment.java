@@ -6,6 +6,7 @@ import mx.com.factico.cide.R;
 import mx.com.factico.cide.beans.Facebook;
 import mx.com.factico.cide.beans.Propuesta;
 import mx.com.factico.cide.beans.Vote;
+import mx.com.factico.cide.beans.Propuesta.Items.Votes.Participantes;
 import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.facebook.FacebookUtils;
 import mx.com.factico.cide.httpconnection.HttpConnection;
@@ -54,6 +55,12 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 
 	private View rootView;
 
+	private String VOTE_FAVOR = "favor";
+	private String VOTE_CONTRA = "contra";
+	private String VOTE_ABSTENCION = "abstencion";
+	
+	private boolean alreadyVote = false;
+	
 	/**
 	 * Instances a new fragment with a background color and an index page.
 	 * 
@@ -193,6 +200,12 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 						Dialogues.Log(TAG_CLASS, "/***** Favor Participantes", Log.INFO);
 						Dialogues.Log(TAG_CLASS, "Items Votes Favor Size: " + listVotesFavorParticipantes.size(), Log.INFO);
 
+						if (!alreadyVote) {
+							if (alreadyVote = isAlreadyVote(listVotesFavorParticipantes)) {
+								changeStateOfVoteView(VOTE_FAVOR);
+							}
+						}
+						
 						for (Propuesta.Items.Votes.Participantes participantes : listVotesFavorParticipantes) {
 							Dialogues.Log(TAG_CLASS, "Items Votes Favor Participantes Id: " + participantes.getId(), Log.INFO);
 							Dialogues
@@ -210,6 +223,12 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 						Dialogues.Log(TAG_CLASS, "/***** Contra Participantes", Log.INFO);
 						Dialogues.Log(TAG_CLASS, "Items Votes Contra Size: " + listVotesContraParticipantes.size(), Log.INFO);
 
+						if (!alreadyVote) {
+							if (alreadyVote = isAlreadyVote(listVotesContraParticipantes)) {
+								changeStateOfVoteView(VOTE_CONTRA);
+							}
+						}
+						
 						for (Propuesta.Items.Votes.Participantes participantes : listVotesContraParticipantes) {
 							Dialogues.Log(TAG_CLASS, "Items Votes Contra Participantes Id: " + participantes.getId(), Log.INFO);
 							Dialogues.Log(TAG_CLASS, "Items Votes Contra Participantes FacebookId: " + participantes.getFcbookid(),
@@ -227,6 +246,12 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 						Dialogues.Log(TAG_CLASS, "/***** Abstencion Participantes", Log.INFO);
 						Dialogues.Log(TAG_CLASS, "Items Votes Abstencion Size: " + listVotesAbstencionParticipantes.size(), Log.INFO);
 
+						if (!alreadyVote) {
+							if (alreadyVote = isAlreadyVote(listVotesAbstencionParticipantes)) {
+								changeStateOfVoteView(VOTE_ABSTENCION);
+							}
+						}
+						
 						for (Propuesta.Items.Votes.Participantes participantes : listVotesAbstencionParticipantes) {
 							Dialogues.Log(TAG_CLASS, "Items Votes Abstencion Participantes Id: " + participantes.getId(), Log.INFO);
 							Dialogues.Log(TAG_CLASS, "Items Votes Abstencion Participantes FacebookId: " + participantes.getFcbookid(),
@@ -238,6 +263,24 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 		}
 	}
 
+	private boolean isAlreadyVote(List<Participantes> participantes) {
+		String jsonFacebook = PreferencesUtils.getPreference(getActivity().getApplication(), PreferencesUtils.FACEBOOK);
+		try {
+			Facebook facebook = GsonParser.getFacebookFromJSON(jsonFacebook);
+			
+			for (Participantes participante : participantes) {
+				if (participante.getFcbookid().equals(facebook.getFcbookid())) {
+					
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
 	private View createAnswerButton(Propuesta.Items.Question.Answers answer, String idQuestion) {
 		CustomTextView btnAnswer = new CustomTextView(getActivity().getBaseContext());
 		btnAnswer.setBackgroundResource(R.drawable.selector_btn_ligth);
@@ -264,27 +307,6 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 			task.execute();
 		}
 	};
-
-	private String VOTE_FAVOR = "favor";
-	private String VOTE_CONTRA = "contra";
-	private String VOTE_ABSTENCION = "abstencion";
-
-	public void voteOnClick(View view) {
-		switch (view.getId()) {
-		case R.id.propuestas_votes_btn_favor:
-			voteProposal(VOTE_FAVOR);
-			break;
-		case R.id.propuestas_votes_btn_contra:
-			voteProposal(VOTE_CONTRA);
-			break;
-		case R.id.propuestas_votes_btn_abstencion:
-			voteProposal(VOTE_ABSTENCION);
-			break;
-
-		default:
-			break;
-		}
-	}
 
 	private void voteProposal(String voteString) {
 		String json = PreferencesUtils.getPreference(getActivity().getApplication(), PreferencesUtils.FACEBOOK);
@@ -343,6 +365,8 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 			if (resultCode.equals(GsonParser.TAG_RESULT_OK)) {
 				setNumberOfVotes();
 				
+				changeStateOfVoteView(vote.getValue());
+				
 				showResultDialog(getResources().getString(R.string.dialog_message_propuesta_vote));
 				
 			} else {
@@ -374,6 +398,31 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 					((CustomTextView) rootView.findViewById(R.id.propuestas_votes_tv_votes_same)).setText(text);
 				}
 			}
+		}
+	}
+	
+	private void changeStateOfVoteView(String value) {
+		CustomTextView tvVoteLabel = (CustomTextView) rootView.findViewById(R.id.propuestas_votes_tv_vote_label);
+		tvVoteLabel.setText(getResources().getString(R.string.dialog_message_propuesta_vote));
+		
+		ImageView btnFavor = (ImageView) rootView.findViewById(R.id.propuestas_votes_btn_favor);
+		ImageView btnAbstencion = (ImageView) rootView.findViewById(R.id.propuestas_votes_btn_abstencion);
+		ImageView btnContra = (ImageView) rootView.findViewById(R.id.propuestas_votes_btn_contra);
+		
+		if (value.equals(VOTE_FAVOR)) {
+			btnFavor.setOnClickListener(null);
+			btnAbstencion.setEnabled(false);
+			btnContra.setEnabled(false);
+			
+		} else if (value.equals(VOTE_ABSTENCION)) {
+			btnFavor.setEnabled(false);
+			btnAbstencion.setOnClickListener(null);
+			btnContra.setEnabled(false);
+			
+		} else if (value.equals(VOTE_CONTRA)) {
+			btnFavor.setEnabled(false);
+			btnAbstencion.setEnabled(false);
+			btnContra.setOnClickListener(null);
 		}
 	}
 	
@@ -454,15 +503,27 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.propuestas_votes_btn_favor:
+			voteProposal(VOTE_FAVOR);
+			break;
+			
+		case R.id.propuestas_votes_btn_contra:
+			voteProposal(VOTE_CONTRA);
+			break;
+			
+		case R.id.propuestas_votes_btn_abstencion:
+			voteProposal(VOTE_ABSTENCION);
+			break;
+
 		case R.id.dialog_result_post_ok:
 			if (dialog != null && dialog.isShowing())
 				dialog.dismiss();
 			break;
-			
+
 		case R.id.dialog_result_post_share:
-			
+
 			break;
-			
+
 		default:
 			break;
 		}
