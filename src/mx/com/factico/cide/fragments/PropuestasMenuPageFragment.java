@@ -5,7 +5,6 @@ import mx.com.factico.cide.R;
 import mx.com.factico.cide.beans.Propuesta;
 import mx.com.factico.cide.beans.Propuesta.Items;
 import mx.com.factico.cide.facebook.FacebookUtils;
-import mx.com.factico.cide.views.CustomTextView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;

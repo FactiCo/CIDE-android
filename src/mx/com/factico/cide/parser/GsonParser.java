@@ -71,6 +71,8 @@ public class GsonParser {
 		Gson gson = new Gson();
 		Facebook facebook = gson.fromJson(json, Facebook.class);
 		
+		Dialogues.Log(TAG_CLASS, "Json: " + json, Log.INFO);
+		
 		return facebook;
 	}
 	

@@ -182,6 +182,11 @@ public class PropuestasActivity extends ActionBarActivity {
 			break;
 		}
 	}
+	
+	@Override
+	public void onBackPressed() {
+		// finish();
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

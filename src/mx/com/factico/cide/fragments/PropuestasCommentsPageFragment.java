@@ -18,6 +18,7 @@ import mx.com.factico.cide.views.CustomEditText;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,6 +27,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -310,6 +313,10 @@ public class PropuestasCommentsPageFragment extends Fragment implements OnClickL
 			
 			String resultCode = GsonParser.getResultFromJSON(result);
 			if (resultCode.equals(GsonParser.TAG_RESULT_OK)) {
+				EditText myEditText = (EditText) rootView.findViewById(R.id.propuestas_comments_et_comment);
+				InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm.hideSoftInputFromWindow(myEditText.getWindowToken(), 0);
+				
 				showResultDialog(getResources().getString(R.string.dialog_message_propuesta_comment));
 				CustomEditText etComment = (CustomEditText) rootView.findViewById(R.id.propuestas_comments_et_comment);
 				etComment.setText("");
