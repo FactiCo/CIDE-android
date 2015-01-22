@@ -35,8 +35,8 @@ public class Propuesta implements Serializable {
 		private String title;
 		private String description;
 		private String created;
-		private String name;
 		private String state;
+		private Author author;
 		private Comments comments;
 		private Question question;
 		private Votes votes;
@@ -89,20 +89,20 @@ public class Propuesta implements Serializable {
 			this.created = created;
 		}
 
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
 		public String getState() {
 			return state;
 		}
 
 		public void setState(String state) {
 			this.state = state;
+		}
+		
+		public Author getAuthor() {
+			return author;
+		}
+
+		public void setAuthor(Author author) {
+			this.author = author;
 		}
 		
 		public Comments getComments() {
@@ -127,6 +127,28 @@ public class Propuesta implements Serializable {
 
 		public void setVotes(Votes votes) {
 			this.votes = votes;
+		}
+
+		public class Author implements Serializable {
+			private static final long serialVersionUID = 1L;
+			private String name;
+			private String fcbookid;
+
+			public String getName() {
+				return name;
+			}
+
+			public void setName(String name) {
+				this.name = name;
+			}
+
+			public String getFcbookid() {
+				return fcbookid;
+			}
+
+			public void setFcbookid(String fcbookid) {
+				this.fcbookid = fcbookid;
+			}
 		}
 
 		public class Comments implements Serializable {

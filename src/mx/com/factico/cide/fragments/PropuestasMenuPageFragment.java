@@ -101,8 +101,11 @@ public class PropuestasMenuPageFragment extends Fragment {
 		TextView tvTitle = (TextView) view.findViewById(R.id.item_propuestas_menu_tv_title);
 		tvTitle.setText(item.getTitle());
 		
-		ImageView ivUser = (ImageView) view.findViewById(R.id.item_propuestas_menu_iv_user);
-		FacebookUtils.loadImageProfileToImageView(ivUser, getResources().getString(R.string.facebook_userid));
+		// User name
+		if (item.getAuthor() != null) {
+			ImageView ivUser = (ImageView) view.findViewById(R.id.item_propuestas_menu_iv_user);
+			FacebookUtils.loadImageProfileToImageView(ivUser, item.getAuthor().getFcbookid());
+		}
 		
 		TextView tvCurrentVotes = (TextView) view.findViewById(R.id.item_propuestas_menu_tv_currentvotes);
 		

@@ -133,8 +133,6 @@
     <string name="edittext_error_email">Escribe una sintaxis de correo valido.</string>
     
     <!-- Facebook 654570061331636-->
-    <string name="facebook_userid">916537998378480</string>
-    
     <string name="facebook_app_id">654570061331636</string>
     <string name="facebook_post_message">Post message to Facebook</string>
     <string name="facebook_is_not_installed">Facebook app is not installed</string>

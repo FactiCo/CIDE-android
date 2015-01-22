@@ -40,14 +40,16 @@
                 <mx.com.factico.cide.views.CustomTextView
                     android:id="@+id/propuestas_votes_tv_username"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:gravity="center_vertical"
                     android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text=""
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/title_color"
-                    cide:typefaceRoboto="SourceSansPro_Light" />
+                    cide:typefaceRoboto="SourceSansPro_BoldItalic" />
             </LinearLayout>
 
             <LinearLayout

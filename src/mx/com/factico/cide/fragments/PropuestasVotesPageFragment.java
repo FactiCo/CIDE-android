@@ -124,11 +124,13 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 			rootView.findViewById(R.id.propuestas_votes_btn_abstencion).setOnClickListener(this);
 			rootView.findViewById(R.id.propuestas_votes_btn_contra).setOnClickListener(this);
 			
-			ImageView ivUser = (ImageView) rootView.findViewById(R.id.propuestas_votes_iv_userphoto);
-			FacebookUtils.loadImageProfileToImageView(ivUser, getResources().getString(R.string.facebook_userid));
-			
 			// User name
-			((CustomTextView) rootView.findViewById(R.id.propuestas_votes_tv_username)).setText(item.getName());
+			if (item.getAuthor() != null) {
+				((CustomTextView) rootView.findViewById(R.id.propuestas_votes_tv_username)).setText(item.getAuthor().getName());
+				
+				ImageView ivUser = (ImageView) rootView.findViewById(R.id.propuestas_votes_iv_userphoto);
+				FacebookUtils.loadImageProfileToImageView(ivUser, item.getAuthor().getFcbookid());
+			}
 			
 			// Title
 			((CustomTextView) rootView.findViewById(R.id.propuestas_votes_tv_title)).setText(item.getTitle());
@@ -204,7 +206,8 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 
 							View answerView = createAnswerButton(data, question.getId(), index);
 							if (answerView != null)
-								vgAnswers.addView(answerView);
+								if (Boolean.valueOf(answerView.getTag().toString()))
+									vgAnswers.addView(answerView);
 							
 							index++;
 						}
@@ -339,6 +342,11 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 		btnAnswer.setText(answer.getTitle());
 		btnAnswer.setTag(idQuestion + HttpConnection.ACTION_ANSWER + answer.getId());
 		btnAnswer.setOnClickListener(AnswerOnClickListener);
+			
+		if (answer.getTitle().equals(""))
+			view.setTag(false);
+		else
+			view.setTag(true);
 		
 		return view;
 	}
@@ -588,7 +596,8 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 		((TextView) view.findViewById(R.id.dialog_result_post_message)).setText(message);
 		
 		view.findViewById(R.id.dialog_result_post_ok).setOnClickListener(this);
-		view.findViewById(R.id.dialog_result_post_share).setOnClickListener(this);
+		// view.findViewById(R.id.dialog_result_post_share).setOnClickListener(this);
+		view.findViewById(R.id.dialog_result_post_share).setVisibility(View.GONE);
 
 		builder.setView(view);
 

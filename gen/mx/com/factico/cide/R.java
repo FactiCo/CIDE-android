@@ -2524,14 +2524,13 @@ containing a value of this type.
         /**  Testimonios 
          */
         public static final int error_testimonios_recientes=0x7f070042;
-        public static final int facebook_app_id=0x7f070084;
-        public static final int facebook_is_not_installed=0x7f070086;
-        public static final int facebook_package=0x7f070087;
-        public static final int facebook_post_message=0x7f070085;
-        public static final int facebook_session_is_not_open=0x7f070088;
         /**  Facebook 654570061331636
          */
-        public static final int facebook_userid=0x7f070083;
+        public static final int facebook_app_id=0x7f070083;
+        public static final int facebook_is_not_installed=0x7f070085;
+        public static final int facebook_package=0x7f070086;
+        public static final int facebook_post_message=0x7f070084;
+        public static final int facebook_session_is_not_open=0x7f070087;
         public static final int gender_female_button=0x7f070047;
         public static final int gender_male_button=0x7f070046;
         public static final int gender_text_view=0x7f070048;
