@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import mx.com.factico.cide.beans.Propuesta.Items.Votes.Participantes;
+
 public class Propuesta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -30,11 +32,12 @@ public class Propuesta implements Serializable {
 		private static final long serialVersionUID = 1L;
 
 		private String _id;
+		private String created;
 		private String category;
 		private String categoryId;
 		private String title;
 		private String description;
-		private String created;
+		private boolean valid;
 		private String state;
 		private Author author;
 		private Comments comments;
@@ -47,6 +50,14 @@ public class Propuesta implements Serializable {
 
 		public void setId(String _id) {
 			this._id = _id;
+		}
+
+		public boolean isValid() {
+			return valid;
+		}
+
+		public void setValid(boolean valid) {
+			this.valid = valid;
 		}
 
 		public String getCategory() {
@@ -272,10 +283,19 @@ public class Propuesta implements Serializable {
 			public class Answers implements Serializable {
 				private static final long serialVersionUID = 1L;
 
-				private String title;
 				private String _id;
+				private String title;
 				private String count;
+				private List<Participantes> participantes = new ArrayList<Propuesta.Items.Votes.Participantes>();
+				
+				public String getId() {
+					return _id;
+				}
 
+				public void setId(String _id) {
+					this._id = _id;
+				}
+				
 				public String getTitle() {
 					return title;
 				}
@@ -284,20 +304,20 @@ public class Propuesta implements Serializable {
 					this.title = title;
 				}
 
-				public String getId() {
-					return _id;
-				}
-
-				public void setId(String _id) {
-					this._id = _id;
-				}
-
 				public String getCount() {
 					return count;
 				}
 
 				public void setCount(String count) {
 					this.count = count;
+				}
+
+				public List<Participantes> getParticipantes() {
+					return participantes;
+				}
+
+				public void setParticipantes(List<Participantes> participantes) {
+					this.participantes = participantes;
 				}
 			}
 		}

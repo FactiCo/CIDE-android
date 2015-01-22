@@ -277,10 +277,13 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 				
 				loadPropuestasViews(propuesta);
 			} else {
-				Dialogues.Toast(getBaseContext(), getString(R.string.error_testimonios_recientes), Toast.LENGTH_LONG);
+				Dialogues.Toast(getBaseContext(), getString(R.string.error_propuestas_recientes), Toast.LENGTH_LONG);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			Dialogues.Toast(getBaseContext(), getString(R.string.error_propuestas_recientes), Toast.LENGTH_LONG);
+			
+			finish();
 		}
 	}
 

@@ -1,3 +1,4 @@
+
 package mx.com.factico.cide.parser;
 
 import java.util.regex.Matcher;
@@ -12,16 +13,19 @@ public class HtmlParser {
 	private static final String imageRegex = "<img[^>]+src\\s*=\\s*['\"]([^'\"]+)['\"][^>]*>";
 	private static final String videoRegex = "<iframe[^>]+src\\s*=\\s*['\"]([^'\"]+)['\"][^>]*>";
 	
-	private static final String startRegex = "<p>";
-	private static final String endRegex = "</p>";
+	private static final String startParagraphRegex = "<p>";
+	private static final String endParagraphRegex = "</p>";
 	
-	private static final String startImageRegex = "<img";
-	private static final String endImageRegex = "/>";
+	public static final String startImageRegex = "<img";
+	public static final String endImageRegex = "/>";
 	
-	private static final String imageWidthRegex = "width=\"";
-	private static final String imageHeightRegex = "height=\"";
+	public static final String startVideoRegex = "<iframe";
+	public static final String endVideoRegex = "</iframe>";
 	
-	public static String renameImageInHtml(String html) {
+	private static final String widthRegex = "width=\"";
+	private static final String heightRegex = "height=\"";
+	
+	public static String resizeItemInHtml(String html, String startRegex, String endRegex) {
 		String description = "";
 		
 		int startIndex;
@@ -32,43 +36,48 @@ public class HtmlParser {
 		String inIndex = "";
 		String auxDescription = html;
 		
-		while ((startIndex = auxDescription.indexOf(startImageRegex)) != -1) {
-			beforeIndex = auxDescription.substring(0, startIndex);
-			Dialogues.Log(TAG_CLASS, "/***EdgarBefore: " + beforeIndex, Log.INFO);
+		if (auxDescription.indexOf(startRegex) != -1) {
+			while ((startIndex = auxDescription.indexOf(startRegex)) != -1) {
+				beforeIndex = auxDescription.substring(0, startIndex);
+				Dialogues.Log(TAG_CLASS, "/***EdBefore: " + beforeIndex, Log.INFO);
+				
+				inIndex = auxDescription.substring(startIndex + startRegex.length());
+				endIndex = inIndex.indexOf(endRegex);
+				inIndex = auxDescription.substring(startIndex, startIndex + endIndex + endRegex.length());
+				Dialogues.Log(TAG_CLASS, "/***EdIn: " + inIndex, Log.INFO);
+				
+				inIndex = replaceValueInTag(inIndex, "100%", widthRegex);
+				// inIndex = replaceValueInTag(inIndex, "auto", heightRegex);
+				
+				afterIndex = auxDescription.substring(startIndex + endIndex + endRegex.length());
+				Dialogues.Log(TAG_CLASS, "/***EdAfter: " + afterIndex, Log.INFO);
+				
+				auxDescription = afterIndex;
+				
+				description += beforeIndex + inIndex;
+			}
 			
-			inIndex = auxDescription.substring(startIndex + startRegex.length());
-			endIndex = inIndex.indexOf(endImageRegex);
-			inIndex = auxDescription.substring(startIndex, startIndex + endIndex + endImageRegex.length());
-			Dialogues.Log(TAG_CLASS, "/***EdgarIn: " + inIndex, Log.INFO);
+			description += afterIndex;
 			
-			inIndex = replaceValueInTag(inIndex, "100%", imageWidthRegex);
-			inIndex = replaceValueInTag(inIndex, "100", imageHeightRegex);
-			
-			afterIndex = auxDescription.substring(startIndex + endIndex + endImageRegex.length());
-			Dialogues.Log(TAG_CLASS, "/***EdgarAfter: " + afterIndex, Log.INFO);
-			
-			auxDescription = afterIndex;
-			
-			description += beforeIndex + inIndex;
+		} else {
+			description = html;
 		}
-		
-		description += afterIndex;
 		
 		Dialogues.Log(TAG_CLASS, "" + description, Log.ERROR);
 		
 		return description;
 	}
 	
-	private static String replaceValueInTag(String tag, String newValue, String regex) {
+	private static String replaceValueInTag(String tag, String newValue, String startRegex) {
 		//String newBetween;
 		String newText = "";
 		
-		int startIndex = tag.indexOf(regex) + regex.length();
+		int startIndex = tag.indexOf(startRegex) + startRegex.length();
 		
 		if (startIndex != -1) {
 			String textStart = tag.substring(0, startIndex);
 			
-			Dialogues.Log(TAG_CLASS, "/***EdgarBeforeImg: "+ textStart, Log.DEBUG);
+			Dialogues.Log(TAG_CLASS, "/***EdBeforeImg: "+ textStart, Log.DEBUG);
 			
 			String textBetween = tag.substring(startIndex);
 			int endIndex = textBetween.indexOf("\"");
@@ -76,13 +85,13 @@ public class HtmlParser {
 			if (endIndex != -1) {
 				String textValue;
 				textValue = textBetween.substring(0, endIndex);
-				Dialogues.Log(TAG_CLASS, "/***EdgarBetweenImg: "+ textValue, Log.DEBUG);
+				Dialogues.Log(TAG_CLASS, "/***EdBetweenImg: "+ textValue, Log.DEBUG);
 				
 				//newBetween = textValue.replace(regex, newValue);
-				Dialogues.Log(TAG_CLASS, "/***EdgarNewBetweenImg: "+ newValue, Log.DEBUG);
+				Dialogues.Log(TAG_CLASS, "/***EdNewBetweenImg: "+ newValue, Log.DEBUG);
 				
 				String endText = textBetween.substring(endIndex + "\"".length());
-				Dialogues.Log(TAG_CLASS, "/***EdgarEndImg: "+ endText, Log.DEBUG);
+				Dialogues.Log(TAG_CLASS, "/***EdEndImg: "+ endText, Log.DEBUG);
 				
 				newText = textStart + newValue + endText;
 			}
@@ -91,16 +100,66 @@ public class HtmlParser {
 		return newText;
 	}
 	
+	public static String renameVideoUrlInHtml(String html) {
+		String description = "";
+		
+		String regex = "//www.youtube.com";
+		String regexHost = "http:";
+		
+		description = html.replaceAll(regex, regexHost + regex);
+		Dialogues.Log(TAG_CLASS, "/***EdVideo: " + description, Log.DEBUG);
+		
+		return description;
+	}
+	
+	public static String renameVideoUrlInHtml2(String html) {
+		String description = "";
+		
+		String regex = "//www.youtube.com";
+		String regexHost = "http:";
+		
+		int startIndex;
+		int endIndex;
+		
+		String beforeIndex = "";
+		String afterIndex = "";
+		String inIndex = "";
+		String auxDescription = html;
+		
+		if (auxDescription.indexOf(regex) != -1) {
+			while ((startIndex = auxDescription.indexOf(regex)) != -1) {
+				beforeIndex = auxDescription.substring(0, startIndex);
+				Dialogues.Log(TAG_CLASS, "/***EdVideoBefore: " + beforeIndex, Log.DEBUG);
+				
+				String textHost = auxDescription.substring(startIndex - regexHost.length());
+				Dialogues.Log(TAG_CLASS, "/***EdVideoTab: " + textHost, Log.DEBUG);
+				
+				//auxDescription = auxDescription.substring(startIndex + regex.length());
+				//Dialogues.Log(TAG_CLASS, "/***EdVideoTab: " + textHost, Log.DEBUG);
+				
+				if (textHost.equals(regexHost)) {
+					description = auxDescription;
+				} else {
+					description = description.replace(regex, regex);
+				}
+			}
+		} else {
+			description = html;
+		}
+		
+		return auxDescription;
+	}
+	
 	public static void parseHtml(String html) {
 		String description = html;
 		
 		int startIndex;
 		int endIndex;
-		while ((startIndex = description.indexOf(startRegex)) != -1) {
-			description = description.substring(startIndex + startRegex.length());
+		while ((startIndex = description.indexOf(startParagraphRegex)) != -1) {
+			description = description.substring(startIndex + startParagraphRegex.length());
 			// Dialogues.Log(TAG_CLASS, "Description: " + description, Log.INFO);
 			
-			if ((endIndex = description.indexOf(endRegex)) != -1) {
+			if ((endIndex = description.indexOf(endParagraphRegex)) != -1) {
 				// Dialogues.Log(TAG_CLASS, "startIndex: " + startIndex + ", endIndex: " + endIndex, Log.INFO);
 				
 				String item = description.substring(0, endIndex);

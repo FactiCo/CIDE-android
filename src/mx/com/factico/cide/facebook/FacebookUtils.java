@@ -11,6 +11,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -21,12 +22,33 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
+import com.facebook.Session;
+
 /**
  * 
  * @author zace3d
  *
  */
 public class FacebookUtils {
+	
+	/**
+	 * Logout From Facebook
+	 */
+	public static void callFacebookLogout(Context context) {
+		Session session = Session.getActiveSession();
+		if (session != null) {
+			if (!session.isClosed()) {
+				session.closeAndClearTokenInformation();
+				// clear your preferences if saved
+			}
+		} else {
+			session = new Session(context);
+			Session.setActiveSession(session);
+
+			session.closeAndClearTokenInformation();
+			// clear your preferences if saved
+		}
+	}
 	
 	/**
 	 * Load an image profile from an user id, into an ImageView

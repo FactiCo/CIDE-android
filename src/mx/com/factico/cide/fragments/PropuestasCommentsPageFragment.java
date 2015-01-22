@@ -226,7 +226,8 @@ public class PropuestasCommentsPageFragment extends Fragment implements OnClickL
 		TextView tvTitle = (TextView) view.findViewById(R.id.item_propuestas_comments_tv_title);
 		TextView tvDescription = (TextView) view.findViewById(R.id.item_propuestas_comments_tv_description);
 		
-		tvTitle.setText(data.getFrom().getName());
+		if (data.getFrom() != null && data.getFrom().getName() != null)
+			tvTitle.setText(data.getFrom().getName());
 		tvDescription.setText(data.getMessage());
 		
 		return view;

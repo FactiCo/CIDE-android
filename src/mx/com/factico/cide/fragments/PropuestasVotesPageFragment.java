@@ -1,5 +1,6 @@
 package mx.com.factico.cide.fragments;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import mx.com.factico.cide.R;
@@ -116,6 +117,20 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 		return rootView;
 	}
 	
+	private CustomWebView webviewDescription;
+	@Override
+	public void onPause() {
+		super.onPause();
+		
+		try {
+	        Class.forName("android.webkit.WebView").getMethod("onPause", (Class[]) null).invoke(webviewDescription, (Object[]) null);
+	    } catch(ClassNotFoundException cnfe) {
+	    } catch(NoSuchMethodException nsme) {
+	    } catch(InvocationTargetException ite) {
+	    } catch (IllegalAccessException iae) {
+	    }
+	}
+	
 	@SuppressLint("SetJavaScriptEnabled")
 	@SuppressWarnings("deprecation")
 	private void loadPropuestasViews(Propuesta.Items item) {
@@ -136,16 +151,22 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 			((CustomTextView) rootView.findViewById(R.id.propuestas_votes_tv_title)).setText(item.getTitle());
 			
 			// Description
-			String html = HtmlParser.renameImageInHtml(item.getDescription());
+			String htmlWithImages = HtmlParser.resizeItemInHtml(item.getDescription(), HtmlParser.startImageRegex, HtmlParser.endImageRegex);
+			String htmlWithVideos = HtmlParser.resizeItemInHtml(htmlWithImages, HtmlParser.startVideoRegex, HtmlParser.endVideoRegex);
+			String html = HtmlParser.renameVideoUrlInHtml(htmlWithVideos);
 			
-			CustomWebView webviewDescription = (CustomWebView)rootView.findViewById(R.id.webview_data);
-			webviewDescription.loadData(html, "text/html", "UTF-8");
+			webviewDescription = (CustomWebView)rootView.findViewById(R.id.webview_data);
+			webviewDescription.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
+			//webviewDescription.loadUrl("file:///android_asset/prueba.html");
 			webviewDescription.setWebChromeClient(new WebChromeClient());
-			webviewDescription.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
+			//webviewDescription.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
 			webviewDescription.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 			webviewDescription.setScrollbarFadingEnabled(false);
 			// webviewDescription.getSettings().setLoadWithOverviewMode(true);
 			// webviewDescription.getSettings().setUseWideViewPort(true);
+			// webviewDescription.getSettings().setPluginsEnabled(true);
+			webviewDescription.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+			webviewDescription.getSettings().setJavaScriptEnabled(true);
 			webviewDescription.getSettings().setPluginState(WebSettings.PluginState.ON);
 			webviewDescription.getSettings().setPluginState(WebSettings.PluginState.ON_DEMAND);
 			webviewDescription.setWebViewClient(new WebViewClient());
@@ -203,17 +224,21 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 							Dialogues.Log(TAG_CLASS, "Items Question Answers Id: " + data.getId(), Log.INFO);
 							Dialogues.Log(TAG_CLASS, "Items Question Answers Title: " + data.getTitle(), Log.INFO);
 							Dialogues.Log(TAG_CLASS, "Items Question Answers Count: " + data.getCount(), Log.INFO);
-
+							
 							View answerView = createAnswerButton(data, question.getId(), index);
 							if (answerView != null)
 								if (Boolean.valueOf(answerView.getTag().toString()))
 									vgAnswers.addView(answerView);
 							
+							if (!isAlreadyAnswer) {
+								if (isAlreadyAnswer = isAlreadyAnswer(data.getParticipantes())) {
+									startChart(question.getAnswers());
+								}
+							}
+							
 							index++;
 						}
 					}
-					
-					// startChart(question.getAnswers());
 				}
 			} else {
 				rootView.findViewById(R.id.propuestas_votes_vg_question).setVisibility(View.GONE);
@@ -302,6 +327,24 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 		}
 	}
 
+	private boolean isAlreadyAnswer(List<Participantes> participantes) {
+		String jsonFacebook = PreferencesUtils.getPreference(getActivity().getApplication(), PreferencesUtils.FACEBOOK);
+		try {
+			Facebook facebook = GsonParser.getFacebookFromJSON(jsonFacebook);
+			
+			for (Participantes participante : participantes) {
+				if (participante.getFcbookid().equals(facebook.getFcbookid())) {
+					
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
 	private boolean isAlreadyVote(List<Participantes> participantes) {
 		String jsonFacebook = PreferencesUtils.getPreference(getActivity().getApplication(), PreferencesUtils.FACEBOOK);
 		try {
