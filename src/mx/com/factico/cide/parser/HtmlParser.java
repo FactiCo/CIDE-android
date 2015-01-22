@@ -15,6 +15,44 @@ public class HtmlParser {
 	private static final String startRegex = "<p>";
 	private static final String endRegex = "</p>";
 	
+	private static final String startImageRegex = "<img";
+	private static final String endImageRegex = "/>";
+	
+	public static String renameImageInHtml(String html) {
+		String description = "";
+		
+		int startIndex;
+		int endIndex;
+		
+		String beforeIndex = "";
+		String afterIndex = "";
+		String inIndex = "";
+		String auxDescription = html;
+		
+		while ((startIndex = auxDescription.indexOf(startImageRegex)) != -1) {
+			beforeIndex = auxDescription.substring(0, startIndex);
+			Dialogues.Log(TAG_CLASS, "/***EdgarBefore: " + beforeIndex, Log.INFO);
+			
+			inIndex = auxDescription.substring(startIndex + startRegex.length());
+			endIndex = inIndex.indexOf(endImageRegex);
+			inIndex = auxDescription.substring(startIndex, startIndex + endIndex + endImageRegex.length());
+			Dialogues.Log(TAG_CLASS, "/***EdgarIn: " + inIndex, Log.INFO);
+			
+			afterIndex = auxDescription.substring(startIndex + endIndex + endImageRegex.length());
+			Dialogues.Log(TAG_CLASS, "/***EdgarAfter: " + afterIndex, Log.INFO);
+			
+			auxDescription = afterIndex;
+			
+			description += beforeIndex + inIndex;
+		}
+		
+		description += afterIndex;
+		
+		Dialogues.Log(TAG_CLASS, "" + description, Log.ERROR);
+		
+		return description;
+	}
+	
 	public static void parseHtml(String html) {
 		String description = html;
 		

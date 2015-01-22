@@ -11,6 +11,7 @@ import mx.com.factico.cide.dialogues.Dialogues;
 import mx.com.factico.cide.facebook.FacebookUtils;
 import mx.com.factico.cide.httpconnection.HttpConnection;
 import mx.com.factico.cide.parser.GsonParser;
+import mx.com.factico.cide.parser.HtmlParser;
 import mx.com.factico.cide.preferences.PreferencesUtils;
 import mx.com.factico.cide.spannables.SpannableFactory;
 import mx.com.factico.cide.utils.ScreenUtils;
@@ -133,8 +134,10 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 			((CustomTextView) rootView.findViewById(R.id.propuestas_votes_tv_title)).setText(item.getTitle());
 			
 			// Description
+			String html = HtmlParser.renameImageInHtml(item.getDescription());
+			
 			CustomWebView webviewDescription = (CustomWebView)rootView.findViewById(R.id.webview_data);
-			webviewDescription.loadData(item.getDescription(), "text/html", "UTF-8");
+			webviewDescription.loadData(html, "text/html", "UTF-8");
 			webviewDescription.setWebChromeClient(new WebChromeClient());
 			webviewDescription.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
 			webviewDescription.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
