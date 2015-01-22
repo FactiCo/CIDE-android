@@ -1,6 +1,6 @@
 package mx.com.factico.cide.fragments;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import mx.com.factico.cide.R;
@@ -8,7 +8,9 @@ import mx.com.factico.cide.beans.Comment;
 import mx.com.factico.cide.beans.Facebook;
 import mx.com.factico.cide.beans.Propuesta;
 import mx.com.factico.cide.beans.Propuesta.Items.Comments.Data;
+import mx.com.factico.cide.beans.Propuesta.Items.Comments.Data.From;
 import mx.com.factico.cide.dialogues.Dialogues;
+import mx.com.factico.cide.facebook.FacebookUtils;
 import mx.com.factico.cide.httpconnection.HttpConnection;
 import mx.com.factico.cide.parser.GsonParser;
 import mx.com.factico.cide.preferences.PreferencesUtils;
@@ -24,6 +26,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -104,7 +107,8 @@ public class PropuestasCommentsPageFragment extends Fragment implements OnClickL
 
 				if (listCommentsData != null && listCommentsData.size() > 0) {
 					LinearLayout vgContainer = (LinearLayout) rootView.findViewById(R.id.propuestas_comments_vg_container);
-					Collections.reverse(listCommentsData); // Reverse the list
+					vgContainer.removeAllViews();
+					// Collections.reverse(listCommentsData); // Reverse the list
 					
 					Dialogues.Log(TAG_CLASS, "/***** Comments", Log.INFO);
 					Dialogues.Log(TAG_CLASS, "Items Comments Data Size: " + listCommentsData.size(), Log.INFO);
@@ -214,6 +218,11 @@ public class PropuestasCommentsPageFragment extends Fragment implements OnClickL
 	private View createCommentView(Data data) {
 		View view = getActivity().getLayoutInflater().inflate(R.layout.item_propuestas_comments, null, false);
 		
+		if (data.getFrom() != null) {
+			ImageView ivUser = (ImageView) view.findViewById(R.id.item_propuestas_comments_iv_user);
+			FacebookUtils.loadImageProfileToImageView(ivUser, data.getFrom().getFcbookid());
+		}
+		
 		TextView tvTitle = (TextView) view.findViewById(R.id.item_propuestas_comments_tv_title);
 		TextView tvDescription = (TextView) view.findViewById(R.id.item_propuestas_comments_tv_description);
 		
@@ -303,6 +312,21 @@ public class PropuestasCommentsPageFragment extends Fragment implements OnClickL
 				showResultDialog(getResources().getString(R.string.dialog_message_propuesta_comment));
 				CustomEditText etComment = (CustomEditText) rootView.findViewById(R.id.propuestas_comments_et_comment);
 				etComment.setText("");
+				
+				Data data = new Propuesta().new Items().new Comments().new Data();
+				data.setMessage(comment.getMessage());
+				From from = new Propuesta().new Items().new Comments().new Data().new From();
+				from.setFcbookid(comment.getFrom().getFcbookid());
+				from.setName(comment.getFrom().getName());
+				data.setFrom(from);
+				
+				List<Data> listData = new ArrayList<Data>();
+				listData.add(data);
+				listData.addAll(propuesta.getComments().getData());
+				
+				propuesta.getComments().setData(listData);
+				
+				loadPropuestasViews(propuesta);
 				
 			} else {
 				Dialogues.Toast(getActivity().getApplicationContext(), getResources().getString(R.string.dialog_error), Toast.LENGTH_LONG);

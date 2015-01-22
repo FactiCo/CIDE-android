@@ -57,7 +57,7 @@
                 android:showDividers="none"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@color/white_alpha" />
+                android:background="@color/white" />
             
             <FrameLayout
                 android:id="@android:id/tabcontent"
