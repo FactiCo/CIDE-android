@@ -18,6 +18,9 @@ public class HtmlParser {
 	private static final String startImageRegex = "<img";
 	private static final String endImageRegex = "/>";
 	
+	private static final String imageWidthRegex = "width=\"";
+	private static final String imageHeightRegex = "height=\"";
+	
 	public static String renameImageInHtml(String html) {
 		String description = "";
 		
@@ -38,6 +41,9 @@ public class HtmlParser {
 			inIndex = auxDescription.substring(startIndex, startIndex + endIndex + endImageRegex.length());
 			Dialogues.Log(TAG_CLASS, "/***EdgarIn: " + inIndex, Log.INFO);
 			
+			inIndex = replaceValueInTag(inIndex, "100%", imageWidthRegex);
+			inIndex = replaceValueInTag(inIndex, "100", imageHeightRegex);
+			
 			afterIndex = auxDescription.substring(startIndex + endIndex + endImageRegex.length());
 			Dialogues.Log(TAG_CLASS, "/***EdgarAfter: " + afterIndex, Log.INFO);
 			
@@ -51,6 +57,38 @@ public class HtmlParser {
 		Dialogues.Log(TAG_CLASS, "" + description, Log.ERROR);
 		
 		return description;
+	}
+	
+	private static String replaceValueInTag(String tag, String newValue, String regex) {
+		//String newBetween;
+		String newText = "";
+		
+		int startIndex = tag.indexOf(regex) + regex.length();
+		
+		if (startIndex != -1) {
+			String textStart = tag.substring(0, startIndex);
+			
+			Dialogues.Log(TAG_CLASS, "/***EdgarBeforeImg: "+ textStart, Log.DEBUG);
+			
+			String textBetween = tag.substring(startIndex);
+			int endIndex = textBetween.indexOf("\"");
+			
+			if (endIndex != -1) {
+				String textValue;
+				textValue = textBetween.substring(0, endIndex);
+				Dialogues.Log(TAG_CLASS, "/***EdgarBetweenImg: "+ textValue, Log.DEBUG);
+				
+				//newBetween = textValue.replace(regex, newValue);
+				Dialogues.Log(TAG_CLASS, "/***EdgarNewBetweenImg: "+ newValue, Log.DEBUG);
+				
+				String endText = textBetween.substring(endIndex + "\"".length());
+				Dialogues.Log(TAG_CLASS, "/***EdgarEndImg: "+ endText, Log.DEBUG);
+				
+				newText = textStart + newValue + endText;
+			}
+		}
+		
+		return newText;
 	}
 	
 	public static void parseHtml(String html) {
