@@ -106,6 +106,8 @@
     <string name="propuestas_login_fb_label">Para poder ver y participar en las propuestas, inicia sesión con Facebook.</string>
     <string name="propuestas_login_fb">Facebook</string>
     
+    <string name="propuesta_nomore">Sin propuestas\nen esta\ncategoría</string>
+    
     <string name="propuestas_menu_current_votes">Votos hasta ahora: %1$d</string>
     
     <string name="propuestas_vote">Vota esta propuesta:</string>

@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx.com.factico.cide.views.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cide="http://schemas.android.com/apk/res/mx.com.factico.cide"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbarThumbVertical="@drawable/drawable_customscroll" >
+    android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/fragment_propuestas_vg_container"
+    <mx.com.factico.cide.views.CustomTextView
+        android:id="@+id/fragment_propuestas_tv_nomore"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@drawable/divider_horizontal_green"
-        android:orientation="vertical"
-        android:showDividers="middle" >
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/propuesta_nomore"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/white"
+        cide:typefaceRoboto="RobotoSlab_Regular" />
 
-</mx.com.factico.cide.views.CustomScrollView>
+    <mx.com.factico.cide.views.CustomScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarThumbVertical="@drawable/drawable_customscroll" >
+
+        <LinearLayout
+            android:id="@+id/fragment_propuestas_vg_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/divider_horizontal_green"
+            android:orientation="vertical"
+            android:showDividers="middle" >
+        </LinearLayout>
+    </mx.com.factico.cide.views.CustomScrollView>
+
+</LinearLayout>

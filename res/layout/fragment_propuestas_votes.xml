@@ -167,11 +167,12 @@
             </LinearLayout>
 
             <include
-                layout="@layout/fragment_propuestas_question"
                 android:id="@+id/propuestas_votes_vg_question"
+                layout="@layout/fragment_propuestas_question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
+                android:layout_margin="10dp"
+                android:visibility="gone" />
         </LinearLayout>
     </mx.com.factico.cide.views.CustomScrollView>
 

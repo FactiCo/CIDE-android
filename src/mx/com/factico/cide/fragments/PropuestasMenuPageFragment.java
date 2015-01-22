@@ -5,6 +5,7 @@ import mx.com.factico.cide.R;
 import mx.com.factico.cide.beans.Propuesta;
 import mx.com.factico.cide.beans.Propuesta.Items;
 import mx.com.factico.cide.facebook.FacebookUtils;
+import mx.com.factico.cide.views.CustomTextView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -79,11 +80,13 @@ public class PropuestasMenuPageFragment extends Fragment {
 		
 		// Change the info
 		LinearLayout vgContainer = (LinearLayout) rootView.findViewById(R.id.fragment_propuestas_vg_container);
-
+		
 		for (Propuesta.Items item : propuesta.getItems()) {
 			if (item.getCategory().equals(category)) {
 				View view = createItemPropuestasView(item);
 				vgContainer.addView(view);
+				
+				rootView.findViewById(R.id.fragment_propuestas_tv_nomore).setVisibility(View.GONE);
 			}
 		}
 		

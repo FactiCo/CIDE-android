@@ -40,7 +40,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
-import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -225,18 +224,23 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 							Dialogues.Log(TAG_CLASS, "Items Question Answers Title: " + data.getTitle(), Log.INFO);
 							Dialogues.Log(TAG_CLASS, "Items Question Answers Count: " + data.getCount(), Log.INFO);
 							
-							View answerView = createAnswerButton(data, question.getId(), index);
+							boolean selected = false;
+							if (!isAlreadyAnswer) {
+								if (isAlreadyAnswer = isAlreadyAnswer(data.getParticipantes())) {
+									startChart(question.getAnswers());
+									
+									selected = true;
+								}
+							}
+							
+							View answerView = createAnswerButton(data, question.getId(), index, selected);
 							if (answerView != null)
 								if (Boolean.valueOf(answerView.getTag().toString()))
 									vgAnswers.addView(answerView);
 							
-							if (!isAlreadyAnswer) {
-								if (isAlreadyAnswer = isAlreadyAnswer(data.getParticipantes())) {
-									startChart(question.getAnswers());
-								}
-							}
-							
 							index++;
+							
+							rootView.findViewById(R.id.propuestas_votes_vg_question).setVisibility(View.VISIBLE);
 						}
 					}
 				}
@@ -370,7 +374,7 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 			"#FF6CDA84" };
 	
 	@SuppressLint("InflateParams")
-	private View createAnswerButton(Propuesta.Items.Question.Answers answer, String idQuestion, int index) {
+	private View createAnswerButton(Propuesta.Items.Question.Answers answer, String idQuestion, int index, boolean selected) {
 		View view = getActivity().getLayoutInflater().inflate(R.layout.item_propuestas_answer, null, false);
 		
 		Drawable drawable = getResources().getDrawable(R.drawable.drawable_circle_default);
@@ -385,6 +389,7 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 		btnAnswer.setText(answer.getTitle());
 		btnAnswer.setTag(idQuestion + HttpConnection.ACTION_ANSWER + answer.getId());
 		btnAnswer.setOnClickListener(AnswerOnClickListener);
+		btnAnswer.setSelected(selected);
 			
 		if (answer.getTitle().equals(""))
 			view.setTag(false);

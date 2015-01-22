@@ -344,7 +344,8 @@ public class PropuestasCommentsPageFragment extends Fragment implements OnClickL
 		((TextView) view.findViewById(R.id.dialog_result_post_message)).setText(message);
 		
 		view.findViewById(R.id.dialog_result_post_ok).setOnClickListener(this);
-		view.findViewById(R.id.dialog_result_post_share).setOnClickListener(this);
+		//view.findViewById(R.id.dialog_result_post_share).setOnClickListener(this);
+		view.findViewById(R.id.dialog_result_post_share).setVisibility(View.GONE);
 
 		builder.setView(view);
 
