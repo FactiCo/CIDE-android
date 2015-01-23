@@ -74,7 +74,24 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/white"
                 cide:typefaceRoboto="RobotoSlab_Regular" />
+
+            <!-- <mx.com.factico.cide.views.CustomTextView
+                android:id="@+id/settings_btn_facebook_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_btn_ligth"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="15dp"
+                android:text="@string/facebook_logout"
+                android:textColor="@color/white"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                cide:typefaceRoboto="RobotoSlab_Regular" /> -->
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

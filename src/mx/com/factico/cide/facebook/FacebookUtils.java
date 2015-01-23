@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import mx.com.factico.cide.R;
+import mx.com.factico.cide.dialogues.Dialogues;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -21,6 +22,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import android.widget.Toast;
 
 import com.facebook.Session;
 
@@ -40,6 +42,8 @@ public class FacebookUtils {
 			if (!session.isClosed()) {
 				session.closeAndClearTokenInformation();
 				// clear your preferences if saved
+				
+				Dialogues.Toast(context, "Log out 1", Toast.LENGTH_LONG);
 			}
 		} else {
 			session = new Session(context);
@@ -47,6 +51,8 @@ public class FacebookUtils {
 
 			session.closeAndClearTokenInformation();
 			// clear your preferences if saved
+			
+			Dialogues.Toast(context, "Log out 2", Toast.LENGTH_LONG);
 		}
 	}
 	

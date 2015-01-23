@@ -41,19 +41,17 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 	private TabHost mTabHost;
 	
 	private String[] listCategories;
-
+	
 	private TextView mTitle;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_propuestas_menu);
-
-		setSupportActionBar();
-
-		startFacebookLoginIntent();
 		
-		// initUI(FacebookLoginActivity.RESULT_CODE_LOGIN_OK);
+		setSupportActionBar();
+		
+		startFacebookLoginIntent();
 	}
 
 	private void setSupportActionBar() {
@@ -65,6 +63,11 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 		setSupportActionBar(mToolbar);
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
 	}
 
 	protected void startFacebookLoginIntent() {
@@ -411,6 +414,20 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 		}
 	}
 
+	@Override
+	public void onBackPressed() {
+		startParentActivity();
+	}
+	
+	private void startParentActivity() {
+		finish();
+		
+		Intent intent = new Intent(getBaseContext(), MainActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+	}
+	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);

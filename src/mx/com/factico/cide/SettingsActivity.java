@@ -1,5 +1,6 @@
 package mx.com.factico.cide;
 
+import mx.com.factico.cide.facebook.FacebookUtils;
 import mx.com.factico.cide.views.CustomTextView;
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,6 +47,8 @@ public class SettingsActivity extends ActionBarActivity implements OnClickListen
 	    tvTerminosTitle.setText(contentTerminos, BufferType.SPANNABLE);
 		
 		findViewById(R.id.settings_tv_acercade_politicas).setOnClickListener(this);
+		
+		//findViewById(R.id.settings_btn_facebook_logout).setOnClickListener(this);
 	}
 	
 	@Override
@@ -72,6 +75,10 @@ public class SettingsActivity extends ActionBarActivity implements OnClickListen
 			openSeeMoreDescriptionIntent();
 			break;
 
+		/*case R.id.settings_btn_facebook_logout:
+			FacebookUtils.callFacebookLogout(getBaseContext());
+			break;*/
+			
 		default:
 			break;
 		}

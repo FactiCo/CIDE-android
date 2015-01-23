@@ -33,7 +33,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="15dp"
-        android:text="@string/propuestas_login_fb"
+        android:text="@string/facebook_login"
         android:textColor="@color/white"
         android:textSize="15sp"
         cide:typefaceRoboto="SourceSansPro_Regular" />

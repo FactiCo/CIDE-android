@@ -104,7 +104,6 @@
     <string name="propuestas_preview">A partir del 22 de enero podrás conocer y comentar las propuestas de expertos e instituciones para mejorar la justicia cotidiana. Espéralo.</string>
     
     <string name="propuestas_login_fb_label">Para poder ver y participar en las propuestas, inicia sesión con Facebook.</string>
-    <string name="propuestas_login_fb">Facebook</string>
     
     <string name="propuesta_nomore">Sin propuestas\nen esta\ncategoría</string>
     
@@ -140,5 +139,7 @@
     <string name="facebook_is_not_installed">Facebook app is not installed</string>
     <string name="facebook_package">com.facebook.katana</string>
     <string name="facebook_session_is_not_open">Session is not open</string>
+    <string name="facebook_login">Facebook</string>
+    <string name="facebook_logout">Cerrar sesión de Facebook</string>
     
 </resources>

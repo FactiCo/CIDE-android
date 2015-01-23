@@ -6,6 +6,7 @@ import mx.com.factico.cide.fragments.PropuestasCommentsPageFragment;
 import mx.com.factico.cide.fragments.PropuestasVotesPageFragment;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -185,14 +186,23 @@ public class PropuestasActivity extends ActionBarActivity {
 	
 	@Override
 	public void onBackPressed() {
-		// finish();
+		startParentActivity();
 	}
 
+	private void startParentActivity() {
+		finish();
+		
+		Intent intent = new Intent(getBaseContext(), PropuestasMenuActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+	}
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
-		if (id == R.id.home) {
-			finish();
+		if (id == android.R.id.home) {
+			startParentActivity();
 
 			return true;
 		}
