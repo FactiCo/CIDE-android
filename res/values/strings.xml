@@ -115,7 +115,7 @@
     <string name="propuestas_votes_contra">en contra</string>
     <string name="propuestas_votes_abstencion">abstención</string>
     
-    <string name="propuestas_votes_same">%1$s personas han votado %2$s como tu</string>
+    <string name="propuestas_votes_same">%1$s personas han votado %2$s como tú</string>
     
     <string name="propuestas_question">Pregunta</string>
     <string name="propuestas_question_sings">¿?</string>

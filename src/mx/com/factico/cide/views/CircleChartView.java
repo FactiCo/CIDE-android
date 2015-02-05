@@ -59,22 +59,6 @@ public class CircleChartView extends View {
 		paint.setColor(Color.WHITE);
 	}
 	
-	/*@Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        width = MeasureSpec.getSize(widthMeasureSpec);
-        height = MeasureSpec.getSize(heightMeasureSpec);
-        this.setMeasuredDimension(width, width);
-    }*/
-	
-	/*@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-	    int parentWidth = MeasureSpec.getSize(widthMeasureSpec);
-	    parentHeight = MeasureSpec.getSize(heightMeasureSpec);
-	    
-	    this.setMeasuredDimension(parentWidth, parentHeight);
-	    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-	}*/
-	
 	@Override
 	 protected void onSizeChanged(int xNew, int yNew, int xOld, int yOld) {
 	     super.onSizeChanged(xNew, yNew, xOld, yOld);

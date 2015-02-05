@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cide="http://schemas.android.com/apk/res/mx.com.factico.cide"
+    android:id="@+id/item_propuestas_answer_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="5dp"

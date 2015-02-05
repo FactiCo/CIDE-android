@@ -43,17 +43,33 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 	private String[] listCategories;
 	
 	private TextView mTitle;
+
+	protected int selectedIndex;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_propuestas_menu);
 		
+		if (savedInstanceState != null)
+			selectedIndex = savedInstanceState.getInt("MyInt", 0);
+		
 		setSupportActionBar();
 		
 		startFacebookLoginIntent();
 	}
 
+	@Override
+	public void onSaveInstanceState(Bundle savedInstanceState) {
+	  super.onSaveInstanceState(savedInstanceState);
+	  savedInstanceState.putInt("index", selectedIndex);
+	}
+	
+	@Override
+	public void onRestoreInstanceState(Bundle savedInstanceState) {
+	  super.onRestoreInstanceState(savedInstanceState);
+	}
+	
 	private void setSupportActionBar() {
 		Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
 		mToolbar.setTitle("");
@@ -113,6 +129,8 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 				mTitle.setText(listCategories[position]);
 				
 				changeImageDrawableToTab(position);
+				
+				selectedIndex = position;
 			}
 		});
 		
@@ -129,6 +147,8 @@ public class PropuestasMenuActivity extends ActionBarActivity {
                 mTitle.setText(listCategories[position]);
                 
                 changeImageDrawableToTab(position);
+                
+                selectedIndex = position;
             }
         };
 		
@@ -147,6 +167,16 @@ public class PropuestasMenuActivity extends ActionBarActivity {
 		
 		// Setting the PagerAdapter object to the viewPager object
 		mViewPager.setAdapter(mPagerAdapter);
+		
+		if (selectedIndex > 0) {
+			mViewPager.setCurrentItem(selectedIndex, false);
+			
+			mTabHost.setCurrentTab(selectedIndex);
+            
+            mTitle.setText(listCategories[selectedIndex]);
+            
+            changeImageDrawableToTab(selectedIndex);
+		}
 	}
 	
 	private void setupTab(final View view, final int index, String tag) {

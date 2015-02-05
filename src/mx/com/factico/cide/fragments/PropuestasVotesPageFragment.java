@@ -376,6 +376,8 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 	@SuppressLint("InflateParams")
 	private View createAnswerButton(Propuesta.Items.Question.Answers answer, String idQuestion, int index, boolean selected) {
 		View view = getActivity().getLayoutInflater().inflate(R.layout.item_propuestas_answer, null, false);
+		//view.setTag(idQuestion + HttpConnection.ACTION_ANSWER + answer.getId());
+		view.setOnClickListener(AnswerOnClickListener);
 		
 		Drawable drawable = getResources().getDrawable(R.drawable.drawable_circle_default);
 		drawable.setColorFilter(Color.parseColor(colorsAnswers[index]), PorterDuff.Mode.SRC_ATOP);
@@ -388,9 +390,9 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 		CustomTextView btnAnswer = (CustomTextView) view.findViewById(R.id.item_propuestas_answer_tv_title);
 		btnAnswer.setText(answer.getTitle());
 		btnAnswer.setTag(idQuestion + HttpConnection.ACTION_ANSWER + answer.getId());
-		btnAnswer.setOnClickListener(AnswerOnClickListener);
+		//btnAnswer.setOnClickListener(AnswerOnClickListener);
 		btnAnswer.setSelected(selected);
-			
+		
 		if (answer.getTitle().equals(""))
 			view.setTag(false);
 		else
@@ -398,13 +400,14 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 		
 		return view;
 	}
-
+	
 	View.OnClickListener AnswerOnClickListener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			if (!isAlreadyAnswer) {
-				String ids = v.getTag().toString();
-				SendAnswerAsyncTask task = new SendAnswerAsyncTask(ids);
+				CustomTextView btnAnswer = (CustomTextView) v.findViewById(R.id.item_propuestas_answer_tv_title);
+				String ids = btnAnswer.getTag().toString();
+				SendAnswerAsyncTask task = new SendAnswerAsyncTask(v, ids);
 				task.execute();
 			}
 		}
@@ -553,9 +556,11 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 	
 	private class SendAnswerAsyncTask extends AsyncTask<String, String, String> {
 		private ProgressDialog dialog;
+		private View view;
 		private String ids;
 
-		public SendAnswerAsyncTask(String ids) {
+		public SendAnswerAsyncTask(View view, String ids) {
+			this.view = view;
 			this.ids = ids;
 		}
 
@@ -579,13 +584,16 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 				
 				String json = GsonParser.createJsonFromObjectWithoutExposeAnnotations(facebook);
 				
+				Dialogues.Log(TAG_CLASS, HttpConnection.ACTION_PREGUNTAS + "/" + ids, Log.INFO);
+				Dialogues.Log(TAG_CLASS, json, Log.INFO);
+				
 				result = HttpConnection.POST(HttpConnection.ACTION_PREGUNTAS + "/" + ids, json);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			return result;
 		}
-
+		
 		@Override
 		protected void onPostExecute(String result) {
 			if (dialog != null && dialog.isShowing()) {
@@ -596,6 +604,9 @@ public class PropuestasVotesPageFragment extends Fragment implements OnClickList
 			if (result != null) {
 				String resultCode = GsonParser.getResultFromJSON(result);
 				if (resultCode.equals(GsonParser.TAG_RESULT_OK)) {
+					CustomTextView btnAnswer = (CustomTextView) view.findViewById(R.id.item_propuestas_answer_tv_title);
+					btnAnswer.setSelected(true);
+					
 					showResultDialog(getResources().getString(R.string.dialog_message_propuesta_answer));
 					
 					isAlreadyAnswer = true;

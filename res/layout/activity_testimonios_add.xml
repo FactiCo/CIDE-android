@@ -156,6 +156,7 @@
                         android:hint="@string/testimonios_add_explication"
                         android:inputType="textMultiLine"
                         android:maxEms="2000"
+                        android:maxLength="2000"
                         android:minLines="3"
                         android:padding="10dp"
                         android:textColor="@color/default_text_color"
