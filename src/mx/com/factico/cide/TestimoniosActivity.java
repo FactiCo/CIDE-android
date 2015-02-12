@@ -324,6 +324,25 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 			tvTitle.setVisibility(View.GONE);
 		}
 
+		TextView tvAge = (TextView) view.findViewById(R.id.item_testimonios_tv_age);
+		if (item.getAge() != null && !item.getAge().equals("")) {
+			tvAge.setText(item.getAge());
+		} else {
+			tvAge.setVisibility(View.GONE);
+		}
+		
+		TextView tvCity = (TextView) view.findViewById(R.id.item_testimonios_tv_city);
+		if (item.getState() != null && !item.getState().equals("")) {
+			String city = getCityNameFromId(Integer.parseInt(item.getState()));
+			if (city != null && !city.equals("")) {
+				tvCity.setText(city);
+			} else {
+				tvCity.setVisibility(View.GONE);
+			}
+		} else {
+			tvCity.setVisibility(View.GONE);
+		}
+		
 		CustomTextView tvDescription = (CustomTextView) view.findViewById(R.id.item_testimonios_tv_description);
 		tvDescription.setText(item.getExplanation());
 		tvDescription.setTag(false);
@@ -334,6 +353,14 @@ public class TestimoniosActivity extends ActionBarActivity implements OnClickLis
 		return view;
 	}
 
+	private String getCityNameFromId(int index) {
+		String[] listCities = getResources().getStringArray(R.array.testimonios_add_cities);
+		if (listCities.length > index - 1)
+			return listCities[index - 1];
+		else
+			return "";
+	}
+	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {

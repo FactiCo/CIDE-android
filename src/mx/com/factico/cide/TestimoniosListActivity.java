@@ -6,7 +6,9 @@ import mx.com.factico.cide.beans.Testimonio;
 import mx.com.factico.cide.typeface.TypefaceFactory;
 import mx.com.factico.cide.views.CustomTextView;
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -32,7 +34,13 @@ public class TestimoniosListActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_testimonios_list);
 
 		setSupportActionBar();
+		
 		initUI();
+	}
+	
+	public void startLoadingTestimonios(Testimonio testimonio) {
+		LoadTestimoniosPublicationsAsyncTask task = new LoadTestimoniosPublicationsAsyncTask(testimonio);
+		task.execute();
 	}
 
 	public void setSupportActionBar() {
@@ -50,6 +58,84 @@ public class TestimoniosListActivity extends ActionBarActivity {
 		mToolbar.setNavigationIcon(R.drawable.ic_action_close_white);
 	}
 
+	private class LoadTestimoniosPublicationsAsyncTask extends AsyncTask<String, View, String> {
+		private Testimonio testimonio;
+		private ProgressDialog dialog;
+		
+        public LoadTestimoniosPublicationsAsyncTask(Testimonio testimonio) {
+        	this.testimonio = testimonio;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            // findViewById(R.id.testimonios_list_loading).setVisibility(View.VISIBLE);
+            
+            dialog = new ProgressDialog(TestimoniosListActivity.this);
+            dialog.setMessage(getResources().getString(R.string.loading_testimonios));
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.setCancelable(false);
+            dialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+        	
+        	loadTestimoniosViews(testimonio);
+        	
+            return "";
+        }
+        
+        @Override
+		protected void onProgressUpdate(View... values) {
+        	LinearLayout containerTestimonios = (LinearLayout) findViewById(R.id.testimonios_list_vg_container);
+        	containerTestimonios.addView(values[0]);
+		}
+
+		@Override
+        protected void onPostExecute(String result) {
+			if (dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+            }
+			
+        	findViewById(R.id.testimonios_list_loading).setVisibility(View.GONE);
+        }
+		
+		private void loadTestimoniosViews(Testimonio testimonio) {
+			// Dialogues.Log(TAG_CLASS, "/***** Testimonio", Log.INFO);
+			// Dialogues.Log(TAG_CLASS, "Count: " + testimonio.getCount(), Log.INFO);
+
+			List<Testimonio.Items> listItems = testimonio.getItems();
+			// Dialogues.Log(TAG_CLASS, "Items Size: " + listItems.size(), Log.INFO);
+
+			if (listItems != null && listItems.size() > 0) {
+				for (int count = 0; count < listItems.size(); count++) {
+					Testimonio.Items item = listItems.get(count);
+
+					if (item != null) {
+						// Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
+						// Dialogues.Log(TAG_CLASS, "Items Name: " + item.getName(), Log.INFO);
+						// Dialogues.Log(TAG_CLASS, "Items Email: " + item.getEmail(), Log.INFO);
+						// Dialogues.Log(TAG_CLASS, "Items Category: " + item.getCategory(), Log.INFO);
+						// Dialogues.Log(TAG_CLASS, "Items Explanation: " + item.getExplanation(), Log.INFO);
+						// Dialogues.Log(TAG_CLASS, "Items EntidadFederativa: " + item.getEntidadFederativa(), Log.INFO);
+						// Dialogues.Log(TAG_CLASS, "Items Age: " + item.getAge(), Log.INFO);
+						// Dialogues.Log(TAG_CLASS, "Items Gender: " + item.getGender(), Log.INFO);
+						// Dialogues.Log(TAG_CLASS, "Items Grade: " + item.getGrade(), Log.INFO);
+						// Dialogues.Log(TAG_CLASS, "Items Created: " + item.getCreated(), Log.INFO);
+
+						if (item.getCategory().equals(categoryName)) {
+							if (item.isValid()) {
+								View view = createItemView(item);
+								if (view != null)
+									publishProgress(view);
+							}
+						}
+					}
+				}
+			}
+		}
+    }
+	
 	private void initUI() {
 		Bundle bundle = getIntent().getExtras();
 
@@ -62,43 +148,7 @@ public class TestimoniosListActivity extends ActionBarActivity {
 
 			categoryName = listCategories[categoyTypeIndex];
 
-			loadTestimoniosViews(testimonio);
-		}
-	}
-
-	private void loadTestimoniosViews(Testimonio testimonio) {
-		LinearLayout containerTestimonios = (LinearLayout) findViewById(R.id.testimonios_list_vg_container);
-
-		// Dialogues.Log(TAG_CLASS, "/***** Testimonio", Log.INFO);
-		// Dialogues.Log(TAG_CLASS, "Count: " + testimonio.getCount(), Log.INFO);
-
-		List<Testimonio.Items> listItems = testimonio.getItems();
-		// Dialogues.Log(TAG_CLASS, "Items Size: " + listItems.size(), Log.INFO);
-
-		if (listItems != null && listItems.size() > 0) {
-			for (int count = 0; count < listItems.size(); count++) {
-				Testimonio.Items item = listItems.get(count);
-
-				if (item != null) {
-					// Dialogues.Log(TAG_CLASS, "Items Id: " + item.getId(), Log.INFO);
-					// Dialogues.Log(TAG_CLASS, "Items Name: " + item.getName(), Log.INFO);
-					// Dialogues.Log(TAG_CLASS, "Items Email: " + item.getEmail(), Log.INFO);
-					// Dialogues.Log(TAG_CLASS, "Items Category: " + item.getCategory(), Log.INFO);
-					// Dialogues.Log(TAG_CLASS, "Items Explanation: " + item.getExplanation(), Log.INFO);
-					// Dialogues.Log(TAG_CLASS, "Items EntidadFederativa: " + item.getEntidadFederativa(), Log.INFO);
-					// Dialogues.Log(TAG_CLASS, "Items Age: " + item.getAge(), Log.INFO);
-					// Dialogues.Log(TAG_CLASS, "Items Gender: " + item.getGender(), Log.INFO);
-					// Dialogues.Log(TAG_CLASS, "Items Grade: " + item.getGrade(), Log.INFO);
-					// Dialogues.Log(TAG_CLASS, "Items Created: " + item.getCreated(), Log.INFO);
-
-					if (item.getCategory().equals(categoryName)) {
-						if (item.isValid()) {
-							View view = createItemView(item);
-							containerTestimonios.addView(view);
-						}
-					}
-				}
-			}
+			startLoadingTestimonios(testimonio);
 		}
 	}
 
@@ -120,6 +170,25 @@ public class TestimoniosListActivity extends ActionBarActivity {
 			tvTitle.setVisibility(View.GONE);
 		}
 
+		TextView tvAge = (TextView) view.findViewById(R.id.item_testimonios_tv_age);
+		if (item.getAge() != null && !item.getAge().equals("")) {
+			tvAge.setText(item.getAge());
+		} else {
+			tvAge.setVisibility(View.GONE);
+		}
+		
+		TextView tvCity = (TextView) view.findViewById(R.id.item_testimonios_tv_city);
+		if (item.getState() != null && !item.getState().equals("")) {
+			String city = getCityNameFromId(Integer.parseInt(item.getState()));
+			if (city != null && !city.equals("")) {
+				tvCity.setText(city);
+			} else {
+				tvCity.setVisibility(View.GONE);
+			}
+		} else {
+			tvCity.setVisibility(View.GONE);
+		}
+		
 		TextView tvDescription = (TextView) view.findViewById(R.id.item_testimonios_tv_description);
 		tvDescription.setText(item.getExplanation());
 		tvDescription.setMaxLines(Integer.MAX_VALUE);
@@ -131,6 +200,14 @@ public class TestimoniosListActivity extends ActionBarActivity {
 		return view;
 	}
 
+	private String getCityNameFromId(int index) {
+		String[] listCities = getResources().getStringArray(R.array.testimonios_add_cities);
+		if (listCities.length > index - 1)
+			return listCities[index - 1];
+		else
+			return "";
+	}
+	
 	OnClickListener BtnShowTestimonioOnClickListener = new OnClickListener() {
 		@Override
 		public void onClick(View v) {

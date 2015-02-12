@@ -100,6 +100,8 @@
     <string name="postdata_loading">Enviando testimonio.</string>
     <string name="getdata_loading">Obteniendo información.</string>
     
+    <string name="loading_testimonios">Cargando testimonios</string>
+    
     <!-- Propuestas -->
     <string name="propuestas_preview">A partir del 22 de enero podrás conocer y comentar las propuestas de expertos e instituciones para mejorar la justicia cotidiana. Espéralo.</string>
     

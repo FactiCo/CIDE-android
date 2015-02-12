@@ -42,6 +42,26 @@
             android:textColor="@color/title_color"
             android:textStyle="bold"
             cide:typefaceRoboto="SourceSansPro_Bold" />
+        
+        <mx.com.factico.cide.views.CustomTextView
+            android:id="@+id/item_testimonios_tv_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/title_color"
+            android:textStyle="bold"
+            cide:typefaceRoboto="SourceSansPro_Light" />
+        
+        <mx.com.factico.cide.views.CustomTextView
+            android:id="@+id/item_testimonios_tv_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/title_color"
+            android:textStyle="bold"
+            cide:typefaceRoboto="SourceSansPro_Light" />
 
         <mx.com.factico.cide.views.CustomTextView
             android:id="@+id/item_testimonios_tv_description"
