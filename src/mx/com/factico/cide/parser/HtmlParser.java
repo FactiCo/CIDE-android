@@ -104,10 +104,15 @@ public class HtmlParser {
 		String description = "";
 		
 		String regex = "//www.youtube.com";
-		String regexHost = "http:";
+		String regexHost1 = "http:";
+		String regexHost2 = "https:";
 		
-		description = html.replaceAll(regex, regexHost + regex);
-		Dialogues.Log(TAG_CLASS, "/***EdVideo: " + description, Log.DEBUG);
+		if (html.contains(regexHost1 + regex) || html.contains(regexHost2 + regex)) {
+			description = html;
+		} else {
+			description = html.replaceAll(regex, regexHost2 + regex);
+			Dialogues.Log(TAG_CLASS, "/***EdVideo: " + description, Log.DEBUG);
+		}
 		
 		return description;
 	}
